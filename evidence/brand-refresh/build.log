@@ -1,0 +1,37 @@
+$ pnpm validate:content
+$ node --conditions=react-server --import=tsx scripts/validate-content.ts
+Contenido válido: 4 familias, 0 referencias, demo=false.
+$ next build
+▲ Next.js 16.3.4 (Turbopack)
+✓ Running next.config.ts took 16ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 498ms
+  Running TypeScript ...
+  Finished TypeScript in 1512ms ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/1) ...
+✓ Generating static pages using 15 workers (1/1) in 61ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /api/leads
+├ ƒ /aviso-legal
+├ ƒ /catalogo-pdf
+├ ƒ /catalogo-pdf/[family]
+├ ƒ /catalogo-pdf/[family]/[product]
+├ ƒ /contacto
+├ ƒ /eventos
+├ ƒ /media-demo/captions
+├ ƒ /media-demo/video
+├ ƒ /politica-de-cookies
+├ ƒ /politica-de-privacidad
+├ ƒ /robots.txt
+├ ƒ /sitemap.xml
+├ ƒ /sobre-nosotros
+└ ƒ /tiendas
+
+
+ƒ  (Dynamic)  server-rendered on demand

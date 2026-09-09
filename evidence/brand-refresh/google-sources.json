@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-09-09T20:57:03.373Z",
+  "profile": "https://www.google.com/maps/contrib/114396712537097425294/photos",
+  "selection": "Imágenes pertinentes del perfil del negocio. Se añaden fuentes históricas de 2024 a las de julio/noviembre de 2025 ya incorporadas, sin presentarlas como recientes ni como inventario actual. Se descartaron fachada e interior de marzo de 2020 con rotulación o contexto antiguo.",
+  "photos": [
+    {
+      "file": "public/media/google/fuentes-chispas-2024-09.jpg",
+      "photoId": "CIHM0ogKEICAgICn4eKy0gE",
+      "profile": "https://www.google.com/maps/contrib/114396712537097425294/photos",
+      "googlePhotoLabel": "sept 2024",
+      "googleImageDateLabel": "sept 2024",
+      "width": 768,
+      "height": 1024,
+      "bytes": 122739,
+      "sha256": "544c6b0ec07771c43eb962e68848160de1b6be9c28c545c34da12300ad604797",
+      "assetBundle": [
+        {
+          "url": "https://lh3.googleusercontent.com/gpms-cs-s/AFP8RcNjOhH4EPt2aA5LGCqtwGSDiEf07OLmTp9jrfQSV9ycEN1lKDpT4lfDt4Ku6qSWlDy2HN4cRX8iSUCPcc6BEOTbh1b30D2cHUVQCGdO2xxsyMo1-7owSEJKoBdlQY5eQTj50r-Mig=s1024-v1",
+          "contentType": "image/jpeg"
+        }
+      ],
+      "edited": false
+    },
+    {
+      "file": "public/media/google/fuegos-celebracion-2024-10.jpg",
+      "photoId": "CIHM0ogKEICAgIDn96TVjQE",
+      "profile": "https://www.google.com/maps/contrib/114396712537097425294/photos",
+      "googlePhotoLabel": "oct 2024",
+      "googleImageDateLabel": "jun 2024",
+      "width": 1536,
+      "height": 2048,
+      "bytes": 304191,
+      "sha256": "8e30039919133ab91e1300bd18abfdc51456d49769e7a13b37b5990c6d5d8a9a",
+      "assetBundle": [
+        {
+          "url": "https://lh3.googleusercontent.com/gpms-cs-s/AFP8RcOEkDcz5jK_xFKk2hdn4QxO6JDF9tN5hXuevgLUhKm1EQE4ZPDTv6khqhSia2GJoc4E4CW5LCtYEF8cZT84312DmMiFZe2lZJwZrTswG4zntB8KJIDfP760G_YtcFzaw2dakeNT3w=s2048-v1",
+          "contentType": "image/jpeg"
+        }
+      ],
+      "edited": false
+    },
+    {
+      "file": "public/media/google/mostrador-2024-10.jpg",
+      "photoId": "CIHM0ogKEICAgIDn96TDfg",
+      "profile": "https://www.google.com/maps/contrib/114396712537097425294/photos",
+      "googlePhotoLabel": "oct 2024",
+      "googleImageDateLabel": "dic 2023",
+      "width": 768,
+      "height": 1024,
+      "bytes": 110194,
+      "sha256": "b6e402b2522c3f957b50061bb360c2158faaf20c6410193c0bad29289b993865",
+      "assetBundle": [
+        {
+          "url": "https://lh3.googleusercontent.com/gpms-cs-s/AFP8RcNi-rY9DTykSeOrlaqUCCh732bxT8_hxbPoZS_g3VykXvblpH2aSkK4wV8AQC9YNH6NYPWbAUvGVJzDyztPOFbw0p5SA3wu1QhqyJbpHZlTUG7gVSSzKv3wwN6Qb7v2cAlvwAif=s1024-v1",
+          "contentType": "image/jpeg"
+        }
+      ],
+      "edited": false
+    },
+    {
+      "file": "public/media/google/humo-rosa-2024-10.jpg",
+      "photoId": "CIHM0ogKEICAgIDn96SjgAE",
+      "profile": "https://www.google.com/maps/contrib/114396712537097425294/photos",
+      "googlePhotoLabel": "oct 2024",
+      "googleImageDateLabel": "oct 2024",
+      "width": 1179,
+      "height": 1905,
+      "bytes": 138461,
+      "sha256": "e36b72165d798f674bad8d68d44240537fdc2cba7096922e670af804fa6c4b56",
+      "assetBundle": [
+        {
+          "url": "https://lh3.googleusercontent.com/gpms-cs-s/AFP8RcMsm8dUI5HyjfCeu4nFlepAXkaFDZqGg80OUYXEMqNCh_o0Xyvk2hRBAjBqvjrn6ijfuPM-CdCukBHzzKfsV9kzT13HHqr-IKvojfRrvQXvNLaVldJjJ4jJWqV5Etj6I8ZYJgmj=s2048-v1",
+          "contentType": "image/jpeg"
+        }
+      ],
+      "edited": false
+    }
+  ]
+}

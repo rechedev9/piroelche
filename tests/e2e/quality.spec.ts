@@ -15,7 +15,10 @@ const paths = [
 test("WCAG automatic checks across all six sections, family, product and invalid form", async ({
   page,
 }) => {
-  for (const path of paths) {
+  const publicPaths = paths
+    .filter((path) => !path.includes("bateria-25-disparos"))
+    .map((path) => "http://127.0.0.1:3001" + path);
+  for (const path of [...paths, ...publicPaths]) {
     await page.goto(path);
     await page.evaluate(async () => {
       await document.fonts.ready;

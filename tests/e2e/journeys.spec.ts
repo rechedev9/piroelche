@@ -24,7 +24,11 @@ const routes = [
     h1: "Cuéntanos qué celebras. Nosotros te decimos qué encaja.",
   },
   { path: "/tiendas/", label: "Tiendas", h1: "Dónde comprar" },
-  { path: "/catalogo-pdf/", label: "Catálogo PDF", h1: "Catálogo" },
+  {
+    path: "/catalogo-pdf/",
+    label: "Catálogo PDF",
+    h1: "Un catálogo lleno de formas de celebrar.",
+  },
   { path: "/contacto/", label: "Contacto", h1: "Cuéntanos qué necesitas" },
   {
     path: "/politica-de-privacidad/",

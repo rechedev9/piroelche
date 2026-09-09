@@ -634,7 +634,7 @@ export function LeadForm({
                 "La referencia solicitada no está publicada. Puedes escribir tu consulta sin ella. "}
               ¿Tienes una referencia concreta?{" "}
               <Link href="/catalogo-pdf/">Búscala en el catálogo</Link> y
-              consulta desde su ficha.
+              escribe su nombre en la consulta.
             </p>
           ))}
         {draft.intention === "event" && (

@@ -35,7 +35,9 @@ export default async function Events({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const params = await searchParams;
-  const { solutions, occasions, cases, store } = getContent();
+  const { brand, solutions, occasions, cases, store } = getContent();
+  const eventImage =
+    brand?.eventHero || solutions.find((item) => item.image)?.image;
   const occasion =
     typeof params.ocasion === "string" &&
     occasions.some((item) => item.id === params.ocasion)
@@ -43,36 +45,54 @@ export default async function Events({
       : undefined;
   return (
     <>
-      <section className="events-hero">
-        <div className="container">
-          <p className="eyebrow">Eventos</p>
-          <h1>Cuéntanos qué celebras. Nosotros te decimos qué encaja.</h1>
-          <p className="lead">
-            No hace falta que sepas qué producto necesitas. Con la fecha, el
-            lugar y la ocasión podemos valorar la propuesta.
-          </p>
-          <Button asChild variant="yellow">
-            <Link href="#solicitud">Solicitar propuesta</Link>
-          </Button>
+      <section className="events-hero brand-events-hero dark">
+        <div className="container brand-event-intro">
+          <div>
+            <p className="eyebrow brand-eyebrow">Eventos</p>
+            <h1>Cuéntanos qué celebras. Nosotros te decimos qué encaja.</h1>
+            <p className="lead">
+              No hace falta que sepas qué producto necesitas. Con la fecha, el
+              lugar y la ocasión podemos valorar la propuesta.
+            </p>
+            <Button asChild variant="yellow">
+              <Link href="#solicitud">Solicitar propuesta</Link>
+            </Button>
+          </div>
+          <figure className="brand-events-visual">
+            <Media
+              src={eventImage?.src}
+              alt={eventImage?.alt || "Una celebración con luz y color"}
+              ratio="4 / 5"
+              fit="contain"
+              dark
+            />
+            <figcaption>Una idea. Tu ocasión. Muchas posibilidades.</figcaption>
+          </figure>
         </div>
       </section>
-      <section className="container section">
-        <h2 className="section-heading">Qué puedes contratar</h2>
+      <section className="container section brand-solutions">
+        <h2 className="section-heading brand-section-heading">
+          Qué puedes contratar
+        </h2>
         <p className="section-intro">
           Cada solución explica qué resuelve, cómo se valora y qué necesitamos
           saber.
         </p>
-        <div className="grid grid-3">
-          {solutions.map((solution) => (
+        <div className="brand-solution-list">
+          {solutions.map((solution, index) => (
             <article className="card solution" key={solution.id}>
               <Media
                 src={solution.image?.src}
                 alt={solution.image?.alt || solution.label}
-                ratio="16 / 9"
+                ratio="4 / 3"
+                fit="contain"
               />
               <div className="card-body">
                 <div>
-                  <p className="eyebrow">{solution.label}</p>
+                  <p className="eyebrow brand-solution-label">
+                    <span aria-hidden="true">0{index + 1}</span>
+                    {solution.label}
+                  </p>
                   <h3>{solution.title}</h3>
                 </div>
                 <p>
@@ -109,8 +129,8 @@ export default async function Events({
           responsabilidades se concretan en la propuesta.
         </p>
       </section>
-      <section className="container section">
-        <h2>Cómo funciona</h2>
+      <section className="container section brand-process">
+        <h2 className="brand-section-heading">Cómo funciona</h2>
         <ol className="grid grid-4 process">
           {steps.map(([title, text], index) => (
             <li className="card" key={title}>
@@ -123,9 +143,9 @@ export default async function Events({
           ))}
         </ol>
       </section>
-      <section className="container section">
-        <h2>Trabajos realizados</h2>
-        {cases.length ? (
+      {cases.length ? (
+        <section className="container section">
+          <h2>Trabajos realizados</h2>
           <div className="grid grid-3 cases">
             {cases.map((item) => (
               <figure className="card" key={item.id}>
@@ -149,7 +169,35 @@ export default async function Events({
               </figure>
             ))}
           </div>
-        ) : (
+        </section>
+      ) : brand?.gallery.length ? (
+        <section className="brand-gallery-section dark">
+          <div className="container">
+            <p className="eyebrow brand-eyebrow">Galería Piroboom</p>
+            <h2>Luz y color, en imágenes</h2>
+            <p className="brand-gallery-intro">
+              Una selección de fotografías publicadas por Piroboom para explorar
+              efectos y ambientes.
+            </p>
+            <div className="brand-gallery">
+              {brand.gallery.map((photo) => (
+                <figure key={photo.src}>
+                  <Media
+                    src={photo.src}
+                    alt=""
+                    ratio="4 / 5"
+                    fit="contain"
+                    dark
+                  />
+                  <figcaption>{photo.alt}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className="container section">
+          <h2>Trabajos realizados</h2>
           <div className="empty-state">
             <p>
               Las fotografías y los detalles de trabajos se incorporarán cuando
@@ -157,11 +205,12 @@ export default async function Events({
               qué opciones valorar para tu celebración.
             </p>
           </div>
-        )}
-      </section>
+        </section>
+      )}
       <section className="container section section-last" id="solicitud">
-        <div className="card grid grid-2 event-form-wrap">
-          <div>
+        <div className="card grid grid-2 event-form-wrap brand-event-form">
+          <div className="brand-form-copy dark">
+            <p className="eyebrow brand-eyebrow">Dale forma a tu idea</p>
             <h2>Solicitar propuesta</h2>
             <p>
               Con estos datos se valora la propuesta. El resto se concreta
@@ -173,15 +222,17 @@ export default async function Events({
               <li>La solicitud no confirma reserva ni viabilidad.</li>
             </ul>
           </div>
-          <LeadForm
-            key={occasion || "default-event"}
-            variant="event"
-            initialOccasion={occasion}
-            occasions={occasions}
-            availability={getLeadAvailability()}
-            phone={store.phone}
-            phoneDisplay={store.phoneDisplay}
-          />
+          <div className="brand-form-fields">
+            <LeadForm
+              key={occasion || "default-event"}
+              variant="event"
+              initialOccasion={occasion}
+              occasions={occasions}
+              availability={getLeadAvailability()}
+              phone={store.phone}
+              phoneDisplay={store.phoneDisplay}
+            />
+          </div>
         </div>
       </section>
     </>

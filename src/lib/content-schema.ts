@@ -56,6 +56,7 @@ export const ImageSchema = z
     alt: text,
     width: z.number().int().positive(),
     height: z.number().int().positive(),
+    fit: z.enum(["cover", "contain"]).optional(),
     provenance: ProvenanceSchema,
   })
   .strict();
@@ -490,6 +491,16 @@ export const ChannelsSchema = z
 
 export const ContentSchema = z
   .object({
+    brand: z
+      .object({
+        hero: PublishedImageSchema,
+        eventHero: PublishedImageSchema,
+        storeWelcome: PublishedImageSchema,
+        storeDetail: PublishedImageSchema,
+        gallery: z.array(PublishedImageSchema),
+      })
+      .strict()
+      .optional(),
     families: z.array(FamilySchema),
     products: z.array(ProductSchema),
     solutions: z.array(SolutionSchema),

@@ -1,0 +1,560 @@
+@reference "./globals.css";
+
+/* Piroboom's photographic pages share the existing palette and typefaces.
+   Scoped selectors keep the catalogue, forms and publication states independent. */
+.brand-eyebrow {
+  @apply inline-flex items-center gap-2.5;
+}
+.brand-eyebrow:before,
+.brand-section-heading:before {
+  content: "";
+  @apply block flex-none w-5 h-5 bg-current;
+  clip-path: polygon(
+    50% 0,
+    60% 35%,
+    100% 50%,
+    65% 60%,
+    50% 100%,
+    38% 65%,
+    0 50%,
+    35% 38%
+  );
+}
+.brand-section-heading {
+  @apply flex items-center gap-3;
+}
+.brand-section-heading:before {
+  @apply text-magenta w-6 h-6;
+}
+.brand-home .brand-hero,
+.events-hero.brand-events-hero {
+  @apply border-0 border-b-8 border-solid border-yellow;
+}
+.brand-home .hero-inner {
+  @apply gap-12;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  padding-block: 64px;
+}
+.brand-home .hero-background img {
+  @apply opacity-30;
+}
+.brand-hero-copy {
+  @apply min-w-0;
+}
+.brand-home .hero h1 {
+  font-size: clamp(44px, 5.3vw, 70px);
+}
+.brand-hero-visual {
+  @apply m-0 min-w-0 border-2 border-solid border-yellow bg-night overflow-hidden;
+}
+.brand-photo-tag {
+  @apply bg-yellow text-night py-2.5 px-4 font-extrabold text-[13px] uppercase tracking-[0.08em];
+}
+.brand-home .brand-hero-visual .media {
+  @apply rounded-none border-0 p-0 max-h-120;
+}
+.brand-home .brand-hero-visual .media img {
+  @apply bg-night p-0;
+}
+.brand-photo-caption {
+  @apply py-3 px-4 text-yellow text-[13px] font-bold uppercase tracking-[0.08em];
+}
+.brand-home .brand-journeys {
+  @apply gap-6;
+}
+.brand-home .brand-journey.journey {
+  @apply grid p-0 gap-0 border-2 border-solid border-ink rounded-control overflow-hidden;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+}
+.brand-home .brand-journey > .media {
+  @apply h-full min-h-64 rounded-none;
+  aspect-ratio: auto !important;
+}
+.brand-journey-copy {
+  @apply p-6 flex flex-col gap-2.5 min-w-0;
+}
+.brand-home .brand-journey h3 {
+  @apply text-[23px];
+}
+.brand-home .brand-journey .text-link {
+  @apply mt-auto pt-2;
+}
+.brand-home .brand-journey:nth-child(2) {
+  @apply border-magenta;
+}
+.brand-home .family-grid {
+  @apply gap-5;
+}
+.brand-home .family-grid .card-link {
+  @apply bg-night text-white border-night rounded-control overflow-hidden;
+}
+.brand-home .family-grid .card-link:hover {
+  @apply border-magenta;
+}
+.brand-home .family-grid .media {
+  @apply rounded-none;
+}
+.brand-home .family-grid .card-body {
+  @apply p-5 border-0 border-t-4 border-solid border-yellow;
+}
+.brand-home .family-grid .card-link:nth-child(even) .card-body {
+  @apply border-magenta;
+}
+.brand-home .family-grid .muted {
+  @apply text-[#dedbe0];
+}
+.brand-home .brand-events-band {
+  @apply border-0 border-t-4 border-solid border-magenta;
+}
+.brand-home .brand-solution-teaser.solution-compact {
+  @apply p-0 rounded-control overflow-hidden;
+}
+.brand-home .brand-solution-teaser .media {
+  @apply rounded-none border-0;
+}
+.brand-teaser-copy {
+  @apply p-6;
+}
+.brand-teaser-copy .text-link {
+  @apply block mt-4 text-[15px];
+}
+.brand-visit-grid {
+  @apply grid gap-0 overflow-hidden rounded-control border-2 border-solid border-night;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+}
+.brand-visit-photo {
+  @apply m-0 relative min-w-0 bg-night;
+}
+.brand-visit-photo .media {
+  @apply h-full rounded-none min-h-80;
+  aspect-ratio: auto !important;
+}
+.brand-visit-photo figcaption {
+  @apply absolute left-0 bottom-0 bg-magenta text-white py-3 px-5 font-extrabold text-[15px];
+}
+.brand-home .brand-store-panel {
+  @apply p-8 rounded-none border-0 bg-yellow;
+}
+.brand-home .brand-store-panel h2 {
+  @apply text-[38px] mb-3;
+}
+.brand-home .brand-store-panel .muted,
+.brand-home .brand-store-panel .hours dt {
+  @apply text-ink;
+}
+.brand-home .brand-store-panel .hours > div {
+  @apply border-ink/25;
+}
+.brand-home .brand-trust {
+  @apply mt-9 p-0;
+}
+.brand-home .brand-trust ul {
+  @apply grid grid-cols-3 gap-7;
+}
+.brand-home .brand-trust li {
+  @apply border-0 border-t-2 border-solid border-line pt-4;
+}
+.brand-home .brand-trust li:before {
+  @apply w-4 h-4 rounded-none mt-1.5;
+  clip-path: polygon(
+    50% 0,
+    60% 35%,
+    100% 50%,
+    65% 60%,
+    50% 100%,
+    38% 65%,
+    0 50%,
+    35% 38%
+  );
+}
+.events-hero.brand-events-hero {
+  background-image: none;
+}
+.brand-events-hero .brand-event-intro {
+  @apply grid gap-12 items-center;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+  padding-block: 52px;
+}
+.brand-events-hero h1 {
+  font-size: clamp(40px, 4.7vw, 62px);
+}
+.brand-events-visual {
+  @apply m-0 min-w-0 border-2 border-solid border-magenta;
+}
+.brand-events-hero .brand-events-visual .media {
+  @apply rounded-none border-0 p-0;
+}
+.brand-events-hero .brand-events-visual .media img {
+  @apply object-contain bg-night p-0;
+}
+.brand-events-visual figcaption {
+  @apply bg-magenta text-white py-3 px-4 font-extrabold text-[14px];
+}
+.brand-solution-list {
+  @apply grid gap-8 mt-8;
+}
+.brand-solutions .solution {
+  @apply grid gap-0 rounded-control overflow-hidden border-2 border-solid border-night;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+}
+.brand-solutions .solution > .media {
+  @apply rounded-none h-full min-h-88 bg-night;
+  aspect-ratio: auto !important;
+}
+.brand-solutions .solution > .media img {
+  @apply object-contain p-0;
+}
+.brand-solutions .solution .card-body {
+  @apply p-8 gap-4;
+}
+.brand-solutions .solution h3 {
+  @apply font-title text-[34px] leading-[1.08] mt-3 mb-1;
+}
+.brand-solutions .brand-solution-label {
+  @apply flex items-center gap-3;
+}
+.brand-solution-label > span {
+  @apply inline-flex items-center justify-center w-10 h-10 bg-yellow text-night font-title text-[24px] tracking-normal;
+}
+.brand-solutions .solution:nth-child(2) {
+  @apply bg-night text-white;
+}
+.brand-solutions .solution:nth-child(2) > .media {
+  @apply col-start-2 row-start-1;
+}
+.brand-solutions .solution:nth-child(2) .card-body {
+  @apply col-start-1 row-start-1;
+}
+.brand-solutions .solution:nth-child(2) .eyebrow {
+  @apply text-yellow;
+}
+.brand-solutions .solution:nth-child(2) p,
+.brand-solutions .solution:nth-child(2) strong {
+  @apply text-[#e8e6e0];
+}
+.brand-solutions .solution:nth-child(2) .button {
+  @apply bg-yellow text-night;
+}
+.brand-solutions .solution:nth-child(2) .button:hover {
+  @apply bg-white text-night;
+}
+.brand-solutions .solution:nth-child(3) {
+  @apply border-magenta;
+}
+.brand-process .process {
+  @apply gap-0 border-2 border-solid border-line rounded-control overflow-hidden;
+}
+.brand-process .process li {
+  @apply border-0 rounded-none p-6;
+}
+.brand-process .process li + li {
+  @apply border-0 border-l border-solid border-line;
+}
+.brand-process .step-number {
+  @apply text-[34px];
+}
+.brand-gallery-section {
+  @apply mt-14 py-14 border-0 border-t-4 border-solid border-yellow;
+}
+.brand-gallery-intro {
+  @apply text-[#d8d5dd] max-w-180;
+}
+.brand-gallery {
+  @apply grid grid-cols-3 gap-6 mt-8 items-start;
+}
+.brand-gallery figure {
+  @apply m-0 min-w-0;
+}
+.brand-gallery-section .brand-gallery .media {
+  @apply rounded-none border-0 p-0 bg-night;
+}
+.brand-gallery-section .brand-gallery .media img {
+  @apply object-contain bg-night p-0;
+}
+.brand-gallery figcaption {
+  @apply pt-4 text-[14px] text-[#d8d5dd] border-0 border-t-2 border-solid border-magenta leading-[1.6];
+}
+.event-form-wrap.brand-event-form {
+  @apply p-0 gap-0 overflow-hidden border-2 border-solid border-night;
+}
+.brand-event-form .brand-form-copy {
+  @apply p-8 h-full;
+}
+.brand-event-form .brand-form-copy p,
+.brand-event-form .brand-form-copy ul {
+  @apply text-[#e8e6e0];
+}
+.brand-event-form .brand-form-copy .eyebrow {
+  @apply text-yellow mb-5;
+}
+.brand-form-fields {
+  @apply p-8 min-w-0;
+}
+.brand-about .brand-page-intro {
+  @apply border-0 border-l-4 border-solid border-magenta pl-6 mb-10;
+}
+.brand-about .brand-page-intro .lead {
+  @apply mb-0;
+}
+.brand-about-grid {
+  @apply grid grid-cols-2 gap-7;
+}
+.brand-about .brand-about-grid > .card {
+  @apply rounded-control overflow-hidden border-2 border-solid border-night;
+}
+.brand-about .brand-about-grid > .card:first-child {
+  @apply col-span-2 grid grid-cols-2 gap-0 bg-night text-white;
+}
+.brand-about .brand-about-grid > .card:first-child .media {
+  @apply rounded-none h-full;
+  aspect-ratio: auto !important;
+}
+.brand-about .brand-about-grid > .card:first-child .card-body {
+  @apply flex flex-col justify-center;
+}
+.brand-about .brand-about-grid > .card:first-child .eyebrow {
+  @apply text-yellow;
+}
+.brand-about .brand-about-grid > .card:first-child .muted {
+  @apply text-[#e8e6e0];
+}
+.brand-about .brand-about-grid .card-body {
+  @apply p-8;
+}
+.brand-about .brand-about-grid h2 {
+  @apply text-[34px] mb-4;
+}
+.brand-about .brand-about-grid .muted {
+  @apply m-0;
+}
+.brand-about .brand-next-step {
+  @apply rounded-control border-0 border-t-4 border-solid border-yellow;
+}
+.brand-shops .brand-store-card {
+  @apply border-2 border-solid border-night rounded-control;
+}
+.brand-shops .brand-store-card .card-body {
+  @apply bg-yellow;
+}
+.brand-shops .brand-store-card .badge {
+  @apply bg-night text-yellow;
+}
+.brand-shops .brand-store-card .muted,
+.brand-shops .brand-store-card .hours dt {
+  @apply text-ink;
+}
+.brand-shops .brand-store-card .hours > div {
+  @apply border-ink/25;
+}
+.brand-store-detail {
+  @apply grid gap-8 mt-8 items-center;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+}
+.brand-store-detail .media {
+  @apply rounded-control;
+}
+.brand-store-detail h2 {
+  @apply mb-3;
+}
+.brand-store-detail > div > p:not(.eyebrow) {
+  @apply text-muted;
+}
+.brand-shops .campaign-card {
+  @apply rounded-control border-0 border-t-4 border-solid border-magenta;
+}
+.brand-contact .contact-card {
+  @apply bg-yellow border-2 border-solid border-night rounded-control;
+}
+.brand-contact .contact-card .small {
+  @apply text-ink;
+}
+.brand-contact .form-card {
+  @apply border-2 border-solid border-night border-t-[6px] border-t-magenta rounded-control;
+}
+.brand-contact-photo {
+  @apply m-0 mt-6;
+}
+.brand-contact-photo .media {
+  @apply rounded-control;
+}
+.brand-contact-photo figcaption {
+  @apply text-muted text-[14px] mt-2;
+}
+@media (max-width: 1059px) {
+  .brand-home .hero-inner,
+  .brand-events-hero .brand-event-intro {
+    @apply gap-7;
+  }
+  .brand-home .brand-journey.journey {
+    @apply grid-cols-1;
+  }
+  .brand-home .brand-journey > .media {
+    @apply h-auto min-h-0;
+    aspect-ratio: 16 / 9 !important;
+  }
+  .brand-home .brand-events-band .grid {
+    @apply grid-cols-3;
+  }
+  .brand-teaser-copy,
+  .brand-solutions .solution .card-body,
+  .brand-about .brand-about-grid .card-body {
+    @apply p-6;
+  }
+  .brand-visit-grid {
+    @apply grid-cols-2;
+  }
+  .brand-home .brand-store-panel {
+    @apply p-6;
+  }
+  .brand-solutions .solution h3 {
+    @apply text-[30px];
+  }
+  .brand-gallery {
+    @apply gap-4;
+  }
+  .brand-process .process {
+    @apply grid-cols-2;
+  }
+  .brand-process .process li:nth-child(3) {
+    @apply border-l-0;
+  }
+  .brand-process .process li:nth-child(n + 3) {
+    @apply border-t;
+  }
+}
+@media (max-width: 800px) {
+  .brand-home .hero-inner,
+  .brand-events-hero .brand-event-intro {
+    @apply grid-cols-1;
+  }
+  .brand-home .brand-hero-visual {
+    @apply w-full max-w-160 mx-auto;
+  }
+  .brand-events-hero .brand-events-visual {
+    @apply w-full max-w-100 mx-auto;
+  }
+  .brand-home .brand-events-band .grid,
+  .brand-home .brand-trust ul {
+    @apply grid-cols-1;
+  }
+  .brand-home .brand-solution-teaser {
+    @apply grid grid-cols-2;
+  }
+  .brand-home .brand-solution-teaser .media {
+    @apply h-full;
+    aspect-ratio: auto !important;
+  }
+  .brand-solutions .solution {
+    @apply grid-cols-1;
+  }
+  .brand-solutions .solution > .media {
+    @apply h-auto min-h-0;
+    aspect-ratio: 4 / 3 !important;
+  }
+  .brand-solutions .solution:nth-child(2) > .media,
+  .brand-solutions .solution:nth-child(2) .card-body {
+    @apply col-auto row-auto;
+  }
+  .brand-gallery {
+    @apply grid-cols-1 gap-9 max-w-130 mx-auto;
+  }
+}
+@media (max-width: 650px) {
+  .brand-home .hero-inner,
+  .brand-events-hero .brand-event-intro {
+    padding-block: 40px;
+  }
+  .brand-home .hero h1 {
+    font-size: clamp(38px, 11.3vw, 52px);
+  }
+  .brand-home .hero-background img {
+    @apply opacity-20;
+  }
+  .brand-home .brand-hero-visual {
+    @apply max-w-full;
+  }
+  .brand-photo-tag,
+  .brand-photo-caption {
+    @apply text-[12px];
+  }
+  .brand-home .brand-journeys {
+    @apply gap-5;
+  }
+  .brand-journey-copy {
+    @apply p-5.5;
+  }
+  .brand-home .brand-solution-teaser {
+    @apply flex;
+  }
+  .brand-home .brand-solution-teaser .media {
+    @apply h-auto;
+    aspect-ratio: 4 / 3 !important;
+  }
+  .brand-visit-grid,
+  .brand-store-detail {
+    @apply grid-cols-1;
+  }
+  .brand-visit-photo .media {
+    @apply h-auto min-h-0;
+    aspect-ratio: 4 / 3 !important;
+  }
+  .brand-home .brand-store-panel {
+    @apply p-5.5;
+  }
+  .brand-home .brand-store-panel h2 {
+    @apply text-[34px];
+  }
+  .brand-home .brand-trust ul {
+    @apply gap-5;
+  }
+  .brand-events-hero h1 {
+    @apply text-[40px];
+  }
+  .brand-solution-list {
+    @apply mt-6 gap-6;
+  }
+  .brand-solutions .solution .card-body {
+    @apply p-5.5;
+  }
+  .brand-solutions .solution h3 {
+    @apply text-[30px];
+  }
+  .brand-process .process {
+    @apply grid-cols-1;
+  }
+  .brand-process .process li + li {
+    @apply border-l-0 border-t;
+  }
+  .brand-gallery-section {
+    @apply mt-9 py-9;
+  }
+  .brand-event-form .brand-form-copy,
+  .brand-event-form .brand-form-fields {
+    @apply p-5.5;
+  }
+  .brand-about .brand-page-intro {
+    @apply pl-4 mb-7;
+  }
+  .brand-about .brand-about-grid {
+    @apply grid-cols-1 gap-6;
+  }
+  .brand-about .brand-about-grid > .card:first-child {
+    @apply col-span-1 grid-cols-1;
+  }
+  .brand-about .brand-about-grid > .card:first-child .media {
+    @apply h-auto;
+    aspect-ratio: 3 / 2 !important;
+  }
+  .brand-about .brand-about-grid .card-body {
+    @apply p-5.5;
+  }
+  .brand-about .brand-about-grid h2 {
+    @apply text-[30px];
+  }
+  .brand-store-detail {
+    @apply gap-5;
+  }
+  .brand-section-heading {
+    @apply gap-2.5;
+  }
+}

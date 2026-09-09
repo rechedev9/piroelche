@@ -1,2 +1,4 @@
 # Preserve supplied catalogs byte for byte on all platforms.
 public/catalogos/*.pdf binary
+public/media/catalogo-2026/*.txt text eol=lf
+evidence/catalogo-2026/source-text.txt binary

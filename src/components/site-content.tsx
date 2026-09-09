@@ -110,14 +110,26 @@ function FamilyCard({
 }) {
   return (
     <Link href={`/catalogo-pdf/${family.slug}/`} className="card card-link">
-      <Media src={family.image?.src} alt={family.image?.alt || family.name} />
+      <Media
+        src={family.image?.src}
+        alt={family.image?.alt || family.name}
+        fit={family.image?.fit}
+      />
       <div className="card-body">
         {detailed ? <h2>{family.name}</h2> : <h3>{family.name}</h3>}
         {detailed && <p>{family.description}</p>}
         <span className={detailed ? "text-link" : "muted small"}>
-          {count}{" "}
-          {isDemo ? "referencias de demostración" : "referencias publicadas"}
-          {detailed ? " →" : ""}
+          {count || isDemo ? (
+            <>
+              {count}{" "}
+              {isDemo
+                ? "referencias de demostración"
+                : "referencias publicadas"}
+              {detailed ? " →" : ""}
+            </>
+          ) : (
+            "Ver en catálogo 2026 →"
+          )}
         </span>
       </div>
     </Link>

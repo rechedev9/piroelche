@@ -9,62 +9,59 @@ export const metadata = pageMetadata(
   "Conoce Piroboom, su tienda física en Elche y la atención para elegir artículos y consultar celebraciones.",
   "/sobre-nosotros/",
 );
-const blocks = [
-  {
-    title: "Quién te atiende",
-    text: "Consulta con Piroboom antes de elegir una referencia. Explica qué buscas y dónde se celebrará para recibir orientación.",
-  },
-  {
-    title: "La tienda",
-    text: "El punto de venta de Elche está en Calle Gloria Fuertes. Consulta el horario y las excepciones antes de venir.",
-  },
-  {
-    title: "Cómo asesoramos",
-    text: "La fecha, el lugar y la ocasión son el punto de partida para valorar opciones y concretar las condiciones de cada consulta.",
-  },
-];
 export default function About() {
-  const { store } = getContent();
+  const { brand, store } = getContent();
+  const blocks = [
+    {
+      title: "Ven a conocernos",
+      label: "Piroboom · Elche",
+      text: "El punto de venta de Elche está en Calle Gloria Fuertes. Consulta el horario y las excepciones antes de venir: aquí puedes plantear tu idea y preguntar por los artículos.",
+      image: brand?.storeWelcome || store.image,
+    },
+    {
+      title: "La tienda",
+      label: "Luz, color y celebración",
+      text: "Fuegos artificiales, humo de color, fuego frío, tracas y otros artículos. Explora las familias y consulta la referencia que te interesa antes de acudir.",
+      image: store.image,
+    },
+    {
+      title: "Antes de elegir",
+      label: "Cada ocasión tiene sus condiciones",
+      text: "La fecha, el lugar y la ocasión son el punto de partida para valorar opciones y concretar las condiciones de cada consulta. No necesitas conocer de antemano el nombre de un producto.",
+      image: brand?.storeDetail || store.image,
+    },
+  ];
   return (
-    <div className="container page-section about">
-      <p className="eyebrow">Sobre nosotros</p>
-      <h1 className="about-intro">
-        Una tienda de pirotecnia en Elche para tus celebraciones.
-      </h1>
-      <p className="lead">
-        Piroboom ofrece artículos pirotécnicos en tienda física y atiende
-        consultas para bodas, revelaciones y fiestas. Aquí puedes conocer la
-        tienda y cómo plantear tu celebración.
-      </p>
-      <div className="grid grid-3">
+    <div className="container page-section about brand-about">
+      <div className="brand-page-intro">
+        <p className="eyebrow brand-eyebrow">Sobre nosotros</p>
+        <h1 className="about-intro">
+          Una tienda de pirotecnia en Elche para tus celebraciones.
+        </h1>
+        <p className="lead">
+          Piroboom ofrece artículos pirotécnicos en tienda física y atiende
+          consultas para bodas, revelaciones y fiestas. Aquí puedes conocer la
+          tienda y cómo plantear tu celebración.
+        </p>
+      </div>
+      <div className="brand-about-grid">
         {blocks.map((block) => (
           <section className="card" key={block.title}>
             <Media
-              src={block.title === "La tienda" ? store.image?.src : undefined}
-              alt={
-                block.title === "La tienda" && store.image
-                  ? store.image.alt
-                  : block.title
-              }
+              src={block.image?.src}
+              alt={block.image?.alt || "La tienda Piroboom en Elche"}
               ratio="3 / 2"
+              fit={block.image?.fit}
             />
             <div className="card-body">
-              <h2
-                style={{
-                  font: '800 21px/1.25 var(--body-font, "Manrope Variable"), sans-serif',
-                  marginBottom: 8,
-                }}
-              >
-                {block.title}
-              </h2>
-              <p className="muted" style={{ margin: 0 }}>
-                {block.text}
-              </p>
+              <p className="eyebrow">{block.label}</p>
+              <h2>{block.title}</h2>
+              <p className="muted">{block.text}</p>
             </div>
           </section>
         ))}
       </div>
-      <div className="spread next-step">
+      <div className="spread next-step brand-next-step">
         <h2>¿Siguiente paso?</h2>
         <div className="flex-row">
           <Button asChild variant="yellow">

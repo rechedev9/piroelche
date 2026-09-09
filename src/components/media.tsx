@@ -8,17 +8,19 @@ export function Media({
   ratio = "4 / 3",
   dark = false,
   className = "",
+  fit,
 }: {
   src?: string | null;
   alt: string;
   ratio?: string;
   dark?: boolean;
   className?: string;
+  fit?: "cover" | "contain";
 }) {
   const [failed, setFailed] = useState(false);
   return (
     <div
-      className={`media ${dark ? "media-dark" : ""} ${className}`}
+      className={`media ${dark ? "media-dark" : ""} ${fit === "contain" ? "media-contain" : ""} ${className}`}
       style={{ aspectRatio: ratio }}
     >
       {src && !failed ? (
@@ -26,6 +28,7 @@ export function Media({
           src={src}
           alt={alt}
           fill
+          style={fit ? { objectFit: fit } : undefined}
           sizes="(max-width: 650px) 90vw, (max-width: 1059px) 45vw, 560px"
           onError={() => setFailed(true)}
         />

@@ -1,0 +1,155 @@
+{
+  "checkedAt": "2026-09-09T21:22:26.068Z",
+  "buildId": "9mOHWM-Tp-bJEqmVhnydW",
+  "browser": "153.0.8010.12",
+  "rows": [
+    {
+      "width": 390,
+      "path": "/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "390-inicio.png"
+    },
+    {
+      "width": 390,
+      "path": "/eventos/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "390-eventos.png"
+    },
+    {
+      "width": 390,
+      "path": "/sobre-nosotros/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "390-nosotros.png"
+    },
+    {
+      "width": 390,
+      "path": "/tiendas/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "390-tiendas.png"
+    },
+    {
+      "width": 390,
+      "path": "/contacto/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "390-contacto.png"
+    },
+    {
+      "width": 390,
+      "path": "/catalogo-pdf/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "390-catalogo.png"
+    },
+    {
+      "width": 390,
+      "path": "/catalogo-pdf/tracas-y-otros/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "390-familia.png"
+    },
+    {
+      "width": 1366,
+      "path": "/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1366-inicio.png"
+    },
+    {
+      "width": 1366,
+      "path": "/eventos/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1366-eventos.png"
+    },
+    {
+      "width": 1366,
+      "path": "/sobre-nosotros/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1366-nosotros.png"
+    },
+    {
+      "width": 1366,
+      "path": "/tiendas/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1366-tiendas.png"
+    },
+    {
+      "width": 1366,
+      "path": "/contacto/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1366-contacto.png"
+    },
+    {
+      "width": 1366,
+      "path": "/catalogo-pdf/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1366-catalogo.png"
+    },
+    {
+      "width": 1366,
+      "path": "/catalogo-pdf/tracas-y-otros/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1366-familia.png"
+    },
+    {
+      "width": 1920,
+      "path": "/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1920-inicio.png"
+    },
+    {
+      "width": 1920,
+      "path": "/eventos/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1920-eventos.png"
+    },
+    {
+      "width": 1920,
+      "path": "/sobre-nosotros/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1920-nosotros.png"
+    },
+    {
+      "width": 1920,
+      "path": "/tiendas/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1920-tiendas.png"
+    },
+    {
+      "width": 1920,
+      "path": "/contacto/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1920-contacto.png"
+    },
+    {
+      "width": 1920,
+      "path": "/catalogo-pdf/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1920-catalogo.png"
+    },
+    {
+      "width": 1920,
+      "path": "/catalogo-pdf/tracas-y-otros/",
+      "placeholderCount": 0,
+      "longContentOverflow": false,
+      "file": "1920-familia.png"
+    }
+  ],
+  "errors": []
+}

@@ -15,7 +15,11 @@ export const metadata = pageMetadata(
   "/",
 );
 export default function Home() {
-  const { store, solutions, campaigns } = getContent();
+  const { brand, store, solutions, campaigns } = getContent();
+  const heroImage = brand?.hero || store.image;
+  const productImage = brand?.storeDetail || store.image;
+  const eventImage =
+    brand?.eventHero || solutions.find((item) => item.image)?.image;
   const today = getLocationHours(store);
   const promo =
     process.env.PIROBOOM_PROMO === "1" &&
@@ -23,8 +27,8 @@ export default function Home() {
       (campaign) => getLocationHours(campaign).campaignStatus === "active",
     );
   return (
-    <>
-      <section className="hero">
+    <div className="brand-home">
+      <section className="hero brand-hero">
         <div className="hero-background" aria-hidden="true">
           <Image
             src="/media/decorative/home-fireworks-v1.png"
@@ -35,8 +39,8 @@ export default function Home() {
           />
         </div>
         <div className="container hero-inner">
-          <div>
-            <p className="eyebrow">Tienda física · Elche</p>
+          <div className="brand-hero-copy">
+            <p className="eyebrow brand-eyebrow">Tienda física · Elche</p>
             <h1>Pirotecnia para tus celebraciones en Elche.</h1>
             <p className="lead">
               Explora el catálogo y consulta las opciones para tu evento. Te
@@ -71,62 +75,90 @@ export default function Home() {
               <Link href="/tiendas/">Horarios y cómo llegar</Link>
             </div>
           </div>
-          <Media
-            src={store.image?.src}
-            alt={store.image?.alt || "Tienda Piroboom en Elche"}
-            dark
-          />
+          <figure className="brand-hero-visual">
+            <div className="brand-photo-tag">Luz, color y celebración</div>
+            <Media
+              src={heroImage?.src}
+              alt={heroImage?.alt || "Piroboom en Elche"}
+              ratio="4 / 5"
+              fit="contain"
+              dark
+            />
+            <figcaption className="brand-photo-caption">
+              Piroboom · Pirotecnia en Elche
+            </figcaption>
+          </figure>
         </div>
       </section>
       <section className="container section">
-        <h2 className="section-heading">¿Por dónde empezamos?</h2>
+        <h2 className="section-heading brand-section-heading">
+          ¿Por dónde empezamos?
+        </h2>
         <p className="section-intro">
           Dos formas de explorar, según lo que ya tengas claro.
         </p>
-        <div className="grid grid-2">
+        <div className="grid grid-2 brand-journeys">
           <TrackedLink
             href="/catalogo-pdf/"
-            className="card card-link journey"
+            className="card card-link journey brand-journey"
             event={{ name: "select_journey", journey: "product" }}
           >
-            <span className="eyebrow">Sé qué producto busco</span>
-            <h3>Ver familias y fichas de producto</h3>
-            <p className="muted">
-              Fuegos artificiales, humo de color, fuego frío, tracas. Consulta
-              cada referencia y dónde adquirirla.
-            </p>
-            <span className="text-link">Explorar catálogo →</span>
+            <Media
+              src={productImage?.src}
+              alt={productImage?.alt || "Artículos en la tienda Piroboom"}
+              ratio="16 / 9"
+              fit={productImage?.fit}
+            />
+            <div className="brand-journey-copy">
+              <span className="eyebrow">Sé qué producto busco</span>
+              <h3>Ver productos por familias</h3>
+              <p className="muted">
+                Fuegos artificiales, humo de color, fuego frío, tracas. Consulta
+                cada referencia y dónde adquirirla.
+              </p>
+              <span className="text-link">Explorar catálogo →</span>
+            </div>
           </TrackedLink>
           <TrackedLink
             href="/eventos/"
-            className="card card-link journey"
+            className="card card-link journey brand-journey"
             event={{ name: "select_journey", journey: "event" }}
           >
-            <span className="eyebrow">Sé qué quiero celebrar</span>
-            <h3>Cuéntanos el evento y te proponemos</h3>
-            <p className="muted">
-              Bodas, revelaciones, cumpleaños, fiestas. Valoramos qué encaja con
-              tu lugar y tu fecha.
-            </p>
-            <span className="text-link">Planificar mi evento →</span>
+            <Media
+              src={eventImage?.src}
+              alt={eventImage?.alt || "Ideas para celebraciones"}
+              ratio="16 / 9"
+              fit={eventImage?.fit}
+            />
+            <div className="brand-journey-copy">
+              <span className="eyebrow">Sé qué quiero celebrar</span>
+              <h3>Cuéntanos el evento y te proponemos</h3>
+              <p className="muted">
+                Bodas, revelaciones, cumpleaños, fiestas. Valoramos qué encaja
+                con tu lugar y tu fecha.
+              </p>
+              <span className="text-link">Planificar mi evento →</span>
+            </div>
           </TrackedLink>
         </div>
       </section>
       <section className="container section">
         <div className="spread">
-          <h2 className="section-heading">Familias de producto</h2>
+          <h2 className="section-heading brand-section-heading">
+            Familias de producto
+          </h2>
           <Link className="text-link" href="/catalogo-pdf/">
             Ver todo el catálogo →
           </Link>
         </div>
         <FamilyGrid />
       </section>
-      <section className="dark events-band">
+      <section className="dark events-band brand-events-band">
         <div className="container">
           <div className="spread">
             <h2>Soluciones para eventos</h2>
             <Link className="text-link" href="/eventos/">
-              Ver soluciones y casos →
+              Ver opciones para tu evento →
             </Link>
           </div>
           <div className="grid grid-3">
@@ -134,31 +166,52 @@ export default function Home() {
               <Link
                 key={solution.id}
                 href={`/eventos/?ocasion=${solution.occasionId}#solicitud`}
-                className="card card-link solution-compact"
+                className="card card-link solution-compact brand-solution-teaser"
               >
-                <span className="eyebrow">{solution.label}</span>
-                <h3>{solution.title}</h3>
-                <p>{solution.result}</p>
+                <Media
+                  src={solution.image?.src}
+                  alt={solution.image?.alt || solution.label}
+                  ratio="4 / 3"
+                  fit={solution.image?.fit}
+                  dark
+                />
+                <div className="brand-teaser-copy">
+                  <span className="eyebrow">{solution.label}</span>
+                  <h3>{solution.title}</h3>
+                  <p>{solution.result}</p>
+                  <span className="text-link">Ver opciones →</span>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
-      <section className="container section grid grid-2 store-trust">
-        <div className="card card-pad">
-          <h2>Tienda en Elche</h2>
-          <p className="muted">{store.address}</p>
-          <Hours store={store} />
-          <div className="flex-row store-actions">
-            <Button asChild size="compact">
-              <Link href="/tiendas/">Cómo llegar</Link>
-            </Button>
-            <Button asChild variant="outline" size="compact">
-              <Link href="/tiendas/#casetas">Casetas de temporada</Link>
-            </Button>
+      <section className="container section store-trust brand-visit">
+        <div className="brand-visit-grid">
+          <figure className="brand-visit-photo">
+            <Media
+              src={store.image?.src}
+              alt={store.image?.alt || "Interior de Piroboom en Elche"}
+              ratio="4 / 3"
+            />
+            <figcaption>Ven a la tienda</figcaption>
+          </figure>
+          <div className="card card-pad brand-store-panel">
+            <p className="eyebrow brand-eyebrow">Tu punto de encuentro</p>
+            <h2>Tienda en Elche</h2>
+            <p className="muted">{store.address}</p>
+            <Hours store={store} />
+            <div className="flex-row store-actions">
+              <Button asChild size="compact">
+                <Link href="/tiendas/">Cómo llegar</Link>
+              </Button>
+              <Button asChild variant="outline" size="compact">
+                <Link href="/tiendas/#casetas">Casetas de temporada</Link>
+              </Button>
+            </div>
           </div>
         </div>
-        <div className="trust">
+        <div className="trust brand-trust">
           <h2>Por qué confiar</h2>
           <ul>
             <li>
@@ -203,6 +256,6 @@ export default function Home() {
         </div>
       </section>
       {promo && <CampaignPromo title={promo.name} />}
-    </>
+    </div>
   );
 }

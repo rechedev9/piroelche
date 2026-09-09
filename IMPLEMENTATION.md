@@ -12,6 +12,8 @@ La implementación se ha ejercitado con pruebas de lógica, HTTP, tres motores d
 
 ## Decisiones
 
+- Actualización visual solicitada después del handoff: fotografía real en las seis secciones, cuatro familias y soluciones; composiciones oscuras y acentos amarillo/magenta, conservando rutas, formularios y datos. El catálogo 2026 se lee completo mediante 16 páginas WebP, índice, navegación por URL, ampliación accesible y texto extraído. Las familias públicas enlazan sus secciones originales. El PDF de 81,9 MB sigue disponible intacto por acción voluntaria; no se convierte el documento en inventario o stock confirmado.
+
 - Estilos en Tailwind CSS **4.3.3**, última estable comprobada en el registro el 09/09/2026, con PostCSS de la misma versión. Componentes **shadcn/ui** obtenidos con CLI **4.21.0**: Button, Input, Textarea y Label, adaptados al diseño aprobado y usados en las páginas/formularios. La capa visual mantiene los tokens originales; [UI.md](docs/UI.md) documenta la integración y sus decisiones.
 - Carpeta inicial vacía y sin Git. Se recuperó el ZIP Next.js del escritorio; no había aplicación ni cambios previos.
 - Next.js 16.3.4, React 19.2.8, TypeScript estricto y pnpm. Versiones estables contrastadas con registro y documentación oficial.

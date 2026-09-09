@@ -4,6 +4,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/site-content";
 import { publicIndexing, serializeJsonLd, siteUrl } from "@/lib/seo";
 import "./globals.css";
+import "./brand.css";
+import "./catalogue.css";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {

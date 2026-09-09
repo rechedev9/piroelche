@@ -75,50 +75,63 @@ test("T01,T17 · rutas de publicación, metadatos y noindex sin material de demo
 test("las imágenes configuradas se muestran y decodifican desde el propio sitio", async ({
   page,
 }) => {
-  for (const { path, selector } of [
-    { path: "/", selector: ".hero .media img" },
-    { path: "/", selector: ".hero-background img" },
-    { path: "/tiendas/", selector: ".store-card .media img" },
-    { path: "/sobre-nosotros/", selector: ".about .media img" },
-    {
-      path: "/catalogo-pdf/",
-      selector: 'a[href="/catalogo-pdf/humo-de-color/"] .media img',
-    },
-    {
-      path: "/catalogo-pdf/",
-      selector: 'a[href="/catalogo-pdf/tracas-y-otros/"] .media img',
-    },
-    { path: "/eventos/", selector: ".solution .media img" },
+  for (const path of [
+    "/",
+    "/tiendas/",
+    "/sobre-nosotros/",
+    "/catalogo-pdf/",
+    "/eventos/",
+    "/contacto/",
   ]) {
     await page.goto(publicationOrigin + path);
-    const photo = page.locator(selector);
-    await expect(photo).toHaveCount(1);
-    await photo.scrollIntoViewIfNeeded();
-    await expect
-      .poll(() =>
-        photo.evaluate(
-          (image) =>
-            image instanceof HTMLImageElement &&
-            image.complete &&
-            image.naturalWidth > 0,
+    const photos = page.locator("main .media img");
+    expect(await photos.count()).toBeGreaterThan(0);
+    await expect(page.locator("main .media-note")).toHaveCount(0);
+    if (path === "/sobre-nosotros/") await expect(photos).toHaveCount(3);
+    if (path === "/eventos/")
+      await expect(page.locator(".solution .media img")).toHaveCount(3);
+    if (path === "/catalogo-pdf/")
+      await expect(page.locator(".catalog-families .media img")).toHaveCount(4);
+    for (const photo of await photos.all()) {
+      await photo.scrollIntoViewIfNeeded();
+      await expect
+        .poll(() =>
+          photo.evaluate(
+            (image) =>
+              image instanceof HTMLImageElement &&
+              image.complete &&
+              image.naturalWidth > 0,
+          ),
+        )
+        .toBe(true);
+      expect(
+        await photo.evaluate((image) =>
+          image instanceof HTMLImageElement
+            ? new URL(image.currentSrc).origin
+            : "",
         ),
-      )
-      .toBe(true);
-    expect(
-      await photo.evaluate((image) =>
-        image instanceof HTMLImageElement
-          ? new URL(image.currentSrc).origin
-          : "",
-      ),
-    ).toBe(publicationOrigin);
-    if (selector === ".hero-background img") {
-      await expect(photo).toHaveAttribute("alt", "");
+      ).toBe(publicationOrigin);
+      const alternative = await photo.getAttribute("alt");
+      if (!alternative) {
+        expect(
+          await photo.evaluate((image) =>
+            image
+              .closest("figure")
+              ?.querySelector("figcaption")
+              ?.textContent?.trim(),
+          ),
+        ).toBeTruthy();
+      }
+    }
+    if (path === "/") {
+      await expect(page.locator(".hero-background img")).toHaveAttribute(
+        "alt",
+        "",
+      );
       await expect(page.locator(".hero-background")).toHaveAttribute(
         "aria-hidden",
         "true",
       );
-    } else {
-      await expect(photo).toHaveAttribute("alt", /.+/);
     }
   }
 });
@@ -133,11 +146,9 @@ test("T14,T17 · estados vacíos y parámetros públicos no activan fixtures", a
     "Fuegos artificiales",
   );
   await expect(
-    page.getByText(
-      "No hay referencias publicadas en esta familia ahora mismo.",
-      { exact: true },
-    ),
+    page.getByRole("heading", { name: "En el catálogo 2026", exact: true }),
   ).toBeVisible();
+  await expect(page.locator(".family-page-card")).toHaveCount(7);
   await expect(page.locator(".product-card")).toHaveCount(0);
   await expect(
     page.getByRole("link", {
@@ -147,10 +158,12 @@ test("T14,T17 · estados vacíos y parámetros públicos no activan fixtures", a
   ).toHaveAttribute("href", "/contacto/?motivo=producto");
   await page.goto(publicationOrigin + "/eventos/" + query);
   await expect(
-    page.getByText(
-      /Las fotografías y los detalles de trabajos se incorporarán/,
-    ),
+    page.getByRole("heading", {
+      name: "Luz y color, en imágenes",
+      exact: true,
+    }),
   ).toBeVisible();
+  await expect(page.locator(".brand-gallery figure")).toHaveCount(3);
   await expect(page.locator(".cases")).toHaveCount(0);
   await page.goto(publicationOrigin + "/tiendas/" + query);
   await expect(page.locator(".campaign-card")).toHaveCount(4);

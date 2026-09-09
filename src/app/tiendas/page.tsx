@@ -12,20 +12,23 @@ export const metadata = pageMetadata(
   "/tiendas/",
 );
 export default function Shops() {
-  const { store, campaigns, isDemo } = getContent();
+  const { brand, store, campaigns, isDemo } = getContent();
+  const welcomeImage = brand?.storeWelcome || store.image;
+  const detailImage = brand?.storeDetail || store.image;
   const today = getLocationHours(store);
   return (
-    <div className="container page-section">
-      <p className="eyebrow">Tiendas</p>
+    <div className="container page-section brand-shops">
+      <p className="eyebrow brand-eyebrow">Tiendas</p>
       <h1>Dónde comprar</h1>
       <p className="intro">
         Consulta los artículos online y acude al punto de venta. Comprueba el
         horario y pregunta por la disponibilidad antes de venir.
       </p>
-      <section className="card grid grid-2 store-card">
+      <section className="card grid grid-2 store-card brand-store-card">
         <Media
-          src={store.image?.src}
-          alt={store.image?.alt || "Acceso a la tienda Piroboom Elche"}
+          src={welcomeImage?.src}
+          alt={welcomeImage?.alt || "La tienda Piroboom en Elche"}
+          fit={welcomeImage?.fit}
         />
         <div className="card-body">
           <span className="badge yellow">Tienda permanente</span>
@@ -39,6 +42,26 @@ export default function Shops() {
             {today.exceptionReason && ` ${today.exceptionReason}`}
           </p>
           <StoreActions store={store} />
+        </div>
+      </section>
+      <section className="brand-store-detail">
+        <Media
+          src={detailImage?.src}
+          alt={detailImage?.alt || "Artículos en la tienda Piroboom"}
+          ratio="16 / 9"
+          fit={detailImage?.fit}
+        />
+        <div>
+          <p className="eyebrow brand-eyebrow">Ven a la tienda</p>
+          <h2>Consulta antes de elegir</h2>
+          <p>
+            Puedes venir con una referencia o contarnos qué quieres celebrar.
+            Pregunta por el artículo, sus condiciones y la disponibilidad antes
+            de desplazarte.
+          </p>
+          <Link className="text-link" href="/contacto/?motivo=producto">
+            Consultar por un artículo →
+          </Link>
         </div>
       </section>
       <section className="campaigns" id="casetas">
