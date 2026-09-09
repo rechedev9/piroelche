@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { getContent } from "@/lib/content";
 import { getLocationHours } from "@/lib/hours";
 import { pageMetadata } from "@/lib/seo";
@@ -24,6 +25,15 @@ export default function Home() {
   return (
     <>
       <section className="hero">
+        <div className="hero-background" aria-hidden="true">
+          <Image
+            src="/media/decorative/home-fireworks-v1.png"
+            alt=""
+            fill
+            sizes="100vw"
+            loading="eager"
+          />
+        </div>
         <div className="container hero-inner">
           <div>
             <p className="eyebrow">Tienda física · Elche</p>
@@ -61,7 +71,11 @@ export default function Home() {
               <Link href="/tiendas/">Horarios y cómo llegar</Link>
             </div>
           </div>
-          <Media alt="Celebraciones con Piroboom" dark />
+          <Media
+            src={store.image?.src}
+            alt={store.image?.alt || "Tienda Piroboom en Elche"}
+            dark
+          />
         </div>
       </section>
       <section className="container section">

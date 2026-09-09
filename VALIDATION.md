@@ -1,8 +1,8 @@
 # Validación de Piroboom 0.1.0
 
-Fecha: 9 de septiembre de 2026. Entorno local Windows 11 25H2, Node 24.18.0, pnpm 11.22.0, Next 16.3.4, TypeScript 5.9.3, Tailwind 4.3.3 y shadcn CLI 4.21.0. Build productivo local: `Qx1Wt5yKrHV1UuYwIXjXZ`. No se ha hecho push, despliegue, cambio de producción ni envío a personas.
+Fecha: 9 de septiembre de 2026. Entorno local Windows 11 25H2, Node 24.18.0, pnpm 11.22.0, Next 16.3.4, TypeScript 5.9.3, Tailwind 4.3.3 y shadcn CLI 4.21.0. Build productivo local actual con medios: `AGbaegIMr0qjZTdSkj86W`; el baseline anterior era `Qx1Wt5yKrHV1UuYwIXjXZ`. No se ha hecho push, despliegue, cambio de producción ni envío a personas.
 
-## Candidato y revisión independiente
+## Candidato anterior a la incorporación de medios
 
 El código final corresponde al árbol Git `7bda141c4e67bfcbd7b6dc037c129c3b88f331e3`. Un agente con contexto separado, GPT-6 Astra y razonamiento alto, completó la revisión estática **P0 únicamente**: **no se identificaron P0**. [Informe íntegro](docs/REVIEW.md). No equivale a ausencia de problemas de otras prioridades. No se ejecutó autoreview, por petición expresa del usuario. Tras la revisión solo se completaron documentos y evidencias; se comprobó que código, contenido, dependencias y configuración seguían idénticos al árbol revisado.
 
@@ -14,7 +14,21 @@ Tras el commit local `9362387061a88c16f9b2a7173cbf0ec1149115c2`, se añadió [CI
 
 La comprobación actual de publicación sigue produciendo el fallo esperado de textos legales pendientes. El build público local responde 503 `not_configured` en `POST /api/leads`; Contacto responde 200, conserva el teléfono real y la cabecera `noindex, nofollow`. No se dispone todavía de proveedor/destino autorizado, textos legales aprobados ni acceso/autorización para publicar. Este cierre de CI no levanta esas condiciones.
 
-## Comandos ejecutados
+## Incorporación de fondo, fotografías y PDF
+
+El usuario pidió un fondo discreto de fuegos artificiales, fotografías recientes de Google y suministró `Catalogo-2026.pdf`. Se conserva la composición aprobada con el nuevo fondo decorativo, dos fotografías reales asignadas a bloques pertinentes y una tercera guardada. El PDF local mantiene exactamente los 81.903.612 bytes y el SHA-256 del original; `.gitattributes` evita tratarlo como texto. Procedencia y límites en [CONTENT_STATUS.md](CONTENT_STATUS.md) y [sources.json](evidence/media/sources.json).
+
+Resultado del candidato actual: `pnpm lint`, `pnpm typecheck` y `pnpm build` con código 0; **47/47** pruebas unitarias/integración y **84/84 E2E** en Chromium, Firefox y WebKit, sin reintentos automáticos. [Ejecución final](evidence/media/e2e-results.json). Las regresiones comprueban procedencia, identidad del PDF, decodificación de las imágenes y ausencia de descarga automática del documento.
+
+La primera ejecución reutilizó un servidor público anterior y se descartó tras reiniciarlo. En la siguiente, 83/84 pruebas pasaron: la espera de red detectó que `next/link` precargaba el PDF local con `?_rsc` al entrar en pantalla. Se confirmó en el trace, se añadió `prefetch={false}` al enlace del PDF y se repitió la suite completa, con 84/84. No se relajaron aserciones ni tiempos. El documento se obtiene al pulsar el enlace.
+
+Se capturaron Inicio, Catálogo y Eventos a **390, 1366 y 1920 px**, sin desbordamiento horizontal ni imágenes rotas. Se inspeccionaron las portadas en los tres tamaños y los recortes de imágenes en Eventos móvil; menú, texto y botones siguen legibles. [Capturas y dimensiones](evidence/media/visual.json). La suite verifica además contenido largo sin espacios y accesibilidad. Las capturas corresponden al build `nmudp99ewB8b4tZVXHUTy`, con el mismo aspecto que el final; el único cambio posterior de runtime desactiva la precarga del PDF. En Brave se abrió la portada actual y el PDF local de 16 páginas: portada 2026 y metadato original de título «Catálogo 2025». No se modificó el archivo para ocultar esa diferencia.
+
+Lighthouse de Inicio con los medios: móvil **97**, LCP **2,51 s**, CLS **0,0001**; escritorio **100**, LCP **0,57 s**, CLS **0,0303**. Accesibilidad y buenas prácticas: **100** en ambos perfiles. [Medición](evidence/media/performance/summary.json). Una ejecución de laboratorio por perfil, previa al cambio exclusivo del enlace PDF; no son datos de campo. Las cifras de rendimiento y las comparaciones visuales de las secciones siguientes corresponden al baseline anterior sin estas imágenes.
+
+Revisión aislada estática **P0 únicamente** del árbol final `aa691533343c6663e4b916483fb742e12e88078a`, contra `54d6036f04c34b1a1d6b06f53c502b8122507159`: **no se identificaron P0**. [Informe](docs/MEDIA_REVIEW.md). Después solo se completaron informes y evidencias. Permanecen los límites de contenido específico, proveedor del formulario, textos legales y publicación.
+
+## Comandos del baseline anterior a los medios
 
 | Comando | Resultado final con tiendas oficiales, Tailwind y shadcn |
 | --- | --- |

@@ -110,7 +110,7 @@ function FamilyCard({
 }) {
   return (
     <Link href={`/catalogo-pdf/${family.slug}/`} className="card card-link">
-      <Media alt={family.name} />
+      <Media src={family.image?.src} alt={family.image?.alt || family.name} />
       <div className="card-body">
         {detailed ? <h2>{family.name}</h2> : <h3>{family.name}</h3>}
         {detailed && <p>{family.description}</p>}
@@ -169,6 +169,7 @@ export function PdfAction() {
       <Button asChild variant="outline">
         <TrackedLink
           href={pdf.url}
+          prefetch={false}
           event={{ name: "catalog_pdf_click" }}
           target="_blank"
           rel="noopener noreferrer"

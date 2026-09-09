@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Media } from "@/components/media";
+import { getContent } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata(
@@ -23,6 +24,7 @@ const blocks = [
   },
 ];
 export default function About() {
+  const { store } = getContent();
   return (
     <div className="container page-section about">
       <p className="eyebrow">Sobre nosotros</p>
@@ -37,7 +39,15 @@ export default function About() {
       <div className="grid grid-3">
         {blocks.map((block) => (
           <section className="card" key={block.title}>
-            <Media alt={block.title} ratio="3 / 2" />
+            <Media
+              src={block.title === "La tienda" ? store.image?.src : undefined}
+              alt={
+                block.title === "La tienda" && store.image
+                  ? store.image.alt
+                  : block.title
+              }
+              ratio="3 / 2"
+            />
             <div className="card-body">
               <h2
                 style={{

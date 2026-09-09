@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
@@ -7,9 +8,11 @@ import {
   ChannelsSchema,
   ContentSchema,
   DemoContentSchema,
+  FamilySchema,
   ImageSchema,
   PdfSchema,
   StoreSchema,
+  SolutionSchema,
   VideoSchema,
   ProductSchema,
   selectPublishedContent,
@@ -455,6 +458,76 @@ void test("los medios públicos deben ser locales, seguros y acreditados para su
     }).success,
     false,
   );
+});
+
+void test("las fotos de familias y soluciones requieren procedencia comprobada", () => {
+  const image = rawSite.store.image;
+  assert.ok(image);
+  const family = { ...rawSite.families[0], image };
+  const solution = { ...rawSite.solutions[0], image };
+  assert.equal(FamilySchema.safeParse(family).success, true);
+  assert.equal(SolutionSchema.safeParse(solution).success, true);
+  for (const provenance of [
+    rawDemo.products[0].provenance,
+    { ...image.provenance, checkedAt: undefined },
+    { ...image.provenance, pending: ["Falta confirmar la imagen"] },
+  ]) {
+    const unconfirmed: unknown = { ...image, provenance };
+    assert.equal(
+      FamilySchema.safeParse({ ...family, image: unconfirmed }).success,
+      false,
+    );
+    assert.equal(
+      SolutionSchema.safeParse({ ...solution, image: unconfirmed }).success,
+      false,
+    );
+  }
+});
+
+void test("el PDF local conserva exactamente el archivo indicado por el usuario", () => {
+  assert.equal(rawSite.pdf.url, "/catalogos/catalogo-2026.pdf");
+  const document = readFileSync("public/catalogos/catalogo-2026.pdf");
+  assert.equal(document.length, rawSite.pdf.sizeBytes);
+  assert.equal(document.subarray(0, 8).toString("ascii"), "%PDF-1.4");
+  assert.equal(
+    createHash("sha256").update(document).digest("hex"),
+    "e4ac9f0c0cf181b154677aa2dfd9ef1c4e06abe039079640e4f07488fe667000",
+  );
+});
+
+void test("el PDF admite su ruta local segura y mantiene URLs web sin aceptar traversal ni protocolos ejecutables", () => {
+  for (const url of [
+    "/catalogos/catalogo-2026.pdf",
+    "https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf",
+    "http://example.test/catalogo.pdf",
+  ]) {
+    assert.equal(
+      PdfSchema.safeParse({ ...rawSite.pdf, url }).success,
+      true,
+      url,
+    );
+  }
+  for (const url of [
+    "//example.test/catalogo.pdf",
+    "javascript:alert(1)",
+    "data:application/pdf;base64,JVBERi0=",
+    "file:///catalogo.pdf",
+    "../catalogo.pdf",
+    "/catalogos/../catalogo.pdf",
+    "/catalogos/%2e%2e/catalogo.pdf",
+    "/catalogos//catalogo.pdf",
+    "/catalogos\\catalogo.pdf",
+    "/catalogos/catalogo.pdf?download=1",
+    "/catalogos/catalogo.pdf#page=1",
+    "/catalogos/catalogo.html",
+    "/catalogo.pdf",
+  ]) {
+    assert.equal(
+      PdfSchema.safeParse({ ...rawSite.pdf, url }).success,
+      false,
+      url,
+    );
+  }
 });
 
 void test("no se añade edición/tamaño a un PDF no recuperado ni se activa WhatsApp sin revisión", () => {

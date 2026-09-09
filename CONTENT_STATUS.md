@@ -71,31 +71,43 @@ La fuente no indica inicio, fin ni vigencia de las campañas. Las tarjetas muest
 
 Para ensayar estados fechados se conservan cuatro fixtures de campañas. Solo sustituyen a las casetas reales cuando `REVIEW_CAMPAIGNS=1` se combina con el modo de demostración local completo (`PIROBOOM_DEMO=1`, `PIROBOOM_LOCAL_REVIEW=1`, fuera de Vercel). Un parámetro público o `REVIEW_CAMPAIGNS` por sí solo no activa fixtures. Este mecanismo se limita a QA y no cambia la decisión editorial sobre las ubicaciones reales.
 
-## PDF comercial recuperado
+## Medios incorporados después del handoff
 
-El [PDF que enlaza el negocio](https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf) se recuperó sin modificarlo. La copia se conserva fuera de `public/` y fuera de Git; el enlace externo puede presentarse como documento del negocio, con el alcance de verificación indicado.
+Por petición del usuario se generó un fondo decorativo de fuegos artificiales para Inicio y se recuperaron tres fotografías del [perfil público del negocio en Google Maps](https://www.google.com/maps/contrib/114396712537097425294/photos). El fondo no representa un trabajo realizado por Piroboom. Su intensidad se reduce en móvil para mantener la lectura.
+
+Se integran la fotografía de artículos de tienda (etiqueta de Google: julio de 2025) en Inicio, Tiendas, La tienda y Tracas y otros, y la de humo de color (etiqueta: noviembre de 2025; fecha de imagen: octubre de 2025) en su familia y en celebraciones. Una tercera fotografía de boda con humo queda guardada, sin asignarla a la tarjeta de fuego frío ni inventar un caso. Las imágenes se sirven desde el propio sitio.
+
+Se cargaron 64 elementos del perfil tras seleccionar Fecha; la selección tiene las fechas comprobadas indicadas, sin afirmar que se haya auditado individualmente la cronología de los 64. [Procedencia, fechas visibles, hashes y prompt del fondo](evidence/media/sources.json). Todavía faltan medios específicos para otros bloques y referencias; esta incorporación resuelve parcialmente E04.
+
+## PDF comercial local indicado por el usuario
+
+El usuario indicó expresamente `C:/Users/reche/Downloads/Catalogo-2026.pdf` como archivo final del catálogo. Se ha copiado sin editar a [public/catalogos/catalogo-2026.pdf](public/catalogos/catalogo-2026.pdf) y el bloque `pdf` de [content/site.json](content/site.json) enlaza ahora `/catalogos/catalogo-2026.pdf`. El original de Descargas permanece intacto. Su SHA-256 coincide con el [PDF recuperado previamente del negocio](https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf), por lo que se conserva la inspección del mismo documento.
 
 | Comprobación | Resultado |
 | --- | --- |
-| Respuesta | HTTP 200, `application/pdf` |
+| Archivo indicado por el usuario | `C:/Users/reche/Downloads/Catalogo-2026.pdf` |
+| Descarga local de la web | `/catalogos/catalogo-2026.pdf` |
+| Recuperación previa del mismo documento | HTTP 200, `application/pdf`, en la URL oficial |
 | Cabecera binaria | `%PDF-1.4` |
 | Tamaño exacto | 81.903.612 bytes, aproximadamente 81,9 MB / 78,1 MiB |
 | Páginas | 16, sin cifrado según `pdfinfo` |
 | Edición visible | 2026 en portada y segunda página inspeccionadas |
 | Metadato discrepante | `Title` conserva «Catálogo 2025»; no se alteró el original |
 | Texto | Texto extraíble en las 16 páginas con `pdftotext` |
-| Revisión visual efectuada | Portada y página 2 renderizadas con Poppler e inspeccionadas |
+| Revisión visual efectuada | Portada y página 2 inspeccionadas previamente; portada 2026 revisada de nuevo al comprobar el mismo SHA |
 | SHA-256 | `e4ac9f0c0cf181b154677aa2dfd9ef1c4e06abe039079640e4f07488fe667000` |
-| Copia local | `evidence/sources/Catalogo-2026.pdf` |
+| Copia incluida en la web | `public/catalogos/catalogo-2026.pdf`, idéntica al original: mismo tamaño y SHA-256 |
 
 La página 2 incluye descripciones de relleno y un precio sin cifra. El archivo aporta una fuente comercial real, pero no un catálogo maestro listo para importar: no se acreditó la vigencia de precios/stock, las clasificaciones completas ni los derechos de cada imagen. Se abrió también por su URL oficial en el visor nativo de Brave de escritorio, con 16 páginas y portada 2026 visibles. Tener texto y etiquetas PDF no acredita accesibilidad. Apertura en visor móvil, orden de lectura y examen integral del documento quedan pendientes. No se ha generado un catálogo nuevo con las fixtures.
 
-La evidencia técnica, incluidos los conteos de texto y la inspección limitada, está en [source-checks.json](evidence/sources/source-checks.json). Para repetir la comprobación sin modificar el archivo:
+La evidencia de la inspección previa del mismo SHA, incluidos los conteos de texto y el visor de escritorio, permanece en [source-checks.json](evidence/sources/source-checks.json); su registro de recuperación anterior no describe la nueva ubicación pública local. `pdfinfo` sobre el archivo de Descargas vuelve a confirmar 16 páginas, PDF 1.4 y ausencia de cifrado. Las [pruebas de contenido](tests/content.test.ts) comprueban el SHA completo de la copia pública, su tamaño y su cabecera; el esquema permite archivos `.pdf` con nombre seguro dentro de `/catalogos/`, conservando las URLs web existentes. La prueba [E2E de publicación](tests/e2e/publication.spec.ts) comprueba el enlace local y añade HTTP HEAD para verificar tipo/tamaño sin descargar 81,9 MB en cada motor; su ejecución final se registra en VALIDATION.
+
+Para repetir la comprobación de la copia incluida en la web sin modificarla:
 
 ```powershell
-Get-FileHash -LiteralPath 'evidence/sources/Catalogo-2026.pdf' -Algorithm SHA256
-pdfinfo 'evidence/sources/Catalogo-2026.pdf'
-pdftotext -f 1 -l 2 -layout 'evidence/sources/Catalogo-2026.pdf' -
+Get-FileHash -LiteralPath 'public/catalogos/catalogo-2026.pdf' -Algorithm SHA256
+pdfinfo 'public/catalogos/catalogo-2026.pdf'
+pdftotext -f 1 -l 2 -layout 'public/catalogos/catalogo-2026.pdf' -
 ```
 
 ## Legal, recepción y canales

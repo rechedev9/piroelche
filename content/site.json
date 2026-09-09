@@ -1,9 +1,19 @@
 {
   "families": [
     { "id": "fuegos", "slug": "fuegos-artificiales", "name": "Fuegos artificiales", "description": "Baterías y efectos aéreos. Consulta la referencia y las condiciones del artículo." },
-    { "id": "humo", "slug": "humo-de-color", "name": "Humo de color", "description": "Artículos de humo de color para distintas ocasiones. Consulta su uso previsto." },
+    { "id": "humo", "slug": "humo-de-color", "name": "Humo de color", "description": "Artículos de humo de color para distintas ocasiones. Consulta su uso previsto.",
+      "image": {
+        "src": "/media/google/humo-color-2025-11.jpg", "alt": "Columnas de humo azul, amarillo y rojo en una celebración al aire libre, foto publicada por Piroboom", "width": 1179, "height": 1339,
+        "provenance": { "kind": "primary-source", "source": "https://www.google.com/maps/contrib/114396712537097425294/photos", "checkedAt": "2026-09-09", "note": "Fotografía del perfil del propietario, recuperada de la fuente indicada expresamente por el usuario para las imágenes de la web. Google muestra Foto - nov 2025 y Fecha de la imagen: oct 2025. Se conserva sin edición; imagen contextual de la familia, no de una referencia concreta ni una afirmación de disponibilidad. Detalle y hash en evidence/media/sources.json.", "verifiedFields": ["src", "alt", "width", "height", "source"] }
+      }
+    },
     { "id": "frio", "slug": "fuego-frio", "name": "Fuego frío", "description": "Fuentes y bengalas para momentos señalados. La idoneidad depende del artículo y del recinto." },
-    { "id": "tracas", "slug": "tracas-y-otros", "name": "Tracas y otros", "description": "Tracas, petardos y artículos tradicionales. Consulta las condiciones de cada referencia." }
+    { "id": "tracas", "slug": "tracas-y-otros", "name": "Tracas y otros", "description": "Tracas, petardos y artículos tradicionales. Consulta las condiciones de cada referencia.",
+      "image": {
+        "src": "/media/google/tienda-productos-2025-07.jpg", "alt": "Artículos expuestos en la tienda Piroboom, fotografía de julio de 2025", "width": 1179, "height": 874,
+        "provenance": { "kind": "primary-source", "source": "https://www.google.com/maps/contrib/114396712537097425294/photos", "checkedAt": "2026-09-09", "note": "Fotografía del propietario recuperada por petición del usuario. Google indica julio de 2025; se utiliza como vista general de los artículos, sin convertir los precios o referencias visibles en inventario vigente. Original sin edición, procedencia y hash en evidence/media/sources.json.", "verifiedFields": ["src", "alt", "width", "height", "source"] }
+      }
+    }
   ],
   "products": [],
   "solutions": [
@@ -31,6 +41,10 @@
       "result": "Comparte tu idea para una fiesta, aniversario o evento corporativo y solicita una valoración.",
       "delivery": "Alcance, responsables, viabilidad y permisos aplicables se concretan antes de cualquier confirmación.",
       "needs": "Fecha o por definir, municipio, espacio previsto y público aproximado si lo conoces.",
+      "image": {
+        "src": "/media/google/humo-color-2025-11.jpg", "alt": "Efectos de humo de color en una celebración al aire libre, fotografía publicada por Piroboom", "width": 1179, "height": 1339,
+        "provenance": { "kind": "primary-source", "source": "https://www.google.com/maps/contrib/114396712537097425294/photos", "checkedAt": "2026-09-09", "note": "Fotografía del perfil del propietario elegida desde la fuente de imágenes indicada por el usuario. Google muestra Foto - nov 2025 y Fecha de la imagen: oct 2025. Ilustra una celebración; no identifica cliente, recinto, permisos ni modalidad de ejecución. Archivo sin edición y hash en evidence/media/sources.json.", "verifiedFields": ["src", "alt", "width", "height", "source"] }
+      },
       "status": "published",
       "provenance": { "kind": "editorial", "source": "piroboom-handoff/MASTER_PROMPT.md, secciones 3 y 6", "checkedAt": "2026-09-09", "note": "No afirma ejecución propia, autorizaciones ni disponibilidad." }
     }
@@ -49,6 +63,10 @@
     "phone": "+34600261620",
     "phoneDisplay": "600 261 620",
     "directionsUrl": "https://maps.app.goo.gl/C1XJNPujKvKTfNPH9",
+    "image": {
+      "src": "/media/google/tienda-productos-2025-07.jpg", "alt": "Interior de Piroboom con artículos expuestos, fotografía de julio de 2025", "width": 1179, "height": 874,
+      "provenance": { "kind": "primary-source", "source": "https://www.google.com/maps/contrib/114396712537097425294/photos", "checkedAt": "2026-09-09", "note": "Imagen del perfil del propietario, seleccionada desde Google por petición expresa del usuario. Google muestra julio de 2025. Es una vista interior, no una foto actual de acceso; los artículos y precios fotografiados no se publican como stock ni tarifas vigentes. Se conserva sin edición; detalle y hash en evidence/media/sources.json.", "verifiedFields": ["src", "alt", "width", "height", "source"] }
+    },
     "schedule": [
       { "days": [2, 3, 4, 5], "intervals": [{ "opens": "10:00", "closes": "14:00" }, { "opens": "17:00", "closes": "20:00" }] },
       { "days": [6], "intervals": [{ "opens": "10:00", "closes": "14:00" }] },
@@ -125,11 +143,11 @@
     }
   ],
   "pdf": {
-    "url": "https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf",
+    "url": "/catalogos/catalogo-2026.pdf",
     "status": "verified",
     "edition": "2026",
     "sizeBytes": 81903612,
-    "provenance": { "kind": "primary-source", "source": "https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf", "checkedAt": "2026-09-09", "note": "Descarga HTTP 200 application/pdf comprobada: PDF 1.4, 16 páginas y edición visible 2026 en portada. El metadato Title conserva Catálogo 2025. SHA256 e4ac9f0c0cf181b154677aa2dfd9ef1c4e06abe039079640e4f07488fe667000. Comprobar el documento no acredita vigencia comercial ni valida su inventario o atributos.", "verifiedFields": ["url", "edition", "sizeBytes"], "pending": ["Confirmar vigencia comercial del contenido con el negocio"] }
+    "provenance": { "kind": "owner-confirmed", "source": "Archivo indicado por el usuario: C:/Users/reche/Downloads/Catalogo-2026.pdf", "checkedAt": "2026-09-09", "note": "Archivo final indicado expresamente por el usuario y copiado sin editar a public/catalogos/catalogo-2026.pdf: 81.903.612 bytes, PDF 1.4, 16 páginas y edición visible 2026 en portada. SHA256 e4ac9f0c0cf181b154677aa2dfd9ef1c4e06abe039079640e4f07488fe667000, idéntico a la fuente y al documento previamente inspeccionado. El metadato Title conserva Catálogo 2025. Publicar este PDF no importa ni valida inventario, precios, stock o atributos para el catálogo HTML.", "verifiedFields": ["url", "edition", "sizeBytes"], "pending": ["Validar referencias, precios, existencias y atributos antes de importarlos al catálogo HTML"] }
   },
   "legal": {
     "notice": {

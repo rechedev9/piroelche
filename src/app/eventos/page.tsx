@@ -65,7 +65,11 @@ export default async function Events({
         <div className="grid grid-3">
           {solutions.map((solution) => (
             <article className="card solution" key={solution.id}>
-              <Media alt={solution.label} ratio="16 / 9" />
+              <Media
+                src={solution.image?.src}
+                alt={solution.image?.alt || solution.label}
+                ratio="16 / 9"
+              />
               <div className="card-body">
                 <div>
                   <p className="eyebrow">{solution.label}</p>

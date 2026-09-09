@@ -1,0 +1,1021 @@
+{
+  "buildId": "AGbaegIMr0qjZTdSkj86W",
+  "stats": {
+    "startTime": "2026-09-09T20:38:01.433Z",
+    "duration": 134120.864,
+    "expected": 84,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "title": "T01 · acceso directo y recarga: Inicio",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 561,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Sobre nosotros",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 434,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Eventos",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 594,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Tiendas",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 475,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Catálogo PDF",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 449,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Contacto",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 482,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Política de privacidad",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 464,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Cookies",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 410,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Aviso legal",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 415,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · las nueve páginas entregan contenido y alternativas sin JavaScript",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1022,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T02 · navegación completa en escritorio y menú móvil con Escape y foco",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1498,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T03–T05 · intenciones de Inicio, familias distintas, ficha y regreso",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1276,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T06,T18 · cambiar de motivo elimina referencia y datos del motivo anterior",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 645,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T07,T09 · evento con fecha por definir, sin nombre ni lugar y un solo correo",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 531,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T08,T20 · errores accesibles, foco y datos conservados antes de enviar",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 492,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T09–T11,T18 · doble clic, respuesta perdida, recarga y reintento recuperan el mismo registro real",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 716,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T08,T11 · el endpoint rechaza origen, formato, tamaño y referencias manipuladas",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 84,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T16,T20 · vídeo voluntario y degradación real al fallar el recurso",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 620,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Inicio",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1990,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Sobre nosotros",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 711,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Eventos",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 933,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Tiendas",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 792,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Catálogo PDF",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1581,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Contacto",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1098,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Política de privacidad",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 695,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Cookies",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 709,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Aviso legal",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 809,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · las nueve páginas entregan contenido y alternativas sin JavaScript",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1809,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T02 · navegación completa en escritorio y menú móvil con Escape y foco",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1711,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T03–T05 · intenciones de Inicio, familias distintas, ficha y regreso",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1665,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T06,T18 · cambiar de motivo elimina referencia y datos del motivo anterior",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 946,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T07,T09 · evento con fecha por definir, sin nombre ni lugar y un solo correo",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 820,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T08,T20 · errores accesibles, foco y datos conservados antes de enviar",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 851,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T09–T11,T18 · doble clic, respuesta perdida, recarga y reintento recuperan el mismo registro real",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1146,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T08,T11 · el endpoint rechaza origen, formato, tamaño y referencias manipuladas",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 83,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T16,T20 · vídeo voluntario y degradación real al fallar el recurso",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1166,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Inicio",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1685,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Sobre nosotros",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 842,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Eventos",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 956,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Tiendas",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 897,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Catálogo PDF",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 870,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Contacto",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 799,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Política de privacidad",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 791,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Cookies",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 762,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · acceso directo y recarga: Aviso legal",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 744,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01 · las nueve páginas entregan contenido y alternativas sin JavaScript",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1889,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T02 · navegación completa en escritorio y menú móvil con Escape y foco",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3808,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T03–T05 · intenciones de Inicio, familias distintas, ficha y regreso",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2906,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T06,T18 · cambiar de motivo elimina referencia y datos del motivo anterior",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1589,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T07,T09 · evento con fecha por definir, sin nombre ni lugar y un solo correo",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1063,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T08,T20 · errores accesibles, foco y datos conservados antes de enviar",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1308,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T09–T11,T18 · doble clic, respuesta perdida, recarga y reintento recuperan el mismo registro real",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1465,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T08,T11 · el endpoint rechaza origen, formato, tamaño y referencias manipuladas",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 86,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T16,T20 · vídeo voluntario y degradación real al fallar el recurso",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1650,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01,T17 · rutas de publicación, metadatos y noindex sin material de demostración",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1287,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "las imágenes configuradas se muestran y decodifican desde el propio sitio",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 871,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T14,T17 · estados vacíos y parámetros públicos no activan fixtures",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 519,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T11 · proveedor ausente muestra alternativa y nunca confirma un envío",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 287,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T15 · PDF real identificado y enlaces de llamada y ruta utilizables",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 822,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T18,T19 · primera visita sin cookies, almacenamiento ni solicitudes a terceros",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 349,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01,T17 · rutas de publicación, metadatos y noindex sin material de demostración",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2565,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "las imágenes configuradas se muestran y decodifican desde el propio sitio",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1484,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T14,T17 · estados vacíos y parámetros públicos no activan fixtures",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2155,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T11 · proveedor ausente muestra alternativa y nunca confirma un envío",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 564,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T15 · PDF real identificado y enlaces de llamada y ruta utilizables",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1081,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T18,T19 · primera visita sin cookies, almacenamiento ni solicitudes a terceros",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 737,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T01,T17 · rutas de publicación, metadatos y noindex sin material de demostración",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3396,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "las imágenes configuradas se muestran y decodifican desde el propio sitio",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2398,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T14,T17 · estados vacíos y parámetros públicos no activan fixtures",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1168,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T11 · proveedor ausente muestra alternativa y nunca confirma un envío",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 597,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T15 · PDF real identificado y enlaces de llamada y ruta utilizables",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1244,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "T18,T19 · primera visita sin cookies, almacenamiento ni solicitudes a terceros",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 747,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "WCAG automatic checks across all six sections, family, product and invalid form",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 4220,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "responsive layouts, 200 percent equivalent reflow and long unbroken content",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 4123,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "public pages have no external requests, optional trackers or cookies",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3593,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "keyboard mobile menu, Escape and reduced motion",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 472,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "WCAG automatic checks across all six sections, family, product and invalid form",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 6908,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "responsive layouts, 200 percent equivalent reflow and long unbroken content",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 6817,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "public pages have no external requests, optional trackers or cookies",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3855,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "keyboard mobile menu, Escape and reduced motion",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 881,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "WCAG automatic checks across all six sections, family, product and invalid form",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 7534,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "responsive layouts, 200 percent equivalent reflow and long unbroken content",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 8947,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "public pages have no external requests, optional trackers or cookies",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 4225,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "title": "keyboard mobile menu, Escape and reduced motion",
+      "project": "webkit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 886,
+          "retry": 0
+        }
+      ]
+    }
+  ]
+}

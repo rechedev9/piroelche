@@ -330,29 +330,21 @@ body > div {
 .hero {
   @apply bg-night text-white relative isolate;
 }
-.hero:before {
-  content: "";
-  @apply absolute inset-0 -z-1;
-  background: repeating-linear-gradient(
-    135deg,
-    #15151a 0 14px,
-    #111115 14px 28px
-  );
+.hero-background {
+  @apply absolute inset-0 -z-1 overflow-hidden pointer-events-none;
+}
+.hero-background img {
+  @apply object-cover object-right opacity-65;
 }
 .hero:after {
   content: "";
-  @apply absolute inset-0 -z-1;
-  background:
-    radial-gradient(
-      ellipse at 75% 40%,
-      rgba(238, 28, 140, 0.35),
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse at 20% 90%,
-      rgba(255, 229, 0, 0.18),
-      transparent 50%
-    );
+  @apply absolute inset-0 -z-1 pointer-events-none;
+  background: linear-gradient(
+    90deg,
+    rgba(13, 13, 16, 0.48),
+    rgba(13, 13, 16, 0.3) 48%,
+    rgba(13, 13, 16, 0.12)
+  );
 }
 .hero-inner {
   @apply grid grid-cols-2 gap-10 items-center;
@@ -1130,6 +1122,12 @@ body > div {
   }
   .hero-inner {
     @apply grid-cols-[1fr] pt-11 pb-10 gap-7;
+  }
+  .hero-background img {
+    @apply object-[70%_center] opacity-25;
+  }
+  .hero:after {
+    background: rgba(13, 13, 16, 0.35);
   }
   .hero h1 {
     @apply text-[44px];

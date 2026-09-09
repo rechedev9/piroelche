@@ -1,0 +1,2 @@
+# Preserve supplied catalogs byte for byte on all platforms.
+public/catalogos/*.pdf binary

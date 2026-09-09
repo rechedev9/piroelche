@@ -59,6 +59,13 @@ export const ImageSchema = z
     provenance: ProvenanceSchema,
   })
   .strict();
+const PublishedImageSchema = ImageSchema.refine(
+  (image) =>
+    ["primary-source", "owner-confirmed"].includes(image.provenance.kind) &&
+    Boolean(image.provenance.checkedAt) &&
+    image.provenance.pending.length === 0,
+  "Una imagen pública necesita una fuente comprobada y autorización de uso",
+);
 export const VideoSchema = z
   .object({
     src: AssetUrlSchema,
@@ -86,6 +93,7 @@ export const FamilySchema = z
     slug,
     name: text,
     description: text,
+    image: PublishedImageSchema.optional(),
   })
   .strict();
 
@@ -192,6 +200,7 @@ export const SolutionSchema = z
     result: text,
     delivery: text,
     needs: text,
+    image: PublishedImageSchema.optional(),
     status: EditorialStatusSchema,
     provenance: ProvenanceSchema,
   })
@@ -408,7 +417,17 @@ export const CampaignSchema = z
 
 export const PdfSchema = z
   .object({
-    url: WebUrlSchema.nullable(),
+    url: z
+      .union([
+        WebUrlSchema,
+        z
+          .string()
+          .regex(
+            /^\/catalogos\/[a-zA-Z0-9_-]+\.pdf$/,
+            "El PDF local debe ser un archivo .pdf dentro de /catalogos/",
+          ),
+      ])
+      .nullable(),
     status: z.enum(["unavailable", "external", "verified"]),
     edition: text.optional(),
     sizeBytes: z.number().int().positive().optional(),

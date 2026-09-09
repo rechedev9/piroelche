@@ -72,6 +72,57 @@ test("T01,T17 · rutas de publicación, metadatos y noindex sin material de demo
   expect(await robots.text()).toMatch(/Disallow: \/\s/);
 });
 
+test("las imágenes configuradas se muestran y decodifican desde el propio sitio", async ({
+  page,
+}) => {
+  for (const { path, selector } of [
+    { path: "/", selector: ".hero .media img" },
+    { path: "/", selector: ".hero-background img" },
+    { path: "/tiendas/", selector: ".store-card .media img" },
+    { path: "/sobre-nosotros/", selector: ".about .media img" },
+    {
+      path: "/catalogo-pdf/",
+      selector: 'a[href="/catalogo-pdf/humo-de-color/"] .media img',
+    },
+    {
+      path: "/catalogo-pdf/",
+      selector: 'a[href="/catalogo-pdf/tracas-y-otros/"] .media img',
+    },
+    { path: "/eventos/", selector: ".solution .media img" },
+  ]) {
+    await page.goto(publicationOrigin + path);
+    const photo = page.locator(selector);
+    await expect(photo).toHaveCount(1);
+    await photo.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() =>
+        photo.evaluate(
+          (image) =>
+            image instanceof HTMLImageElement &&
+            image.complete &&
+            image.naturalWidth > 0,
+        ),
+      )
+      .toBe(true);
+    expect(
+      await photo.evaluate((image) =>
+        image instanceof HTMLImageElement
+          ? new URL(image.currentSrc).origin
+          : "",
+      ),
+    ).toBe(publicationOrigin);
+    if (selector === ".hero-background img") {
+      await expect(photo).toHaveAttribute("alt", "");
+      await expect(page.locator(".hero-background")).toHaveAttribute(
+        "aria-hidden",
+        "true",
+      );
+    } else {
+      await expect(photo).toHaveAttribute("alt", /.+/);
+    }
+  }
+});
+
 test("T14,T17 · estados vacíos y parámetros públicos no activan fixtures", async ({
   page,
   request,
@@ -200,21 +251,33 @@ test("T11 · proveedor ausente muestra alternativa y nunca confirma un envío", 
 
 test("T15 · PDF real identificado y enlaces de llamada y ruta utilizables", async ({
   page,
+  request,
 }) => {
+  const automaticPdfRequests: string[] = [];
+  page.on("request", (incoming) => {
+    if (new URL(incoming.url()).pathname === "/catalogos/catalogo-2026.pdf")
+      automaticPdfRequests.push(incoming.url());
+  });
   await page.goto(publicationOrigin + "/catalogo-pdf/");
   const pdf = page.getByRole("link", { name: /Descargar catálogo PDF/ });
-  await expect(pdf).toHaveAttribute(
-    "href",
-    "https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf",
-  );
+  await pdf.hover();
+  await page.waitForLoadState("networkidle");
+  expect(automaticPdfRequests).toEqual([]);
+  await expect(pdf).toHaveAttribute("href", "/catalogos/catalogo-2026.pdf");
   await expect(pdf).toHaveAttribute("target", "_blank");
   await expect(pdf).toHaveAttribute("rel", /noopener/);
   await expect(pdf).toHaveAccessibleName(/2026.*nueva pestaña/);
   await expect(
     page.getByText("81,9 MB · Documento del negocio", { exact: true }),
   ).toBeVisible();
-  // The 81.9 MB document itself is separately downloaded, hashed and inspected
-  // in evidence/sources/source-checks.json; do not download it per browser.
+  const pdfResponse = await request.head(
+    publicationOrigin + "/catalogos/catalogo-2026.pdf",
+  );
+  expect(pdfResponse.status()).toBe(200);
+  expect(pdfResponse.headers()["content-type"]).toMatch(/application\/pdf/);
+  expect(pdfResponse.headers()["content-length"]).toBe("81903612");
+  // Unit tests hash the complete local document. HEAD checks public delivery
+  // without downloading the 81.9 MB file again for every browser.
   await page.goto(publicationOrigin + "/tiendas/");
   const directions = page.getByRole("link", {
     name: "Abrir ruta en Google Maps, nueva pestaña",

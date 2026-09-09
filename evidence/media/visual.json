@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-09-09T20:33:43.163Z",
+  "buildId": "nmudp99ewB8b4tZVXHUTy",
+  "browser": "153.0.8010.12",
+  "rows": [
+    {
+      "file": "inicio-390.png",
+      "url": "http://127.0.0.1:3001/",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "file": "catalogo-390.png",
+      "url": "http://127.0.0.1:3001/catalogo-pdf/",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "file": "eventos-390.png",
+      "url": "http://127.0.0.1:3001/eventos/",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "file": "inicio-1366.png",
+      "url": "http://127.0.0.1:3001/",
+      "width": 1366,
+      "overflow": false
+    },
+    {
+      "file": "catalogo-1366.png",
+      "url": "http://127.0.0.1:3001/catalogo-pdf/",
+      "width": 1366,
+      "overflow": false
+    },
+    {
+      "file": "eventos-1366.png",
+      "url": "http://127.0.0.1:3001/eventos/",
+      "width": 1366,
+      "overflow": false
+    },
+    {
+      "file": "inicio-1920.png",
+      "url": "http://127.0.0.1:3001/",
+      "width": 1920,
+      "overflow": false
+    },
+    {
+      "file": "catalogo-1920.png",
+      "url": "http://127.0.0.1:3001/catalogo-pdf/",
+      "width": 1920,
+      "overflow": false
+    },
+    {
+      "file": "eventos-1920.png",
+      "url": "http://127.0.0.1:3001/eventos/",
+      "width": 1920,
+      "overflow": false
+    }
+  ]
+}

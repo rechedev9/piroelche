@@ -1,0 +1,75 @@
+{
+  "checkedAt": "2026-09-09T20:28:10.505Z",
+  "sourceRequestedByUser": "Google search / business photo viewer for Pirotecnia Elche",
+  "ownerProfile": "https://www.google.com/maps/contrib/114396712537097425294/photos",
+  "selection": "Se abrió Del propietario y el perfil público Fotos, se seleccionó Fecha y se cargaron 64 elementos. Se eligieron imágenes recientes pertinentes con las fechas visibles indicadas; no se afirma una auditoría cronológica individual de las 64.",
+  "dateLimits": "Google distingue Foto - mes año de Fecha de la imagen. Se conservan ambas etiquetas sin inventar día exacto ni afirmar que sean de 2026.",
+  "authorization": "El usuario indicó expresamente esta fuente para recuperar imágenes para la web.",
+  "photos": [
+    {
+      "file": "public/media/google/tienda-productos-2025-07.jpg",
+      "width": 1179,
+      "height": 874,
+      "format": "jpeg",
+      "bytes": 199431,
+      "sha256": "59fc4254e574cb915587cbbfa2047960c7e8a5f2d9f3d75f836fc01a713de8fd",
+      "source": "https://www.google.com/maps/contrib/114396712537097425294/photos",
+      "photoId": "CIABIhBLJcFX5fQ1aX9bXAXt4Rt6",
+      "assetUrl": "https://lh3.googleusercontent.com/gps-cs/AH1DqX90HL9N5A8xb58CPS96uBlNifMLsHZo9l-maqQC7vmz4b3VMk5BvxpngB45_MPeSnYOMoYFFb_LXo1UpqhU8X2OyfDR1_NvhiPSPENhklID4BZ6aBdjz_bLpq2rVDuJvMsf1HmXWOFhUfPD=s3072-v1",
+      "googlePhotoLabel": "jul 2025",
+      "googleImageDateLabel": "jul 2025",
+      "usedIn": [
+        "Inicio",
+        "Tiendas",
+        "Sobre nosotros: La tienda",
+        "Tracas y otros"
+      ],
+      "edited": false
+    },
+    {
+      "file": "public/media/google/humo-boda-2025-11.jpg",
+      "width": 926,
+      "height": 1679,
+      "format": "jpeg",
+      "bytes": 152277,
+      "sha256": "a2816ee2b03c45b438ff4c781fda3c3a0a7d16c0557edd2969be4f6739673826",
+      "source": "https://www.google.com/maps/contrib/114396712537097425294/photos",
+      "photoId": "CIABIhCkZ8WFL1klbrnNdFE0ox9c",
+      "assetUrl": "https://lh3.googleusercontent.com/gps-cs/AH1DqX-5MpzChDTwaK3DLFWWgNrGQxWpZrY6-9-W3EAprKYky3CTGZQU41WO9ZTVO1KD1SWJ2_cje5MhomGkGGVIfiSexaKATXsUgHPehjanChuEBTTJ50B24LX2HJxWu8g6o9DDOld7YM3B6es=s3072-v1",
+      "googlePhotoLabel": "nov 2025",
+      "googleImageDateLabel": "sept 2025",
+      "usedIn": [],
+      "edited": false
+    },
+    {
+      "file": "public/media/google/humo-color-2025-11.jpg",
+      "width": 1179,
+      "height": 1339,
+      "format": "jpeg",
+      "bytes": 160804,
+      "sha256": "0a7f30b5e96ace6f1dd517cc39d36bf153189987b9d671091e69a85e045aa7ed",
+      "source": "https://www.google.com/maps/contrib/114396712537097425294/photos",
+      "photoId": "CIABIhC3GWz16ZYNY8wERWKcdbCB",
+      "assetUrl": "https://lh3.googleusercontent.com/gps-cs/AH1DqX8d9-6OcokcsGgfr0pu8VQF0uVHsTz6z1DYwxGEgSleOZ7TzLD_wixdFhiQsuJGypnchFUZYkMLIZbWvHWSn88rBMiPGir8hIWcLR2P8eBxkFPit3qf8-PNmvmtDm2RFNdeupsqjqNeSWiB=s3072-v1",
+      "googlePhotoLabel": "nov 2025",
+      "googleImageDateLabel": "oct 2025",
+      "usedIn": [
+        "Humo de color",
+        "Eventos: Celebraciones mayores"
+      ],
+      "edited": false
+    }
+  ],
+  "generated": {
+    "file": "public/media/decorative/home-fireworks-v1.png",
+    "width": 1672,
+    "height": 941,
+    "format": "png",
+    "bytes": 1471257,
+    "sha256": "095ebd4c5cc8436b38515f8696edf6463b5aa786b962c3c652fd02c32dcdca03",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept.\nAsset type: original decorative background image for the homepage hero of Piroboom, a fireworks shop website. This is an atmospheric design asset, not a photograph of an actual event or a claim about the business.\nPrimary request: a very discreet, non-invasive suggestion of fireworks in a dark sky, elegant and restrained, leaving the page text and buttons visually dominant.\nComposition: wide landscape 16:9, ideally 2560x1440. The website has its headline on the left: keep the left 55 percent nearly empty and very dark charcoal #0d0d10, with a smooth continuous dark background throughout. On the right and toward the far upper-right edge, two or three softly visible, delicate firework bursts, fine curved light trails, some partially outside the image. Sparse small sparks; lots of breathing room. Do not create a central bright focal point.\nStyle: photographic light texture with refined long-exposure firework trails, a subtly abstract decorative composition. Muted warm pale gold and very restrained magenta accents, compatible with the website accents #ffe500 and #ee1c8c but substantially dimmer and desaturated in this background. Nearly black shadows, gentle glow, very low visual density, minimal haze.\nConstraints: no text, no logos, no watermark, no people, no city, no buildings, no products, no horizon, no smoke clouds, no loud explosion, no high-contrast white highlights, no fireworks covering the negative space. Avoid a busy celebratory poster or stock-photo look. The image must feel quiet and subtle enough behind readable white web typography.",
+    "role": "Decorative background; not an actual business event",
+    "edited": false
+  }
+}
