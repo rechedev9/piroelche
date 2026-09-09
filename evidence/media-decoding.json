@@ -1,0 +1,35 @@
+[
+  {
+    "engine": "chromium",
+    "version": "153.0.8010.12",
+    "width": 640,
+    "height": 360,
+    "duration": 2,
+    "time": 0.377699,
+    "light": 28,
+    "ready": 4,
+    "css": 562
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "width": 640,
+    "height": 360,
+    "duration": 2,
+    "time": 0.40474,
+    "light": 64,
+    "ready": 4,
+    "css": 562
+  },
+  {
+    "engine": "webkit",
+    "version": "26.6",
+    "width": 562,
+    "height": 316,
+    "duration": 2,
+    "time": 0.2252463,
+    "light": 63,
+    "ready": 3,
+    "css": 562
+  }
+]

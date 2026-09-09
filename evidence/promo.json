@@ -1,0 +1,9 @@
+{
+  "browser": "153.0.8010.12",
+  "serverClock": "2026-12-20T10:00:00Z",
+  "configuration": "local review only; REVIEW_CAMPAIGNS=1; PIROBOOM_PROMO=1",
+  "observations": [
+    "390px: active campaign opens; Tab stays within dialog; Escape restores focus to skip link when no trigger exists; dismiss and stores CTA work.",
+    "1440px: active campaign opens; Tab stays within dialog; Escape restores focus to skip link when no trigger exists; dismiss and stores CTA work."
+  ]
+}

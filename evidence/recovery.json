@@ -1,0 +1,86 @@
+{
+  "checkedAt": "2026-09-09T16:04:13.965Z",
+  "sourceTree": "7bda141c4e67bfcbd7b6dc037c129c3b88f331e3",
+  "archiveSha256": "607006e0e2abc536526cb6bf3203391da3759203382ff8c9d22d649bfc842f27",
+  "restoredDirectory": ".local/recovery-20260909-tailwind",
+  "productionBuildId": "mu3EHaytX97I3vH3fQbSI",
+  "commands": [
+    {
+      "command": "git archive + Expand-Archive",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm install --offline --frozen-lockfile",
+      "exitCode": 0,
+      "packagesReused": 523,
+      "downloads": 0
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm start --port 3002",
+      "ready": true
+    }
+  ],
+  "httpChecks": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/sobre-nosotros/",
+      "status": 200
+    },
+    {
+      "path": "/eventos/",
+      "status": 200
+    },
+    {
+      "path": "/tiendas/",
+      "status": 200
+    },
+    {
+      "path": "/catalogo-pdf/",
+      "status": 200
+    },
+    {
+      "path": "/contacto/",
+      "status": 200
+    },
+    {
+      "path": "/aviso-legal/",
+      "status": 200
+    },
+    {
+      "path": "/politica-de-privacidad/",
+      "status": 200
+    },
+    {
+      "path": "/politica-de-cookies/",
+      "status": 200
+    },
+    {
+      "path": "/catalogo-pdf/fuegos-artificiales/",
+      "status": 200
+    },
+    {
+      "path": "/catalogo-pdf/fuegos-artificiales/bateria-25-disparos/",
+      "status": 404
+    },
+    {
+      "path": "/media-demo/video/",
+      "status": 404
+    },
+    {
+      "path": "/pagina-desconocida/",
+      "status": 404
+    }
+  ],
+  "missingReceiver": {
+    "status": 503,
+    "code": "not_configured"
+  },
+  "scope": "Fresh isolated archive of the final reviewed code, including Tailwind/shadcn; offline installation, production build and usable HTTP session. No production CMS restore or remote rollback. Final documentation and benchmark artifacts are completed after the source archive."
+}

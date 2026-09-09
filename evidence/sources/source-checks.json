@@ -1,0 +1,144 @@
+{
+  "checkedOn": "2026-09-09",
+  "timezone": "Europe/Madrid",
+  "scope": "Read-only primary-source checks. No messages, form submissions, production writes or publishing.",
+  "handoff": {
+    "inventoryAssetsChecked": 9,
+    "allAssetHashesMatch": true,
+    "sha256": {
+      "piroboom-handoff/MASTER_PROMPT.md": "86b3629c1d7f4aa5c8d428366b565f575aa2e596b3c1fdc7013063f996bc5a02",
+      "piroboom-handoff/inputs/contexto/backlog-legible.json": "3f21c1f923a863e193e8ce46d45e1e02954e324b04ae80212d0b29e402f2af3a",
+      "piroboom-handoff/inputs/contexto/backlog-legible.md": "1da6569f370afc6ccb90798c00141fd348f8862e8cee49cedee189d93dbd6706",
+      "piroboom-handoff/inputs/contexto/fuentes-y-decisiones.md": "25271d2a6c151c2fd7f8f8b9836bf732dbe71b30d4ba46bdba1b9055c7a46e88"
+    }
+  },
+  "pages": [
+    {
+      "url": "https://pirotecniaelche.es/tiendas/",
+      "method": "Invoke-WebRequest after web extraction timeout",
+      "httpStatus": 200,
+      "bytesReported": 204806,
+      "observed": "Permanent store address, phone and Tuesday-Friday/Saturday opening pattern match the handoff. Four temporary locations have insufficient campaign validity data.",
+      "notVerified": [
+        "Physical entrance",
+        "Holiday exceptions",
+        "Today's activity of temporary locations",
+        "Parking",
+        "Current owner confirmation"
+      ]
+    },
+    {
+      "url": "https://pirotecniaelche.es/catalogo-pdf/",
+      "method": "Invoke-WebRequest after web extraction timeout",
+      "httpStatus": 200,
+      "bytesReported": 171321,
+      "observed": "Page links exactly to the recovered PDF URL below."
+    },
+    {
+      "url": "https://pirotecniaelche.es/eventos/",
+      "method": "Web extraction",
+      "observed": "Weddings, gender reveals, birthdays, patron saint festivals, corporate events and communions are mentioned. Safety and universal indoor-use promotional claims are not evidence of technical suitability or execution responsibilities."
+    },
+    {
+      "url": "https://pirotecniaelche.es/contacto/",
+      "method": "Web extraction",
+      "observed": "Contact page recovered; no form submitted and no reception tested."
+    },
+    {
+      "url": "https://pirotecniaelche.es/aviso-legal/",
+      "method": "Web extraction",
+      "observed": "Legal text, personal business identity and contact information are present. Identifiers and residential/legal address are not copied to this evidence. Published email is not treated as authorization or proof of form destination."
+    },
+    {
+      "url": "https://pirotecniaelche.es/politica-de-privacidad/",
+      "method": "Web extraction",
+      "observed": "Existing processing descriptions include contact, statistical purposes, general retention language and communication suppliers. They must be reviewed against the new server contract, processors and retention before publication."
+    },
+    {
+      "url": "https://pirotecniaelche.es/politica-de-cookies/",
+      "method": "Web extraction",
+      "observed": "General cookie and processing descriptions are present. Text retrieval is not a browser network/storage audit."
+    }
+  ],
+  "pdf": {
+    "url": "https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf",
+    "method": "Invoke-WebRequest -OutFile -PassThru -TimeoutSec 30",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "localPath": "evidence/sources/Catalogo-2026.pdf",
+    "gitTracked": false,
+    "publicAsset": false,
+    "sizeBytes": 81903612,
+    "sha256": "e4ac9f0c0cf181b154677aa2dfd9ef1c4e06abe039079640e4f07488fe667000",
+    "magic": "%PDF-1.4",
+    "pages": 16,
+    "encrypted": false,
+    "javascriptReportedByPdfinfo": false,
+    "taggedReportedByPdfinfo": true,
+    "optimizedReportedByPdfinfo": false,
+    "visibleCoverEdition": "2026",
+    "metadataTitle": "Catálogo 2025",
+    "metadataDiscrepancy": "The visible cover and page 2 say 2026; Title metadata still says 2025. No validity period inferred from either.",
+    "textCharactersPerPage": [
+      1067,
+      1993,
+      2876,
+      694,
+      3647,
+      1609,
+      1819,
+      1235,
+      1441,
+      636,
+      1967,
+      2322,
+      1190,
+      2739,
+      2644,
+      459
+    ],
+    "allPagesHaveExtractableText": true,
+    "visuallyInspectedPages": [
+      1,
+      2
+    ],
+    "localInspectionRenders": [
+      "evidence/sources/catalogo-cover.png",
+      "evidence/sources/catalogo-page-02.png"
+    ],
+    "observedLimitations": [
+      "Page 2 includes placeholder descriptions and a price without a numeric amount",
+      "Visible 2026 edition does not confirm current price or stock",
+      "Extractable text and tagged metadata do not prove accessibility",
+      "Complete technical classifications and image rights were not audited",
+      "Mobile viewer usability not established by Poppler rendering"
+    ]
+  },
+  "regulation": {
+    "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-12054&tn=0#a124",
+    "document": "Real Decreto 989/2015",
+    "consolidatedUpdateDisplayed": "2025-04-10",
+    "article": "124.2",
+    "observed": "The article concerns sending products sold to the public by distance channels and delivery with the buyer present at the sales premises. The prior audit's 127.2 citation is erroneous for that proposition.",
+    "limit": "Informational consolidated text; no final legal review or general ban on inquiries or event service contracts is asserted."
+  },
+  "notPerformed": [
+    "Messages or form submissions to real recipients",
+    "Verification of actual mailbox reception",
+    "Authenticated production/CMS access",
+    "Changes to Google Business Profile",
+    "Full legal audit",
+    "Policy eligibility review for WhatsApp, Google Ads or Merchant Center",
+    "Physical device/store checks"
+  ],
+  "desktopPdfViewer": {
+    "checkedAt": "2026-09-09T16:09:05.9707052Z",
+    "method": "Computer Use in Brave desktop, official URL and native PDF viewer",
+    "url": "https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf",
+    "pages": 16,
+    "visibleCoverYear": 2026,
+    "internalTitle": "Catálogo 2025",
+    "opened": true,
+    "scope": "Desktop viewer and fit-to-page inspected. Physical mobile PDF viewer and complete PDF accessibility remain unverified."
+  }
+}

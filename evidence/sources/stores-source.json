@@ -1,0 +1,41 @@
+{
+  "source": "https://pirotecniaelche.es/tiendas/",
+  "checkedAt": "2026-09-09T15:10:11Z",
+  "method": "Página abierta y recargada en Brave Browser; árbol accesible e imagen inspeccionados mediante Computer Use. La extracción web alternativa agotó tiempo; la página sí cargó en el navegador.",
+  "authority": "El usuario indicó expresamente que esta página es la fuente de verdad de los datos de tiendas.",
+  "permanent": {
+    "addressMain": "C/ Gloria Fuertes s/n, Elche – Alicante",
+    "addressFooter": "Calle Gloria Fuertes, s/n, 03203 Elche, Alicante",
+    "phone": "+34600261620",
+    "directionsUrl": "https://maps.app.goo.gl/C1XJNPujKvKTfNPH9",
+    "schedule": "Martes a Viernes 10:00-14:00 y 17:00-20:00; Sábados 10:00-14:00; Lunes y Domingos cerrado"
+  },
+  "seasonal": [
+    {
+      "name": "Elche",
+      "address": "Avenida Novelda",
+      "schedule": "Todos los días de 10:00 a 18:00"
+    },
+    {
+      "name": "Alicante",
+      "address": "Avenida Alfonso El Sabio X",
+      "schedule": "Todos los días de 10:00 a 18:00"
+    },
+    {
+      "name": "Santa Pola",
+      "address": "Avenida Novelda",
+      "schedule": "Todos los días de 10:00 a 18:00"
+    },
+    {
+      "name": "La Zenia",
+      "address": "Avenida Novelda",
+      "schedule": "Todos los días de 10:00 a 18:00"
+    }
+  ],
+  "limits": [
+    "La página no indica inicio/fin de campaña ni fechas de vigencia para las casetas.",
+    "No se inventan coordenadas o mapas individuales para las casetas.",
+    "Las direcciones se conservan como están publicadas, incluida Avenida Novelda en Santa Pola y La Zenia.",
+    "El horario habitual no confirma festivos o cambios puntuales ni demuestra apertura actual de las casetas."
+  ]
+}

@@ -1,0 +1,594 @@
+{
+  "checkedAt": "2026-09-09T15:56:15.124Z",
+  "tailwind": "4.3.3",
+  "shadcnCLI": "4.21.0",
+  "method": "Pixel comparison with the local capture immediately before migrating styles. This measures migration differences only; approved-prototype comparisons remain in evidence/visual/reference captures.",
+  "results": [
+    {
+      "file": "1440x1000-demo-01-inicio.png",
+      "before": {
+        "width": 1440,
+        "height": 2892
+      },
+      "after": {
+        "width": 1440,
+        "height": 2892
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "c285e2a9b3db72b4b0e84698066768e633bbed1ad4aa60d16d83dee6b9792651",
+      "afterSHA256": "c285e2a9b3db72b4b0e84698066768e633bbed1ad4aa60d16d83dee6b9792651"
+    },
+    {
+      "file": "1440x1000-demo-02-sobre-nosotros.png",
+      "before": {
+        "width": 1440,
+        "height": 1420
+      },
+      "after": {
+        "width": 1440,
+        "height": 1420
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "5423c5f739215983a802879cd50ec5e3583ead5c85ab581c48175f49ec36b28a",
+      "afterSHA256": "5423c5f739215983a802879cd50ec5e3583ead5c85ab581c48175f49ec36b28a"
+    },
+    {
+      "file": "1440x1000-demo-03-eventos.png",
+      "before": {
+        "width": 1440,
+        "height": 3363
+      },
+      "after": {
+        "width": 1440,
+        "height": 3363
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "21dced043718202bbe6cde122592b114df523cff9d915ee089ea4e1fc45f7441",
+      "afterSHA256": "21dced043718202bbe6cde122592b114df523cff9d915ee089ea4e1fc45f7441"
+    },
+    {
+      "file": "1440x1000-demo-04-tiendas.png",
+      "before": {
+        "width": 1440,
+        "height": 1666
+      },
+      "after": {
+        "width": 1440,
+        "height": 1666
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "afcc36737f9a574d74d417fcca7fdd2e99f6b5337a07e0da52b0fc6adf9d58f5",
+      "afterSHA256": "afcc36737f9a574d74d417fcca7fdd2e99f6b5337a07e0da52b0fc6adf9d58f5"
+    },
+    {
+      "file": "1440x1000-demo-05-catalogo.png",
+      "before": {
+        "width": 1440,
+        "height": 1250
+      },
+      "after": {
+        "width": 1440,
+        "height": 1250
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "e14c00070c0bb0e4d5669e14d51ab969b738914634b82f89e8a3884c34d5aad3",
+      "afterSHA256": "e14c00070c0bb0e4d5669e14d51ab969b738914634b82f89e8a3884c34d5aad3"
+    },
+    {
+      "file": "1440x1000-demo-06-contacto.png",
+      "before": {
+        "width": 1440,
+        "height": 1359
+      },
+      "after": {
+        "width": 1440,
+        "height": 1359
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "48f0515cd3e471daaaf8510289d656e155a3a0a3bdb614c5932703732f0b0f64",
+      "afterSHA256": "48f0515cd3e471daaaf8510289d656e155a3a0a3bdb614c5932703732f0b0f64"
+    },
+    {
+      "file": "1440x1000-demo-07-familia.png",
+      "before": {
+        "width": 1440,
+        "height": 1236
+      },
+      "after": {
+        "width": 1440,
+        "height": 1236
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "c58d5739750fe326d64369b2b731e275ec81a2bc83ca5f1198f01b21c25e0b2e",
+      "afterSHA256": "c58d5739750fe326d64369b2b731e275ec81a2bc83ca5f1198f01b21c25e0b2e"
+    },
+    {
+      "file": "1440x1000-demo-08-ficha.png",
+      "before": {
+        "width": 1440,
+        "height": 1531
+      },
+      "after": {
+        "width": 1440,
+        "height": 1531
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 28,
+      "changedPercent": 0.00127,
+      "changedBounds": {
+        "left": 431,
+        "top": 891,
+        "right": 438,
+        "bottom": 896
+      },
+      "meanMaxChannelDelta": 0.000405,
+      "beforeSHA256": "b25fcf0890d6dc686f6a9dfd61eae4a95eeb16a299c06e6b321411b4db7da303",
+      "afterSHA256": "ace2fbfb10d7516ab46d84d4c2139194e5132f6d3feaac85800376a0dfbbcf8f"
+    },
+    {
+      "file": "1440x1000-demo-09-referencia.png",
+      "before": {
+        "width": 1440,
+        "height": 1392
+      },
+      "after": {
+        "width": 1440,
+        "height": 1392
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "2f2d7722ff8cc044e67395a4b3d071b5591e5b701fd397ed7f5f2461a6e50ec2",
+      "afterSHA256": "2f2d7722ff8cc044e67395a4b3d071b5591e5b701fd397ed7f5f2461a6e50ec2"
+    },
+    {
+      "file": "1440x1000-demo-10-validacion.png",
+      "before": {
+        "width": 1440,
+        "height": 1590
+      },
+      "after": {
+        "width": 1440,
+        "height": 1590
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "887a444a9a8d382ac63e45933d68bc9a5aefcf1780360bd7031a7f01bd997da4",
+      "afterSHA256": "887a444a9a8d382ac63e45933d68bc9a5aefcf1780360bd7031a7f01bd997da4"
+    },
+    {
+      "file": "1440x1000-public-01-inicio.png",
+      "before": {
+        "width": 1440,
+        "height": 2853
+      },
+      "after": {
+        "width": 1440,
+        "height": 2853
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "387c6b8b75134d629e4c90b7f8f0333755b7494c7f9fdcd9916829bf3618f1de",
+      "afterSHA256": "387c6b8b75134d629e4c90b7f8f0333755b7494c7f9fdcd9916829bf3618f1de"
+    },
+    {
+      "file": "1440x1000-public-02-sobre-nosotros.png",
+      "before": {
+        "width": 1440,
+        "height": 1382
+      },
+      "after": {
+        "width": 1440,
+        "height": 1382
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "40e4c87166f6ee37c7bcd9f52d7d8db4a8448041dcc609878a1608a979118815",
+      "afterSHA256": "40e4c87166f6ee37c7bcd9f52d7d8db4a8448041dcc609878a1608a979118815"
+    },
+    {
+      "file": "1440x1000-public-03-eventos.png",
+      "before": {
+        "width": 1440,
+        "height": 3025
+      },
+      "after": {
+        "width": 1440,
+        "height": 3025
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "d969b8cf8687b9dd9817ae11775ffd4c0167983dbeafae1c13a82c13a4d01f33",
+      "afterSHA256": "d969b8cf8687b9dd9817ae11775ffd4c0167983dbeafae1c13a82c13a4d01f33"
+    },
+    {
+      "file": "1440x1000-public-04-tiendas.png",
+      "before": {
+        "width": 1440,
+        "height": 1627
+      },
+      "after": {
+        "width": 1440,
+        "height": 1627
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "c22f0c529119c52eebc578cf5d11bd3c8350ffd37d50f092158eaf3de21b37bc",
+      "afterSHA256": "c22f0c529119c52eebc578cf5d11bd3c8350ffd37d50f092158eaf3de21b37bc"
+    },
+    {
+      "file": "1440x1000-public-05-catalogo.png",
+      "before": {
+        "width": 1440,
+        "height": 1186
+      },
+      "after": {
+        "width": 1440,
+        "height": 1186
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "0b3656be69feaca770e6d792ecacb48fdb216a9cfc660e6844cd6e68cbc5e039",
+      "afterSHA256": "0b3656be69feaca770e6d792ecacb48fdb216a9cfc660e6844cd6e68cbc5e039"
+    },
+    {
+      "file": "1440x1000-public-06-contacto.png",
+      "before": {
+        "width": 1440,
+        "height": 1320
+      },
+      "after": {
+        "width": 1440,
+        "height": 1320
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "39b748ca878aa8700c676668f36b16bcf92eaae2e067fb3feddeff80a2e1564a",
+      "afterSHA256": "39b748ca878aa8700c676668f36b16bcf92eaae2e067fb3feddeff80a2e1564a"
+    },
+    {
+      "file": "390x844-demo-01-inicio.png",
+      "before": {
+        "width": 390,
+        "height": 6189
+      },
+      "after": {
+        "width": 390,
+        "height": 6189
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "2f8ef1a7f3c54b5fa0914d79894c8587b884a5378b942ffcd7840001d1689ff4",
+      "afterSHA256": "2f8ef1a7f3c54b5fa0914d79894c8587b884a5378b942ffcd7840001d1689ff4"
+    },
+    {
+      "file": "390x844-demo-02-sobre-nosotros.png",
+      "before": {
+        "width": 390,
+        "height": 2962
+      },
+      "after": {
+        "width": 390,
+        "height": 2962
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "61e297604828d03629201c904fede49bf28bc7b32c167b9522b702bcbd40dfa0",
+      "afterSHA256": "61e297604828d03629201c904fede49bf28bc7b32c167b9522b702bcbd40dfa0"
+    },
+    {
+      "file": "390x844-demo-03-eventos.png",
+      "before": {
+        "width": 390,
+        "height": 6816
+      },
+      "after": {
+        "width": 390,
+        "height": 6816
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "4d08b9654f9ba3efc0e0ba1c80e7a65961fec8933fcaccf2f3412d3330cac14e",
+      "afterSHA256": "4d08b9654f9ba3efc0e0ba1c80e7a65961fec8933fcaccf2f3412d3330cac14e"
+    },
+    {
+      "file": "390x844-demo-04-tiendas.png",
+      "before": {
+        "width": 390,
+        "height": 3475
+      },
+      "after": {
+        "width": 390,
+        "height": 3475
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "a98f1a768e83d09b78312c9e7a3800199ae8e94c02da529e8689b5f1f7126dc9",
+      "afterSHA256": "a98f1a768e83d09b78312c9e7a3800199ae8e94c02da529e8689b5f1f7126dc9"
+    },
+    {
+      "file": "390x844-demo-05-catalogo.png",
+      "before": {
+        "width": 390,
+        "height": 3273
+      },
+      "after": {
+        "width": 390,
+        "height": 3273
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "172fd14daa41722792d78a49ac030f6160b67ce5c28f028ad8a0cf6f4c21103c",
+      "afterSHA256": "172fd14daa41722792d78a49ac030f6160b67ce5c28f028ad8a0cf6f4c21103c"
+    },
+    {
+      "file": "390x844-demo-06-contacto.png",
+      "before": {
+        "width": 390,
+        "height": 2465
+      },
+      "after": {
+        "width": 390,
+        "height": 2465
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "97f80b0bdbfc30998e943f26725a479033b76eb19616478efc5dbccdd6726af3",
+      "afterSHA256": "97f80b0bdbfc30998e943f26725a479033b76eb19616478efc5dbccdd6726af3"
+    },
+    {
+      "file": "390x844-demo-07-familia.png",
+      "before": {
+        "width": 390,
+        "height": 2933
+      },
+      "after": {
+        "width": 390,
+        "height": 2933
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "6277637547a6ec55490180536a6bc2f0b5409d029cf32eca06edea8f36e59fa6",
+      "afterSHA256": "6277637547a6ec55490180536a6bc2f0b5409d029cf32eca06edea8f36e59fa6"
+    },
+    {
+      "file": "390x844-demo-08-ficha.png",
+      "before": {
+        "width": 390,
+        "height": 2917
+      },
+      "after": {
+        "width": 390,
+        "height": 2917
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 16,
+      "changedPercent": 0.00141,
+      "changedBounds": {
+        "left": 202,
+        "top": 676,
+        "right": 208,
+        "bottom": 680
+      },
+      "meanMaxChannelDelta": 0.000416,
+      "beforeSHA256": "77588ac89fc26cdcabe15150eccc61110473e15867a4f5decbaa2efc61d32691",
+      "afterSHA256": "648c0f583659e3a7141870966429daf8bbc9ff5f009da028fe484b0373fed378"
+    },
+    {
+      "file": "390x844-demo-09-referencia.png",
+      "before": {
+        "width": 390,
+        "height": 2523
+      },
+      "after": {
+        "width": 390,
+        "height": 2523
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "04834b7134bc2317ac47239db6e3fe194dba24081d87e473d142b01bfa75b1be",
+      "afterSHA256": "04834b7134bc2317ac47239db6e3fe194dba24081d87e473d142b01bfa75b1be"
+    },
+    {
+      "file": "390x844-demo-10-validacion.png",
+      "before": {
+        "width": 390,
+        "height": 2744
+      },
+      "after": {
+        "width": 390,
+        "height": 2744
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "c7549fbc55f3811ca18f984a97ca7bcb5abca1e514c02283c5a84c31a82504c7",
+      "afterSHA256": "c7549fbc55f3811ca18f984a97ca7bcb5abca1e514c02283c5a84c31a82504c7"
+    },
+    {
+      "file": "390x844-public-01-inicio.png",
+      "before": {
+        "width": 390,
+        "height": 6112
+      },
+      "after": {
+        "width": 390,
+        "height": 6112
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "50518d1b1eeb97dbe61afca4ffc35100a61d1167d4555c73a22a8d6ae525aa71",
+      "afterSHA256": "50518d1b1eeb97dbe61afca4ffc35100a61d1167d4555c73a22a8d6ae525aa71"
+    },
+    {
+      "file": "390x844-public-02-sobre-nosotros.png",
+      "before": {
+        "width": 390,
+        "height": 2884
+      },
+      "after": {
+        "width": 390,
+        "height": 2884
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "c789611ff2198eb0f0225cf4c88940a2b704f6d994580b79c6823e0658074d59",
+      "afterSHA256": "c789611ff2198eb0f0225cf4c88940a2b704f6d994580b79c6823e0658074d59"
+    },
+    {
+      "file": "390x844-public-03-eventos.png",
+      "before": {
+        "width": 390,
+        "height": 5713
+      },
+      "after": {
+        "width": 390,
+        "height": 5713
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "c65021d5f3895a1ca9ef15d7e3d43df4359da841f36f9994de8ddb592fb28049",
+      "afterSHA256": "c65021d5f3895a1ca9ef15d7e3d43df4359da841f36f9994de8ddb592fb28049"
+    },
+    {
+      "file": "390x844-public-04-tiendas.png",
+      "before": {
+        "width": 390,
+        "height": 3397
+      },
+      "after": {
+        "width": 390,
+        "height": 3397
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "a5eb7c97bbc6e1d2920813dcea88da6cf070964f5790b934803ed37a81c4096c",
+      "afterSHA256": "a5eb7c97bbc6e1d2920813dcea88da6cf070964f5790b934803ed37a81c4096c"
+    },
+    {
+      "file": "390x844-public-05-catalogo.png",
+      "before": {
+        "width": 390,
+        "height": 3195
+      },
+      "after": {
+        "width": 390,
+        "height": 3195
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "903bc70e30e22cc11bc99973d48988829dc82af4446ecd2886fc3323087450d6",
+      "afterSHA256": "903bc70e30e22cc11bc99973d48988829dc82af4446ecd2886fc3323087450d6"
+    },
+    {
+      "file": "390x844-public-06-contacto.png",
+      "before": {
+        "width": 390,
+        "height": 2409
+      },
+      "after": {
+        "width": 390,
+        "height": 2409
+      },
+      "sameGeometry": true,
+      "changedPixelsAbove8": 0,
+      "changedPercent": 0,
+      "changedBounds": null,
+      "meanMaxChannelDelta": 0,
+      "beforeSHA256": "15f74896e1368c087de35729287c8779fe5be12221e6195a362d5d5fa53c6875",
+      "afterSHA256": "15f74896e1368c087de35729287c8779fe5be12221e6195a362d5d5fa53c6875"
+    }
+  ]
+}

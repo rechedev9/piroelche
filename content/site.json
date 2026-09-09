@@ -1,0 +1,166 @@
+{
+  "families": [
+    { "id": "fuegos", "slug": "fuegos-artificiales", "name": "Fuegos artificiales", "description": "Baterías y efectos aéreos. Consulta la referencia y las condiciones del artículo." },
+    { "id": "humo", "slug": "humo-de-color", "name": "Humo de color", "description": "Artículos de humo de color para distintas ocasiones. Consulta su uso previsto." },
+    { "id": "frio", "slug": "fuego-frio", "name": "Fuego frío", "description": "Fuentes y bengalas para momentos señalados. La idoneidad depende del artículo y del recinto." },
+    { "id": "tracas", "slug": "tracas-y-otros", "name": "Tracas y otros", "description": "Tracas, petardos y artículos tradicionales. Consulta las condiciones de cada referencia." }
+  ],
+  "products": [],
+  "solutions": [
+    {
+      "id": "boda", "occasionId": "boda", "label": "Bodas",
+      "title": "Fuego frío para la entrada, el baile o la tarta",
+      "result": "Cuéntanos qué momento quieres destacar y en qué espacio para valorar una propuesta visual.",
+      "delivery": "El suministro, la posible ejecución y las condiciones del recinto se concretan en la propuesta.",
+      "needs": "Fecha o por definir, municipio o recinto e idea del momento.",
+      "status": "published",
+      "provenance": { "kind": "editorial", "source": "piroboom-handoff/MASTER_PROMPT.md, secciones 3 y 6", "checkedAt": "2026-09-09", "note": "Texto de solicitud sin afirmar idoneidad en interiores, ejecución propia ni habilitaciones." }
+    },
+    {
+      "id": "revelacion", "occasionId": "revelacion", "label": "Revelaciones",
+      "title": "Humo de color rosa o azul",
+      "result": "Consulta una idea de humo de color para la revelación y sus fotografías.",
+      "delivery": "La referencia, sus condiciones y la idoneidad del lugar requieren valoración antes de confirmar.",
+      "needs": "Fecha o por definir, municipio o lugar previsto e idea del color.",
+      "status": "published",
+      "provenance": { "kind": "editorial", "source": "piroboom-handoff/MASTER_PROMPT.md, secciones 3 y 6", "checkedAt": "2026-09-09", "note": "Consulta orientativa; no atribuye características técnicas a un producto ni garantiza autorización del lugar." }
+    },
+    {
+      "id": "fiesta", "occasionId": "fiesta", "label": "Celebraciones mayores",
+      "title": "Espectáculo pirotécnico",
+      "result": "Comparte tu idea para una fiesta, aniversario o evento corporativo y solicita una valoración.",
+      "delivery": "Alcance, responsables, viabilidad y permisos aplicables se concretan antes de cualquier confirmación.",
+      "needs": "Fecha o por definir, municipio, espacio previsto y público aproximado si lo conoces.",
+      "status": "published",
+      "provenance": { "kind": "editorial", "source": "piroboom-handoff/MASTER_PROMPT.md, secciones 3 y 6", "checkedAt": "2026-09-09", "note": "No afirma ejecución propia, autorizaciones ni disponibilidad." }
+    }
+  ],
+  "occasions": [
+    { "id": "boda", "label": "Boda" },
+    { "id": "revelacion", "label": "Revelación de sexo" },
+    { "id": "cumpleanos", "label": "Cumpleaños" },
+    { "id": "fiesta", "label": "Celebración mayor / fiesta" },
+    { "id": "otra", "label": "Otra" }
+  ],
+  "cases": [],
+  "store": {
+    "name": "Piroboom Elche",
+    "address": "Calle Gloria Fuertes, s/n, 03203 Elche, Alicante",
+    "phone": "+34600261620",
+    "phoneDisplay": "600 261 620",
+    "directionsUrl": "https://maps.app.goo.gl/C1XJNPujKvKTfNPH9",
+    "schedule": [
+      { "days": [2, 3, 4, 5], "intervals": [{ "opens": "10:00", "closes": "14:00" }, { "opens": "17:00", "closes": "20:00" }] },
+      { "days": [6], "intervals": [{ "opens": "10:00", "closes": "14:00" }] },
+      { "days": [1, 0], "intervals": [] }
+    ],
+    "exceptions": [],
+    "provenance": {
+      "kind": "primary-source", "source": "https://pirotecniaelche.es/tiendas/", "checkedAt": "2026-09-09",
+      "note": "Dirección, teléfono, horario y enlace de ruta contrastados con la página Tiendas y su pie el 09/09/2026, fuente de verdad indicada por el usuario. Se conserva la dirección completa publicada en el pie. Es la declaración publicada por el negocio; no acredita vigencia física ni festivos.",
+      "verifiedFields": ["name", "address", "phone", "schedule", "directionsUrl"],
+      "pending": ["Reconfirmar vigencia del horario habitual", "Confirmar festivos y otras excepciones", "Aportar fotografía de acceso con permiso de uso"]
+    }
+  },
+  "campaigns": [
+    {
+      "id": "caseta-elche",
+      "name": "Elche",
+      "address": "Avenida Novelda",
+      "schedule": [{ "days": [0, 1, 2, 3, 4, 5, 6], "intervals": [{ "opens": "10:00", "closes": "18:00" }] }],
+      "exceptions": [],
+      "campaign": { "confirmed": false },
+      "status": "published",
+      "provenance": {
+        "kind": "primary-source", "source": "https://pirotecniaelche.es/tiendas/", "checkedAt": "2026-09-09",
+        "note": "Caseta Elche publicada en la página Tiendas. Dirección transcrita literalmente y horario publicado todos los días de 10:00 a 18:00. La fuente no indica fechas de campaña ni enlace de mapa específico.",
+        "verifiedFields": ["name", "address", "schedule"],
+        "pending": ["Fechas de apertura de campaña no publicadas", "Festivos y otras excepciones no publicados"]
+      }
+    },
+    {
+      "id": "caseta-alicante",
+      "name": "Alicante",
+      "address": "Avenida Alfonso El Sabio X",
+      "schedule": [{ "days": [0, 1, 2, 3, 4, 5, 6], "intervals": [{ "opens": "10:00", "closes": "18:00" }] }],
+      "exceptions": [],
+      "campaign": { "confirmed": false },
+      "status": "published",
+      "provenance": {
+        "kind": "primary-source", "source": "https://pirotecniaelche.es/tiendas/", "checkedAt": "2026-09-09",
+        "note": "Caseta Alicante publicada en la página Tiendas. Dirección transcrita literalmente y horario publicado todos los días de 10:00 a 18:00. La fuente no indica fechas de campaña ni enlace de mapa específico.",
+        "verifiedFields": ["name", "address", "schedule"],
+        "pending": ["Fechas de apertura de campaña no publicadas", "Festivos y otras excepciones no publicados"]
+      }
+    },
+    {
+      "id": "caseta-santa-pola",
+      "name": "Santa Pola",
+      "address": "Avenida Novelda",
+      "schedule": [{ "days": [0, 1, 2, 3, 4, 5, 6], "intervals": [{ "opens": "10:00", "closes": "18:00" }] }],
+      "exceptions": [],
+      "campaign": { "confirmed": false },
+      "status": "published",
+      "provenance": {
+        "kind": "primary-source", "source": "https://pirotecniaelche.es/tiendas/", "checkedAt": "2026-09-09",
+        "note": "Caseta Santa Pola publicada en la página Tiendas. Se conserva literalmente Avenida Novelda, tal como la publica la fuente, sin corregirla por inferencia. Horario todos los días de 10:00 a 18:00; no se indican fechas de campaña ni mapa específico.",
+        "verifiedFields": ["name", "address", "schedule"],
+        "pending": ["Fechas de apertura de campaña no publicadas", "Festivos y otras excepciones no publicados"]
+      }
+    },
+    {
+      "id": "caseta-la-zenia",
+      "name": "La Zenia",
+      "address": "Avenida Novelda",
+      "schedule": [{ "days": [0, 1, 2, 3, 4, 5, 6], "intervals": [{ "opens": "10:00", "closes": "18:00" }] }],
+      "exceptions": [],
+      "campaign": { "confirmed": false },
+      "status": "published",
+      "provenance": {
+        "kind": "primary-source", "source": "https://pirotecniaelche.es/tiendas/", "checkedAt": "2026-09-09",
+        "note": "Caseta La Zenia publicada en la página Tiendas. Se conserva literalmente Avenida Novelda, tal como la publica la fuente, sin corregirla por inferencia. Horario todos los días de 10:00 a 18:00; no se indican fechas de campaña ni mapa específico.",
+        "verifiedFields": ["name", "address", "schedule"],
+        "pending": ["Fechas de apertura de campaña no publicadas", "Festivos y otras excepciones no publicados"]
+      }
+    }
+  ],
+  "pdf": {
+    "url": "https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf",
+    "status": "verified",
+    "edition": "2026",
+    "sizeBytes": 81903612,
+    "provenance": { "kind": "primary-source", "source": "https://pirotecniaelche.es/wp-content/uploads/2026/06/Catalogo-2026.pdf", "checkedAt": "2026-09-09", "note": "Descarga HTTP 200 application/pdf comprobada: PDF 1.4, 16 páginas y edición visible 2026 en portada. El metadato Title conserva Catálogo 2025. SHA256 e4ac9f0c0cf181b154677aa2dfd9ef1c4e06abe039079640e4f07488fe667000. Comprobar el documento no acredita vigencia comercial ni valida su inventario o atributos.", "verifiedFields": ["url", "edition", "sizeBytes"], "pending": ["Confirmar vigencia comercial del contenido con el negocio"] }
+  },
+  "legal": {
+    "notice": {
+      "title": "Aviso legal", "updatedAt": "2026-09-09", "status": "draft",
+      "sections": [
+        { "heading": "Información de esta versión", "paragraphs": ["Esta web presenta el catálogo, las consultas y la información de visita de Piroboom. No permite compras, pagos ni reservas automáticas.", "La identidad jurídica del titular y el resto de datos obligatorios están pendientes de contraste antes de publicar esta versión."] },
+        { "heading": "Contacto publicado", "paragraphs": ["Puedes consultar la información de la tienda y utilizar el teléfono publicado en la página de Contacto."] }
+      ],
+      "provenance": { "kind": "editorial", "source": "https://pirotecniaelche.es/aviso-legal/", "checkedAt": "2026-09-09", "note": "Aviso actual recuperado. La nueva implementación requiere confirmar los datos de titularidad aplicables y ajustar los tratamientos declarados; no se copian afirmaciones sobre analítica de la web anterior.", "pending": ["Confirmar datos jurídicos aplicables a esta versión", "Revisión del titular antes de publicación"] }
+    },
+    "privacy": {
+      "title": "Política de privacidad", "updatedAt": "2026-09-09", "status": "draft",
+      "sections": [
+        { "heading": "Consultas", "paragraphs": ["El formulario solicita únicamente los datos necesarios para tramitar la consulta y un canal de respuesta. No añade suscripciones comerciales ni publica los mensajes.", "Sin un servicio de recepción configurado, el formulario permanece deshabilitado o devuelve un error controlado. Una solicitud solo se confirma cuando el servidor ha obtenido una aceptación real del servicio configurado."] },
+        { "heading": "Borrador en esta pestaña", "paragraphs": ["Para recuperar el formulario tras una recarga y conservarlo cuando hay un error, el navegador guarda un borrador en el almacenamiento de esta pestaña (sessionStorage). Puede incluir los campos que hayas rellenado y los datos técnicos necesarios para reintentar el mismo envío sin duplicarlo.", "El borrador caduca a los 30 minutos desde su última actualización y deja de restaurarse una vez caducado. Se elimina al confirmar un envío aceptado. Si el navegador impide este almacenamiento, el formulario conserva sus datos en memoria mientras la página sigue abierta."] },
+        { "heading": "Recepción y conservación", "paragraphs": ["En revisión local, las solicitudes de prueba se guardan en una base SQLite privada. La configuración de referencia retira su contenido a los 30 días y conserva durante 90 días los identificadores y huellas técnicas necesarios para reconocer reintentos. Estos datos no son una recepción en el buzón del negocio.", "La recepción pública remota requiere confirmar el destino, el contrato del proveedor, las medidas de acceso y sus plazos de conservación antes de activarse. Los plazos del receptor local de pruebas no se atribuyen automáticamente al servicio remoto."] },
+        { "heading": "Información pendiente de confirmar", "paragraphs": ["Antes de activar el formulario público deben identificarse el responsable, la base jurídica, los destinatarios o encargados, el plazo de conservación y el canal para ejercer derechos."] }
+      ],
+      "provenance": { "kind": "editorial", "source": "https://pirotecniaelche.es/politica-de-privacidad/", "checkedAt": "2026-09-09", "note": "Política actual recuperada. Su base jurídica, retención y proveedores no se trasladan automáticamente al nuevo endpoint. Describe el contrato de esta implementación, pendiente de revisión jurídica y operativa.", "pending": ["Responsable y base jurídica", "Proveedor de recepción y conservación", "Canal para ejercer derechos", "Revisión jurídica"] }
+    },
+    "cookies": {
+      "title": "Política de cookies", "updatedAt": "2026-09-09", "status": "draft",
+      "sections": [
+        { "heading": "Almacenamiento para el formulario", "paragraphs": ["El formulario utiliza sessionStorage para conservar el borrador y los datos técnicos de reintento en esta pestaña. El borrador caduca a los 30 minutos desde la última actualización y se elimina al confirmar un envío aceptado. Este almacenamiento sirve para recuperar la consulta; no se utiliza para publicidad ni seguimiento entre sitios."] },
+        { "heading": "Servicios opcionales", "paragraphs": ["Esta versión no incorpora analítica, píxeles publicitarios ni mapas de terceros embebidos. Los enlaces de teléfono, mapa o documento se activan al utilizarlos.", "Si se incorporan tratamientos opcionales que lo requieran, su activación deberá acompañarse de información y controles de consentimiento adecuados."] },
+        { "heading": "Comprobación antes de publicar", "paragraphs": ["La política final debe contrastarse con las cookies, el almacenamiento y los servicios del alojamiento efectivo antes de publicar esta versión."] }
+      ],
+      "provenance": { "kind": "editorial", "source": "https://pirotecniaelche.es/politica-de-cookies/", "checkedAt": "2026-09-09", "note": "Texto actual recuperado; no constituye un inventario técnico de esta nueva versión. Texto preparado sin terceros opcionales, pendiente de contraste con el alojamiento final.", "pending": ["Comprobar red y almacenamiento del candidato", "Revisar servicios del alojamiento final"] }
+    }
+  },
+  "channels": {
+    "whatsapp": { "enabled": false, "url": null, "reviewNote": "Desactivado hasta confirmar un destino y revisar un uso permitido del canal. El teléfono y el formulario propio son las alternativas." }
+  }
+}

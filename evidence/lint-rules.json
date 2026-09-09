@@ -1,0 +1,1002 @@
+{
+  "generatedAt": "2026-09-09T16:22:07+02:00",
+  "purpose": "Verify the configured lint rules reject synthetic defects, then accept their corrected control. Baseline is an in-progress implementation snapshot, not final candidate validation.",
+  "redaction": "Only synthetic case descriptions, rule codes, relative source paths, locations, counts and hashes. No application payloads, logs, credentials or personal data.",
+  "versions": {
+    "oxlint": "1.82.0",
+    "oxlint-tsgolint": "7.0.2001",
+    "react": "19.2.8",
+    "next": "16.3.4"
+  },
+  "config": {
+    "path": ".oxlintrc.json",
+    "sha256": "d2cec9145b697c9dfad4d4b7b05aeae63b15e51c2d1e05512e96cc4199af6fe1",
+    "command": "pnpm exec oxlint --type-aware --deny-warnings .",
+    "packageLintScript": "oxlint --type-aware --deny-warnings .",
+    "plugins": [
+      "react",
+      "unicorn",
+      "typescript",
+      "oxc",
+      "import",
+      "jsx-a11y",
+      "nextjs",
+      "promise"
+    ],
+    "categories": {
+      "correctness": "error",
+      "suspicious": "error",
+      "pedantic": "off",
+      "perf": "off",
+      "style": "off",
+      "restriction": "off",
+      "nursery": "off"
+    },
+    "options": {
+      "typeAware": true,
+      "typeCheck": false,
+      "denyWarnings": true,
+      "reportUnusedDisableDirectives": "deny"
+    },
+    "settings": {
+      "jsx-a11y": {
+        "polymorphicPropName": null,
+        "components": {
+          "Media": "img",
+          "Link": "a",
+          "TrackedLink": "a",
+          "Image": "img"
+        },
+        "attributes": {}
+      },
+      "next": {
+        "rootDir": "."
+      },
+      "react": {
+        "formComponents": [],
+        "linkComponents": [
+          {
+            "name": "Link",
+            "attribute": "href"
+          },
+          {
+            "name": "TrackedLink",
+            "attribute": "href"
+          }
+        ],
+        "version": "19.2.0",
+        "componentWrapperFunctions": []
+      },
+      "jsdoc": {
+        "ignorePrivate": false,
+        "ignoreInternal": false,
+        "ignoreReplacesDocs": true,
+        "overrideReplacesDocs": true,
+        "augmentsExtendsReplacesDocs": false,
+        "implementsReplacesDocs": false,
+        "exemptDestructuredRootsFromChecks": false,
+        "tagNamePreference": {}
+      },
+      "vitest": {
+        "typecheck": false
+      },
+      "jest": {
+        "version": null
+      }
+    },
+    "enabledRuleCount": 274,
+    "enabledRulesAllError": true,
+    "warningRules": 0,
+    "effectiveRulesSha256": "f764366cc5a86d6247fb14a010e89e6b0e4d750c953b706c93d1e2cc2312cb9d",
+    "explicitRules": {
+      "eslint/array-callback-return": "error",
+      "import/no-cycle": "error",
+      "import/no-unassigned-import": [
+        "error",
+        {
+          "allow": [
+            "**/*.css",
+            "@fontsource*/**",
+            "server-only",
+            "client-only"
+          ]
+        }
+      ],
+      "react/rules-of-hooks": "error",
+      "react/exhaustive-deps": "error",
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-no-target-blank": "error",
+      "typescript/no-explicit-any": "error",
+      "typescript/no-floating-promises": [
+        "error",
+        {
+          "checkThenables": true,
+          "ignoreIIFE": false,
+          "ignoreVoid": true
+        }
+      ],
+      "typescript/no-misused-promises": "error",
+      "typescript/no-unsafe-argument": "error",
+      "typescript/no-unsafe-assignment": "error",
+      "typescript/no-unsafe-call": "error",
+      "typescript/no-unsafe-member-access": "error",
+      "typescript/no-unsafe-return": "error",
+      "typescript/switch-exhaustiveness-check": "error",
+      "promise/catch-or-return": "error",
+      "jsx-a11y/alt-text": "error",
+      "jsx-a11y/anchor-is-valid": "error",
+      "jsx-a11y/label-has-associated-control": [
+        "error",
+        {
+          "assert": "either",
+          "depth": 3
+        }
+      ],
+      "nextjs/no-img-element": "error",
+      "nextjs/no-async-client-component": "error"
+    },
+    "ignorePatterns": [
+      "node_modules/**",
+      ".next/**",
+      ".next-*/**",
+      ".vercel/**",
+      ".local/**",
+      "coverage/**",
+      "playwright-report/**",
+      "test-results/**",
+      "piroboom-handoff/**",
+      "evidence/**",
+      "next-env.d.ts"
+    ],
+    "eslintConfigRemoved": true
+  },
+  "canary": {
+    "path": ".local/oxlint-canary-20260909-traceability",
+    "temporaryFilesRemoved": true,
+    "lintExecuted": true,
+    "programExecuted": false,
+    "executionMeaning": "The synthetic TypeScript/JSX was linted only; no defective program was executed and no request was sent.",
+    "selectionAdjustment": "Oxlint 1.82.0 still excludes config ignorePatterns with --no-ignore; selecting the hidden directory also matched zero files. The successful run used explicit file paths and a temporary config with ignorePatterns emptied, with every other authored property identical. Zero-file attempts are not counted as passing checks.",
+    "configDiffOnlyIgnorePatterns": true,
+    "effectiveRulesSettingsOptionsPluginsEqual": true,
+    "command": "pnpm exec oxlint -c .local/oxlint-canary-20260909-traceability/config.json --type-aware --deny-warnings --no-ignore --format json .local/oxlint-canary-20260909-traceability/canary.tsx .local/oxlint-canary-20260909-traceability/cycle-a.ts .local/oxlint-canary-20260909-traceability/cycle-b.ts",
+    "negative": {
+      "exitCode": 1,
+      "filesLinted": 3,
+      "errors": 16,
+      "warnings": 0,
+      "sourceSha256": {
+        "canary.tsx": "67e8190d533b03119b3d762415ba896a4279aa8f5596cba3535730443a4f60c6",
+        "cycle-a.ts": "dde10f185e556739a018d22ec5dcf165bddfa62be7f14e3621187c5d87a0c821",
+        "cycle-b.ts": "b6ef29575a6332f9dc44927cfcd0f8ccc22d4ea4117358a6bf4df0209d2457fc"
+      },
+      "diagnostics": [
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/cycle-a.ts",
+          "line": 1,
+          "column": 24,
+          "ruleReported": "import(no-cycle)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/cycle-b.ts",
+          "line": 1,
+          "column": 24,
+          "ruleReported": "import(no-cycle)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 25,
+          "column": 6,
+          "ruleReported": "react(exhaustive-effect-dependencies)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 21,
+          "column": 5,
+          "ruleReported": "react(hooks)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 10,
+          "column": 3,
+          "ruleReported": "promise(catch-or-return)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 21,
+          "column": 5,
+          "ruleReported": "react-hooks(rules-of-hooks)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 24,
+          "column": 22,
+          "ruleReported": "react-hooks(exhaustive-deps)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 31,
+          "column": 5,
+          "ruleReported": "jsx-a11y(alt-text)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 31,
+          "column": 6,
+          "ruleReported": "next(no-img-element)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 32,
+          "column": 5,
+          "ruleReported": "jsx-a11y(alt-text)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 33,
+          "column": 5,
+          "ruleReported": "jsx-a11y(alt-text)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 34,
+          "column": 6,
+          "ruleReported": "jsx-a11y(anchor-is-valid)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 35,
+          "column": 6,
+          "ruleReported": "jsx-a11y(anchor-is-valid)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 42,
+          "column": 5,
+          "ruleReported": "promise(no-multiple-resolved)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 10,
+          "column": 3,
+          "ruleReported": "typescript(no-floating-promises)",
+          "severity": "error"
+        },
+        {
+          "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+          "line": 14,
+          "column": 36,
+          "ruleReported": "typescript(no-misused-promises)",
+          "severity": "error"
+        }
+      ]
+    },
+    "correctedControl": {
+      "exitCode": 0,
+      "filesLinted": 3,
+      "errors": 0,
+      "warnings": 0,
+      "sourceSha256": {
+        "canary.tsx": "f0059032590d964c7e78935407108b891d0174ba54007122c2e7dcf9139f8091",
+        "cycle-a.ts": "dde10f185e556739a018d22ec5dcf165bddfa62be7f14e3621187c5d87a0c821",
+        "cycle-b.ts": "ef3e4a2d82874e4c823a3d261282489ef5316985458f9944d20ff23d4db4577b"
+      }
+    },
+    "checks": [
+      {
+        "case": "unhandled-promise",
+        "configuredRule": "typescript/no-floating-promises",
+        "reportedRule": "typescript(no-floating-promises)",
+        "requiresTypeInformation": true,
+        "expectedDiagnosticCount": 1,
+        "actualDiagnosticCount": 1,
+        "passed": true,
+        "diagnostics": [
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 10,
+            "column": 3,
+            "ruleReported": "typescript(no-floating-promises)",
+            "severity": "error"
+          }
+        ]
+      },
+      {
+        "case": "async-void-callback",
+        "configuredRule": "typescript/no-misused-promises",
+        "reportedRule": "typescript(no-misused-promises)",
+        "requiresTypeInformation": true,
+        "expectedDiagnosticCount": 1,
+        "actualDiagnosticCount": 1,
+        "passed": true,
+        "diagnostics": [
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 14,
+            "column": 36,
+            "ruleReported": "typescript(no-misused-promises)",
+            "severity": "error"
+          }
+        ]
+      },
+      {
+        "case": "conditional-hook",
+        "configuredRule": "react/rules-of-hooks",
+        "reportedRule": "react-hooks(rules-of-hooks)",
+        "requiresTypeInformation": false,
+        "expectedDiagnosticCount": 1,
+        "actualDiagnosticCount": 1,
+        "passed": true,
+        "diagnostics": [
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 21,
+            "column": 5,
+            "ruleReported": "react-hooks(rules-of-hooks)",
+            "severity": "error"
+          }
+        ]
+      },
+      {
+        "case": "effect-dependency",
+        "configuredRule": "react/exhaustive-deps",
+        "reportedRule": "react-hooks(exhaustive-deps)",
+        "requiresTypeInformation": false,
+        "expectedDiagnosticCount": 1,
+        "actualDiagnosticCount": 1,
+        "passed": true,
+        "diagnostics": [
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 24,
+            "column": 22,
+            "ruleReported": "react-hooks(exhaustive-deps)",
+            "severity": "error"
+          }
+        ]
+      },
+      {
+        "case": "alt-native-and-custom-images",
+        "configuredRule": "jsx-a11y/alt-text",
+        "reportedRule": "jsx-a11y(alt-text)",
+        "requiresTypeInformation": false,
+        "expectedDiagnosticCount": 3,
+        "actualDiagnosticCount": 3,
+        "passed": true,
+        "diagnostics": [
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 31,
+            "column": 5,
+            "ruleReported": "jsx-a11y(alt-text)",
+            "severity": "error"
+          },
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 32,
+            "column": 5,
+            "ruleReported": "jsx-a11y(alt-text)",
+            "severity": "error"
+          },
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 33,
+            "column": 5,
+            "ruleReported": "jsx-a11y(alt-text)",
+            "severity": "error"
+          }
+        ]
+      },
+      {
+        "case": "native-img-in-next",
+        "configuredRule": "nextjs/no-img-element",
+        "reportedRule": "next(no-img-element)",
+        "requiresTypeInformation": false,
+        "expectedDiagnosticCount": 1,
+        "actualDiagnosticCount": 1,
+        "passed": true,
+        "diagnostics": [
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 31,
+            "column": 6,
+            "ruleReported": "next(no-img-element)",
+            "severity": "error"
+          }
+        ]
+      },
+      {
+        "case": "link-and-tracked-link-destinations",
+        "configuredRule": "jsx-a11y/anchor-is-valid",
+        "reportedRule": "jsx-a11y(anchor-is-valid)",
+        "requiresTypeInformation": false,
+        "expectedDiagnosticCount": 2,
+        "actualDiagnosticCount": 2,
+        "passed": true,
+        "diagnostics": [
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 34,
+            "column": 6,
+            "ruleReported": "jsx-a11y(anchor-is-valid)",
+            "severity": "error"
+          },
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 35,
+            "column": 6,
+            "ruleReported": "jsx-a11y(anchor-is-valid)",
+            "severity": "error"
+          }
+        ]
+      },
+      {
+        "case": "cyclic-imports",
+        "configuredRule": "import/no-cycle",
+        "reportedRule": "import(no-cycle)",
+        "requiresTypeInformation": false,
+        "expectedDiagnosticCount": 2,
+        "actualDiagnosticCount": 2,
+        "passed": true,
+        "diagnostics": [
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/cycle-a.ts",
+            "line": 1,
+            "column": 24,
+            "ruleReported": "import(no-cycle)",
+            "severity": "error"
+          },
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/cycle-b.ts",
+            "line": 1,
+            "column": 24,
+            "ruleReported": "import(no-cycle)",
+            "severity": "error"
+          }
+        ]
+      },
+      {
+        "case": "multiple-promise-settlements",
+        "configuredRule": "promise/no-multiple-resolved",
+        "reportedRule": "promise(no-multiple-resolved)",
+        "requiresTypeInformation": false,
+        "expectedDiagnosticCount": 1,
+        "actualDiagnosticCount": 1,
+        "passed": true,
+        "diagnostics": [
+          {
+            "file": ".local/oxlint-canary-20260909-traceability/canary.tsx",
+            "line": 42,
+            "column": 5,
+            "ruleReported": "promise(no-multiple-resolved)",
+            "severity": "error"
+          }
+        ]
+      }
+    ]
+  },
+  "initialImplementationSnapshot": {
+    "capturedAt": "2026-09-09T16:15:04+02:00",
+    "exitCode": 1,
+    "finalCandidate": false,
+    "filesLinted": 24,
+    "errors": 65,
+    "warnings": 0,
+    "byRule": {
+      "eslint(no-shadow)": 1,
+      "jsx-a11y(anchor-has-content)": 1,
+      "jsx-a11y(click-events-have-key-events)": 1,
+      "jsx-a11y(no-static-element-interactions)": 2,
+      "jsx-a11y(media-has-caption)": 1,
+      "typescript(no-unsafe-type-assertion)": 8,
+      "typescript(no-unsafe-argument)": 1,
+      "typescript(no-unsafe-assignment)": 11,
+      "typescript(no-floating-promises)": 11,
+      "typescript(no-unsafe-member-access)": 22,
+      "typescript(no-misused-promises)": 3,
+      "typescript(no-unnecessary-type-conversion)": 1,
+      "typescript(no-unsafe-return)": 1,
+      "typescript(consistent-return)": 1
+    },
+    "byFile": {
+      "src/lib/content.ts": 1,
+      "src/components/tracked-link.tsx": 4,
+      "src/components/media.tsx": 1,
+      "src/components/header.tsx": 2,
+      "src/lib/lead-contract.ts": 1,
+      "scripts/local-receiver.ts": 7,
+      "src/lib/lead-server.ts": 1,
+      "tests/content.test.ts": 18,
+      "tests/leads.test.ts": 29,
+      "src/components/campaign-promo.tsx": 1
+    },
+    "diagnostics": [
+      {
+        "file": "src/lib/content.ts",
+        "line": 45,
+        "column": 9,
+        "ruleReported": "eslint(no-shadow)",
+        "severity": "error"
+      },
+      {
+        "file": "src/components/tracked-link.tsx",
+        "line": 7,
+        "column": 10,
+        "ruleReported": "jsx-a11y(anchor-has-content)",
+        "severity": "error"
+      },
+      {
+        "file": "src/components/tracked-link.tsx",
+        "line": 7,
+        "column": 10,
+        "ruleReported": "jsx-a11y(click-events-have-key-events)",
+        "severity": "error"
+      },
+      {
+        "file": "src/components/tracked-link.tsx",
+        "line": 7,
+        "column": 11,
+        "ruleReported": "jsx-a11y(no-static-element-interactions)",
+        "severity": "error"
+      },
+      {
+        "file": "src/components/media.tsx",
+        "line": 15,
+        "column": 46,
+        "ruleReported": "jsx-a11y(media-has-caption)",
+        "severity": "error"
+      },
+      {
+        "file": "src/components/header.tsx",
+        "line": 26,
+        "column": 11,
+        "ruleReported": "jsx-a11y(no-static-element-interactions)",
+        "severity": "error"
+      },
+      {
+        "file": "src/lib/lead-contract.ts",
+        "line": 107,
+        "column": 25,
+        "ruleReported": "typescript(no-unsafe-type-assertion)",
+        "severity": "error"
+      },
+      {
+        "file": "scripts/local-receiver.ts",
+        "line": 69,
+        "column": 17,
+        "ruleReported": "typescript(no-unsafe-argument)",
+        "severity": "error"
+      },
+      {
+        "file": "src/lib/lead-server.ts",
+        "line": 114,
+        "column": 19,
+        "ruleReported": "typescript(no-unsafe-type-assertion)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 10,
+        "column": 7,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 11,
+        "column": 7,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 32,
+        "column": 10,
+        "ruleReported": "typescript(no-unsafe-type-assertion)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 46,
+        "column": 16,
+        "ruleReported": "typescript(no-unsafe-type-assertion)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 50,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "scripts/local-receiver.ts",
+        "line": 137,
+        "column": 24,
+        "ruleReported": "typescript(no-unsafe-type-assertion)",
+        "severity": "error"
+      },
+      {
+        "file": "scripts/local-receiver.ts",
+        "line": 148,
+        "column": 23,
+        "ruleReported": "typescript(no-unsafe-type-assertion)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 60,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 76,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 117,
+        "column": 53,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 118,
+        "column": 53,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 90,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 119,
+        "column": 82,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 94,
+        "column": 40,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 104,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 118,
+        "column": 43,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 149,
+        "column": 84,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 149,
+        "column": 104,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 150,
+        "column": 51,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 150,
+        "column": 77,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 150,
+        "column": 97,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 151,
+        "column": 58,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 151,
+        "column": 51,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 151,
+        "column": 78,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 161,
+        "column": 9,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 161,
+        "column": 28,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 162,
+        "column": 43,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/content.test.ts",
+        "line": 163,
+        "column": 43,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "scripts/local-receiver.ts",
+        "line": 166,
+        "column": 31,
+        "ruleReported": "typescript(no-misused-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "scripts/local-receiver.ts",
+        "line": 169,
+        "column": 116,
+        "ruleReported": "typescript(no-unnecessary-type-conversion)",
+        "severity": "error"
+      },
+      {
+        "file": "scripts/local-receiver.ts",
+        "line": 234,
+        "column": 26,
+        "ruleReported": "typescript(no-misused-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "scripts/local-receiver.ts",
+        "line": 235,
+        "column": 27,
+        "ruleReported": "typescript(no-misused-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 124,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 134,
+        "column": 52,
+        "ruleReported": "typescript(no-unsafe-return)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 134,
+        "column": 60,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 135,
+        "column": 30,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 136,
+        "column": 30,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "src/components/header.tsx",
+        "line": 18,
+        "column": 5,
+        "ruleReported": "typescript(consistent-return)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 140,
+        "column": 73,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 141,
+        "column": 11,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 141,
+        "column": 36,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 146,
+        "column": 40,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 153,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 174,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 182,
+        "column": 42,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 187,
+        "column": 11,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 188,
+        "column": 26,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 189,
+        "column": 26,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 194,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 199,
+        "column": 11,
+        "ruleReported": "typescript(no-unsafe-assignment)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 200,
+        "column": 25,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 201,
+        "column": 25,
+        "ruleReported": "typescript(no-unsafe-member-access)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 209,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "tests/leads.test.ts",
+        "line": 226,
+        "column": 1,
+        "ruleReported": "typescript(no-floating-promises)",
+        "severity": "error"
+      },
+      {
+        "file": "src/components/tracked-link.tsx",
+        "line": 12,
+        "column": 27,
+        "ruleReported": "typescript(no-unsafe-type-assertion)",
+        "severity": "error"
+      },
+      {
+        "file": "src/components/campaign-promo.tsx",
+        "line": 9,
+        "column": 22,
+        "ruleReported": "typescript(no-unsafe-type-assertion)",
+        "severity": "error"
+      }
+    ],
+    "interpretation": "Diagnostics require code-level assessment; not all imply a demonstrated production defect. They were handed to the implementation owner without changing source or disabling rules. Re-run lint after the owner fixes the candidate."
+  },
+  "limits": [
+    "Oxlint type-aware lint is not the TypeScript compiler/Next build gate.",
+    "tsgolint uses the TypeScript Go engine separately from the project's TypeScript compiler; configuration/type semantics should be rechecked after upgrades.",
+    "Native plugins do not imply exact parity with every ESLint/Next plugin rule.",
+    "JSX lint does not prove DOM accessibility, contrast, keyboard, focus, captions quality or screen-reader behavior; axe and manual browser testing remain required.",
+    "no-floating-promises accepts an explicit void under this configuration; void documents discarding the return value and does not catch a rejection.",
+    "No runtime/browser behavior, server delivery or final candidate quality is certified by this canary."
+  ],
+  "references": [
+    "node_modules/oxlint/configuration_schema.json",
+    "pnpm exec oxlint --rules --format json",
+    "https://oxc.rs/docs/guide/usage/linter/config.html",
+    "https://oxc.rs/docs/guide/usage/linter/type-aware.html",
+    "https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-floating-promises.html",
+    "https://oxc.rs/docs/guide/usage/linter/rules/react/rules-of-hooks.html"
+  ]
+}

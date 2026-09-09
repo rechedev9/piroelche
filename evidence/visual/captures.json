@@ -1,0 +1,474 @@
+{
+  "capturedAt": "2026-09-09T15:52:11.426Z",
+  "browser": "153.0.8010.12",
+  "clientClock": "2026-09-09T12:00:00Z",
+  "serverClock": "2026-09-09T12:00:00Z",
+  "motion": "reduce; screenshot animations disabled",
+  "captures": [
+    {
+      "file": "1440x1000-reference-01-inicio.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "1440x1000-demo-01-inicio.png",
+      "url": "http://127.0.0.1:3000/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Pirotecnia para tus celebraciones en Elche",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-public-01-inicio.png",
+      "url": "http://127.0.0.1:3001/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Pirotecnia para tus celebraciones en Elche",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-reference-02-sobre-nosotros.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "1440x1000-demo-02-sobre-nosotros.png",
+      "url": "http://127.0.0.1:3000/sobre-nosotros/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Sobre nosotros | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-public-02-sobre-nosotros.png",
+      "url": "http://127.0.0.1:3001/sobre-nosotros/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Sobre nosotros | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-reference-03-eventos.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "1440x1000-demo-03-eventos.png",
+      "url": "http://127.0.0.1:3000/eventos/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Eventos y celebraciones | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-public-03-eventos.png",
+      "url": "http://127.0.0.1:3001/eventos/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Eventos y celebraciones | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-reference-04-tiendas.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "1440x1000-demo-04-tiendas.png",
+      "url": "http://127.0.0.1:3000/tiendas/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Tiendas y horarios | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-public-04-tiendas.png",
+      "url": "http://127.0.0.1:3001/tiendas/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Tiendas y horarios | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-reference-05-catalogo.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "1440x1000-demo-05-catalogo.png",
+      "url": "http://127.0.0.1:3000/catalogo-pdf/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Catálogo de pirotecnia | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-public-05-catalogo.png",
+      "url": "http://127.0.0.1:3001/catalogo-pdf/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Catálogo de pirotecnia | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-reference-06-contacto.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "1440x1000-demo-06-contacto.png",
+      "url": "http://127.0.0.1:3000/contacto/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-public-06-contacto.png",
+      "url": "http://127.0.0.1:3001/contacto/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-reference-07-familia.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-reference-08-ficha.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-reference-09-referencia.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-reference-10-validacion.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "1440x1000-demo-07-familia.png",
+      "url": "http://127.0.0.1:3000/catalogo-pdf/fuegos-artificiales/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Fuegos artificiales | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-demo-08-ficha.png",
+      "url": "http://127.0.0.1:3000/catalogo-pdf/fuegos-artificiales/bateria-25-disparos/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Batería 25 disparos (ejemplo) | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-demo-09-referencia.png",
+      "url": "http://127.0.0.1:3000/contacto/?motivo=producto&ref=FA-025",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-demo-10-validacion.png",
+      "url": "http://127.0.0.1:3000/contacto/?motivo=producto&ref=FA-025",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "DIV"
+    },
+    {
+      "file": "1440x1000-demo-11-enviando.png",
+      "url": "http://127.0.0.1:3000/contacto/?motivo=producto&ref=FA-025",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "1440x1000-demo-12-aceptada.png",
+      "url": "http://127.0.0.1:3000/contacto/?motivo=producto&ref=FA-025",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "SECTION"
+    },
+    {
+      "file": "1440x1000-public-13-sin-receptor.png",
+      "url": "http://127.0.0.1:3001/contacto/",
+      "viewport": "1440x1000",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-01-inicio.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "390x844-demo-01-inicio.png",
+      "url": "http://127.0.0.1:3000/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Pirotecnia para tus celebraciones en Elche",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-public-01-inicio.png",
+      "url": "http://127.0.0.1:3001/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Pirotecnia para tus celebraciones en Elche",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-02-sobre-nosotros.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "390x844-demo-02-sobre-nosotros.png",
+      "url": "http://127.0.0.1:3000/sobre-nosotros/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Sobre nosotros | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-public-02-sobre-nosotros.png",
+      "url": "http://127.0.0.1:3001/sobre-nosotros/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Sobre nosotros | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-03-eventos.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "390x844-demo-03-eventos.png",
+      "url": "http://127.0.0.1:3000/eventos/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Eventos y celebraciones | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-public-03-eventos.png",
+      "url": "http://127.0.0.1:3001/eventos/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Eventos y celebraciones | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-04-tiendas.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "390x844-demo-04-tiendas.png",
+      "url": "http://127.0.0.1:3000/tiendas/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Tiendas y horarios | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-public-04-tiendas.png",
+      "url": "http://127.0.0.1:3001/tiendas/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Tiendas y horarios | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-05-catalogo.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "390x844-demo-05-catalogo.png",
+      "url": "http://127.0.0.1:3000/catalogo-pdf/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Catálogo de pirotecnia | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-public-05-catalogo.png",
+      "url": "http://127.0.0.1:3001/catalogo-pdf/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Catálogo de pirotecnia | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-06-contacto.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "390x844-demo-06-contacto.png",
+      "url": "http://127.0.0.1:3000/contacto/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-public-06-contacto.png",
+      "url": "http://127.0.0.1:3001/contacto/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-07-familia.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-08-ficha.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-09-referencia.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-reference-10-validacion.png",
+      "url": "http://127.0.0.1:4174/Piroboom%20Prototipo.dc.html",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "",
+      "focusedElement": "BUTTON"
+    },
+    {
+      "file": "390x844-demo-07-familia.png",
+      "url": "http://127.0.0.1:3000/catalogo-pdf/fuegos-artificiales/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Fuegos artificiales | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-demo-08-ficha.png",
+      "url": "http://127.0.0.1:3000/catalogo-pdf/fuegos-artificiales/bateria-25-disparos/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Batería 25 disparos (ejemplo) | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-demo-09-referencia.png",
+      "url": "http://127.0.0.1:3000/contacto/?motivo=producto&ref=FA-025",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-demo-10-validacion.png",
+      "url": "http://127.0.0.1:3000/contacto/?motivo=producto&ref=FA-025",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "DIV"
+    },
+    {
+      "file": "390x844-demo-11-enviando.png",
+      "url": "http://127.0.0.1:3000/contacto/?motivo=producto&ref=FA-025",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    },
+    {
+      "file": "390x844-demo-12-aceptada.png",
+      "url": "http://127.0.0.1:3000/contacto/?motivo=producto&ref=FA-025",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "SECTION"
+    },
+    {
+      "file": "390x844-public-13-sin-receptor.png",
+      "url": "http://127.0.0.1:3001/contacto/",
+      "viewport": "390x844",
+      "fonts": "loaded",
+      "title": "Contacto | Piroboom",
+      "focusedElement": "BODY"
+    }
+  ],
+  "errors": []
+}

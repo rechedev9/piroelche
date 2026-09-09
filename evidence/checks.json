@@ -1,0 +1,75 @@
+{
+  "verifiedAt": "2026-09-09T16:07:20.1450998Z",
+  "reviewedCodeTree": "7bda141c4e67bfcbd7b6dc037c129c3b88f331e3",
+  "productionBuildId": "Qx1Wt5yKrHV1UuYwIXjXZ",
+  "stack": {
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "typescript": "5.9.3",
+    "tailwind": "4.3.3",
+    "shadcnCLI": "4.21.0",
+    "oxlint": "1.82.0"
+  },
+  "commands": [
+    {
+      "exitCode": 0,
+      "command": "pnpm lint"
+    },
+    {
+      "exitCode": 0,
+      "command": "pnpm typecheck"
+    },
+    {
+      "failed": 0,
+      "command": "pnpm test",
+      "skipped": 0,
+      "exitCode": 0,
+      "passed": 44
+    },
+    {
+      "exitCode": 0,
+      "command": "pnpm build"
+    },
+    {
+      "stats": {
+        "startTime": "2026-09-09T15:49:38.459Z",
+        "duration": 119011.06899999999,
+        "expected": 81,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "command": "pnpm test:e2e",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm exec tsx scripts/capture-visual.ts",
+      "captures": 58,
+      "pageErrors": 0,
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm exec tsx scripts/measure-performance.ts",
+      "runs": 6,
+      "exitCode": 0
+    },
+    {
+      "widths": [
+        390,
+        1440
+      ],
+      "command": "pnpm exec tsx scripts/verify-promo.ts",
+      "exitCode": 0
+    }
+  ],
+  "independentReview": {
+    "report": "docs/REVIEW.md",
+    "model": "gpt-6-astra",
+    "agent": "final_p0_review",
+    "findings": 0,
+    "maxPriority": "P0",
+    "reasoning": "high",
+    "staticOnly": true
+  },
+  "caveat": "Local verification; no CI run, deployment, physical-device testing, screen-reader audit, remote mailbox receipt, or legal approval."
+}

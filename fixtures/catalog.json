@@ -1,0 +1,656 @@
+{
+  "products": [
+    {
+      "ref": "FA-025",
+      "slug": "bateria-25-disparos",
+      "familyId": "fuegos",
+      "name": "Batería 25 disparos (ejemplo)",
+      "summary": "Ejemplo: Crisantemos dorados con cola. 30 s.",
+      "description": "Contenido de ejemplo sin validar. Batería compacta de 25 disparos con efecto de crisantemo dorado y cola brillante. Pensada para un final breve en jardín o zona abierta.",
+      "attributes": [
+        {
+          "label": "Disparos (ejemplo)",
+          "value": "25"
+        },
+        {
+          "label": "Duración aprox. (ejemplo)",
+          "value": "30 s"
+        },
+        {
+          "label": "Altura aprox. (ejemplo)",
+          "value": "25 m"
+        },
+        {
+          "label": "Efecto (ejemplo)",
+          "value": "Crisantemo dorado con cola"
+        }
+      ],
+      "classification": "Categoría F2 (ejemplo sin validar)",
+      "age": "+18 (ejemplo sin validar)",
+      "use": "Exterior (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. Uso en exterior con distancia de seguridad indicada en el envase. Datos pendientes de validar para esta referencia.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      },
+      "video": {
+        "src": "/media-demo/video/",
+        "audio": "silent",
+        "captions": "/media-demo/captions/",
+        "caption": "Vídeo técnico de demostración; no muestra un producto",
+        "provenance": {
+          "kind": "prototype-fixture",
+          "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+          "note": "Archivo técnico creado con FFmpeg para probar reproducción manual y fallo de medios. No representa un artículo ni un evento.",
+          "pending": [
+            "No apto para publicación; sustituir por datos acreditados"
+          ],
+          "verifiedFields": []
+        }
+      }
+    },
+    {
+      "ref": "FA-100",
+      "slug": "bateria-100-disparos",
+      "familyId": "fuegos",
+      "name": "Batería 100 disparos (ejemplo)",
+      "summary": "Ejemplo: Abanico multicolor. 60 s.",
+      "description": "Contenido de ejemplo sin validar. Batería de 100 disparos en abanico con peonías de colores y final de estruendo. Para celebraciones mayores con espacio amplio.",
+      "attributes": [
+        {
+          "label": "Disparos (ejemplo)",
+          "value": "100"
+        },
+        {
+          "label": "Duración aprox. (ejemplo)",
+          "value": "60 s"
+        },
+        {
+          "label": "Altura aprox. (ejemplo)",
+          "value": "35 m"
+        },
+        {
+          "label": "Efecto (ejemplo)",
+          "value": "Peonías multicolor en abanico"
+        }
+      ],
+      "classification": "Categoría F3 (ejemplo sin validar)",
+      "age": "+18 (ejemplo sin validar)",
+      "use": "Exterior (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. Requiere amplio espacio abierto y distancia de seguridad mayor. Datos pendientes de validar para esta referencia.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "ref": "FA-007",
+      "slug": "cohetes-de-colores-pack-6",
+      "familyId": "fuegos",
+      "name": "Cohetes de colores (pack 6) (ejemplo)",
+      "summary": "Ejemplo: Cohete clásico con estallido de color.",
+      "description": "Contenido de ejemplo sin validar. Pack de seis cohetes con estallido de color. Artículo tradicional para exterior.",
+      "attributes": [
+        {
+          "label": "Unidades (ejemplo)",
+          "value": "6"
+        },
+        {
+          "label": "Efecto (ejemplo)",
+          "value": "Estallido de color"
+        },
+        {
+          "label": "Altura aprox. (ejemplo)",
+          "value": "40 m"
+        }
+      ],
+      "classification": "Categoría F2 (ejemplo sin validar)",
+      "age": "+18 (ejemplo sin validar)",
+      "use": "Exterior (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. Datos pendientes de validar para esta referencia.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "ref": "HU-R60",
+      "slug": "bomba-de-humo-rosa",
+      "familyId": "humo",
+      "name": "Bomba de humo rosa (ejemplo)",
+      "summary": "Ejemplo: Humo denso rosa. 60 s.",
+      "description": "Contenido de ejemplo sin validar. Bomba de humo de color rosa con tirador. Habitual en revelaciones de sexo y sesiones de fotos en exterior.",
+      "attributes": [
+        {
+          "label": "Color (ejemplo)",
+          "value": "Rosa"
+        },
+        {
+          "label": "Duración aprox. (ejemplo)",
+          "value": "60 s"
+        },
+        {
+          "label": "Accionamiento (ejemplo)",
+          "value": "Tirador manual"
+        }
+      ],
+      "classification": "Categoría P1 (ejemplo sin validar)",
+      "age": "+18 (ejemplo sin validar)",
+      "use": "Exterior (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. Uso en exterior. Puede manchar tejidos. Datos pendientes de validar para esta referencia.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "ref": "HU-A60",
+      "slug": "bomba-de-humo-azul",
+      "familyId": "humo",
+      "name": "Bomba de humo azul (ejemplo)",
+      "summary": "Ejemplo: Humo denso azul. 60 s.",
+      "description": "Contenido de ejemplo sin validar. Bomba de humo de color azul con tirador. Misma referencia que la rosa, en azul.",
+      "attributes": [
+        {
+          "label": "Color (ejemplo)",
+          "value": "Azul"
+        },
+        {
+          "label": "Duración aprox. (ejemplo)",
+          "value": "60 s"
+        },
+        {
+          "label": "Accionamiento (ejemplo)",
+          "value": "Tirador manual"
+        }
+      ],
+      "classification": "Categoría P1 (ejemplo sin validar)",
+      "age": "+18 (ejemplo sin validar)",
+      "use": "Exterior (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. Uso en exterior. Puede manchar tejidos. Datos pendientes de validar para esta referencia.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "ref": "HU-B90",
+      "slug": "antorcha-de-humo-blanco",
+      "familyId": "humo",
+      "name": "Antorcha de humo blanco (ejemplo)",
+      "summary": "Ejemplo: Humo blanco de mano. 90 s.",
+      "description": "Contenido de ejemplo sin validar. Antorcha de humo blanco de mano, para fotografía y ambientación en exterior.",
+      "attributes": [
+        {
+          "label": "Color (ejemplo)",
+          "value": "Blanco"
+        },
+        {
+          "label": "Duración aprox. (ejemplo)",
+          "value": "90 s"
+        },
+        {
+          "label": "Accionamiento (ejemplo)",
+          "value": "Tirador manual"
+        }
+      ],
+      "classification": "Categoría P1 (ejemplo sin validar)",
+      "age": "+18 (ejemplo sin validar)",
+      "use": "Exterior (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. Datos pendientes de validar para esta referencia.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "ref": "FF-060",
+      "slug": "fuente-fria-60-s",
+      "familyId": "frio",
+      "name": "Fuente fría 60 s (ejemplo)",
+      "summary": "Ejemplo: Chispa blanca plateada, baja temperatura.",
+      "description": "Contenido de ejemplo sin validar. Fuente de chispa fría plateada de un minuto. Se usa en entradas, bailes nupciales y presentación de tartas.",
+      "attributes": [
+        {
+          "label": "Duración aprox. (ejemplo)",
+          "value": "60 s"
+        },
+        {
+          "label": "Altura aprox. (ejemplo)",
+          "value": "2–3 m"
+        },
+        {
+          "label": "Efecto (ejemplo)",
+          "value": "Chispa plateada"
+        }
+      ],
+      "classification": "Categoría F1 (ejemplo sin validar)",
+      "age": "+12 (ejemplo sin validar)",
+      "use": "Según recinto (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. La idoneidad en interior depende del recinto, la ventilación y la autorización del local. Datos pendientes de validar.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "ref": "FF-B40",
+      "slug": "bengalas-de-mano-40-cm-pack-10",
+      "familyId": "frio",
+      "name": "Bengalas de mano 40 cm (pack 10) (ejemplo)",
+      "summary": "Ejemplo: Bengalas largas para pasillo y fotos.",
+      "description": "Contenido de ejemplo sin validar. Pack de diez bengalas de 40 cm para pasillos de salida y fotografías nocturnas.",
+      "attributes": [
+        {
+          "label": "Unidades (ejemplo)",
+          "value": "10"
+        },
+        {
+          "label": "Duración aprox. (ejemplo)",
+          "value": "90 s"
+        },
+        {
+          "label": "Longitud (ejemplo)",
+          "value": "40 cm"
+        }
+      ],
+      "classification": "Categoría F1 (ejemplo sin validar)",
+      "age": "+12 (ejemplo sin validar)",
+      "use": "Exterior (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. Datos pendientes de validar para esta referencia.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "ref": "TR-100",
+      "slug": "traca-100-petardos",
+      "familyId": "tracas",
+      "name": "Traca 100 petardos (ejemplo)",
+      "summary": "Ejemplo: Traca tradicional de 100.",
+      "description": "Contenido de ejemplo sin validar. Traca valenciana de cien petardos para finales de fiesta y celebraciones populares.",
+      "attributes": [
+        {
+          "label": "Petardos (ejemplo)",
+          "value": "100"
+        },
+        {
+          "label": "Duración aprox. (ejemplo)",
+          "value": "20 s"
+        }
+      ],
+      "classification": "Categoría F2 (ejemplo sin validar)",
+      "age": "+18 (ejemplo sin validar)",
+      "use": "Exterior (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. Datos pendientes de validar para esta referencia.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "ref": "TR-TH",
+      "slug": "petardos-de-mecha-caja-20",
+      "familyId": "tracas",
+      "name": "Petardos de mecha (caja 20) (ejemplo)",
+      "summary": "Ejemplo: Petardo clásico de mecha.",
+      "description": "Contenido de ejemplo sin validar. Caja de veinte petardos de mecha. Artículo tradicional de venta al público.",
+      "attributes": [
+        {
+          "label": "Unidades (ejemplo)",
+          "value": "20"
+        },
+        {
+          "label": "Efecto (ejemplo)",
+          "value": "Estruendo"
+        }
+      ],
+      "classification": "Categoría F2 (ejemplo sin validar)",
+      "age": "+18 (ejemplo sin validar)",
+      "use": "Exterior (ejemplo sin validar)",
+      "conditions": "No usar estos datos como instrucciones. Datos pendientes de validar para esta referencia.",
+      "price": null,
+      "availability": "unknown",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "caso-ejemplo-1",
+      "title": "Boda en finca · Elche (ejemplo)",
+      "detail": "Caso ilustrativo del prototipo, no es un trabajo acreditado. Fuentes frías en la entrada de los novios. Junio 2025.",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "id": "caso-ejemplo-2",
+      "title": "Revelación de sexo · Santa Pola (ejemplo)",
+      "detail": "Caso ilustrativo del prototipo, no es un trabajo acreditado. Humo azul en playa, con permiso del recinto. Abril 2025.",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "id": "caso-ejemplo-3",
+      "title": "Fiestas de barrio · Elche (ejemplo)",
+      "detail": "Caso ilustrativo del prototipo, no es un trabajo acreditado. Traca final y batería de cierre. Agosto 2025.",
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "caseta-ejemplo-1",
+      "name": "Caseta Elche · Centro (ejemplo)",
+      "address": "Ubicación a validar · Elche · solo demostración",
+      "schedule": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "intervals": [
+            {
+              "opens": "10:00",
+              "closes": "14:00"
+            },
+            {
+              "opens": "17:00",
+              "closes": "21:00"
+            }
+          ]
+        }
+      ],
+      "exceptions": [
+        {
+          "date": "2026-12-25",
+          "intervals": [],
+          "reason": "Cierre de ejemplo",
+          "confirmed": true
+        }
+      ],
+      "confirmedUntil": "2027-01-05",
+      "exceptionsConfirmedUntil": "2027-01-05",
+      "campaign": {
+        "startsOn": "2026-12-19",
+        "endsOn": "2027-01-05",
+        "confirmed": true,
+        "confirmedUntil": "2027-01-05"
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "id": "caseta-ejemplo-2",
+      "name": "Caseta Elche · Carrús (ejemplo)",
+      "address": "Ubicación a validar · Elche · solo demostración",
+      "schedule": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "intervals": [
+            {
+              "opens": "10:00",
+              "closes": "14:00"
+            },
+            {
+              "opens": "17:00",
+              "closes": "21:00"
+            }
+          ]
+        }
+      ],
+      "exceptions": [
+        {
+          "date": "2026-12-25",
+          "intervals": [],
+          "reason": "Cierre de ejemplo",
+          "confirmed": true
+        }
+      ],
+      "confirmedUntil": "2027-01-05",
+      "exceptionsConfirmedUntil": "2027-01-05",
+      "campaign": {
+        "startsOn": "2026-12-19",
+        "endsOn": "2027-01-05",
+        "confirmed": true,
+        "confirmedUntil": "2027-01-05"
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "id": "caseta-ejemplo-3",
+      "name": "Caseta Santa Pola · Paseo (ejemplo)",
+      "address": "Ubicación a validar · Santa Pola · solo demostración",
+      "schedule": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "intervals": [
+            {
+              "opens": "10:00",
+              "closes": "21:00"
+            }
+          ]
+        }
+      ],
+      "exceptions": [
+        {
+          "date": "2026-12-25",
+          "intervals": [],
+          "reason": "Cierre de ejemplo",
+          "confirmed": true
+        }
+      ],
+      "confirmedUntil": "2027-01-05",
+      "exceptionsConfirmedUntil": "2027-01-05",
+      "campaign": {
+        "startsOn": "2026-12-19",
+        "endsOn": "2027-01-05",
+        "confirmed": true,
+        "confirmedUntil": "2027-01-05"
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    },
+    {
+      "id": "caseta-ejemplo-4",
+      "name": "Caseta Elche · Altabix (ejemplo)",
+      "address": "Ubicación a validar · Elche · solo demostración",
+      "schedule": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "intervals": [
+            {
+              "opens": "17:00",
+              "closes": "21:00"
+            }
+          ]
+        }
+      ],
+      "exceptions": [
+        {
+          "date": "2026-12-25",
+          "intervals": [],
+          "reason": "Cierre de ejemplo",
+          "confirmed": true
+        }
+      ],
+      "confirmedUntil": "2027-01-05",
+      "exceptionsConfirmedUntil": "2027-01-05",
+      "campaign": {
+        "startsOn": "2026-12-19",
+        "endsOn": "2027-01-05",
+        "confirmed": true,
+        "confirmedUntil": "2027-01-05"
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "prototype-fixture",
+        "source": "piroboom-handoff/inputs/diseno/Piroboom Prototipo.dc.html",
+        "note": "DEMOSTRACION LOCAL. Datos de ejemplo del prototipo; no acreditan inventario, características, idoneidad, edad, categoría, trabajos ni ubicaciones reales.",
+        "pending": [
+          "No apto para publicación; sustituir por datos acreditados"
+        ],
+        "verifiedFields": []
+      }
+    }
+  ]
+}

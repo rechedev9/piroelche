@@ -2,21 +2,103 @@
 
 Contrato: `piroboom-handoff/MASTER_PROMPT.md`, leído completo. Referencia original conservada sin modificar y fuera de `public/`.
 
-## Plan en ejecución
+## Resultado
 
-1. Inspeccionar y ejecutar el diseño; contrastar fuentes y fijar contratos de contenido.
-2. Implementar Next.js App Router, rutas completas y componentes fieles al diseño.
-3. Integrar catálogo, formularios con servidor y receptor local, horario por ubicación y configuración.
-4. Probar lógica, HTTP, navegador, accesibilidad, aislamiento y rendimiento; comparar capturas.
-5. Revisar candidato independiente P0 y entregar instrucciones, trazabilidad y bloqueos.
+Las seis secciones, las cuatro familias, listados y fichas, tres rutas legales y 404 están implementados con URLs recargables y renderizado en servidor. Los recorridos de producto, evento y visita llegan a una acción útil. El formulario procesa HTTP real hasta un receptor SQLite privado de pruebas, con validación, límites persistentes e idempotencia atómica; la versión pública sin receptor ofrece teléfono y responde 503.
+
+Contenido, horarios, medios, casos y campañas se editan en JSON validado, sin panel adicional. La revisión local muestra productos/casos identificados como ejemplo; la versión pública no los resuelve. La tienda permanente y las cuatro casetas proceden de la página oficial declarada fuente de verdad por el usuario. El modelo conserva los horarios publicados y separa las fechas de campaña ausentes de una afirmación de apertura actual.
+
+La implementación se ha ejercitado con pruebas de lógica, HTTP, tres motores de navegador y bucles manuales de Computer Use. [VALIDATION.md](VALIDATION.md) registra el candidato, comandos, capturas, revisión y limitaciones. [README.md](README.md) contiene arranque y mantenimiento; [CONTENT_STATUS.md](CONTENT_STATUS.md), las condiciones externas para publicar.
 
 ## Decisiones
 
+- Estilos en Tailwind CSS **4.3.3**, última estable comprobada en el registro el 09/09/2026, con PostCSS de la misma versión. Componentes **shadcn/ui** obtenidos con CLI **4.21.0**: Button, Input, Textarea y Label, adaptados al diseño aprobado y usados en las páginas/formularios. La capa visual mantiene los tokens originales; [UI.md](docs/UI.md) documenta la integración y sus decisiones.
 - Carpeta inicial vacía y sin Git. Se recuperó el ZIP Next.js del escritorio; no había aplicación ni cambios previos.
 - Next.js 16.3.4, React 19.2.8, TypeScript estricto y pnpm. Versiones estables contrastadas con registro y documentación oficial.
 - Sin publicación, push, cambios en WordPress o contratación de servicios.
 - El prototipo se ejecuta en navegador local; no se utilizará su runtime en la aplicación.
 - Fixtures únicamente mediante configuración de revisión local; contenido publicado separado.
+- La página `https://pirotecniaelche.es/tiendas/` manda sobre los datos de tiendas por indicación posterior del usuario. Se revisó de nuevo en navegador y se incorporaron Elche, Alicante, Santa Pola y La Zenia con sus direcciones exactas y horario diario 10:00–18:00. No se inventan periodos de campaña ni mapas de casetas. Evidencia: `evidence/sources/stores-source.json`.
+- La demo normal usa esas mismas tiendas. `REVIEW_CAMPAIGNS=1` solo sustituye campañas por fixtures cuando las dos condiciones de demo local son válidas; Vercel nunca activa esa ruta de QA.
 - Fuentes y marca suministrada se alojan localmente; no se fabrican fotografías ni casos.
+- Las fuentes Lilita One/Manrope, tokens, proporciones, logo de cabecera/pie y orden de bloques reproducen el HTML aprobado. El menú móvil accesible, los enlaces operativos, las advertencias de prueba, los textos comerciales sin acreditar y los datos de tiendas explican las diferencias editoriales documentadas en VALIDATION.
+- No hay proveedores opcionales de analítica, mapas o vídeo externos, por lo que no se añade un banner de consentimiento sin finalidad. El adaptador tipado permanece sin salida externa. WhatsApp y popup están apagados por defecto.
+- Todas las fechas se calculan en `Europe/Madrid`. El reloj fijo se inyecta exclusivamente desde el lanzador de revisión, nunca en la lógica de producción. Las páginas dinámicas evitan publicar indefinidamente un estado horario precalculado.
+- No se migró ni eliminó WordPress. La aceptación local no se presenta como recepción en buzón. La publicación con textos legales en borrador falla explícitamente antes del build.
+- Petición posterior: Oxlint con reglas explícitas y análisis de tipos sustituye ESLint.
+- Petición posterior: no utilizar `autoreview`; se comprobó que sus rutas instaladas en `.codex/skills` y `.agents/skills` ya no existen. No se ha ejecutado. Se mantiene la revisión del candidato mediante un agente aislado, conforme al encargo.
 
-La trazabilidad y los resultados se completan con la validación del candidato.
+## Trazabilidad M01–M68
+
+Los 68 requisitos, prioridades, criterios originales, dependencias, decisiones y evidencias se conservan íntegros en [docs/BACKLOG.md](docs/BACKLOG.md), junto a J01–J06 y Q01–Q18. La tabla compacta siguiente resume el alcance final; las dependencias comerciales no se convierten en tareas de código ni las propuestas anteriores sustituyen el diseño aprobado.
+
+| ID | Estado | Aplicación / límite y evidencia |
+| --- | --- | --- |
+| M01 | Dependencia externa | La propiedad debe confirmar y firmar oferta, ejecución propia o colaboración y responsabilidades. El código no puede acreditar habilitaciones. Matriz T17; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M02 | Implementado / comprobado local | Retirar promesas absolutas y copiar solo alcance acreditado; la aprobación técnica final de redacción sigue externa. Matriz T17,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M03 | Dependencia externa | La instrucción posterior del usuario declara Tiendas fuente de verdad: publicar sus cuatro casetas con dirección y horario exactos. Fechas de campaña, festivos y apertura efectiva siguen sin confirmar. Matriz T13,T14,T17; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M04 | Implementado / comprobado local | Aplicar catálogo, consulta y visita presencial, sin checkout ni envío al público. Corregir referencia a art. 124.2; validación jurídica final externa. Matriz T03,T05,T15; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M05 | Dependencia externa | Componente configurable, apagado hasta revisar uso y destino. No automatizar venta ni mensajes; teléfono y formulario propios resuelven el recorrido. Matriz T15,T19; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M06 | Dependencia externa | No incorporar feeds ni presupuestar elegibilidad garantizada; la revisión comercial por producto, servicio y destino queda fuera del código. Matriz T19,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M07 | Implementado / comprobado local | Inspeccionar prototipo e implementación, conservar capturas y medir funciones locales. PDF real recuperado; recepción en buzón y dispositivos físicos se declaran aparte. Matriz T01–T24; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M08 | Implementado / comprobado local | Conservar las seis rutas, tres legales y sus contenidos; responder 404 a rutas inexistentes y mantener slash coherente. Matriz T01,T02,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M09 | Implementado / comprobado local | Aplicar los dos accesos aprobados con destino catálogo/eventos; la comprensión con participantes pertenece a Q03. Matriz T03; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M10 | Implementado / comprobado local | Usar composición y tono final, con ubicación y siguiente paso; retirar antigüedad, equipo o promesas sin fuente. Matriz T03,T17,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M11 | Implementado / comprobado local | Cada familia lleva a su URL propia de listado; no usar un destino indiferenciado ni una única ancla en Inicio. Matriz T03,T04; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M12 | Implementado / comprobado local | Los CTA de celebraciones enlazan Eventos; comprobar también acciones hermanas y pie. Matriz T03,T15; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M13 | Implementado / comprobado local | Traducir la secuencia editorial final con contenido propio por bloque; conservar las repeticiones funcionales de navegación. Matriz T01,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M14 | Sustituido por decisión final | La creación de una dirección visual nueva queda sustituida por tokens exactos del HTML aprobado; conservar logo, Lilita One/Manrope, amarillo y magenta por uso. Matriz T20,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M15 | Dependencia externa | Se necesitan medios auténticos y autorizados. Preparar placeholders honestos y campos de procedencia; no generar pruebas de productos o eventos. Matriz T16,T17,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M16 | Implementado / comprobado local | Menú móvil accesible, Escape, foco y CTA contextual; comprobar textos largos sin esconder overflow global. Matriz T02,T20,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M17 | Dependencia externa | No publicar las 77 reseñas heredadas como cifra actual ni testimonios de ejemplo. Reutilizar solo fuente, fecha y permiso acreditados. Matriz T17,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M18 | Implementado / comprobado local | Implementar familias, listado y ficha dentro de /catalogo-pdf/; publicación vacía honesta y fixtures separadas permiten probar todos los estados. Matriz T04,T16,T17; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M19 | Dependencia externa | El PDF recuperado aporta una fuente comercial, pero no un inventario validado: contiene campos incompletos. Preparar esquema y exigir aprobación de referencias/atributos. Matriz T16,T17,T23; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M20 | Implementado / comprobado local | Modelar familia comercial, ocasión y clasificación como dimensiones independientes; omitir categorías no acreditadas. Matriz T04,T16; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M21 | Implementado / comprobado local | Construir ficha final, estados parciales y consulta contextual; valores técnicos, precio y stock solo cuando estén acreditados. Matriz T04,T05,T16,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M22 | Dependencia externa | La clasificación y condiciones necesitan ficha del fabricante y revisión correspondiente; no deducir edad, distancia, altura o uso por familia. Matriz T16,T17; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M23 | Implementado / comprobado local | Separar publicación, precio y disponibilidad. Desconocido se expresa como consulta, nunca como cero, agotado o stock afirmado. Matriz T04,T16,T17; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M24 | Implementado / comprobado local | Conservar ID público de referencia en Contacto, resolver nombre en servidor y permitir quitar contexto; no transportar PII en URL. Matriz T05,T06,T18; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M25 | Diferido | Búsqueda y filtros avanzados quedan fuera de esta versión conforme al master; las cuatro familias y breadcrumbs sí pertenecen al alcance. Matriz T04; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M26 | Condicional | Implementar vídeo opcional con reproducción real, poster y fallo/ausencia; activar con un archivo autorizado correspondiente a la referencia. Matriz T16,T20; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M27 | Implementado / comprobado local | Enlazar PDF real con edición visible 2026 y tamaño comprobado; conservar HTML como alternativa. La revisión integral de accesibilidad/documento sigue pendiente. Matriz T15,T16,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M28 | Diferido | Lista de interés local no exigida por el diseño final ni por el master; no crear reservas o compromisos de stock. Matriz —; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M29 | Dependencia externa | Confirmar alcance, operador, montaje, terceros y responsabilidades. Mientras tanto, tarjetas y proceso explican valoración humana sin promesas técnicas. Matriz T07,T17; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M30 | Implementado / comprobado local | Conservar Boda, Revelación de sexo, Cumpleaños, Celebración mayor / fiesta y Otra; integrar comuniones y corporativo sin inventar servicios propios. Matriz T03,T07; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M31 | Dependencia externa | Componente de trabajos terminado, pero tarjetas públicas solo con casos acreditados y permiso de imagen; fixtures locales claramente marcadas. Matriz T16,T17,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M32 | Implementado / comprobado local | Proceso visible de solicitud, valoración, propuesta y confirmación; aceptación del formulario no equivale a reserva. Matriz T07,T09; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M33 | Implementado / comprobado local | Formulario breve con ocasión ID explícito, fecha o por definir, lugar aún no cerrado, un canal de respuesta y presupuesto opcional. Matriz T07,T08; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M34 | Dependencia externa | Viabilidad y contingencias requieren responsable técnico; evitar atribuir permisos universales o condiciones inventadas. No añadir FAQ ajena a composición aprobada por defecto. Matriz T07,T17; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M35 | Diferido | Rangos económicos no validados no son requisito automático; mantener consulta humana sin precio ficticio. Matriz T17; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M36 | Implementado / comprobado local | Ficha con datos de la fuente de verdad elegida por el usuario; festivos, foto del acceso, parking y entrada exacta siguen pendientes de confirmación. Matriz T12,T15,T16; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M37 | Implementado / comprobado local | Vigencia y horarios por ubicación, revisión editorial y estados antes/durante/después; evaluar en Europe/Madrid. Una caseta publicada sin fechas mantiene estado no confirmado. Matriz T13,T14,T23; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M38 | Implementado / comprobado local | Mostrar campaña no confirmada, futura, activa o finalizada según datos. Las cuatro ubicaciones de la fuente real son visibles sin afirmar apertura, con teléfono y alternativa permanente. Matriz T13,T14,T16; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M39 | Implementado / comprobado local | Fuente única para horarios, excepciones y vigencia, consumida por Inicio, Tiendas, Contacto y pie; demostrar propagación. Matriz T12,T13,T23; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M40 | Implementado / comprobado local | Probar URLs y alternativa de teléfono; navegación real hasta entrada y comportamiento en Android/iOS físicos requieren validación externa. Matriz T15; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M41 | Condicional | Solo campañas con fechas y responsable confirmados; popup desactivado por defecto y diálogo accesible cuando proceda. Matriz T13,T14,T20; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M42 | Dependencia externa | No inventar trayectoria ni hitos. La página usa los tres bloques aprobados con lenguaje neutral hasta contar con aprobación. Matriz T17,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M43 | Dependencia externa | Personas, roles técnicos y fotografías necesitan confirmación y permiso; conservar el bloque aprobado sin identidades ficticias. Matriz T17,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M44 | Dependencia externa | No publicar acreditaciones, permisos o instalaciones inferidos de publicidad. Pedir evidencia vigente y limitar documentos personales. Matriz T17,T18; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M45 | Implementado / comprobado local | El cierre con visita a tienda y planificación de evento está en el diseño final: se implementa pese a prioridad P2 original. Matriz T03,T15,T21; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M46 | Implementado / comprobado local | Motivos Producto, Evento y Visita / otras mediante radios semánticos; limpiar campos residuales y aceptar un solo canal de respuesta. Matriz T05,T06,T07,T08; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M47 | Dependencia externa | Implementación y aceptación HTTP en receptor local son verificables ahora; publicar recepción requiere proveedor/destino autorizados y prueba real de buzón, sin enviar por iniciativa propia. Matriz T09,T10,T11; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M48 | Implementado / comprobado local | Validación cliente/servidor, resumen y foco de errores, estados anunciados, timeout, conservación y reintento idempotente; sin alert ni éxito falso. Matriz T08,T09,T10,T11,T20; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M49 | Dependencia externa | No repetir el plazo ficticio de un día laborable ni prometer respuesta inmediata. Mostrar siguiente paso y teléfono mientras no exista SLA aprobado. Matriz T09,T10,T17; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M50 | Dependencia externa | Minimización y contrato técnicos implementables; identidad, base jurídica, proveedor, conservación y texto final requieren validación del responsable. Matriz T18,T19; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M51 | Condicional | Auditar red/almacenamiento siempre. Sin terceros opcionales no inventar banner; si se activan, aceptar/rechazar/configurar y revocar de forma equivalente. Matriz T19; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M52 | Implementado / comprobado local | Contenido SSR propio por ruta, title/descripción/H1/canonical/social y enlaces pertinentes; publicación solo de datos aptos. Matriz T01,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M53 | Implementado / comprobado local | Revisar DOM con alt semántico o vacío en decorativas y jerarquía de encabezados; placeholders no afirman autenticidad. Matriz T20,T21,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M54 | Implementado / comprobado local | Schema mínimo con datos visibles contrastados y breadcrumbs válidos; no añadir stock, precios, ratings o coordenadas inventados. Matriz T17,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M55 | Dependencia externa | La propiedad y edición de Google Business Profile no están disponibles ni autorizadas; no crear puntos permanentes ficticios. Matriz T12; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M56 | Implementado / comprobado local | No prometer resultados enriquecidos ni elegibilidad comercial; mantener sin ofertas/ratings inventados ni feeds restringidos. Matriz T17,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M57 | Implementado / comprobado local | Preservar rutas y respuesta HTTP, canonicals/sitemap solo publicados y noindex en preview/fixtures; verificar dominio después de autorización de despliegue. Matriz T01,T17,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M58 | Dependencia externa | Inventariar repo/dependencias localmente; acceso autenticado a CMS/hosting antiguo y restauración de ese sistema requieren accesos/autorización. No migrar ni borrar producción. Matriz T24; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M59 | Implementado / comprobado local | Medir build productivo local con perfiles y entorno documentados. Métricas de campo/p75 e INP real quedan pendientes de muestra de usuarios. Matriz T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M60 | Implementado / comprobado local | Dimensionar medios, alojar fuentes controladas, reservar espacio y evitar terceros innecesarios; ajustar según mediciones reales. Matriz T20,T21,T22; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M61 | Implementado / comprobado local | Pruebas automáticas y revisión manual de teclado, foco, contraste y reflow; no declarar lector de pantalla físico o conformidad total sin prueba. Matriz T20; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M62 | Implementado / comprobado local | Sin destellos añadidos, autoplay sonoro ni movimiento esencial; controles reales y reduced-motion. Matriz T16,T20; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M63 | Implementado / comprobado local | Adaptador tipado sin salida externa por defecto; lead_received solo después de aceptación real, sin ID de consulta ni PII a terceros. Matriz T09,T18,T19; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M64 | Implementado / comprobado local | Contenido estructurado editable, validación, procedencia y caducidad; asignar responsable comercial real sigue pendiente de la propiedad. Matriz T13,T17,T23; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M65 | Implementado / comprobado local | Ejecutar recorridos locales y documentar despliegue/reversión ensayable; buzón y restauración/despliegue productivo no se dan por hechos. Matriz T01–T24; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M66 | Diferido | Optimización por ventas requiere lanzamiento y datos operativos comparables; no generar porcentajes de mejora ni CRM simulado. Matriz —; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M67 | Diferido | No traducir automáticamente: idiomas adicionales requieren demanda y capacidad de atención/mantenimiento confirmadas. Matriz —; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
+| M68 | Diferido | Reservas, stock, pagos y checkout se tratan como proyecto posterior con caso de negocio y autorización propios. Matriz —; evidencia completa en [BACKLOG](docs/BACKLOG.md). |
