@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.next-demo/
+.vercel/
+.env*
+!.env.example
+.local/
+test-results/
+playwright-report/
+*.tsbuildinfo
+piroboom-handoff/
+evidence/private/
