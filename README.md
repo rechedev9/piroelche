@@ -112,6 +112,8 @@ Mide Inicio, Catálogo y Contacto en perfiles Lighthouse móvil/escritorio. Es l
 
 ## Recuperación y futuro despliegue
 
+La [integración continua](docs/CI.md) define las comprobaciones automáticas en GitHub Actions, con dependencias fijadas, tres motores de navegador y sin secretos ni despliegues. Su ejecución remota queda pendiente de conectar un repositorio autorizado.
+
 El candidato local y su identificación están en [VALIDATION.md](VALIDATION.md). El ensayo local reconstruye una copia aislada del árbol versionado con `pnpm install --offline --frozen-lockfile`, `pnpm build` y arranque en otro puerto; comprueba rutas y ausencia de receptor. No restaura ni modifica el WordPress actual.
 
 Para recuperar una versión local, crear una carpeta nueva mediante `git worktree add --detach <carpeta-nueva> <commit-revisado>`, instalar con el lockfile y construir. Conservar el árbol anterior y cualquier configuración privada; no usar `reset --hard` sobre trabajo ajeno. Para retirar un build, detener su proceso y volver a arrancar el último candidato verificado, manteniendo el almacenamiento duradero y la ventana de idempotencia.

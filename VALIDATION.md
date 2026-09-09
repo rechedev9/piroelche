@@ -6,6 +6,14 @@ Fecha: 9 de septiembre de 2026. Entorno local Windows 11 25H2, Node 24.18.0, pnp
 
 El código final corresponde al árbol Git `7bda141c4e67bfcbd7b6dc037c129c3b88f331e3`. Un agente con contexto separado, GPT-6 Astra y razonamiento alto, completó la revisión estática **P0 únicamente**: **no se identificaron P0**. [Informe íntegro](docs/REVIEW.md). No equivale a ausencia de problemas de otras prioridades. No se ejecutó autoreview, por petición expresa del usuario. Tras la revisión solo se completaron documentos y evidencias; se comprobó que código, contenido, dependencias y configuración seguían idénticos al árbol revisado.
 
+## Ampliación de integración continua
+
+Tras el commit local `9362387061a88c16f9b2a7173cbf0ec1149115c2`, se añadió [CI](docs/CI.md). El candidato de esta ampliación es el árbol `f3da9f1f3fdc988d4537e489208a206c35b8a0a7`: únicamente workflow y documentación; código, contenido, dependencias y configuración de la aplicación permanecen idénticos. La revisión aislada del delta completo no identificó P0; [informe](docs/CI_REVIEW.md). El resultado sigue limitado a esa prioridad.
+
+`actionlint v1.7.12` y Prettier terminaron con código 0. `pnpm audit --prod --json` registró cero vulnerabilidades conocidas entre 179 dependencias; no constituye una auditoría de seguridad integral. No se repitieron las suites de aplicación para este cambio de CI ni se ejecutó GitHub Actions: no hay remoto configurado. Tras la revisión solo se completaron documentos, conservando idéntico el workflow revisado.
+
+La comprobación actual de publicación sigue produciendo el fallo esperado de textos legales pendientes. El build público local responde 503 `not_configured` en `POST /api/leads`; Contacto responde 200, conserva el teléfono real y la cabecera `noindex, nofollow`. No se dispone todavía de proveedor/destino autorizado, textos legales aprobados ni acceso/autorización para publicar. Este cierre de CI no levanta esas condiciones.
+
 ## Comandos ejecutados
 
 | Comando | Resultado final con tiendas oficiales, Tailwind y shadcn |
