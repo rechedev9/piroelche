@@ -10,13 +10,14 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
-        <div>
+        <div className="footer-brand">
           <Link href="/" aria-label="Piroboom, inicio">
             <Image
-              src="/brand/logo.webp"
+              src="/brand/logo-header.webp"
               alt="Piroboom"
-              width={120}
-              height={40}
+              width={680}
+              height={247}
+              sizes="(max-width: 650px) 150px, 170px"
             />
           </Link>
           <p>
@@ -34,10 +35,11 @@ export function Footer() {
               </li>
             ))}
           </ul>
-          <p className="small">
+          <p className="footer-note">
             Horario habitual publicado. Confirma festivos.
           </p>
           <TrackedLink
+            className="footer-phone"
             href={`tel:${store.phone}`}
             event={{ name: "click_call" }}
           >

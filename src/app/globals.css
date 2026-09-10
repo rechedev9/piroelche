@@ -104,6 +104,8 @@ body {
   @apply m-0 bg-paper text-ink font-sans;
   -webkit-font-smoothing: antialiased;
   @apply text-[16px] leading-[1.55];
+  /* Body copy inherits orphan avoidance; headings opt into balanced lines. */
+  text-wrap: pretty;
 }
 a {
   @apply text-magenta no-underline;
@@ -166,7 +168,7 @@ p {
 }
 h1,
 h2 {
-  @apply font-title font-bold text-pretty leading-[1.05];
+  @apply font-title font-bold text-balance leading-[1.05];
 }
 h1 {
   font-size: clamp(36px, 5vw, 56px);
@@ -176,7 +178,7 @@ h2 {
   @apply text-[34px] m-0 mb-5.5;
 }
 h3 {
-  @apply text-[21px] leading-[1.25] m-0 mb-2 font-extrabold;
+  @apply text-[21px] leading-[1.25] m-0 mb-2 font-extrabold text-balance;
 }
 h1,
 h2,
@@ -1038,17 +1040,19 @@ body > div {
 }
 .site-footer {
   @apply mt-auto bg-night text-on-dark-muted;
+  border-top: 1px solid var(--line-on-dark);
 }
 .footer-grid {
-  @apply py-10 grid grid-cols-4 gap-7 text-[15px] leading-[1.6];
+  @apply py-14 grid gap-x-8 gap-y-10 text-[15px] leading-[1.6];
+  grid-template-columns:
+    minmax(0, 1.25fr) minmax(0, 1.35fr) minmax(0, 0.78fr)
+    minmax(0, 0.85fr);
 }
-.footer-grid img {
-  @apply w-30 h-10 block mb-3;
+.footer-brand img {
+  @apply block w-42.5 h-auto mb-5;
 }
 .footer-grid h2 {
-  @apply text-white;
-  font: 800 15px/1.6 var(--body-font);
-  @apply m-0 mb-2;
+  @apply text-white font-sans font-extrabold text-[13px] uppercase tracking-[0.1em] m-0 mb-3.5;
 }
 /* 15px/1.6 text is 24px tall: 8px of vertical padding takes every footer link
    to a 40px touch target without touching its width or type scale. */
@@ -1064,11 +1068,17 @@ body > div {
 .footer-grid p {
   @apply m-0;
 }
-.footer-grid .legal-note {
-  @apply text-[13px] text-[#ababb4] mt-3.5;
-}
 .footer-hours {
-  @apply p-0 m-0 list-none;
+  @apply p-0 m-0 list-none mt-3.5 grid gap-1 tabular-nums;
+}
+.footer-grid .footer-note {
+  @apply text-[13px] mt-3.5;
+}
+.footer-grid .footer-phone {
+  @apply text-on-dark-strong font-extrabold mt-1.5;
+}
+.footer-grid .legal-note {
+  @apply text-[13px] text-[#ababb4] mt-4;
 }
 .legal-page {
   @apply max-w-210;
@@ -1313,7 +1323,10 @@ body > div {
     @apply grid-cols-2;
   }
   .footer-grid {
-    @apply grid-cols-[1fr] gap-y-7 gap-x-5;
+    @apply grid-cols-[1fr] gap-y-8 gap-x-5;
+  }
+  .footer-brand img {
+    @apply w-37.5;
   }
   .process {
     @apply grid-cols-[1fr];
