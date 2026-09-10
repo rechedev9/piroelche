@@ -11,7 +11,10 @@ export type AnalyticsEvent =
         | "lead_received"
         | "lead_error"
         | "click_directions"
-        | "click_call";
+        | "click_call"
+        | "click_whatsapp"
+        | "click_email"
+        | "click_social";
     };
 
 type Adapter = (event: AnalyticsEvent) => void;

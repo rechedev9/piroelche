@@ -104,7 +104,14 @@ void test("el contenido central publica familias y las cuatro casetas de la fuen
   );
   assert.equal(content.store.confirmedUntil, undefined);
   assert.equal(content.store.exceptionsConfirmedUntil, undefined);
-  assert.equal(content.channels.whatsapp.enabled, false);
+  assert.equal(content.channels.whatsapp.enabled, true);
+  assert.equal(content.channels.whatsapp.url, "https://wa.me/34600261620");
+  assert.equal(content.store.landline?.phone, "+34966613009");
+  assert.equal(content.channels.email, "pirotecnia_piroboom@hotmail.com");
+  assert.equal(
+    content.channels.social.instagram?.handle,
+    "pirotecnia_piroboom",
+  );
   assert.equal(content.occasions.length, 5);
   assert.deepEqual(
     content.solutions.map((item) => item.occasionId),
@@ -540,20 +547,41 @@ void test("no se añade edición/tamaño a un PDF no recuperado ni se activa Wha
     false,
   );
   assert.equal(PdfSchema.safeParse({ ...pdf, url: null }).success, false);
-  const whatsapp = rawSite.channels.whatsapp;
+  const { reviewedAt: _reviewedAt, ...whatsapp } = rawSite.channels.whatsapp;
+  const channels = { ...rawSite.channels, whatsapp };
   assert.equal(
-    ChannelsSchema.safeParse({ whatsapp: { ...whatsapp, enabled: true } })
-      .success,
+    ChannelsSchema.safeParse({
+      ...channels,
+      whatsapp: { ...whatsapp, enabled: true, url: null },
+    }).success,
     false,
   );
   assert.equal(
     ChannelsSchema.safeParse({
+      ...channels,
       whatsapp: {
         ...whatsapp,
         enabled: true,
         url: "https://wa.me/34600261620",
       },
     }).success,
+    false,
+  );
+  assert.equal(
+    ChannelsSchema.safeParse({
+      ...channels,
+      whatsapp: {
+        ...whatsapp,
+        enabled: true,
+        url: "https://wa.me/34600261620",
+        reviewedAt: "2026-09-10",
+      },
+    }).success,
+    true,
+  );
+  assert.equal(
+    ChannelsSchema.safeParse({ ...rawSite.channels, email: "no-es-correo" })
+      .success,
     false,
   );
 });

@@ -355,6 +355,13 @@ export const StoreSchema = z
     address: text,
     phone: z.string().regex(/^\+[1-9]\d{7,14}$/),
     phoneDisplay: text,
+    landline: z
+      .object({
+        phone: z.string().regex(/^\+[1-9]\d{7,14}$/),
+        phoneDisplay: text,
+      })
+      .strict()
+      .optional(),
     directionsUrl: WebUrlSchema,
     image: ImageSchema.optional(),
     ...hoursFields,
@@ -486,6 +493,19 @@ export const ChannelsSchema = z
               "WhatsApp requiere destino y revisión explícita antes de activarse",
           });
       }),
+    email: z.email().nullable(),
+    social: z
+      .object({
+        facebook: z
+          .object({ label: text, url: WebUrlSchema })
+          .strict()
+          .nullable(),
+        instagram: z
+          .object({ handle: z.string().regex(/^[a-z0-9._]+$/i), url: WebUrlSchema })
+          .strict()
+          .nullable(),
+      })
+      .strict(),
   })
   .strict();
 

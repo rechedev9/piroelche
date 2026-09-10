@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { getContent } from "@/lib/content";
+import { ContactBar, ContactIcon } from "@/components/contact-bar";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import {
@@ -62,6 +63,7 @@ export default function RootLayout({
             Saltar al contenido
           </a>
           <Header />
+          <ContactBar />
           {isDemo && (
             <div className="review-banner" role="note">
               <strong>Demostración local.</strong> Productos y trabajos de
@@ -84,7 +86,8 @@ export default function RootLayout({
               rel="noopener noreferrer"
               aria-label="Escribir por WhatsApp, nueva pestaña"
             >
-              WhatsApp ↗
+              <ContactIcon name="whatsapp" size={20} />
+              WhatsApp
             </a>
           )}
           {!isDemo && (
