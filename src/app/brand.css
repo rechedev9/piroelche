@@ -37,6 +37,9 @@
     transparent 60%
   );
 }
+.brand-home .brand-hero {
+  overflow: clip;
+}
 .brand-home .hero-inner {
   @apply gap-16;
   grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
@@ -95,21 +98,60 @@
   @apply text-yellow;
 }
 .brand-hero-visual {
-  @apply m-0 min-w-0 w-full max-w-105 justify-self-end relative rounded-panel bg-night overflow-hidden;
+  --hero-edge-fade: radial-gradient(
+    ellipse at 50% 47%,
+    #000 38%,
+    rgb(0 0 0 / 94%) 58%,
+    transparent 73%
+  );
+  @apply m-0 min-w-0 w-full max-w-120 justify-self-end relative;
 }
 .brand-hero-visual:after {
-  content: "";
-  @apply absolute inset-0 pointer-events-none;
-  background: linear-gradient(transparent 65%, rgb(13 13 16 / 85%));
+  content: none;
 }
 .brand-hero-visual .media {
   @apply rounded-none border-0 p-0;
+  background: transparent;
+  mask-image: var(--hero-edge-fade);
+}
+.brand-hero-visual:has(.brand-fireworks[data-ready="true"]) .media {
+  opacity: 0;
 }
 .brand-hero-visual .media img {
   @apply bg-night p-0;
 }
+.brand-fireworks {
+  position: absolute;
+  inset: -8% -10% -4%;
+  pointer-events: none;
+  mask-image: var(--hero-edge-fade);
+  opacity: 0;
+}
+.brand-fireworks[data-ready="true"] {
+  opacity: 1;
+}
+.brand-fireworks-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.brand-fireworks-toggle {
+  @apply absolute bottom-4 right-0 z-2 inline-flex items-center justify-center gap-2 min-h-11 px-3 rounded-full text-white text-[11px] font-semibold cursor-pointer;
+  background: transparent;
+  border: 0;
+}
+.brand-fireworks-toggle:hover {
+  color: var(--yellow);
+  background: rgb(255 255 255 / 5%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-fireworks,
+  .brand-fireworks-toggle {
+    display: none;
+  }
+}
 .brand-photo-caption {
-  @apply absolute bottom-6 left-6 right-6 z-1 text-white text-[18px] font-semibold leading-[1.4];
+  @apply absolute bottom-6 left-0 right-26 z-1 text-white text-[18px] font-semibold leading-[1.4];
 }
 .brand-photo-caption > span {
   @apply block text-[10px] uppercase tracking-[0.14em] font-semibold mb-1.5 text-on-dark-muted;
@@ -729,7 +771,11 @@
     @apply max-w-full;
   }
   .brand-photo-caption {
-    @apply left-5 right-5 bottom-5 text-[17px];
+    @apply left-0 right-25 bottom-5 text-[17px];
+  }
+  .brand-fireworks-toggle {
+    top: 0;
+    bottom: auto;
   }
   .brand-home .brand-journeys {
     @apply gap-5;
