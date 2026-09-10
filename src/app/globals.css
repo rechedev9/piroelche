@@ -374,6 +374,43 @@ body > div {
   @apply bg-[#fff8c2] text-[#4c4000] py-2 px-5 text-center text-[14px];
   border-bottom: 1px solid #c9b400;
 }
+.contact-bar {
+  @apply bg-yellow text-night;
+  border-bottom: 1px solid rgba(13, 13, 16, 0.12);
+}
+.contact-bar-inner {
+  @apply flex flex-wrap items-center gap-x-5 gap-y-1.5 py-2;
+}
+.contact-bar-claim {
+  @apply m-0 text-[14px] leading-tight uppercase tracking-[0.02em] whitespace-nowrap;
+}
+.contact-bar-claim strong {
+  @apply font-extrabold;
+}
+.contact-bar-list {
+  @apply flex flex-wrap items-center gap-x-1 gap-y-1 m-0 p-0 list-none ml-auto;
+}
+.contact-bar-link {
+  @apply inline-flex items-center gap-1.5 py-1.5 px-2.5 rounded-[999px] text-[14px] font-extrabold text-night no-underline min-h-9;
+}
+.contact-bar-link:hover,
+.contact-bar-link:focus-visible {
+  @apply bg-night text-yellow no-underline;
+}
+.contact-bar-link.is-whatsapp {
+  @apply bg-[#25d366] text-night;
+}
+.contact-bar-link.is-whatsapp:hover,
+.contact-bar-link.is-whatsapp:focus-visible {
+  @apply bg-night text-[#25d366];
+}
+.contact-bar-link.is-email,
+.contact-bar-link.is-social {
+  @apply font-semibold;
+}
+.contact-bar-link svg {
+  @apply flex-none;
+}
 .hero {
   @apply bg-night text-white relative isolate;
 }
@@ -1055,7 +1092,15 @@ body > div {
   @apply min-h-[55vh] flex flex-col justify-center;
 }
 .whatsapp {
-  @apply fixed right-5 bottom-5 z-15 bg-[#25d366] text-night rounded-[999px] py-3.5 px-5 font-extrabold min-h-12;
+  @apply fixed right-5 bottom-5 z-15 inline-flex items-center gap-2 bg-[#25d366] text-night rounded-[999px] py-3.5 px-5 font-extrabold min-h-12 no-underline;
+  box-shadow: 0 6px 20px rgba(13, 13, 16, 0.25);
+}
+.whatsapp:hover,
+.whatsapp:focus-visible {
+  @apply bg-night text-[#25d366] no-underline;
+}
+.whatsapp svg {
+  @apply flex-none;
 }
 .campaign-dialog {
   @apply border-0 border-none rounded-[22px] max-w-120;
@@ -1078,6 +1123,16 @@ body > div {
 }
 
 @media (max-width: 1059px) {
+  .contact-bar-claim {
+    @apply w-full;
+  }
+  .contact-bar-list {
+    @apply ml-0;
+  }
+  .contact-bar-link.is-email .contact-bar-label,
+  .contact-bar-link.is-social .contact-bar-label {
+    @apply sr-only;
+  }
   .menu-toggle {
     @apply flex gap-2 items-center ml-auto bg-none bg-transparent border border-solid border-[#5c5c66] rounded-[8px] text-white py-2 px-3 font-bold min-h-11;
   }
@@ -1282,7 +1337,11 @@ body > div {
     @apply text-[13px] text-left;
   }
   .whatsapp {
-    @apply static block my-4 mx-5 text-center;
+    @apply right-4 py-3 px-4 text-[14px];
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+  .site-footer {
+    padding-bottom: calc(24px + 56px + env(safe-area-inset-bottom, 0px));
   }
   .product-context {
     align-items: start;

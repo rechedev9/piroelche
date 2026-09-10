@@ -202,6 +202,10 @@
     "address": "Calle Gloria Fuertes, s/n, 03203 Elche, Alicante",
     "phone": "+34600261620",
     "phoneDisplay": "600 261 620",
+    "landline": {
+      "phone": "+34966613009",
+      "phoneDisplay": "96 661 30 09"
+    },
     "directionsUrl": "https://maps.app.goo.gl/C1XJNPujKvKTfNPH9",
     "image": {
       "src": "/media/google/tienda-productos-2025-07.jpg",
@@ -526,9 +530,21 @@
   },
   "channels": {
     "whatsapp": {
-      "enabled": false,
-      "url": null,
-      "reviewNote": "Desactivado hasta confirmar un destino y revisar un uso permitido del canal. El teléfono y el formulario propio son las alternativas."
+      "enabled": true,
+      "url": "https://wa.me/34600261620",
+      "reviewedAt": "2026-09-10",
+      "reviewNote": "Activado por petición del propietario. Destino: el móvil de tienda (600 26 16 20), el mismo que aparece junto al icono de WhatsApp en la portada del catálogo 2026."
+    },
+    "email": "pirotecnia_piroboom@hotmail.com",
+    "social": {
+      "facebook": {
+        "label": "Pirotecnia piroboom",
+        "url": "https://www.facebook.com/boompirotecni/"
+      },
+      "instagram": {
+        "handle": "pirotecnia_piroboom",
+        "url": "https://www.instagram.com/pirotecnia_piroboom/"
+      }
     }
   },
   "brand": {
