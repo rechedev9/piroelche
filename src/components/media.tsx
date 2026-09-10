@@ -1,6 +1,12 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
+
+/** Lets the ratio travel as a custom property instead of an inline
+ *  `aspect-ratio`, which stylesheet rules could not override by specificity. */
+interface MediaStyle extends CSSProperties {
+  "--media-ratio": string;
+}
 
 export function Media({
   src,
@@ -9,6 +15,7 @@ export function Media({
   dark = false,
   className = "",
   fit,
+  priority = false,
 }: {
   src?: string | null;
   alt: string;
@@ -16,12 +23,14 @@ export function Media({
   dark?: boolean;
   className?: string;
   fit?: "cover" | "contain";
+  priority?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
+  const style: MediaStyle = { "--media-ratio": ratio };
   return (
     <div
       className={`media ${dark ? "media-dark" : ""} ${fit === "contain" ? "media-contain" : ""} ${className}`}
-      style={{ aspectRatio: ratio }}
+      style={style}
     >
       {src && !failed ? (
         <Image
@@ -30,6 +39,9 @@ export function Media({
           fill
           style={fit ? { objectFit: fit } : undefined}
           sizes="(max-width: 650px) 90vw, (max-width: 1059px) 45vw, 560px"
+          // Next 16 renamed the LCP hint: `priority` is deprecated in favour of
+          // `preload`, which also loads the image eagerly.
+          preload={priority}
           onError={() => setFailed(true)}
         />
       ) : (

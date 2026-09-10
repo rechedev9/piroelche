@@ -1,9 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {
-  parseLeadResponse,
-  parseSavedLeadDraft,
-} from "../src/components/lead-form";
+import { parseLeadResponse, parseSavedLeadDraft } from "../src/lib/lead-draft";
 
 const now = Date.parse("2026-09-09T12:00:00.000Z");
 const draft = {

@@ -1,3 +1,5 @@
+import type { OccasionId } from "./content-schema";
+
 export const navigation = [
   { href: "/", label: "Inicio" },
   { href: "/sobre-nosotros/", label: "Sobre nosotros" },
@@ -12,3 +14,10 @@ export const legalNavigation = [
   { href: "/politica-de-cookies/", label: "Cookies" },
   { href: "/aviso-legal/", label: "Aviso legal" },
 ] as const;
+
+/** Request form on Eventos, optionally preselecting a published occasion. */
+export function eventRequestHref(occasionId?: OccasionId) {
+  return occasionId
+    ? `/eventos/?ocasion=${occasionId}#solicitud`
+    : "/eventos/#solicitud";
+}

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { getContent } from "@/lib/content";
 import { getLeadAvailability } from "@/lib/lead-server";
+import { eventRequestHref } from "@/lib/navigation";
 import { pageMetadata } from "@/lib/seo";
 import { LeadForm } from "@/components/lead-form";
 import { Media, ProductVideo } from "@/components/media";
@@ -29,11 +30,7 @@ const steps = [
     "Fecha, disponibilidad, permisos si aplican y modalidad del servicio.",
   ],
 ];
-export default async function Events({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
+export default async function Events({ searchParams }: PageProps<"/eventos">) {
   const params = await searchParams;
   const { brand, solutions, occasions, cases, store } = getContent();
   const eventImage =
@@ -108,9 +105,7 @@ export default async function Events({
                   {solution.needs}
                 </p>
                 <Button asChild size="compact">
-                  <Link
-                    href={`/eventos/?ocasion=${solution.occasionId}#solicitud`}
-                  >
+                  <Link href={eventRequestHref(solution.occasionId)}>
                     Solicitar para{" "}
                     {solution.id === "boda"
                       ? "boda"

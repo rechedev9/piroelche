@@ -1,11 +1,36 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { getContent } from "@/lib/content";
 import { Header } from "@/components/header";
-import { Footer } from "@/components/site-content";
-import { publicIndexing, serializeJsonLd, siteUrl } from "@/lib/seo";
+import { Footer } from "@/components/footer";
+import {
+  localBusinessJsonLd,
+  publicIndexing,
+  serializeJsonLd,
+  siteUrl,
+} from "@/lib/seo";
 import "./globals.css";
 import "./brand.css";
 import "./catalogue.css";
+
+const manrope = localFont({
+  src: "../../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2",
+  weight: "200 800",
+  style: "normal",
+  display: "swap",
+  adjustFontFallback: "Arial",
+  fallback: ["system-ui", "sans-serif"],
+  variable: "--font-manrope",
+});
+const lilita = localFont({
+  src: "../../node_modules/@fontsource/lilita-one/files/lilita-one-latin-400-normal.woff2",
+  weight: "400",
+  style: "normal",
+  display: "swap",
+  adjustFontFallback: "Arial",
+  fallback: ["sans-serif"],
+  variable: "--font-lilita",
+});
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -30,7 +55,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const { isDemo, store, channels, campaigns } = getContent();
   return (
-    <html lang="es">
+    <html lang="es" className={`${manrope.variable} ${lilita.variable}`}>
       <body>
         <div className="site-shell">
           <a className="skip-link" href="#contenido">
@@ -66,15 +91,7 @@ export default function RootLayout({
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
-                __html: serializeJsonLd({
-                  "@context": "https://schema.org",
-                  "@type": "LocalBusiness",
-                  name: "Piroboom",
-                  url: siteUrl(),
-                  telephone: store.phone,
-                  address: store.address,
-                  image: `${siteUrl()}/brand/logo.webp`,
-                }),
+                __html: serializeJsonLd(localBusinessJsonLd(store)),
               }}
             />
           )}

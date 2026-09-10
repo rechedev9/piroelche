@@ -68,7 +68,7 @@
 }
 .brand-home .brand-journey > .media {
   @apply h-full min-h-64 rounded-none;
-  aspect-ratio: auto !important;
+  aspect-ratio: auto;
 }
 .brand-journey-copy {
   @apply p-6 flex flex-col gap-2.5 min-w-0;
@@ -101,7 +101,7 @@
   @apply border-magenta;
 }
 .brand-home .family-grid .muted {
-  @apply text-[#dedbe0];
+  @apply text-on-dark-cool;
 }
 .brand-home .brand-events-band {
   @apply border-0 border-t-4 border-solid border-magenta;
@@ -127,7 +127,7 @@
 }
 .brand-visit-photo .media {
   @apply h-full rounded-none min-h-80;
-  aspect-ratio: auto !important;
+  aspect-ratio: auto;
 }
 .brand-visit-photo figcaption {
   @apply absolute left-0 bottom-0 bg-magenta text-white py-3 px-5 font-extrabold text-[15px];
@@ -199,7 +199,7 @@
 }
 .brand-solutions .solution > .media {
   @apply rounded-none h-full min-h-88 bg-night;
-  aspect-ratio: auto !important;
+  aspect-ratio: auto;
 }
 .brand-solutions .solution > .media img {
   @apply object-contain p-0;
@@ -230,7 +230,7 @@
 }
 .brand-solutions .solution:nth-child(2) p,
 .brand-solutions .solution:nth-child(2) strong {
-  @apply text-[#e8e6e0];
+  @apply text-on-dark-strong;
 }
 .brand-solutions .solution:nth-child(2) .button {
   @apply bg-yellow text-night;
@@ -257,7 +257,7 @@
   @apply mt-14 py-14 border-0 border-t-4 border-solid border-yellow;
 }
 .brand-gallery-intro {
-  @apply text-[#d8d5dd] max-w-180;
+  @apply text-on-dark-cool-dim max-w-180;
 }
 .brand-gallery {
   @apply grid grid-cols-3 gap-6 mt-8 items-start;
@@ -272,7 +272,7 @@
   @apply object-contain bg-night p-0;
 }
 .brand-gallery figcaption {
-  @apply pt-4 text-[14px] text-[#d8d5dd] border-0 border-t-2 border-solid border-magenta leading-[1.6];
+  @apply pt-4 text-[14px] text-on-dark-cool-dim border-0 border-t-2 border-solid border-magenta leading-[1.6];
 }
 .event-form-wrap.brand-event-form {
   @apply p-0 gap-0 overflow-hidden border-2 border-solid border-night;
@@ -282,7 +282,7 @@
 }
 .brand-event-form .brand-form-copy p,
 .brand-event-form .brand-form-copy ul {
-  @apply text-[#e8e6e0];
+  @apply text-on-dark-strong;
 }
 .brand-event-form .brand-form-copy .eyebrow {
   @apply text-yellow mb-5;
@@ -307,7 +307,7 @@
 }
 .brand-about .brand-about-grid > .card:first-child .media {
   @apply rounded-none h-full;
-  aspect-ratio: auto !important;
+  aspect-ratio: auto;
 }
 .brand-about .brand-about-grid > .card:first-child .card-body {
   @apply flex flex-col justify-center;
@@ -316,7 +316,7 @@
   @apply text-yellow;
 }
 .brand-about .brand-about-grid > .card:first-child .muted {
-  @apply text-[#e8e6e0];
+  @apply text-on-dark-strong;
 }
 .brand-about .brand-about-grid .card-body {
   @apply p-8;
@@ -390,7 +390,7 @@
   }
   .brand-home .brand-journey > .media {
     @apply h-auto min-h-0;
-    aspect-ratio: 16 / 9 !important;
+    aspect-ratio: 16 / 9;
   }
   .brand-home .brand-events-band .grid {
     @apply grid-cols-3;
@@ -442,14 +442,14 @@
   }
   .brand-home .brand-solution-teaser .media {
     @apply h-full;
-    aspect-ratio: auto !important;
+    aspect-ratio: auto;
   }
   .brand-solutions .solution {
     @apply grid-cols-1;
   }
   .brand-solutions .solution > .media {
     @apply h-auto min-h-0;
-    aspect-ratio: 4 / 3 !important;
+    aspect-ratio: 4 / 3;
   }
   .brand-solutions .solution:nth-child(2) > .media,
   .brand-solutions .solution:nth-child(2) .card-body {
@@ -488,7 +488,7 @@
   }
   .brand-home .brand-solution-teaser .media {
     @apply h-auto;
-    aspect-ratio: 4 / 3 !important;
+    aspect-ratio: 4 / 3;
   }
   .brand-visit-grid,
   .brand-store-detail {
@@ -496,7 +496,7 @@
   }
   .brand-visit-photo .media {
     @apply h-auto min-h-0;
-    aspect-ratio: 4 / 3 !important;
+    aspect-ratio: 4 / 3;
   }
   .brand-home .brand-store-panel {
     @apply p-5.5;
@@ -543,7 +543,7 @@
   }
   .brand-about .brand-about-grid > .card:first-child .media {
     @apply h-auto;
-    aspect-ratio: 3 / 2 !important;
+    aspect-ratio: 3 / 2;
   }
   .brand-about .brand-about-grid .card-body {
     @apply p-5.5;

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getContent, getFamily, getProduct } from "@/lib/content";
-import { pageMetadata, serializeJsonLd, siteUrl } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Media, ProductVideo } from "@/components/media";
 import { ViewEvent } from "@/components/tracked-link";
@@ -35,8 +35,12 @@ export default async function ProductPage({ params }: Props) {
         items={[
           { label: "Catálogo", href: "/catalogo-pdf/" },
           { label: family.name, href: `/catalogo-pdf/${family.slug}/` },
-          { label: product.name },
+          {
+            label: product.name,
+            href: `/catalogo-pdf/${family.slug}/${product.slug}/`,
+          },
         ]}
+        structuredData={!isDemo}
       />
       <div className="grid grid-2 product-detail">
         <div className="product-media">
@@ -135,37 +139,6 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </div>
       <ViewEvent event={{ name: "view_product", reference: product.ref }} />
-      {!isDemo && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Catálogo",
-                  item: `${siteUrl()}/catalogo-pdf/`,
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: family.name,
-                  item: `${siteUrl()}/catalogo-pdf/${family.slug}/`,
-                },
-                {
-                  "@type": "ListItem",
-                  position: 3,
-                  name: product.name,
-                  item: `${siteUrl()}/catalogo-pdf/${family.slug}/${product.slug}/`,
-                },
-              ],
-            }),
-          }}
-        />
-      )}
     </div>
   );
 }

@@ -13,9 +13,7 @@ export const metadata = pageMetadata(
 );
 export default async function Contact({
   searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
+}: PageProps<"/contacto">) {
   const params = await searchParams;
   const { brand, occasions, store } = getContent();
   const welcomeImage = brand?.storeWelcome || store.image;

@@ -151,7 +151,7 @@
   @apply text-yellow;
 }
 .family-catalogue-intro .intro {
-  @apply text-[#dddbe1];
+  @apply text-on-dark-cool;
 }
 .family-catalogue-intro .media {
   @apply max-h-62.5;

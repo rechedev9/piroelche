@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { navigation } from "@/lib/navigation";
+import { eventRequestHref, navigation } from "@/lib/navigation";
 
 export function Header() {
   const pathname = usePathname();
@@ -91,13 +91,13 @@ export function Header() {
             );
           })}
           <Button asChild variant="yellow" className="mobile-event">
-            <Link href="/eventos/#solicitud" onClick={() => setOpen(false)}>
+            <Link href={eventRequestHref()} onClick={() => setOpen(false)}>
               Planificar mi evento
             </Link>
           </Button>
         </nav>
         <Button asChild variant="yellow" className="header-event">
-          <Link href="/eventos/#solicitud">Planificar mi evento</Link>
+          <Link href={eventRequestHref()}>Planificar mi evento</Link>
         </Button>
       </div>
     </header>

@@ -5,17 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { eventRequestHref } from "@/lib/navigation";
 import {
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
-  useSyncExternalStore,
   type FormEvent,
   type ReactNode,
 } from "react";
-import { z } from "zod";
 import {
   validateLead,
   type LeadApiResponse,
@@ -24,42 +22,25 @@ import {
   type LeadIntention,
   type LeadMode,
 } from "@/lib/lead-contract";
+import {
+  clearDraft,
+  fingerprintPayload,
+  parseLeadResponse,
+  readDraftSnapshot,
+  saveDraft,
+  EMPTY_DRAFT,
+  type Draft,
+  type Submission,
+} from "@/lib/lead-draft";
+import { useLeadDraft } from "@/hooks/use-lead-draft";
+import {
+  LeadEventFields,
+  LeadFieldRow,
+  leadControlProps,
+} from "@/components/lead-form-fields";
+import { LeadFormSuccess } from "@/components/lead-form-success";
 import { track } from "@/lib/analytics";
 
-const draftSchema = z
-  .object({
-    intention: z.enum(["product", "event", "visit"]),
-    name: z.string().max(100),
-    replyTo: z.string().max(254),
-    message: z.string().max(4000),
-    occasion: z.string().max(40),
-    date: z.string().max(10),
-    dateUndecided: z.boolean(),
-    location: z.string().max(200),
-    budget: z.string().max(100),
-    website: z.string().max(200),
-  })
-  .strict();
-const submissionSchema = z
-  .object({
-    key: z.uuid(),
-    fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
-  })
-  .strict();
-const savedSchema = z
-  .object({
-    expires: z.number().int().positive(),
-    draft: draftSchema,
-    productRef: z
-      .string()
-      .max(48)
-      .regex(/^[A-Za-z0-9_-]+$/)
-      .optional(),
-    occasionContext: z.string().max(40).optional(),
-    submission: submissionSchema.optional(),
-  })
-  .strict();
-type Draft = z.infer<typeof draftSchema>;
 type Props = {
   variant: "contact" | "event";
   initialIntention?: LeadIntention;
@@ -70,22 +51,6 @@ type Props = {
   availability: { enabled: boolean; mode: LeadMode };
   phone: string;
   phoneDisplay: string;
-};
-type Submission = z.infer<typeof submissionSchema>;
-type Saved = z.infer<typeof savedSchema>;
-const DRAFT_TTL = 30 * 60_000;
-const DRAFT_EVENT = "piroboom:lead-draft";
-const EMPTY: Draft = {
-  intention: "product",
-  name: "",
-  replyTo: "",
-  message: "",
-  occasion: "",
-  date: "",
-  dateUndecided: false,
-  location: "",
-  budget: "",
-  website: "",
 };
 const labels: Record<LeadField, string> = {
   intention: "Motivo",
@@ -101,138 +66,6 @@ const labels: Record<LeadField, string> = {
   website: "Formulario",
   form: "Formulario",
 };
-
-export function parseSavedLeadDraft(
-  value: unknown,
-  now = Date.now(),
-): Saved | undefined {
-  const parsed = savedSchema.safeParse(value);
-  return parsed.success &&
-    parsed.data.expires > now &&
-    parsed.data.expires <= now + DRAFT_TTL
-    ? parsed.data
-    : undefined;
-}
-function readDraftSnapshot(key: string): string {
-  try {
-    return sessionStorage.getItem(key) || "";
-  } catch {
-    return "";
-  }
-}
-function parseDraftSnapshot(raw: string | null): Saved | undefined {
-  if (!raw) return undefined;
-  try {
-    return parseSavedLeadDraft(JSON.parse(raw));
-  } catch {
-    return undefined;
-  }
-}
-function subscribeDraft(notify: () => void) {
-  window.addEventListener("storage", notify);
-  window.addEventListener(DRAFT_EVENT, notify);
-  return () => {
-    window.removeEventListener("storage", notify);
-    window.removeEventListener(DRAFT_EVENT, notify);
-  };
-}
-function serverDraftSnapshot(): null {
-  return null;
-}
-function clearDraft(key: string, expectedSnapshot?: string) {
-  try {
-    if (
-      expectedSnapshot !== undefined &&
-      sessionStorage.getItem(key) !== expectedSnapshot
-    )
-      return;
-    sessionStorage.removeItem(key);
-  } catch {
-    /* Storage may be unavailable; the current form still works. */
-  }
-  window.dispatchEvent(new Event(DRAFT_EVENT));
-}
-function saveDraft(
-  key: string,
-  draft: Draft,
-  submission?: Submission,
-  productRef?: string,
-  occasionContext?: string,
-) {
-  try {
-    const snapshot = JSON.stringify({
-      draft,
-      submission,
-      productRef,
-      occasionContext,
-      expires: Date.now() + DRAFT_TTL,
-    } satisfies Saved);
-    sessionStorage.setItem(key, snapshot);
-    window.dispatchEvent(new Event(DRAFT_EVENT));
-    return snapshot;
-  } catch {
-    /* Storage is optional; the in-memory draft remains usable. */
-    return undefined;
-  }
-}
-async function fingerprint(value: string) {
-  const bytes = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(value),
-  );
-  return Array.from(new Uint8Array(bytes), (byte) =>
-    byte.toString(16).padStart(2, "0"),
-  ).join("");
-}
-const leadFieldSchema = z.enum([
-  "intention",
-  "name",
-  "replyTo",
-  "message",
-  "productRef",
-  "occasion",
-  "date",
-  "dateUndecided",
-  "location",
-  "budget",
-  "website",
-  "form",
-]);
-const responseSchema = z.discriminatedUnion("ok", [
-  z
-    .object({
-      ok: z.literal(true),
-      status: z.literal("recorded"),
-      id: z.string().regex(/^PB-[A-F0-9]{24}$/),
-      receivedAt: z.iso.datetime({ precision: 3 }),
-      replayed: z.boolean(),
-      mode: z.enum(["local-test", "remote"]),
-    })
-    .strict(),
-  z
-    .object({
-      ok: z.literal(false),
-      code: z.enum([
-        "invalid_request",
-        "validation_failed",
-        "forbidden",
-        "not_configured",
-        "unavailable",
-        "timeout",
-        "rate_limited",
-        "idempotency_conflict",
-      ]),
-      message: z.string().min(1).max(1000),
-      fieldErrors: z
-        .partialRecord(leadFieldSchema, z.string().max(500))
-        .optional(),
-    })
-    .strict(),
-]);
-export function parseLeadResponse(value: unknown): LeadApiResponse | undefined {
-  const parsed = responseSchema.safeParse(value);
-  return parsed.success ? parsed.data : undefined;
-}
 function isLeadField(value: string): value is LeadField {
   return Object.hasOwn(labels, value);
 }
@@ -252,13 +85,14 @@ export function LeadForm({
   const storageKey = `piroboom.${variant}.draft.v1`;
   const [editedDraft, setEditedDraft] = useState<Draft>();
   const [productRemoved, setProductRemoved] = useState(false);
-  const snapshot = useSyncExternalStore(
-    subscribeDraft,
-    useCallback(() => readDraftSnapshot(storageKey), [storageKey]),
-    serverDraftSnapshot,
+  const submission = useRef<Submission | null | undefined>(undefined);
+  const { saved, ready } = useLeadDraft(
+    storageKey,
+    useCallback(() => {
+      setEditedDraft(undefined);
+      submission.current = null;
+    }, []),
   );
-  const saved = useMemo(() => parseDraftSnapshot(snapshot), [snapshot]);
-  const ready = snapshot !== null;
   const currentProduct = productRemoved ? undefined : product;
   const restoredIntention =
     variant === "event"
@@ -277,7 +111,7 @@ export function LeadForm({
     saved && !contextChanged
       ? saved.draft
       : {
-          ...EMPTY,
+          ...EMPTY_DRAFT,
           name: saved?.draft.name || "",
           replyTo: saved?.draft.replyTo || "",
         };
@@ -298,34 +132,13 @@ export function LeadForm({
   const [sending, setSending] = useState(false);
   const [receipt, setReceipt] =
     useState<Extract<LeadApiResponse, { ok: true }>>();
-  const submission = useRef<Submission | null | undefined>(undefined);
   const inFlight = useRef(false);
   const started = useRef(false);
   const summary = useRef<HTMLDivElement>(null);
-  const success = useRef<HTMLElement>(null);
   const prefix = variant === "event" ? "event" : "contact";
-  useEffect(() => {
-    if (!snapshot) return undefined;
-    if (!saved) {
-      clearDraft(storageKey);
-      return undefined;
-    }
-    const expiry = setTimeout(
-      () => {
-        clearDraft(storageKey);
-        setEditedDraft(undefined);
-        submission.current = null;
-      },
-      Math.max(0, saved.expires - Date.now()),
-    );
-    return () => clearTimeout(expiry);
-  }, [snapshot, saved, storageKey]);
   useEffect(() => {
     if (error || Object.keys(errors).length) summary.current?.focus();
   }, [error, errors]);
-  useEffect(() => {
-    if (receipt) success.current?.focus();
-  }, [receipt]);
 
   function currentSubmission() {
     return submission.current === undefined
@@ -385,24 +198,18 @@ export function LeadForm({
   }
   function field(name: LeadField, label: ReactNode, control: ReactNode) {
     return (
-      <Label className="field" htmlFor={`${prefix}-${name}`}>
-        <span>{label}</span>
+      <LeadFieldRow
+        prefix={prefix}
+        name={name}
+        label={label}
+        error={errors[name]}
+      >
         {control}
-        {errors[name] && (
-          <span className="field-error" id={`${prefix}-${name}-error`}>
-            {errors[name]}
-          </span>
-        )}
-      </Label>
+      </LeadFieldRow>
     );
   }
   function accessible(name: LeadField) {
-    return {
-      id: `${prefix}-${name}`,
-      "aria-invalid": Boolean(errors[name]),
-      "aria-describedby": errors[name] ? `${prefix}-${name}-error` : undefined,
-      onFocus: markStarted,
-    };
+    return { ...leadControlProps(prefix, errors, name), onFocus: markStarted };
   }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -453,7 +260,7 @@ export function LeadForm({
     try {
       const body = JSON.stringify(validation.data);
       const beforeFingerprint = readDraftSnapshot(storageKey);
-      const hash = await fingerprint(body);
+      const hash = await fingerprintPayload(body);
       if (readDraftSnapshot(storageKey) !== beforeFingerprint) return;
       const previous = currentSubmission();
       const nextSubmission =
@@ -509,54 +316,26 @@ export function LeadForm({
       setSending(false);
     }
   }
+  function sendAnother() {
+    setReceipt(undefined);
+    setEditedDraft({
+      ...EMPTY_DRAFT,
+      intention: variant === "event" ? "event" : "product",
+    });
+    setProductRemoved(true);
+    submission.current = null;
+    started.current = false;
+    if (variant === "contact") router.replace("/contacto/", { scroll: false });
+    else if (initialOccasion)
+      router.replace(eventRequestHref(), { scroll: false });
+  }
   if (receipt)
     return (
-      <section
-        className="success-box"
-        aria-live="polite"
-        aria-atomic="true"
-        aria-labelledby={`${prefix}-success`}
-        tabIndex={-1}
-        ref={success}
-      >
-        <h2 id={`${prefix}-success`}>
-          {receipt.mode === "local-test"
-            ? "Prueba registrada localmente"
-            : "Consulta registrada"}
-        </h2>
-        <p>
-          Referencia <strong>{receipt.id}</strong>.
-        </p>
-        <p>
-          {receipt.mode === "local-test"
-            ? "El receptor local ha guardado esta prueba. No se ha enviado ningún mensaje al negocio."
-            : "El receptor ha registrado tu consulta para su atención. Este aviso no confirma lectura en el buzón, disponibilidad ni reserva."}
-        </p>
-        {receipt.replayed && (
-          <p>Se ha recuperado el registro anterior, sin crear otra consulta.</p>
-        )}
-        <Button
-          variant="outline"
-          size="compact"
-          type="button"
-          onClick={() => {
-            setReceipt(undefined);
-            setEditedDraft({
-              ...EMPTY,
-              intention: variant === "event" ? "event" : "product",
-            });
-            setProductRemoved(true);
-            submission.current = null;
-            started.current = false;
-            if (variant === "contact")
-              router.replace("/contacto/", { scroll: false });
-            else if (initialOccasion)
-              router.replace("/eventos/#solicitud", { scroll: false });
-          }}
-        >
-          Enviar otra consulta
-        </Button>
-      </section>
+      <LeadFormSuccess
+        prefix={prefix}
+        receipt={receipt}
+        onReset={sendAnother}
+      />
     );
 
   return (
@@ -638,69 +417,15 @@ export function LeadForm({
             </p>
           ))}
         {draft.intention === "event" && (
-          <>
-            {field(
-              "occasion",
-              "Ocasión",
-              <select
-                {...accessible("occasion")}
-                name="occasion"
-                value={draft.occasion}
-                onChange={(event) => update({ occasion: event.target.value })}
-                disabled={sending}
-              >
-                <option value="">Elige una opción</option>
-                {occasions.map((occasion) => (
-                  <option key={occasion.id} value={occasion.id}>
-                    {occasion.label}
-                  </option>
-                ))}
-              </select>,
-            )}
-            <div className="date-row">
-              {field(
-                "date",
-                "Fecha",
-                <Input
-                  {...accessible("date")}
-                  type="date"
-                  name="date"
-                  value={draft.date}
-                  disabled={sending || draft.dateUndecided}
-                  onChange={(event) => update({ date: event.target.value })}
-                />,
-              )}
-              <Label className="checkbox-label">
-                <input
-                  {...accessible("dateUndecided")}
-                  type="checkbox"
-                  checked={draft.dateUndecided}
-                  disabled={sending}
-                  onChange={(event) =>
-                    update({
-                      dateUndecided: event.target.checked,
-                      date: event.target.checked ? "" : draft.date,
-                    })
-                  }
-                />
-                Por definir
-              </Label>
-            </div>
-            {field(
-              "location",
-              "Municipio o recinto (si lo sabes)",
-              <Input
-                {...accessible("location")}
-                name="location"
-                type="text"
-                maxLength={200}
-                value={draft.location}
-                onChange={(event) => update({ location: event.target.value })}
-                placeholder="Municipio, recinto o por definir"
-                disabled={sending}
-              />,
-            )}
-          </>
+          <LeadEventFields
+            prefix={prefix}
+            errors={errors}
+            draft={draft}
+            occasions={occasions}
+            sending={sending}
+            onFocus={markStarted}
+            update={update}
+          />
         )}
         {variant === "contact" &&
           field(
@@ -724,7 +449,7 @@ export function LeadForm({
             name="replyTo"
             type="text"
             inputMode="text"
-            autoComplete="off"
+            autoComplete="on"
             maxLength={254}
             value={draft.replyTo}
             onChange={(event) => update({ replyTo: event.target.value })}

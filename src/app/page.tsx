@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getContent } from "@/lib/content";
 import { getLocationHours } from "@/lib/hours";
+import { eventRequestHref } from "@/lib/navigation";
 import { pageMetadata } from "@/lib/seo";
 import { FamilyGrid, Hours } from "@/components/site-content";
 import { Media } from "@/components/media";
@@ -31,11 +32,15 @@ export default function Home() {
       <section className="hero brand-hero">
         <div className="hero-background" aria-hidden="true">
           <Image
-            src="/media/decorative/home-fireworks-v1.png"
+            src="/media/decorative/home-fireworks-v1.webp"
             alt=""
             fill
             sizes="100vw"
+            quality={60}
+            // Largest painted element on mobile; the hero photo wins on wider
+            // viewports, so use eager + high priority instead of a preload.
             loading="eager"
+            fetchPriority="high"
           />
         </div>
         <div className="container hero-inner">
@@ -83,6 +88,7 @@ export default function Home() {
               ratio="4 / 5"
               fit="contain"
               dark
+              priority
             />
             <figcaption className="brand-photo-caption">
               Piroboom · Pirotecnia en Elche
@@ -165,7 +171,7 @@ export default function Home() {
             {solutions.map((solution) => (
               <Link
                 key={solution.id}
-                href={`/eventos/?ocasion=${solution.occasionId}#solicitud`}
+                href={eventRequestHref(solution.occasionId)}
                 className="card card-link solution-compact brand-solution-teaser"
               >
                 <Media

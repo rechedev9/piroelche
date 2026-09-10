@@ -1,0 +1,10 @@
+fail home
+fail catalogo
+home performance=95 accessibility=100 best-practices=100 seo=69 LCP=3.0 s CLS=0.033 TBT=10 ms
+  fails: largest-contentful-paint(3.0 s), unused-javascript(Est savings of 29 KiB), is-crawlable(), bf-cache(2 failure reasons), image-delivery-insight(Est savings of 184 KiB), lcp-discovery-insight(), legacy-javascript-insight(Est savings of 13 KiB), network-dependency-tree-insight(), render-blocking-insight(Est savings of 360 ms)
+eventos performance=89 accessibility=100 best-practices=100 seo=69 LCP=3.7 s CLS=0.029 TBT=40 ms
+  fails: largest-contentful-paint(3.7 s), interactive(3.8 s), redirects(Est savings of 600 ms), unused-javascript(Est savings of 96 KiB), is-crawlable(), bf-cache(2 failure reasons), document-latency-insight(Est savings of 0 ms), image-delivery-insight(Est savings of 269 KiB), lcp-discovery-insight(), legacy-javascript-insight(Est savings of 13 KiB), network-dependency-tree-insight(), render-blocking-insight(Est savings of 310 ms)
+catalogo performance=94 accessibility=100 best-practices=100 seo=69 LCP=3.1 s CLS=0 TBT=20 ms
+  fails: largest-contentful-paint(3.1 s), redirects(Est savings of 600 ms), unused-javascript(Est savings of 28 KiB), is-crawlable(), bf-cache(2 failure reasons), document-latency-insight(Est savings of 0 ms), forced-reflow-insight(), image-delivery-insight(Est savings of 1,131 KiB), legacy-javascript-insight(Est savings of 13 KiB), network-dependency-tree-insight(), render-blocking-insight(Est savings of 360 ms)
+
+[exited with code 0]

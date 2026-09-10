@@ -28,6 +28,7 @@ La implementación se ha ejercitado con pruebas de lógica, HTTP, tres motores d
 - Todas las fechas se calculan en `Europe/Madrid`. El reloj fijo se inyecta exclusivamente desde el lanzador de revisión, nunca en la lógica de producción. Las páginas dinámicas evitan publicar indefinidamente un estado horario precalculado.
 - No se migró ni eliminó WordPress. La aceptación local no se presenta como recepción en buzón. La publicación con textos legales en borrador falla explícitamente antes del build.
 - Petición posterior: Oxlint con reglas explícitas y análisis de tipos sustituye ESLint.
+- Ajustes de frontend del 10 de septiembre de 2026: tokens shadcn mapeados a la marca, fuentes con `next/font/local`, formulario dividido en `src/lib/lead-draft.ts`, `src/hooks/use-lead-draft.ts` y componentes propios, pie en `src/components/footer.tsx`, JSON-LD centralizado en `src/lib/seo.ts`. Sin cambio de diseño, rutas ni contratos; detalle y límites en VALIDATION.
 - Petición posterior: no utilizar `autoreview`; se comprobó que sus rutas instaladas en `.codex/skills` y `.agents/skills` ya no existen. No se ha ejecutado. Se mantiene la revisión del candidato mediante un agente aislado, conforme al encargo.
 
 ## Trazabilidad M01–M68

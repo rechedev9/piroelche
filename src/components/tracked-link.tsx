@@ -7,10 +7,19 @@ export function TrackedLink({
   event,
   href,
   children,
+  onClick,
   ...props
 }: ComponentProps<typeof Link> & { event: AnalyticsEvent }) {
   return (
-    <Link {...props} href={href} onClick={() => track(event)}>
+    <Link
+      {...props}
+      href={href}
+      onClick={(click) => {
+        // The caller's handler runs first and may cancel the navigation it tracks.
+        onClick?.(click);
+        if (!click.defaultPrevented) track(event);
+      }}
+    >
       {children}
     </Link>
   );

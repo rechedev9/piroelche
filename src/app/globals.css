@@ -1,6 +1,4 @@
 @layer theme, base, components, utilities;
-@import "@fontsource/lilita-one/latin.css";
-@import "@fontsource-variable/manrope";
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities) source("../");
 /* Keep the approved reset and native controls: intentionally omit Preflight.
@@ -27,6 +25,43 @@
   --radius-compact: 10px;
   --radius-media: 16px;
   --radius-panel: 20px;
+  /* Greys and states that the approved design repeats on dark surfaces and in
+     form feedback. Declared once in :root below, aliased here so they are used
+     as utilities instead of copied hex values. */
+  --color-on-dark-strong: var(--on-dark-strong);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-on-dark-cool: var(--on-dark-cool);
+  --color-on-dark-cool-dim: var(--on-dark-cool-dim);
+  --color-line-on-dark: var(--line-on-dark);
+  --color-success: var(--success);
+  --color-pink-soft: var(--pink-soft);
+  /* shadcn/ui (new-york) contract: a primitive added with the CLI expects these
+     names. Each one aliases an approved brand token, so a generated component
+     adopts this design without introducing a new colour. `--color-muted` keeps
+     its established brand meaning here (muted *text*, used by `text-muted`
+     across the site); shadcn's muted *surface* is `--color-secondary`. */
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-card: var(--white);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--white);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--night);
+  --color-primary-foreground: var(--white);
+  --color-secondary: var(--soft);
+  --color-secondary-foreground: var(--ink);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--soft);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: var(--danger);
+  --color-destructive-foreground: var(--white);
+  --color-border: var(--line);
+  --color-input: var(--border-input);
+  --color-ring: var(--yellow);
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 6px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 2px);
 }
 /* Semantic rules stay unlayered so their established specificity and responsive
    overrides retain priority over separately generated utility selectors. */
@@ -42,10 +77,21 @@
   --yellow: #ffe500;
   --pink: #ee1c8c;
   --magenta: #c4106f;
+  --pink-soft: #f36ab3;
+  /* Text and hairlines over the night background. */
+  --on-dark-strong: #e8e6e0;
+  --on-dark-muted: #cfcdc6;
+  --on-dark-cool: #dedbe0;
+  --on-dark-cool-dim: #d8d5dd;
+  --line-on-dark: #2a2a30;
+  /* Form states. */
+  --border-input: #cfcbc2;
+  --danger: #b3261e;
+  --success: #1b5e20;
   --header-height: 67px;
   --radius: 18px;
-  --body-font: "Manrope Variable", "Manrope", system-ui, sans-serif;
-  --title-font: "Lilita One", sans-serif;
+  --body-font: var(--font-manrope), "Manrope", system-ui, sans-serif;
+  --title-font: var(--font-lilita), sans-serif;
   --code-font: ui-monospace, monospace;
 }
 * {
@@ -268,7 +314,7 @@ body > div {
   @apply bg-night text-white;
 }
 .dark .muted {
-  @apply text-[#cfcdc6];
+  @apply text-on-dark-muted;
 }
 .dark .eyebrow {
   @apply text-yellow;
@@ -277,17 +323,14 @@ body > div {
   @apply text-yellow;
 }
 .dark .card {
-  @apply bg-[#17171c] border-[#2a2a30] text-white;
+  @apply bg-[#17171c] border-line-on-dark text-white;
 }
 .dark .card:hover {
   @apply border-yellow;
 }
-.dark .pink-label {
-  @apply text-[#f36ab3];
-}
 .site-header {
   @apply bg-night text-white sticky top-0 z-20;
-  border-bottom: 1px solid #2a2a30;
+  border-bottom: 1px solid var(--line-on-dark);
 }
 .header-inner {
   @apply py-2.5 flex items-center gap-4.5;
@@ -358,10 +401,10 @@ body > div {
   @apply text-yellow mb-3 tracking-[0.14em];
 }
 .hero .lead {
-  @apply text-[#e8e6e0] mb-7.5 max-w-135 leading-[1.5];
+  @apply text-on-dark-strong mb-7.5 max-w-135 leading-[1.5];
 }
 .today {
-  @apply flex flex-wrap gap-y-2 gap-x-2.5 items-center text-[15px] mt-7 text-[#cfcdc6];
+  @apply flex flex-wrap gap-y-2 gap-x-2.5 items-center text-[15px] mt-7 text-on-dark-muted;
 }
 .today:before {
   content: "";
@@ -376,6 +419,9 @@ body > div {
     #efebe3 0 10px,
     #e8e3d9 10px 20px
   );
+  /* `Media` publishes its ratio as `--media-ratio` instead of an inline
+     `aspect-ratio`, so layout rules override it by specificity alone. */
+  aspect-ratio: var(--media-ratio, auto);
   @apply flex items-end relative min-w-0 rounded-media p-2.5 isolate overflow-hidden;
 }
 .media img {
@@ -396,7 +442,7 @@ body > div {
   @apply font-mono text-[12px] text-muted bg-paper py-1 px-2 rounded-[5px] relative;
 }
 .media-dark .media-note {
-  @apply text-[#cfcdc6] bg-night;
+  @apply text-on-dark-muted bg-night;
 }
 .journey {
   @apply p-6.5 gap-2;
@@ -441,13 +487,13 @@ body > div {
   @apply p-5.5;
 }
 .solution-compact .eyebrow {
-  @apply m-0 text-[#f36ab3];
+  @apply m-0 text-pink-soft;
 }
 .solution-compact h3 {
   @apply mt-1.5;
 }
 .solution-compact p {
-  @apply text-[15px] text-[#cfcdc6] m-0;
+  @apply text-[15px] text-on-dark-muted m-0;
 }
 .store-trust {
   @apply gap-6;
@@ -540,7 +586,7 @@ body > div {
   @apply max-w-205 mb-3.5;
 }
 .events-hero .lead {
-  @apply max-w-170 text-[#e8e6e0] leading-[1.5] mb-6.5;
+  @apply max-w-170 text-on-dark-strong leading-[1.5] mb-6.5;
 }
 .events-hero .eyebrow {
   @apply text-yellow;
@@ -601,7 +647,7 @@ body > div {
   @apply text-[15px] text-muted mt-1 mx-0 mb-0;
 }
 .empty-state {
-  @apply p-8 border border-dashed border-[#cfcbc2] rounded-media bg-white text-muted leading-[1.6];
+  @apply p-8 border border-dashed border-input rounded-media bg-white text-muted leading-[1.6];
 }
 .empty-state p:last-child {
   @apply mb-0;
@@ -628,7 +674,7 @@ body > div {
 }
 .store-card > .media {
   @apply rounded-none min-h-70;
-  aspect-ratio: auto !important;
+  aspect-ratio: auto;
 }
 .store-card .card-body {
   @apply p-7.5;
@@ -646,10 +692,7 @@ body > div {
   @apply bg-yellow text-night;
 }
 .badge.success {
-  @apply bg-[#1b5e20] text-white;
-}
-.badge.muted {
-  @apply bg-soft;
+  @apply bg-success text-white;
 }
 .campaigns {
   @apply mt-14;
@@ -691,17 +734,13 @@ body > div {
   content: "/";
   @apply text-muted;
 }
+/* Same 40px target: the breadcrumb line box is 23.25px, so padding alone leaves
+   it short of 40px and `min-h-10` pins the box without widening it. */
 .breadcrumbs a {
-  @apply font-bold inline-block py-1.5;
+  @apply font-bold inline-flex items-center min-h-10 py-2;
 }
 .breadcrumbs [aria-current] {
   @apply font-bold text-ink;
-}
-.catalog-heading {
-  @apply items-end;
-}
-.catalog-heading p {
-  @apply m-0 max-w-160 text-[18px] text-mid;
 }
 .pdf-action {
   @apply flex flex-col items-start gap-1;
@@ -719,9 +758,7 @@ body > div {
   @apply pt-4.5 px-5 pb-5;
 }
 .catalog-families h2 {
-  font:
-    800 21px/1.3 "Manrope Variable",
-    sans-serif;
+  font: 800 21px/1.3 var(--body-font);
   @apply m-0 mb-1.5;
 }
 .catalog-families p {
@@ -743,9 +780,7 @@ body > div {
   @apply pt-4 px-4.5 pb-4.5 flex flex-col gap-1;
 }
 .product-card h2 {
-  font:
-    800 18px/1.25 "Manrope Variable",
-    sans-serif;
+  font: 800 18px/1.25 var(--body-font);
   @apply m-0;
 }
 .product-card p {
@@ -775,7 +810,7 @@ body > div {
   @apply border border-solid border-line rounded-panel;
 }
 .empty-media {
-  @apply rounded-media border border-dashed border-[#cfcbc2] p-4 text-muted text-[15px] m-0;
+  @apply rounded-media border border-dashed border-input p-4 text-muted text-[15px] m-0;
 }
 .video-container {
   @apply m-0;
@@ -809,9 +844,7 @@ body > div {
   @apply mt-4 p-4.5 rounded-media;
 }
 .classification h2 {
-  font:
-    800 13px/1.5 "Manrope Variable",
-    sans-serif;
+  font: 800 13px/1.5 var(--body-font);
   @apply tracking-[0.1em] uppercase text-muted m-0;
 }
 .classification p {
@@ -830,9 +863,7 @@ body > div {
   @apply p-4 rounded-[14px];
 }
 .price-grid h2 {
-  font:
-    700 13px/1.4 "Manrope Variable",
-    sans-serif;
+  font: 700 13px/1.4 var(--body-font);
   @apply text-muted m-0;
 }
 .price-grid p {
@@ -869,22 +900,19 @@ body > div {
 .field {
   @apply grid gap-1.5 font-bold text-[15px] min-w-0;
 }
-.field input,
-.field select,
-.field textarea {
-  @apply py-3 px-3.5 border-[1.5px] border-solid border-[#cfcbc2] rounded-compact text-[16px] font-normal min-h-12 leading-[1.5];
+/* `<select>` has no shadcn primitive in this project, so the native control
+   keeps the approved control styling here; Input and Textarea carry the same
+   values as utilities. The bold 15px label text is inherited from `.field`,
+   which works whether the label is nested inside `<label class="field">` or a
+   sibling of the control inside `<div class="field">`. */
+.field select {
+  @apply py-3 px-3.5 border-[1.5px] border-solid border-input rounded-compact text-[16px] font-normal min-h-12 leading-[1.5];
 }
-.field input:disabled {
-  @apply bg-soft;
-}
-.field textarea {
-  @apply resize-y;
-}
-.field [aria-invalid="true"] {
-  @apply border-[#b3261e];
+.field select[aria-invalid="true"] {
+  @apply border-destructive;
 }
 .field-error {
-  @apply text-[#b3261e] text-[14px] font-semibold;
+  @apply text-destructive text-[14px] font-semibold;
 }
 .date-row {
   @apply grid grid-cols-[minmax(0,1fr)_auto] gap-2.5;
@@ -947,10 +975,8 @@ body > div {
   @apply bg-[#f1fbf3] border border-solid border-[#9ad3a6] rounded-media p-6.5 grid gap-2.5;
 }
 .success-box h2 {
-  font:
-    800 22px/1.3 "Manrope Variable",
-    sans-serif;
-  @apply text-[#1b5e20] m-0;
+  font: 800 22px/1.3 var(--body-font);
+  @apply text-success m-0;
 }
 .success-box p {
   @apply m-0;
@@ -976,7 +1002,7 @@ body > div {
   @apply absolute -left-2500 w-[1px] h-[1px] overflow-hidden;
 }
 .site-footer {
-  @apply mt-auto bg-night text-[#cfcdc6];
+  @apply mt-auto bg-night text-on-dark-muted;
 }
 .footer-grid {
   @apply py-10 grid grid-cols-4 gap-7 text-[15px] leading-[1.6];
@@ -986,13 +1012,13 @@ body > div {
 }
 .footer-grid h2 {
   @apply text-white;
-  font:
-    800 15px/1.6 "Manrope Variable",
-    sans-serif;
+  font: 800 15px/1.6 var(--body-font);
   @apply m-0 mb-2;
 }
+/* 15px/1.6 text is 24px tall: 8px of vertical padding takes every footer link
+   to a 40px touch target without touching its width or type scale. */
 .footer-grid a {
-  @apply text-[#cfcdc6] inline-block py-1;
+  @apply text-on-dark-muted inline-block py-2;
 }
 .footer-grid a:hover {
   @apply text-yellow;
@@ -1108,9 +1134,6 @@ body > div {
   }
 }
 @media (max-width: 650px) {
-  .container {
-    @apply px-5;
-  }
   .page-section {
     @apply pt-9 pb-12;
   }
@@ -1208,7 +1231,7 @@ body > div {
     @apply grid-cols-[minmax(0,1fr)_auto];
   }
   .store-card > .media {
-    aspect-ratio: 3/2 !important;
+    aspect-ratio: 3/2;
     @apply min-h-0;
   }
   .store-card .card-body {
@@ -1225,9 +1248,6 @@ body > div {
   }
   .catalog-page {
     @apply pt-7;
-  }
-  .catalog-heading .pdf-action {
-    @apply mt-2.5;
   }
   .pdf-action .button {
     @apply text-[15px];

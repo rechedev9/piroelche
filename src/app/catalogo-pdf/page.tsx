@@ -14,9 +14,7 @@ export const metadata = pageMetadata(
 );
 export default async function Catalogue({
   searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
+}: PageProps<"/catalogo-pdf">) {
   const selected = getCataloguePage((await searchParams).pagina);
   return (
     <div className="container page-section catalog-page">

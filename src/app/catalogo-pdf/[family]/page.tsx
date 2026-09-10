@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getContent, getFamily } from "@/lib/content";
-import { pageMetadata, serializeJsonLd, siteUrl } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductCard } from "@/components/site-content";
 import { Media } from "@/components/media";
@@ -35,8 +35,9 @@ export default async function FamilyPage({ params }: Props) {
       <Breadcrumbs
         items={[
           { label: "Catálogo", href: "/catalogo-pdf/" },
-          { label: family.name },
+          { label: family.name, href: `/catalogo-pdf/${family.slug}/` },
         ]}
+        structuredData={!isDemo}
       />
       <section className="family-catalogue-intro">
         <div>
@@ -96,31 +97,6 @@ export default async function FamilyPage({ params }: Props) {
         </>
       )}
       <ViewEvent event={{ name: "view_category", category: family.id }} />
-      {!isDemo && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Catálogo",
-                  item: `${siteUrl()}/catalogo-pdf/`,
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: family.name,
-                  item: `${siteUrl()}/catalogo-pdf/${family.slug}/`,
-                },
-              ],
-            }),
-          }}
-        />
-      )}
     </div>
   );
 }
