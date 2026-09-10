@@ -123,9 +123,6 @@ export function ContactBar() {
   return (
     <aside className="contact-bar" aria-label="Contacto directo">
       <div className="container contact-bar-inner">
-        <p className="contact-bar-claim">
-          <strong>Pide por teléfono</strong> y no hagas cola
-        </p>
         <ul className="contact-bar-list">
           {items.map((item) => (
             <li key={item.key}>

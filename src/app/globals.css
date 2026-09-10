@@ -381,12 +381,6 @@ body > div {
 .contact-bar-inner {
   @apply flex flex-wrap items-center gap-x-5 gap-y-1.5 py-2;
 }
-.contact-bar-claim {
-  @apply m-0 text-[14px] leading-tight uppercase tracking-[0.02em] whitespace-nowrap;
-}
-.contact-bar-claim strong {
-  @apply font-extrabold;
-}
 .contact-bar-list {
   @apply flex flex-wrap items-center gap-x-1 gap-y-1 m-0 p-0 list-none ml-auto;
 }
@@ -1123,9 +1117,6 @@ body > div {
 }
 
 @media (max-width: 1059px) {
-  .contact-bar-claim {
-    @apply w-full;
-  }
   .contact-bar-list {
     @apply ml-0;
   }
