@@ -1,15 +1,15 @@
 # Actualizar el catálogo desde Google Drive
 
-Flujo elegido: Canva → exportar PDF → sustituir `catalogo.pdf` en Google Drive → comprobación diaria → publicar una nueva versión de la web.
+Flujo previsto: Canva → exportar PDF → sustituir `catalogo.pdf` en Google Drive → importar y publicar una nueva versión de la web.
 
-La implementación está preparada en el repositorio. La conexión real necesita la carpeta, una cuenta de servicio y el hosting. No se ha activado ningún servicio externo ni se ha instalado un cron en esta máquina.
+El importador está preparado en el repositorio y permanece desactivado. La conexión real necesita la carpeta, una cuenta de servicio y el hosting. La tarea diaria queda aplazada por decisión del propietario: no se incluye ningún workflow de sincronización ni se ha instalado un cron en esta máquina.
 
 ## Instrucciones para quien edita el catálogo
 
 1. Editar el diseño original en Canva. Corregir el dominio de la portada a `pirotecniaelche.es` antes de la primera actualización.
 2. Descargar todas las páginas como PDF, conservando el texto seleccionable. La portada debe mostrar el año de edición.
 3. Sustituir el archivo `catalogo.pdf` en la carpeta compartida. En Drive puede usarse **Gestionar versiones → Subir nueva versión**. También se puede reemplazar por otro archivo con ese nombre: el proceso busca por carpeta y nombre, por lo que admite un cambio de ID.
-4. Esperar a la siguiente ejecución diaria. No hay que enviárselo a los propietarios ni entrar en un editor dentro de la web.
+4. Mientras la automatización esté pendiente, avisar a quien despliega la web para que importe y publique la actualización. Sustituir el archivo en Drive todavía no actualiza la web por sí solo.
 
 La carpeta debe contener un único archivo con ese nombre. Si aparecen duplicados, el proceso se detiene hasta que se deje el correcto. Subir el archivo a esta carpeta significa que está listo para publicarse; los borradores se conservan en Canva o en otra carpeta.
 
@@ -40,24 +40,26 @@ Se necesitan Node 24+, las dependencias de desarrollo durante el build y memoria
 
 La preparación sustituye `public/media/catalogo-2026/manifest.json` dentro del checkout de build. Esa ruta se mantiene estable para consultar la versión publicada. El PDF y las nuevas imágenes tienen URLs con el SHA-256 del archivo, para evitar reutilizar portadas o páginas de una versión anterior. Los originales incluidos en Git se conservan como referencia; no hay commits automáticos de PDFs.
 
-## Activar la ejecución diaria
+## Automatización diaria pendiente
 
-El workflow `.github/workflows/catalogue-sync.yml` se ejecuta a las **02:17 UTC** cada día (03:17 en invierno y 04:17 en verano en España peninsular). GitHub puede retrasar una ejecución; el plazo incluye además el tiempo de build. También se puede lanzar con **Run workflow**.
+No hay ninguna ejecución diaria configurada. Cuando se retome, habrá que elegir y añadir el programador y conectar el despliegue. Los comandos de comprobación y solicitud de despliegue ya están disponibles:
 
-En GitHub, configurar las variables del repositorio:
+```bash
+pnpm catalogue:check
+# Solo si la comprobación indica changed=true:
+pnpm catalogue:sync --request-deploy
+```
 
-- `CATALOGUE_DRIVE_FOLDER_ID` y `CATALOGUE_DRIVE_FILE_NAME`, iguales que en el hosting.
-- `CATALOGUE_PUBLISHED_MANIFEST_URL`: URL HTTPS del manifiesto de la web desplegada; normalmente `https://pirotecniaelche.es/media/catalogo-2026/manifest.json`.
-- `CATALOGUE_SYNC_ENABLED=1`, al terminar la configuración.
+El futuro proceso necesitará las mismas variables de Drive que el hosting y `CATALOGUE_PUBLISHED_MANIFEST_URL`: la URL HTTPS del manifiesto de la web desplegada, normalmente `https://pirotecniaelche.es/media/catalogo-2026/manifest.json`.
 
-Y los secretos:
+También necesitará los secretos:
 
 - `CATALOGUE_GOOGLE_SERVICE_ACCOUNT_JSON`: la misma cuenta de servicio.
 - `CATALOGUE_DEPLOY_HOOK_URL`: endpoint HTTPS del hosting que acepta un POST para lanzar un build de producción de `main`.
 
-El workflow compara el checksum de Drive con el publicado. Si coinciden, termina sin desplegar. Si son distintos o el manifiesto todavía devuelve 404, solicita el despliegue. Un error de acceso o una respuesta inválida detiene la ejecución. Un POST aceptado confirma **la solicitud**, no que el hosting haya publicado: el resultado final debe comprobarse en el hosting y en el manifiesto público.
+La comprobación compara el checksum de Drive con el publicado. Si coinciden, devuelve `changed=false`; si son distintos o el manifiesto todavía devuelve 404, devuelve `changed=true`. Un error de acceso o una respuesta inválida detiene la ejecución. El programador deberá solicitar el despliegue solo cuando haya cambios. Un POST aceptado confirma **la solicitud**, no que el hosting haya publicado: el resultado final debe comprobarse en el hosting y en el manifiesto público.
 
-Si el build falla, el hosting debe mantener su último despliegue correcto. Como la comparación usa el manifiesto publicado, la siguiente ejecución vuelve a detectar la actualización pendiente. El proveedor y el hook concretos aún están por configurar. Un VPS puede usar el mismo comando de comprobación, pero necesita un mecanismo de build y cambio de versión equivalente antes de activar la tarea.
+Si el build falla, el hosting debe mantener su último despliegue correcto. Como la comparación usa el manifiesto publicado, una comprobación posterior vuelve a detectar la actualización pendiente. El proveedor y el hook concretos aún están por configurar. Un VPS puede usar el mismo comando de comprobación, pero necesita un mecanismo de build y cambio de versión equivalente antes de añadir la tarea.
 
 ## Comprobaciones y límites
 
