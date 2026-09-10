@@ -5,7 +5,7 @@ import { Dialog } from "radix-ui";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CataloguePagination } from "@/components/catalogue-pagination";
-import type { CataloguePage } from "@/lib/catalogue";
+import { catalogue, type CataloguePage } from "@/lib/catalogue";
 
 export function CataloguePageViewer({ page }: { page: CataloguePage }) {
   const [open, setOpen] = useState(false);
@@ -55,7 +55,8 @@ export function CataloguePageViewer({ page }: { page: CataloguePage }) {
               <div>
                 <Dialog.Title aria-live="polite">{label}</Dialog.Title>
                 <Dialog.Description>
-                  Catálogo Piroboom 2026 · Amplía para leer los detalles
+                  Catálogo Piroboom {catalogue.edition} · Amplía para leer los
+                  detalles
                 </Dialog.Description>
               </div>
               <div className="catalogue-zoom-controls">

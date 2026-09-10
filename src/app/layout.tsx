@@ -45,10 +45,15 @@ export const metadata: Metadata = {
   robots: { index: publicIndexing(), follow: publicIndexing() },
   icons: {
     icon: [
-      { url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/brand/favicon-16.png", sizes: "16x16", type: "image/png" },
+      {
+        url: "/brand/favicon-v2.ico",
+        sizes: "16x16 32x32 48x48",
+        type: "image/x-icon",
+      },
+      { url: "/brand/favicon-v2-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/favicon-v2-16.png", sizes: "16x16", type: "image/png" },
     ],
-    apple: "/brand/apple-icon.png",
+    apple: "/brand/apple-icon-v2.png",
   },
 };
 export default function RootLayout({

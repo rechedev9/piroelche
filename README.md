@@ -36,6 +36,8 @@ The code, tests and configuration are the source of truth:
 
 Content edits require rebuilding and restarting a production preview. Validate them with `pnpm validate:content`; keep example inventory in `fixtures/`.
 
+The catalogue can be updated daily from a private Google Drive folder. The editor replaces `catalogo.pdf`; a scheduled workflow compares it with the published version and requests a deployment when it changes. The build downloads and validates the PDF, then generates its cover, page images, searchable text and navigation together. Setup and the editor's instructions are in [docs/catalogue-sync.md](docs/catalogue-sync.md). Synchronization is disabled until the Drive credentials and hosting are configured.
+
 ## Checks
 
 ```bash

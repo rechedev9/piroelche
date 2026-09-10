@@ -7,7 +7,11 @@ import { pageMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductCard } from "@/components/site-content";
 import { Media } from "@/components/media";
-import { getFamilyCataloguePages, cataloguePageHref } from "@/lib/catalogue";
+import {
+  catalogue,
+  getFamilyCataloguePages,
+  cataloguePageHref,
+} from "@/lib/catalogue";
 import { ViewEvent } from "@/components/tracked-link";
 
 type Props = { params: Promise<{ family: string }> };
@@ -59,11 +63,20 @@ export default async function FamilyPage({ params }: Props) {
         </div>
       ) : (
         <>
-          <h2 className="family-pages-heading">En el catálogo 2026</h2>
+          <h2 className="family-pages-heading">
+            En el catálogo {catalogue.edition}
+          </h2>
           <p>
             Abre las páginas relacionadas para ver los artículos y sus detalles.
             Algunas páginas reúnen más de un tipo de efecto.
           </p>
+          {pages.length === 0 && (
+            <p>
+              Consulta el{" "}
+              <Link href="/catalogo-pdf/#lector">catálogo completo</Link> para
+              encontrar esta familia.
+            </p>
+          )}
           <div className="family-pages-grid">
             {pages.map((page) => (
               <Link
@@ -75,8 +88,8 @@ export default async function FamilyPage({ params }: Props) {
                 <Image
                   src={page.thumb}
                   alt={`Vista de la página ${page.page}: ${page.title}`}
-                  width={320}
-                  height={559}
+                  width={page.thumbWidth}
+                  height={page.thumbHeight}
                   sizes="(max-width:650px) 85vw, 320px"
                 />
                 <small>Página {page.page}</small>

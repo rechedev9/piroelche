@@ -125,7 +125,7 @@ export function CatalogueIndex({ selectedPage }: { selectedPage: number }) {
                   src={page.thumb}
                   alt=""
                   width={32}
-                  height={56}
+                  height={Math.round((32 * page.thumbHeight) / page.thumbWidth)}
                   sizes="32px"
                 />
                 <span>

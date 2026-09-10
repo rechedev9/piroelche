@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CatalogueReader } from "@/components/catalogue-reader";
 import { FamilyGrid, PdfAction } from "@/components/site-content";
-import { getCataloguePage } from "@/lib/catalogue";
+import { catalogue, getCataloguePage } from "@/lib/catalogue";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata(
@@ -16,6 +16,10 @@ export default async function Catalogue({
   searchParams,
 }: PageProps<"/catalogo-pdf">) {
   const selected = getCataloguePage((await searchParams).pagina);
+  const preview =
+    catalogue.pages.find((page) => page.familyIds?.includes("humo")) ||
+    catalogue.pages[11] ||
+    catalogue.pages[catalogue.pages.length - 1];
   return (
     <div className="container page-section catalog-page">
       <Breadcrumbs items={[{ label: "Catálogo" }]} />
@@ -25,8 +29,10 @@ export default async function Catalogue({
       >
         <div className="catalogue-hero-copy">
           <p className="eyebrow">
-            <span className="catalogue-edition">Edición 2026</span> Catálogo
-            Piroboom
+            <span className="catalogue-edition">
+              Edición {catalogue.edition}
+            </span>{" "}
+            Catálogo Piroboom
           </p>
           <h1 id="catalogue-title">
             Tu celebración. <br />
@@ -45,30 +51,31 @@ export default async function Catalogue({
             <PdfAction compact />
           </div>
           <p className="catalogue-hero-note">
-            16 páginas para inspirarte. Consúltalas aquí o guarda el PDF.
+            {catalogue.pages.length} páginas para inspirarte. Consúltalas aquí o
+            guarda el PDF.
           </p>
         </div>
         <Link
           href="#lector"
           className="catalogue-cover-link"
-          aria-label="Leer el catálogo Piroboom 2026"
+          aria-label={`Leer el catálogo Piroboom ${catalogue.edition}`}
         >
           <span className="catalogue-cover-stack">
             <Image
               className="catalogue-cover-preview"
-              src="/media/catalogo-2026/page-12-thumb.webp"
+              src={preview.thumb}
               alt=""
-              width={320}
-              height={559}
+              width={preview.thumbWidth}
+              height={preview.thumbHeight}
               sizes="180px"
               loading="eager"
             />
             <Image
               className="catalogue-cover"
-              src="/media/catalogo-2026/cover.webp"
-              alt="Portada del catálogo de pirotecnia Piroboom 2026"
-              width={800}
-              height={1398}
+              src={catalogue.cover.src}
+              alt={`Portada del catálogo de pirotecnia Piroboom ${catalogue.edition}`}
+              width={catalogue.cover.width}
+              height={catalogue.cover.height}
               sizes="(max-width: 650px) 110px, 180px"
               preload
             />

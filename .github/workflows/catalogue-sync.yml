@@ -1,0 +1,50 @@
+name: Update catalogue from Google Drive
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalogue-sync
+  cancel-in-progress: false
+
+jobs:
+  check-and-deploy:
+    if: ${{ github.ref == 'refs/heads/main' && vars.CATALOGUE_SYNC_ENABLED == '1' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      CATALOGUE_DRIVE_FOLDER_ID: ${{ vars.CATALOGUE_DRIVE_FOLDER_ID }}
+      CATALOGUE_DRIVE_FILE_NAME: ${{ vars.CATALOGUE_DRIVE_FILE_NAME }}
+      CATALOGUE_PUBLISHED_MANIFEST_URL: ${{ vars.CATALOGUE_PUBLISHED_MANIFEST_URL }}
+      CATALOGUE_GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.CATALOGUE_GOOGLE_SERVICE_ACCOUNT_JSON }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24.18.0"
+          package-manager-cache: false
+      - name: Set up pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          version: "11.22.0"
+          run_install: false
+          cache: false
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Compare Drive with the published catalogue
+        id: check
+        run: pnpm catalogue:check
+      - name: Request a new deployment when the PDF changes
+        if: ${{ steps.check.outputs.changed == 'true' }}
+        env:
+          CATALOGUE_DEPLOY_HOOK_URL: ${{ secrets.CATALOGUE_DEPLOY_HOOK_URL }}
+        run: pnpm catalogue:sync --request-deploy

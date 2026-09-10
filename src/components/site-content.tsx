@@ -5,6 +5,7 @@ import type { Family, Product, Store } from "@/lib/content-schema";
 import { formatSchedule, getLocationHours } from "@/lib/hours";
 import { Media } from "./media";
 import { TrackedLink } from "./tracked-link";
+import { catalogue } from "@/lib/catalogue";
 
 export function Hours({ store }: { store: Store }) {
   return (
@@ -126,7 +127,7 @@ function FamilyCard({
               {detailed ? " →" : ""}
             </>
           ) : (
-            "Ver en catálogo 2026 →"
+            `Ver en catálogo ${catalogue.edition} →`
           )}
         </span>
       </div>
@@ -164,7 +165,16 @@ export function ProductCard({
   );
 }
 export function PdfAction({ compact = false }: { compact?: boolean }) {
-  const { pdf } = getContent();
+  const { pdf: configuredPdf } = getContent();
+  const pdf =
+    configuredPdf.status === "verified"
+      ? {
+          ...configuredPdf,
+          url: catalogue.source.src,
+          sizeBytes: catalogue.source.sizeBytes,
+          edition: catalogue.edition,
+        }
+      : configuredPdf;
   if (!pdf.url || pdf.status === "unavailable")
     return (
       <div className="pdf-action">

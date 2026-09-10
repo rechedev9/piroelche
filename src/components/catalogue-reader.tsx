@@ -2,7 +2,12 @@ import Link from "next/link";
 import { CataloguePageViewer } from "@/components/catalogue-page-viewer";
 import { CatalogueIndex } from "@/components/catalogue-index";
 import { CataloguePagination } from "@/components/catalogue-pagination";
-import { cataloguePageHref, type CataloguePage } from "@/lib/catalogue";
+import {
+  catalogue,
+  cataloguePageHref,
+  getFamilyCataloguePages,
+  type CataloguePage,
+} from "@/lib/catalogue";
 
 export function CatalogueReader({ selected }: { selected: CataloguePage }) {
   return (
@@ -26,19 +31,31 @@ export function CatalogueReader({ selected }: { selected: CataloguePage }) {
       >
         <span>Ir directo a</span>
         {[
-          { label: "Fuegos artificiales", page: 14 },
-          { label: "Humo de color", page: 12 },
-          { label: "Fuego frío", page: 13 },
-          { label: "Tracas y petardos", page: 8 },
-        ].map((section) => (
-          <Link
-            key={section.page}
-            href={cataloguePageHref(section.page)}
-            prefetch={false}
-          >
-            {section.label} <span aria-hidden="true">↗</span>
-          </Link>
-        ))}
+          {
+            label: "Fuegos artificiales",
+            family: "fuegos",
+            preferred: "BATERIAS AUTOMÁTICAS",
+          },
+          { label: "Humo de color", family: "humo" },
+          { label: "Fuego frío", family: "frio" },
+          { label: "Tracas y petardos", family: "tracas", preferred: "TRACAS" },
+        ]
+          .flatMap((section) => {
+            const pages = getFamilyCataloguePages(section.family);
+            const page =
+              pages.find((item) => item.title === section.preferred) ||
+              pages[0];
+            return page ? [{ ...section, page: page.page }] : [];
+          })
+          .map((section) => (
+            <Link
+              key={section.family}
+              href={cataloguePageHref(section.page)}
+              prefetch={false}
+            >
+              {section.label} <span aria-hidden="true">↗</span>
+            </Link>
+          ))}
       </nav>
       <div className="catalogue-reader-layout">
         <CatalogueIndex selectedPage={selected.page} />
@@ -58,8 +75,8 @@ export function CatalogueReader({ selected }: { selected: CataloguePage }) {
         </div>
       </div>
       <p className="catalogue-print-note">
-        Catálogo original de Piroboom · Edición 2026. Consulta la vigencia de
-        las condiciones y la disponibilidad antes de acudir a tienda.
+        Catálogo de Piroboom · Edición {catalogue.edition}. Consulta la vigencia
+        de las condiciones y la disponibilidad antes de acudir a tienda.
       </p>
     </section>
   );
