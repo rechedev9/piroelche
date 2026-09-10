@@ -533,17 +533,17 @@
   },
   "brand": {
     "hero": {
-      "src": "/media/google/fuegos-celebracion-2024-10.jpg",
-      "alt": "Fuegos artificiales dorados iluminando una celebración nocturna",
-      "width": 1536,
-      "height": 2048,
+      "src": "/media/decorative/hero-fireworks-gold-magenta.webp",
+      "alt": "Ilustración de fuegos artificiales dorados y magenta sobre siluetas de palmeras",
+      "width": 1122,
+      "height": 1402,
       "provenance": {
-        "kind": "primary-source",
-        "source": "https://www.google.com/maps/contrib/114396712537097425294/photos",
-        "checkedAt": "2026-09-09",
-        "note": "Foto publicada por el perfil del negocio, seleccionada por petición del usuario para la web. Google: Foto - oct 2024; Fecha de la imagen: jun 2024. Imagen temática, sin atribuir un cliente, lugar o ejecución propios ni disponibilidad actual.",
+        "kind": "owner-confirmed",
+        "source": "User-supplied generated hero image, 2026-09-10",
+        "checkedAt": "2026-09-10",
+        "note": "AI-generated editorial artwork provided by the user for the home hero. Gold and magenta fireworks above palm silhouettes; it does not document a Piroboom event or a specific location.",
         "pending": [],
-        "verifiedFields": ["image"]
+        "verifiedFields": ["src", "alt", "width", "height", "usage"]
       }
     },
     "eventHero": {

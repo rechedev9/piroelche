@@ -52,11 +52,12 @@ export function Header() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/brand/logo.webp"
-            alt="Piroboom · Pirotecnia · Elche"
-            width={138}
-            height={46}
-            priority
+            src="/brand/logo-header.webp"
+            alt="Piroboom"
+            width={680}
+            height={247}
+            sizes="(max-width: 650px) 150px, 170px"
+            preload
           />
         </Link>
         <Button
@@ -96,7 +97,7 @@ export function Header() {
             </Link>
           </Button>
         </nav>
-        <Button asChild variant="yellow" className="header-event">
+        <Button asChild variant="light-outline" className="header-event">
           <Link href={eventRequestHref()}>Planificar mi evento</Link>
         </Button>
       </div>

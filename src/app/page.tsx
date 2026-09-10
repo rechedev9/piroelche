@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Image from "next/image";
 import { getContent } from "@/lib/content";
 import { getLocationHours } from "@/lib/hours";
 import { eventRequestHref } from "@/lib/navigation";
@@ -9,6 +8,7 @@ import { FamilyGrid, Hours } from "@/components/site-content";
 import { Media } from "@/components/media";
 import { TrackedLink } from "@/components/tracked-link";
 import { CampaignPromo } from "@/components/campaign-promo";
+import { HeroImage } from "@/components/hero-image";
 
 export const metadata = pageMetadata(
   "Pirotecnia para tus celebraciones en Elche",
@@ -30,70 +30,68 @@ export default function Home() {
   return (
     <div className="brand-home">
       <section className="hero brand-hero">
-        <div className="hero-background" aria-hidden="true">
-          <Image
-            src="/media/decorative/home-fireworks-v1.webp"
-            alt=""
-            fill
-            sizes="100vw"
-            quality={60}
-            // Largest painted element on mobile; the hero photo wins on wider
-            // viewports, so use eager + high priority instead of a preload.
-            loading="eager"
-            fetchPriority="high"
-          />
-        </div>
         <div className="container hero-inner">
           <div className="brand-hero-copy">
             <p className="eyebrow brand-eyebrow">Tienda física · Elche</p>
-            <h1>Pirotecnia para tus celebraciones en Elche.</h1>
+            <h1>
+              Pirotecnia para{" "}
+              <span className="brand-hero-accent">tus celebraciones</span>{" "}
+              en Elche.
+            </h1>
             <p className="lead">
               Explora el catálogo y consulta las opciones para tu evento. Te
               ayudamos a elegir según el producto, el lugar y las condiciones de
               uso.
             </p>
-            <div className="flex-row">
+            <div className="flex-row brand-hero-actions">
               <Button asChild variant="yellow">
                 <TrackedLink
                   href="/catalogo-pdf/"
                   event={{ name: "select_journey", journey: "product" }}
                 >
                   Explorar catálogo
+                  <span aria-hidden="true">↗</span>
                 </TrackedLink>
               </Button>
-              <Button asChild variant="light-outline">
-                <TrackedLink
-                  href="/eventos/"
-                  event={{ name: "select_journey", journey: "event" }}
-                >
-                  Planificar mi evento
-                </TrackedLink>
-              </Button>
+              <TrackedLink
+                className="brand-hero-secondary"
+                href="/eventos/"
+                event={{ name: "select_journey", journey: "event" }}
+              >
+                Planificar mi evento
+                <span aria-hidden="true">→</span>
+              </TrackedLink>
             </div>
-            <div className="today">
-              <span>
-                Tienda Elche ·{" "}
-                {today.scheduleConfirmed
-                  ? `hoy ${today.todayHours}`
-                  : "consulta el horario antes de venir"}
-              </span>
-              <Link href="/tiendas/">Horarios y cómo llegar</Link>
+            <div className="today brand-hero-store">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                aria-hidden="true"
+              >
+                <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+              <div className="brand-hero-store-copy">
+                <span>
+                  Tienda Elche ·{" "}
+                  {today.scheduleConfirmed
+                    ? `hoy ${today.todayHours}`
+                    : "consulta el horario antes de venir"}
+                </span>
+                <Link href="/tiendas/">Horarios y cómo llegar</Link>
+              </div>
             </div>
           </div>
-          <figure className="brand-hero-visual">
-            <div className="brand-photo-tag">Luz, color y celebración</div>
-            <Media
-              src={heroImage?.src}
-              alt={heroImage?.alt || "Piroboom en Elche"}
-              ratio="4 / 5"
-              fit="contain"
-              dark
-              priority
-            />
-            <figcaption className="brand-photo-caption">
-              Piroboom · Pirotecnia en Elche
-            </figcaption>
-          </figure>
+          <HeroImage
+            src={heroImage?.src}
+            alt={heroImage?.alt || "Piroboom en Elche"}
+            label="Piroboom · Elche"
+            caption="Luz, color y celebración"
+          />
         </div>
       </section>
       <section className="container section">

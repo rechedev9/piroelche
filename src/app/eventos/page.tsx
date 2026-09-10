@@ -6,6 +6,7 @@ import { eventRequestHref } from "@/lib/navigation";
 import { pageMetadata } from "@/lib/seo";
 import { LeadForm } from "@/components/lead-form";
 import { Media, ProductVideo } from "@/components/media";
+import { HeroImage } from "@/components/hero-image";
 
 export const metadata = pageMetadata(
   "Eventos y celebraciones",
@@ -55,16 +56,12 @@ export default async function Events({ searchParams }: PageProps<"/eventos">) {
               <Link href="#solicitud">Solicitar propuesta</Link>
             </Button>
           </div>
-          <figure className="brand-events-visual">
-            <Media
-              src={eventImage?.src}
-              alt={eventImage?.alt || "Una celebración con luz y color"}
-              ratio="4 / 5"
-              fit="contain"
-              dark
-            />
-            <figcaption>Una idea. Tu ocasión. Muchas posibilidades.</figcaption>
-          </figure>
+          <HeroImage
+            src={eventImage?.src}
+            alt={eventImage?.alt || "Una celebración con luz y color"}
+            label="Eventos · Piroboom"
+            caption="Una idea. Tu ocasión. Muchas posibilidades."
+          />
         </div>
       </section>
       <section className="container section brand-solutions">

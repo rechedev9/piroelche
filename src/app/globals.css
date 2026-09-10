@@ -333,28 +333,32 @@ body > div {
   border-bottom: 1px solid var(--line-on-dark);
 }
 .header-inner {
-  @apply py-2.5 flex items-center gap-4.5;
+  @apply py-3 flex items-center gap-6;
 }
 .brand {
   @apply flex flex-none;
 }
 .brand img {
-  @apply w-34.5 h-11.5 object-contain;
+  @apply block w-42.5 h-auto object-contain;
 }
 .main-nav {
-  @apply flex gap-1 ml-auto items-center;
+  @apply flex gap-0.5 ml-auto items-center;
 }
 .main-nav > a {
-  @apply text-white font-bold text-[15px] rounded-[8px] py-2.5 px-3 min-h-11 whitespace-nowrap;
+  @apply text-on-dark-cool-dim font-semibold text-[14px] py-2.5 px-2.5 min-h-11 whitespace-nowrap;
 }
 .main-nav > a:hover {
   @apply text-yellow no-underline;
 }
 .main-nav > a[aria-current="page"] {
-  @apply bg-[#1f1f26] text-yellow;
+  @apply bg-transparent text-white;
+  box-shadow: inset 0 -2px 0 var(--yellow);
 }
-.header-event {
-  @apply text-[15px] py-2.5 px-4 rounded-compact whitespace-nowrap min-h-11.5;
+.site-header .header-event {
+  @apply text-[13px] font-semibold py-2.5 px-3.5 rounded-compact whitespace-nowrap min-h-10 border border-solid border-white/30;
+}
+.site-header .header-event:hover {
+  @apply bg-white text-night border-white;
 }
 .menu-toggle,
 .main-nav .mobile-event {
@@ -1090,7 +1094,11 @@ body > div {
     @apply flex;
   }
   .main-nav > a {
-    @apply whitespace-normal;
+    @apply whitespace-normal px-3.5 rounded-[8px];
+  }
+  .main-nav > a[aria-current="page"] {
+    @apply bg-white/5 text-yellow;
+    box-shadow: none;
   }
   .main-nav .mobile-event {
     @apply flex text-night mt-1.5;
@@ -1134,6 +1142,9 @@ body > div {
   }
 }
 @media (max-width: 650px) {
+  .site-header .brand img {
+    @apply w-37.5;
+  }
   .page-section {
     @apply pt-9 pb-12;
   }

@@ -124,14 +124,8 @@ test("las imágenes configuradas se muestran y decodifican desde el propio sitio
       }
     }
     if (path === "/") {
-      await expect(page.locator(".hero-background img")).toHaveAttribute(
-        "alt",
-        "",
-      );
-      await expect(page.locator(".hero-background")).toHaveAttribute(
-        "aria-hidden",
-        "true",
-      );
+      await expect(page.locator(".hero img")).toHaveCount(1);
+      await expect(page.locator(".hero-background")).toHaveCount(0);
     }
   }
 });

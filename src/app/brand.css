@@ -28,36 +28,91 @@
 }
 .brand-home .brand-hero,
 .events-hero.brand-events-hero {
-  @apply border-0 border-b-8 border-solid border-yellow;
+  @apply border-0 border-b border-solid border-line-on-dark;
+}
+.brand-home .brand-hero:after {
+  background: radial-gradient(
+    ellipse at 85% 35%,
+    color-mix(in srgb, var(--magenta) 7%, transparent),
+    transparent 60%
+  );
 }
 .brand-home .hero-inner {
-  @apply gap-12;
-  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
-  padding-block: 64px;
-}
-.brand-home .hero-background img {
-  @apply opacity-30;
+  @apply gap-16;
+  grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
+  padding-block: 56px;
 }
 .brand-hero-copy {
   @apply min-w-0;
 }
+.brand-home .hero .brand-eyebrow {
+  @apply text-on-dark-muted text-[12px] font-semibold tracking-[0.13em] mb-5;
+}
+.brand-home .hero .brand-eyebrow:before {
+  @apply w-3 h-3 text-yellow;
+}
 .brand-home .hero h1 {
-  font-size: clamp(44px, 5.3vw, 70px);
+  @apply font-normal leading-[1.06] mb-6;
+  font-size: clamp(40px, 4.6vw, 62px);
+}
+.brand-hero-accent {
+  @apply block text-yellow;
+}
+.brand-home .hero .lead {
+  @apply text-[17px] leading-[1.65] text-on-dark-muted mb-7;
+  max-width: 32em;
+}
+.brand-hero-actions {
+  @apply gap-x-7 gap-y-3;
+}
+.brand-home .brand-hero-actions .button {
+  @apply text-[15px] min-h-13 py-3 px-5 gap-5 rounded-compact;
+}
+.brand-hero-secondary {
+  @apply inline-flex items-center justify-center gap-4 min-h-12 text-white text-[15px] font-bold;
+}
+.brand-hero-secondary:hover {
+  @apply text-yellow no-underline;
+}
+.brand-home .brand-hero-store {
+  @apply items-start flex-nowrap gap-3 mt-7 pt-5 border-0 border-t border-solid border-line-on-dark text-on-dark-muted;
+  max-width: 32em;
+}
+.brand-hero-store:before {
+  content: none;
+}
+.brand-hero-store > svg {
+  @apply flex-none mt-0.5;
+}
+.brand-hero-store-copy {
+  @apply grid gap-1 min-w-0 text-[13px] leading-[1.5];
+}
+.brand-hero-store-copy a {
+  @apply text-white font-semibold underline-offset-4;
+  justify-self: start;
+}
+.brand-hero-store-copy a:hover {
+  @apply text-yellow;
 }
 .brand-hero-visual {
-  @apply m-0 min-w-0 border-2 border-solid border-yellow bg-night overflow-hidden;
+  @apply m-0 min-w-0 w-full max-w-105 justify-self-end relative rounded-panel bg-night overflow-hidden;
 }
-.brand-photo-tag {
-  @apply bg-yellow text-night py-2.5 px-4 font-extrabold text-[13px] uppercase tracking-[0.08em];
+.brand-hero-visual:after {
+  content: "";
+  @apply absolute inset-0 pointer-events-none;
+  background: linear-gradient(transparent 65%, rgb(13 13 16 / 85%));
 }
-.brand-home .brand-hero-visual .media {
-  @apply rounded-none border-0 p-0 max-h-120;
+.brand-hero-visual .media {
+  @apply rounded-none border-0 p-0;
 }
-.brand-home .brand-hero-visual .media img {
+.brand-hero-visual .media img {
   @apply bg-night p-0;
 }
 .brand-photo-caption {
-  @apply py-3 px-4 text-yellow text-[13px] font-bold uppercase tracking-[0.08em];
+  @apply absolute bottom-6 left-6 right-6 z-1 text-white text-[18px] font-semibold leading-[1.4];
+}
+.brand-photo-caption > span {
+  @apply block text-[10px] uppercase tracking-[0.14em] font-semibold mb-1.5 text-on-dark-muted;
 }
 .brand-home .brand-journeys {
   @apply gap-6;
@@ -177,18 +232,6 @@
 }
 .brand-events-hero h1 {
   font-size: clamp(40px, 4.7vw, 62px);
-}
-.brand-events-visual {
-  @apply m-0 min-w-0 border-2 border-solid border-magenta;
-}
-.brand-events-hero .brand-events-visual .media {
-  @apply rounded-none border-0 p-0;
-}
-.brand-events-hero .brand-events-visual .media img {
-  @apply object-contain bg-night p-0;
-}
-.brand-events-visual figcaption {
-  @apply bg-magenta text-white py-3 px-4 font-extrabold text-[14px];
 }
 .brand-solution-list {
   @apply grid gap-8 mt-8;
@@ -427,11 +470,8 @@
   .brand-events-hero .brand-event-intro {
     @apply grid-cols-1;
   }
-  .brand-home .brand-hero-visual {
-    @apply w-full max-w-160 mx-auto;
-  }
-  .brand-events-hero .brand-events-visual {
-    @apply w-full max-w-100 mx-auto;
+  .brand-hero-visual {
+    @apply w-full max-w-120 mx-auto;
   }
   .brand-home .brand-events-band .grid,
   .brand-home .brand-trust ul {
@@ -460,22 +500,34 @@
   }
 }
 @media (max-width: 650px) {
-  .brand-home .hero-inner,
   .brand-events-hero .brand-event-intro {
     padding-block: 40px;
   }
+  .brand-home .hero-inner {
+    @apply gap-8;
+    padding-block: 36px;
+  }
   .brand-home .hero h1 {
-    font-size: clamp(38px, 11.3vw, 52px);
+    font-size: clamp(36px, 9.8vw, 46px);
   }
-  .brand-home .hero-background img {
-    @apply opacity-20;
+  .brand-home .hero .brand-eyebrow {
+    @apply mb-4;
   }
-  .brand-home .brand-hero-visual {
+  .brand-home .hero .lead {
+    @apply text-[16px] mb-6;
+  }
+  .brand-home .brand-hero-actions {
+    @apply gap-x-5 gap-y-2;
+  }
+  .brand-home .brand-hero-actions .button,
+  .brand-hero-secondary {
+    @apply text-[14px];
+  }
+  .brand-hero-visual {
     @apply max-w-full;
   }
-  .brand-photo-tag,
   .brand-photo-caption {
-    @apply text-[12px];
+    @apply left-5 right-5 bottom-5 text-[17px];
   }
   .brand-home .brand-journeys {
     @apply gap-5;
