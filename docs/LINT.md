@@ -3,10 +3,10 @@
 La configuración de [`.oxlintrc.json`](../.oxlintrc.json) usa **Oxlint 1.82.0** y **oxlint-tsgolint 7.0.2001**, fijados en el proyecto. Comprueba errores de JavaScript/TypeScript, React, Next.js, accesibilidad JSX, promesas e imports con información de tipos. La configuración antigua `eslint.config.mjs` se retiró junto con su integración anterior.
 
 ```json
-"lint": "oxlint --type-aware --deny-warnings ."
+"lint": "next typegen && oxlint --type-aware --deny-warnings ."
 ```
 
-El script anterior es el contrato de `pnpm lint`. La ejecución equivalente directa, la inspección de reglas y las otras comprobaciones son:
+El script anterior es el contrato de `pnpm lint`. Desde el 10 de septiembre de 2026 ejecuta antes `next typegen`: las páginas usan el tipo global `PageProps` generado en `.next/types`, y sin él el análisis de tipos de oxlint los marca como `error` (fallo observado en el primer run de CI del repositorio remoto, corregido en el commit siguiente). La ejecución equivalente directa, la inspección de reglas y las otras comprobaciones son:
 
 ```powershell
 pnpm exec oxlint --type-aware --deny-warnings .
