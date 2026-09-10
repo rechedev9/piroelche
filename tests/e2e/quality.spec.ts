@@ -163,6 +163,18 @@ test("keyboard mobile menu, Escape and reduced motion", async ({
   await expect(skipLink).toBeInViewport();
   await page.keyboard.press("Enter");
   await expect(page.locator("main")).toBeFocused();
+  // The contact bar sits between the header and main: walking back from main
+  // passes through its links (last one first) before reaching the menu button.
+  const contactLinks = page
+    .getByRole("complementary", { name: "Contacto directo", exact: true })
+    .getByRole("link");
+  const contactCount = await contactLinks.count();
+  expect(contactCount).toBeGreaterThan(0);
+  await page.keyboard.press("Shift+Tab");
+  await expect(contactLinks.last()).toBeFocused();
+  for (let index = 1; index < contactCount; index += 1)
+    await page.keyboard.press("Shift+Tab");
+  await expect(contactLinks.first()).toBeFocused();
   await page.keyboard.press("Shift+Tab");
   await expect(menu).toBeFocused();
   await page.keyboard.press("Enter");

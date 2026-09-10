@@ -66,7 +66,7 @@ export function ContactBar() {
       href: `tel:${store.landline.phone}`,
       icon: "phone",
       label: store.landline.phoneDisplay,
-      ariaLabel: `Llamar al ${store.landline.phoneDisplay}`,
+      ariaLabel: `Llamar al fijo ${store.landline.phoneDisplay}`,
       event: { name: "click_call" },
     });
   items.push({
@@ -74,7 +74,7 @@ export function ContactBar() {
     href: `tel:${store.phone}`,
     icon: "phone",
     label: store.phoneDisplay,
-    ariaLabel: `Llamar al ${store.phoneDisplay}`,
+    ariaLabel: `Llamar al móvil ${store.phoneDisplay}`,
     event: { name: "click_call" },
   });
   if (channels.whatsapp.enabled && channels.whatsapp.url)
