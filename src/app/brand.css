@@ -373,37 +373,199 @@
 .brand-about .brand-next-step {
   @apply rounded-control border-0 border-t-4 border-solid border-yellow;
 }
+.shops-hero-inner {
+  @apply grid grid-cols-2 items-center gap-12 pt-14 pb-24;
+}
+.shops-hero .brand-eyebrow {
+  @apply text-on-dark-muted text-[12px] mb-4;
+}
+.shops-hero .brand-eyebrow:before {
+  @apply text-yellow w-3.5 h-3.5;
+}
+.shops-hero h1 {
+  @apply font-normal m-0;
+  font-size: clamp(44px, 5vw, 68px);
+}
+.shops-hero h1 > span {
+  @apply text-yellow;
+}
+.shops-hero .intro {
+  @apply text-on-dark-muted text-[16px] leading-[1.7] mb-4;
+}
+.shops-section-links {
+  @apply flex flex-wrap gap-x-6 gap-y-1;
+}
+.shops-section-links a {
+  @apply inline-flex items-center gap-3 min-h-11 text-white text-[13px] font-bold;
+}
+.shops-section-links a:hover {
+  @apply text-yellow underline-offset-4;
+}
+.shops-section-links a > span {
+  @apply text-yellow;
+}
+.shops-content {
+  @apply relative -mt-10 pb-18;
+}
 .brand-shops .brand-store-card {
-  @apply border-2 border-solid border-night rounded-control;
+  @apply grid grid-cols-2 rounded-panel overflow-hidden;
+  box-shadow: 0 12px 32px rgb(13 13 16 / 5%);
 }
-.brand-shops .brand-store-card .card-body {
-  @apply bg-yellow;
+.shops-store-photo {
+  @apply relative m-0 min-w-0 bg-night isolate;
 }
-.brand-shops .brand-store-card .badge {
-  @apply bg-night text-yellow;
+.shops-store-photo .media {
+  @apply rounded-none h-full min-h-110;
+  aspect-ratio: auto;
 }
-.brand-shops .brand-store-card .muted,
-.brand-shops .brand-store-card .hours dt {
-  @apply text-ink;
+.shops-store-photo:after {
+  content: "";
+  @apply absolute inset-0 pointer-events-none;
+  background: linear-gradient(transparent 55%, rgb(13 13 16 / 90%));
 }
-.brand-shops .brand-store-card .hours > div {
-  @apply border-ink/25;
+.shops-store-photo figcaption {
+  @apply absolute left-8 right-8 bottom-8 z-1 text-white font-title text-[36px] leading-[1.1];
 }
-.brand-store-detail {
-  @apply grid gap-8 mt-8 items-center;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+.shops-store-photo figcaption > span {
+  @apply block font-sans font-semibold text-[11px] tracking-[0.14em] uppercase text-on-dark-strong mb-2.5;
 }
-.brand-store-detail .media {
-  @apply rounded-control;
+.shops-store-info {
+  @apply p-9 min-w-0;
 }
-.brand-store-detail h2 {
-  @apply mb-3;
+.shops-store-info > .badge {
+  @apply bg-soft text-mid text-[10px] tracking-[0.1em] rounded-[5px];
 }
-.brand-store-detail > div > p:not(.eyebrow) {
-  @apply text-muted;
+.shops-store-info h2 {
+  @apply text-[40px] font-normal mt-3 mb-3;
+}
+.shops-store-info address {
+  @apply flex items-start gap-2.5 not-italic text-muted text-[15px] leading-[1.6] mb-6;
+}
+.shops-store-info address > svg {
+  @apply flex-none w-5 h-5 mt-0.5 text-magenta;
+}
+.shops-hours {
+  @apply bg-paper rounded-control p-5;
+}
+.shops-hours h3 {
+  @apply flex items-center gap-2 text-[13px] mb-3;
+}
+.shops-hours h3 > svg {
+  @apply flex-none text-muted;
+}
+.shops-hours .hours > div {
+  @apply grid gap-x-3 gap-y-1 py-2 mb-0 text-[13px];
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.shops-hours .hours > div:last-child {
+  @apply border-0 pb-0;
+}
+.shops-hours .hours dd {
+  @apply text-right;
+}
+.shops-hours-note {
+  @apply text-[12px] text-muted leading-[1.6] mt-3 mb-0;
+}
+.shops-store-info .store-actions {
+  @apply grid grid-cols-2 gap-3 mt-6;
+}
+.shops-store-info .store-actions .button {
+  @apply text-[15px] min-h-12.5 py-3 px-4 rounded-compact;
+}
+.shops-store-info .store-actions .button:first-child {
+  @apply bg-yellow text-night;
+}
+.shops-store-info .store-actions .button:first-child:hover {
+  @apply bg-night text-white;
+}
+.shops-store-info .store-actions .button.outline {
+  @apply border-line;
+}
+.shops-store-info .store-actions .button.outline:hover {
+  @apply border-night;
+}
+.brand-shops .shops-campaigns {
+  @apply mt-16;
+}
+.shops-campaigns h2 {
+  @apply text-[38px] font-normal;
+}
+.shops-campaigns > .muted {
+  @apply text-[15px] leading-[1.7] mt-4 mb-7 max-w-200;
+}
+.shops-campaigns > .spread > .badge {
+  @apply bg-transparent border border-solid border-line text-muted text-[10px];
+}
+.shops-campaign-grid {
+  @apply grid grid-cols-2 gap-5;
 }
 .brand-shops .campaign-card {
-  @apply rounded-control border-0 border-t-4 border-solid border-magenta;
+  @apply flex flex-col items-start p-6.5 rounded-media border border-solid border-line;
+}
+.shops-campaign-heading {
+  @apply flex items-start gap-4 w-full mb-5;
+}
+.shops-location-icon {
+  @apply flex flex-none items-center justify-center w-12 h-12 bg-soft rounded-control text-magenta;
+}
+.shops-campaign-heading > div {
+  @apply min-w-0;
+}
+.shops-campaign-heading h3 {
+  @apply text-[24px] mt-0 mb-1 tracking-[-0.02em];
+}
+.shops-campaign-heading .muted {
+  @apply text-[14px];
+}
+.shops-campaigns .campaign-card > .badge {
+  @apply text-[11px] tracking-normal normal-case font-semibold rounded-[5px];
+}
+.shops-campaigns .campaign-card dl {
+  @apply grid grid-cols-2 gap-5 w-full my-5 pt-5 border-0 border-t border-solid border-line;
+}
+.shops-campaigns .campaign-card dt {
+  @apply text-[12px] text-muted mb-1.5;
+}
+.shops-campaigns .campaign-card dd {
+  @apply text-[14px] m-0;
+}
+.shops-campaign-hours {
+  @apply grid gap-0.5;
+}
+.shops-campaign-hours > span {
+  @apply font-normal text-muted text-[13px];
+}
+.shops-campaign-actions {
+  @apply grid w-full mt-auto border-0 border-t border-solid border-line pt-2;
+}
+.shops-campaign-actions:empty {
+  @apply hidden;
+}
+.shops-campaign-actions .text-link {
+  @apply flex items-center justify-between gap-3 min-h-11 py-2 text-[13px];
+}
+.shops-campaign-actions .text-link > span:last-child {
+  @apply flex-none text-[20px];
+}
+.brand-shops .brand-store-detail {
+  @apply grid gap-0 mt-16 rounded-panel overflow-hidden;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+}
+.brand-store-detail > .media {
+  @apply rounded-none h-full min-h-80;
+  aspect-ratio: auto;
+}
+.shops-visit-copy {
+  @apply p-10 self-center min-w-0;
+}
+.brand-store-detail h2 {
+  @apply font-normal text-[38px] mb-4;
+}
+.shops-visit-copy > p:not(.eyebrow) {
+  @apply text-on-dark-muted text-[15px] leading-[1.7] mb-6;
+}
+.shops-visit-copy .button {
+  @apply text-[14px] gap-6;
 }
 .brand-contact .contact-card {
   @apply bg-yellow border-2 border-solid border-night rounded-control;
@@ -424,6 +586,21 @@
   @apply text-muted text-[14px] mt-2;
 }
 @media (max-width: 1059px) {
+  .shops-hero-inner {
+    @apply gap-8;
+  }
+  .shops-store-info {
+    @apply p-6;
+  }
+  .shops-hours .hours > div {
+    @apply grid-cols-1;
+  }
+  .shops-hours .hours dd {
+    @apply text-left;
+  }
+  .shops-store-info h2 {
+    @apply text-[36px];
+  }
   .brand-home .hero-inner,
   .brand-events-hero .brand-event-intro {
     @apply gap-7;
@@ -466,6 +643,31 @@
   }
 }
 @media (max-width: 800px) {
+  .shops-hero-inner {
+    @apply grid-cols-1 gap-5 pt-10 pb-20;
+  }
+  .brand-shops .brand-store-card {
+    @apply grid-cols-1;
+  }
+  .shops-store-photo .media {
+    @apply min-h-0 h-auto;
+    aspect-ratio: 16 / 9;
+  }
+  .shops-hours .hours > div {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .shops-hours .hours dd {
+    @apply text-right;
+  }
+  .shops-campaigns .campaign-card dl {
+    @apply grid-cols-1 gap-4;
+  }
+  .brand-shops .brand-store-detail {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+  .shops-visit-copy {
+    @apply p-6;
+  }
   .brand-home .hero-inner,
   .brand-events-hero .brand-event-intro {
     @apply grid-cols-1;
@@ -542,8 +744,7 @@
     @apply h-auto;
     aspect-ratio: 4 / 3;
   }
-  .brand-visit-grid,
-  .brand-store-detail {
+  .brand-visit-grid {
     @apply grid-cols-1;
   }
   .brand-visit-photo .media {
@@ -603,8 +804,94 @@
   .brand-about .brand-about-grid h2 {
     @apply text-[30px];
   }
-  .brand-store-detail {
-    @apply gap-5;
+  .shops-hero-inner {
+    @apply pt-8 pb-16 gap-4;
+  }
+  .shops-hero .brand-eyebrow {
+    @apply mb-3;
+  }
+  .shops-hero .intro {
+    @apply text-[15px] mb-3;
+  }
+  .shops-section-links {
+    @apply gap-x-5;
+  }
+  .shops-section-links a {
+    @apply text-[12px] gap-2;
+  }
+  .shops-content {
+    @apply -mt-7 pb-12;
+  }
+  .shops-store-photo .media {
+    aspect-ratio: 3 / 2;
+  }
+  .shops-store-photo figcaption {
+    @apply left-5 right-5 bottom-5 text-[30px];
+  }
+  .shops-store-info {
+    @apply p-5;
+  }
+  .shops-store-info h2 {
+    @apply text-[34px];
+  }
+  .shops-store-info address {
+    @apply text-[14px] mb-5;
+  }
+  .shops-hours {
+    @apply p-4;
+  }
+  .shops-hours .hours > div {
+    @apply flex flex-wrap justify-between gap-x-3 gap-y-1 text-[12px];
+  }
+  .shops-hours .hours dd {
+    @apply text-left;
+  }
+  .shops-store-info .store-actions {
+    @apply gap-2 mt-5;
+  }
+  .brand-shops .shops-campaigns,
+  .brand-shops .brand-store-detail {
+    @apply mt-10;
+  }
+  .shops-campaigns h2 {
+    @apply text-[32px];
+  }
+  .shops-campaigns > .muted {
+    @apply mt-3 mb-5;
+  }
+  .shops-campaign-grid {
+    @apply grid-cols-1 gap-4;
+  }
+  .brand-shops .campaign-card {
+    @apply p-5;
+  }
+  .shops-campaign-heading {
+    @apply gap-3 mb-4;
+  }
+  .shops-campaign-heading h3 {
+    @apply text-[22px];
+  }
+  .shops-campaigns .campaign-card dl {
+    @apply grid-cols-2 gap-4 my-4 pt-4;
+  }
+  .shops-campaigns .campaign-card dd {
+    @apply text-[13px];
+  }
+  .brand-shops .brand-store-detail {
+    @apply grid-cols-1;
+  }
+  .brand-store-detail > .media {
+    @apply min-h-0 h-auto;
+    aspect-ratio: 16 / 9;
+  }
+  .shops-visit-copy {
+    @apply p-6;
+  }
+  .brand-store-detail h2 {
+    @apply text-[32px];
+  }
+  .shops-visit-copy .button {
+    @apply w-full gap-3;
   }
   .brand-section-heading {
     @apply gap-2.5;
