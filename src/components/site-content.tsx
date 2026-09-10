@@ -163,7 +163,7 @@ export function ProductCard({
     </Link>
   );
 }
-export function PdfAction() {
+export function PdfAction({ compact = false }: { compact?: boolean }) {
   const { pdf } = getContent();
   if (!pdf.url || pdf.status === "unavailable")
     return (
@@ -184,8 +184,13 @@ export function PdfAction() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Descargar catálogo PDF{" "}
-          {pdf.edition && <span className="muted">· {pdf.edition}</span>}
+          {compact ? "Descargar PDF" : "Descargar catálogo PDF"}{" "}
+          {compact && pdf.edition && (
+            <span className="screen-reader-only">· {pdf.edition}</span>
+          )}
+          {!compact && pdf.edition && (
+            <span className="muted">· {pdf.edition}</span>
+          )}
           <span aria-hidden="true">↗</span>
           <span className="screen-reader-only">, nueva pestaña</span>
         </TrackedLink>
@@ -195,7 +200,7 @@ export function PdfAction() {
           {new Intl.NumberFormat("es-ES", { maximumFractionDigits: 1 }).format(
             pdf.sizeBytes / 1_000_000,
           )}{" "}
-          MB · Documento del negocio
+          MB{!compact && " · Documento del negocio"}
         </small>
       )}
     </div>

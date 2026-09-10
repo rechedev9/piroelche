@@ -266,7 +266,7 @@ test("T15 · PDF real identificado y enlaces de llamada y ruta utilizables", asy
       automaticPdfRequests.push(incoming.url());
   });
   await page.goto(publicationOrigin + "/catalogo-pdf/");
-  const pdf = page.getByRole("link", { name: /Descargar catálogo PDF/ });
+  const pdf = page.getByRole("link", { name: /Descargar PDF/ });
   await pdf.hover();
   await page.waitForLoadState("networkidle");
   expect(automaticPdfRequests).toEqual([]);
@@ -274,9 +274,7 @@ test("T15 · PDF real identificado y enlaces de llamada y ruta utilizables", asy
   await expect(pdf).toHaveAttribute("target", "_blank");
   await expect(pdf).toHaveAttribute("rel", /noopener/);
   await expect(pdf).toHaveAccessibleName(/2026.*nueva pestaña/);
-  await expect(
-    page.getByText("81,9 MB · Documento del negocio", { exact: true }),
-  ).toBeVisible();
+  await expect(page.getByText("81,9 MB", { exact: true })).toBeVisible();
   const pdfResponse = await request.head(
     publicationOrigin + "/catalogos/catalogo-2026.pdf",
   );

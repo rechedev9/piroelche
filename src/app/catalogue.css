@@ -7,28 +7,67 @@
   @apply p-4;
 }
 .catalogue-hero {
-  @apply grid grid-cols-[minmax(0,1.25fr)_minmax(200px,0.75fr)] items-center gap-12 py-10.5 px-12 bg-night text-white rounded-panel mt-5.5 mx-0 mb-13;
+  @apply grid grid-cols-[minmax(0,1fr)_300px] items-center gap-10 p-10 rounded-panel mt-4 mx-0 mb-10 relative isolate overflow-hidden;
+}
+.catalogue-hero::before {
+  content: "";
+  @apply absolute -z-1 w-100 h-100 rounded-full right-[-40px] top-[-30px] border border-solid border-white/10 pointer-events-none;
+  box-shadow:
+    0 0 0 50px #ffffff04,
+    0 0 0 100px #ffffff03;
 }
 .catalogue-hero h1 {
-  @apply text-[clamp(44px,5vw,70px)] max-w-170;
+  @apply text-[clamp(44px,4.5vw,60px)] leading-none my-5;
 }
-.catalogue-hero p:not(.eyebrow) {
-  @apply text-[#dedee4] max-w-155;
-}
-.catalogue-hero .eyebrow {
+.catalogue-hero h1 span {
   @apply text-yellow;
 }
+.catalogue-hero-description {
+  @apply text-on-dark-cool max-w-125 text-[16px] mb-6;
+}
+.catalogue-hero .eyebrow {
+  @apply flex items-center gap-3 text-on-dark-muted text-[11px] flex-wrap;
+}
+.catalogue-edition {
+  @apply text-yellow border border-solid border-yellow/40 rounded-full py-1.5 px-3;
+}
+.catalogue-hero-actions {
+  @apply flex flex-wrap gap-3 items-start;
+}
+.catalogue-hero-actions .button {
+  @apply text-[15px] min-h-12 py-3 px-4;
+}
+.catalogue-hero-note {
+  @apply text-[12px] text-on-dark-muted mt-7 mb-0;
+}
+.catalogue-cover-stack {
+  @apply relative block w-45 mx-auto;
+}
 .catalogue-cover {
-  @apply block w-[min(100%,245px)] h-auto m-auto rounded-[3px] shadow-[14px_14px_0_#242429];
+  @apply block relative w-full h-auto rounded-[3px];
+  transform: rotate(-7deg);
+  box-shadow:
+    -4px 5px 0 #37343a,
+    0 20px 35px #0008;
+}
+.catalogue-cover-preview {
+  @apply absolute w-full h-auto rounded-[3px] top-0 left-7 opacity-80;
+  transform: rotate(9deg);
 }
 .catalogue-cover-link {
-  @apply block pt-3 px-4 pb-5.5;
+  @apply block py-5 px-6 text-white no-underline;
+}
+.catalogue-cover-link:hover {
+  @apply text-yellow no-underline;
+}
+.catalogue-cover-caption {
+  @apply flex gap-4 items-center justify-center mt-7 text-[12px] font-bold relative;
 }
 .catalogue-hero .pdf-action {
-  @apply mt-5;
+  @apply relative;
 }
 .catalogue-hero .pdf-action .button {
-  @apply text-white border-[#bbb] bg-transparent;
+  @apply text-white border-white/40 bg-transparent;
 }
 .catalogue-hero .pdf-action .button:hover {
   @apply text-ink bg-yellow border-yellow;
@@ -37,40 +76,112 @@
   @apply text-inherit;
 }
 .catalogue-hero .pdf-action small {
-  @apply text-[#d0cfd6];
+  @apply absolute left-0 top-full mt-1 text-on-dark-muted text-[11px];
+}
+.catalogue-families {
+  @apply mt-14;
+  scroll-margin-top: calc(var(--header-height) + 24px);
 }
 .catalogue-family-heading {
-  @apply mb-6;
+  @apply flex items-end justify-between gap-5 mb-6;
+}
+.catalogue-family-heading h2 {
+  @apply mb-0;
+}
+.catalogue-family-heading > p {
+  @apply text-muted text-[14px] max-w-62 mb-0;
+}
+.catalogue-families .catalog-families {
+  @apply mt-0;
+}
+.catalogue-families .media {
+  aspect-ratio: 16 / 10;
+}
+.catalogue-help {
+  @apply flex items-center justify-between gap-5 p-7 bg-yellow rounded-panel mt-8;
+}
+.catalogue-help h2 {
+  @apply text-[28px] mb-2;
+}
+.catalogue-help p {
+  @apply mb-0 text-[15px];
+}
+.catalogue-help .button {
+  @apply shrink-0 text-[15px];
 }
 .catalogue-reader {
-  @apply mt-16 pt-9.5 border-t-[5px] border-t-yellow scroll-mt-22.5;
+  scroll-margin-top: 20px;
 }
 .catalogue-reader-heading {
-  @apply flex [align-items:end] justify-between gap-6 mb-6.5;
+  @apply flex items-end justify-between gap-6 mb-5;
 }
 .catalogue-reader-heading h2 {
-  @apply max-w-155;
+  @apply mb-0;
 }
 .catalogue-reader-heading > p {
-  @apply max-w-72.5 text-muted;
+  @apply max-w-72.5 text-muted text-[14px] mb-0;
+}
+.catalogue-shortcuts {
+  @apply flex flex-wrap items-center gap-2 mb-5;
+}
+.catalogue-shortcuts > span {
+  @apply text-[12px] font-bold text-muted mr-2;
+}
+.catalogue-shortcuts a {
+  @apply inline-flex items-center justify-between gap-4 rounded-full border border-solid border-line py-2 px-3.5 min-h-10 text-[13px] font-bold text-ink bg-white no-underline;
+}
+.catalogue-shortcuts a:hover {
+  @apply bg-yellow border-yellow;
+}
+.catalogue-shortcuts a span {
+  @apply text-magenta;
 }
 .catalogue-reader-layout {
-  @apply grid grid-cols-[250px_minmax(0,1fr)] gap-7 [align-items:start];
+  @apply grid grid-cols-[256px_minmax(0,1fr)] gap-5 items-start;
 }
 .catalogue-index {
-  @apply border border-solid border-line rounded-[14px] bg-white sticky top-22;
+  @apply border border-solid border-line rounded-media bg-white min-w-0 sticky;
+  top: calc(var(--header-height) + 20px);
 }
 .catalogue-index summary {
-  @apply py-[17px] px-4.5 font-extrabold cursor-pointer min-h-13;
+  @apply p-4 font-extrabold cursor-pointer min-h-13 text-[14px];
+}
+.catalogue-index-count {
+  @apply block ml-4 text-muted font-normal text-[12px] mt-1;
+}
+.catalogue-search {
+  @apply px-3 pb-3;
+}
+.catalogue-search label {
+  @apply block text-[12px] font-bold mb-2;
+}
+.catalogue-search-field {
+  @apply flex items-center gap-2 px-3 rounded-compact bg-paper border border-solid border-line;
+}
+.catalogue-search-field svg {
+  @apply shrink-0 text-muted;
+}
+.catalogue-search input {
+  @apply border-0 py-3 px-0 bg-transparent text-[13px] min-h-11 w-full;
+}
+.catalogue-search p {
+  @apply text-[11px] text-muted mb-0 mt-2;
+}
+.catalogue-search-empty {
+  @apply px-4 pb-4 text-[13px] text-muted;
+}
+.catalogue-search-empty p {
+  @apply mb-1;
 }
 .catalogue-index nav {
-  @apply max-h-[650px] overflow-auto;
+  @apply max-h-[min(56svh,520px)] overflow-auto overscroll-contain;
+  scrollbar-width: thin;
 }
 .catalogue-index ol {
   @apply list-none m-0 pt-0 px-2 pb-2;
 }
 .catalogue-index a {
-  @apply flex items-center gap-3 p-2 rounded-[8px] text-ink no-underline font-[750] text-[14px] leading-[1.25];
+  @apply flex items-center gap-3 p-2 rounded-[8px] text-ink no-underline font-extrabold text-[11px] leading-[1.4] mb-1;
 }
 .catalogue-index a:hover {
   @apply bg-soft;
@@ -79,52 +190,85 @@
   @apply bg-yellow;
 }
 .catalogue-index img {
-  @apply flex-[0_0_40px] object-contain;
+  @apply flex-[0_0_32px] object-contain rounded-[2px];
 }
 .catalogue-index small {
-  @apply block mb-1 text-[11px] font-semibold uppercase;
+  @apply block mb-1 text-[10px] font-semibold text-muted;
+}
+.catalogue-index-arrow {
+  @apply ml-auto opacity-0 text-[16px];
+}
+.catalogue-index a[aria-current] .catalogue-index-arrow {
+  @apply opacity-100;
 }
 .catalogue-current {
-  @apply min-w-0 bg-[#eeece6] p-5.5 rounded-[14px];
+  @apply min-w-0 bg-white border border-solid border-line rounded-media overflow-hidden;
+}
+.catalogue-current-toolbar {
+  @apply p-3 border-b border-b-line;
 }
 .catalogue-pagination {
-  @apply flex items-center justify-between gap-3 mb-5;
+  @apply flex items-center justify-between gap-3;
 }
-.catalogue-pagination p {
-  @apply m-0 text-[14px] text-center;
+.catalogue-pagination .button {
+  @apply text-[13px] min-h-11 px-3 py-2;
+}
+.catalogue-pagination button:disabled,
+.catalogue-zoom-controls button:disabled {
+  @apply cursor-not-allowed opacity-40;
+}
+.catalogue-page-jump {
+  @apply flex items-center justify-center gap-2 text-[13px] text-muted;
+}
+.catalogue-page-jump select {
+  @apply w-16 min-h-11 rounded-[8px] border border-solid border-line bg-paper px-2 py-2 font-extrabold text-[16px];
+}
+.catalogue-page-stage {
+  @apply py-5 px-6 bg-[#eeece6];
+  background-image: radial-gradient(#d7d3ca 0.6px, transparent 0.6px);
+  background-size: 8px 8px;
 }
 .catalogue-current-title {
-  @apply text-[19px] m-0 mb-4.5 text-center;
+  @apply text-[12px] tracking-[0.06em] m-0 mb-4 text-center text-muted;
 }
 .catalogue-sheet-link {
-  @apply block relative max-w-160 m-auto;
+  @apply flex flex-col items-center relative w-fit max-w-full m-auto text-ink no-underline;
+}
+.catalogue-sheet-link:hover {
+  @apply no-underline;
 }
 .catalogue-sheet {
-  @apply block w-full h-auto shadow-[0_3px_10px_#00000012];
+  @apply block w-auto h-auto max-h-[min(65svh,640px)] object-contain shadow-[0_5px_20px_#0002];
 }
 .catalogue-enlarge {
-  @apply absolute right-2.5 bottom-2.5 bg-ink text-white py-2.5 px-[15px] rounded-[8px] text-[14px] font-extrabold;
+  @apply flex items-center justify-center gap-5 bg-white text-ink py-2.5 px-4 rounded-full text-[12px] font-extrabold mt-4 border border-solid border-line min-h-10;
+}
+.catalogue-sheet-link:hover .catalogue-enlarge {
+  @apply bg-yellow border-yellow;
 }
 .catalogue-page-text {
-  @apply mt-6 border-t border-t-[#ccc9c0];
+  @apply border-t border-t-line px-5;
 }
 .catalogue-page-text summary {
-  @apply cursor-pointer py-4.5 px-0 font-extrabold;
+  @apply cursor-pointer py-4 px-0 font-bold text-[13px];
+}
+.catalogue-page-text p {
+  @apply text-[14px] text-muted;
 }
 .catalogue-page-text pre {
   @apply whitespace-pre-wrap wrap-anywhere [font:13px/1.65_var(--body-font),sans-serif];
 }
 .catalogue-print-note {
-  @apply text-[12px] mt-4 mx-0 mb-0 text-[#56535b];
+  @apply text-[12px] mt-4 mx-0 mb-0 text-muted max-w-200;
 }
 .catalogue-overlay {
   @apply fixed inset-0 z-90 bg-[#000c];
 }
 .catalogue-zoom-dialog {
-  @apply fixed inset-4.5 z-91 m-auto max-w-325 bg-white rounded-[14px] flex flex-col overflow-hidden;
+  @apply fixed inset-4 z-91 m-auto max-w-350 bg-white rounded-media flex flex-col overflow-hidden;
 }
 .catalogue-zoom-toolbar {
-  @apply flex items-center justify-between gap-5 py-3.5 px-5 flex-none border-b border-b-line;
+  @apply flex items-center justify-between gap-5 py-3 px-5 flex-none border-b border-b-line;
 }
 .catalogue-zoom-toolbar h2 {
   @apply [font:800_18px/1.3_var(--body-font),sans-serif] m-0;
@@ -133,16 +277,33 @@
   @apply mt-1 mx-0 mb-0 text-[12px] text-muted;
 }
 .catalogue-zoom-controls {
-  @apply flex gap-2 items-center;
+  @apply flex gap-2 items-center shrink-0;
+}
+.catalogue-zoom-controls .button {
+  @apply text-[13px] px-3 py-2 min-h-11 min-w-11;
 }
 .catalogue-zoom-controls output {
   @apply min-w-8 text-center font-extrabold;
 }
 .catalogue-zoom-scroll {
-  @apply overflow-auto flex-1 min-h-0 bg-[#e5e3dd] p-4;
+  @apply overflow-auto flex-1 min-h-0 bg-[#e5e3dd] p-4 overscroll-contain;
+  container-type: size;
+}
+.catalogue-zoom-scroll:focus-visible {
+  outline: 3px solid var(--magenta);
+  outline-offset: -3px;
+}
+.catalogue-zoom-canvas {
+  @apply flex justify-center items-start w-max min-w-full min-h-full;
 }
 .catalogue-zoom-scroll img {
-  @apply block m-0;
+  @apply block m-0 shadow-[0_5px_20px_#0002];
+}
+.catalogue-zoom-footer {
+  @apply py-3 px-5 border-t border-t-line;
+}
+.catalogue-zoom-footer .catalogue-pagination {
+  @apply max-w-130 mx-auto;
 }
 .family-catalogue-intro {
   @apply grid grid-cols-[1.2fr_0.8fr] gap-8 items-center bg-night text-white p-8 rounded-card mt-5 mx-0 mb-8;
@@ -191,66 +352,146 @@
 }
 @media (max-width: 1059px) {
   .catalogue-hero {
-    @apply p-7.5 gap-7;
+    @apply p-7 gap-5 grid-cols-[minmax(0,1fr)_240px];
   }
   .catalogue-reader-layout {
-    @apply grid-cols-[210px_minmax(0,1fr)] gap-4.5;
-  }
-  .catalogue-pagination {
-    @apply gap-1.5;
-  }
-  .catalogue-current {
-    @apply p-4;
+    @apply grid-cols-[230px_minmax(0,1fr)] gap-4;
   }
   .family-pages-grid {
     @apply grid-cols-2;
   }
 }
+@media (max-width: 760px) {
+  .catalogue-reader-layout {
+    @apply grid-cols-1;
+  }
+  .catalogue-index {
+    @apply static;
+  }
+  .catalogue-index-count {
+    @apply inline ml-3;
+  }
+  .catalogue-index nav {
+    @apply max-h-65;
+  }
+  .catalogue-index a {
+    @apply text-[12px];
+  }
+  .catalogue-reader-heading > p {
+    @apply max-w-55;
+  }
+  .catalogue-help {
+    @apply flex-col items-start;
+  }
+  .catalogue-zoom-toolbar {
+    @apply flex-wrap gap-3;
+  }
+  .catalogue-zoom-controls {
+    @apply w-full justify-end;
+  }
+}
 @media (max-width: 650px) {
   .catalogue-hero {
-    @apply grid-cols-[1fr] py-6.5 px-5 gap-5.5 mb-9;
+    @apply grid-cols-[minmax(0,1fr)_110px] p-5 gap-3 mb-8;
+  }
+  .catalogue-hero-copy {
+    @apply contents;
+  }
+  .catalogue-hero .eyebrow {
+    @apply col-span-2 text-[10px] gap-2 mb-1;
   }
   .catalogue-hero h1 {
-    @apply text-[44px];
+    @apply text-[clamp(32px,8vw,46px)] m-0 self-center;
   }
-  .catalogue-cover {
-    @apply w-45;
+  .catalogue-cover-stack {
+    @apply w-22;
   }
   .catalogue-cover-link {
-    @apply order-2;
+    @apply col-start-2 row-start-2 p-2;
+  }
+  .catalogue-cover-preview {
+    @apply left-3;
+  }
+  .catalogue-cover-caption {
+    @apply hidden;
+  }
+  .catalogue-hero-description {
+    @apply col-span-2 text-[14px] mt-3 mb-2;
+  }
+  .catalogue-hero-actions {
+    @apply col-span-2 grid grid-cols-1 gap-2;
+  }
+  .catalogue-hero-actions > .button {
+    @apply w-full;
+  }
+  .catalogue-hero .pdf-action {
+    @apply flex-row items-center justify-center gap-2;
+  }
+  .catalogue-hero .pdf-action .button {
+    @apply border-0 py-2 px-2 text-[13px] min-h-11;
+  }
+  .catalogue-hero .pdf-action small {
+    @apply static m-0;
+  }
+  .catalogue-hero-note {
+    @apply col-span-2 text-[11px] text-center mt-0;
   }
   .catalogue-reader-heading {
     @apply block;
   }
   .catalogue-reader-heading > p {
-    @apply max-w-none;
+    @apply max-w-none mt-3;
   }
-  .catalogue-reader-layout {
-    @apply grid-cols-[1fr];
+  .catalogue-reader-heading h2 {
+    @apply text-[30px];
   }
-  .catalogue-index {
-    @apply static;
+  .catalogue-shortcuts {
+    @apply grid grid-cols-2 gap-2;
   }
-  .catalogue-index nav {
-    @apply max-h-57.5;
+  .catalogue-shortcuts > span {
+    @apply col-span-2;
   }
-  .catalogue-index a {
-    @apply text-[13px];
+  .catalogue-shortcuts a {
+    @apply text-[12px] px-3 gap-1;
   }
-  .catalogue-index img {
-    @apply w-7.5 h-13 basis-7.5;
+  .catalogue-current-toolbar {
+    @apply p-2;
   }
-  .catalogue-current {
-    @apply p-3;
+  .catalogue-pagination {
+    @apply gap-1.5;
   }
   .catalogue-pagination .button {
-    @apply p-2.5 text-[12px];
+    @apply p-2 text-[12px] gap-1;
   }
-  .catalogue-pagination p {
-    @apply text-[12px];
+  .catalogue-page-jump {
+    @apply gap-1;
   }
-  .catalogue-enlarge {
-    @apply text-[12px] py-[9px] px-3;
+  .catalogue-page-jump select {
+    @apply w-13;
+  }
+  .catalogue-page-stage {
+    @apply p-3;
+  }
+  .catalogue-current-title {
+    @apply text-[11px] mb-3;
+  }
+  .catalogue-sheet {
+    @apply max-h-none w-full;
+  }
+  .catalogue-page-text {
+    @apply px-3;
+  }
+  .catalogue-family-heading {
+    @apply block;
+  }
+  .catalogue-family-heading > p {
+    @apply max-w-none mt-3;
+  }
+  .catalogue-families {
+    @apply mt-10;
+  }
+  .catalogue-help {
+    @apply p-5;
   }
   .catalogue-zoom-dialog {
     @apply inset-2;
@@ -262,9 +503,18 @@
     @apply text-[15px];
   }
   .catalogue-zoom-controls {
-    @apply w-full justify-end;
+    @apply gap-1;
+  }
+  .catalogue-zoom-controls .button {
+    @apply px-2 text-[12px];
+  }
+  .catalogue-zoom-controls .catalogue-fit-button {
+    @apply mr-auto;
   }
   .catalogue-zoom-scroll {
+    @apply p-2;
+  }
+  .catalogue-zoom-footer {
     @apply p-2;
   }
   .family-catalogue-intro {
@@ -275,5 +525,22 @@
   }
   .family-pages-grid {
     @apply grid-cols-[1fr];
+  }
+}
+@media (max-width: 380px) {
+  .catalogue-hero {
+    @apply grid-cols-[minmax(0,1fr)_80px] p-4;
+  }
+  .catalogue-hero h1 {
+    @apply text-[28px];
+  }
+  .catalogue-cover-stack {
+    @apply w-16;
+  }
+  .catalogue-zoom-controls {
+    @apply flex-wrap;
+  }
+  .catalogue-zoom-controls .catalogue-fit-button {
+    @apply basis-full mr-0;
   }
 }

@@ -27,7 +27,7 @@ const routes = [
   {
     path: "/catalogo-pdf/",
     label: "Catálogo PDF",
-    h1: "Un catálogo lleno de formas de celebrar.",
+    h1: "Tu celebración. Tu efecto.",
   },
   { path: "/contacto/", label: "Contacto", h1: "Cuéntanos qué necesitas" },
   {

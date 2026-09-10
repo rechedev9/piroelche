@@ -4,11 +4,13 @@ import Image from "next/image";
 import { Dialog } from "radix-ui";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { CataloguePagination } from "@/components/catalogue-pagination";
 import type { CataloguePage } from "@/lib/catalogue";
 
 export function CataloguePageViewer({ page }: { page: CataloguePage }) {
   const [open, setOpen] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const [fitWidth, setFitWidth] = useState(false);
   const trigger = useRef<HTMLAnchorElement>(null);
   const label = `Página ${page.page}: ${page.title}`;
   return (
@@ -23,6 +25,7 @@ export function CataloguePageViewer({ page }: { page: CataloguePage }) {
         onClick={(event) => {
           event.preventDefault();
           setZoom(1);
+          setFitWidth(false);
           setOpen(true);
         }}
       >
@@ -50,10 +53,23 @@ export function CataloguePageViewer({ page }: { page: CataloguePage }) {
           >
             <div className="catalogue-zoom-toolbar">
               <div>
-                <Dialog.Title>{label}</Dialog.Title>
-                <Dialog.Description>Catálogo Piroboom 2026</Dialog.Description>
+                <Dialog.Title aria-live="polite">{label}</Dialog.Title>
+                <Dialog.Description>
+                  Catálogo Piroboom 2026 · Amplía para leer los detalles
+                </Dialog.Description>
               </div>
               <div className="catalogue-zoom-controls">
+                <Button
+                  variant="outline"
+                  size="compact"
+                  className="catalogue-fit-button"
+                  onClick={() => {
+                    setFitWidth((current) => !current);
+                    setZoom(1);
+                  }}
+                >
+                  {fitWidth ? "Ver página completa" : "Ajustar al ancho"}
+                </Button>
                 <Button
                   variant="outline"
                   size="compact"
@@ -78,30 +94,40 @@ export function CataloguePageViewer({ page }: { page: CataloguePage }) {
                   +
                 </Button>
                 <Dialog.Close asChild>
-                  <Button size="compact">Cerrar</Button>
+                  <Button size="compact">
+                    Cerrar <span aria-hidden="true">×</span>
+                  </Button>
                 </Dialog.Close>
               </div>
             </div>
             <section
+              key={`${page.page}-${fitWidth}`}
               className="catalogue-zoom-scroll"
               // Keyboard focus allows scrolling the enlarged page with arrow keys.
               // oxlint-disable-next-line jsx-a11y/no-noninteractive-tabindex
               tabIndex={0}
               aria-label="Página ampliada"
             >
-              <Image
-                src={page.src}
-                alt={label}
-                width={page.width}
-                height={page.height}
-                unoptimized
-                style={{
-                  width: `${zoom * 100}%`,
-                  maxWidth: "none",
-                  height: "auto",
-                }}
-              />
+              <div className="catalogue-zoom-canvas">
+                <Image
+                  src={page.src}
+                  alt={label}
+                  width={page.width}
+                  height={page.height}
+                  unoptimized
+                  style={{
+                    width: fitWidth
+                      ? `calc(100cqw * ${zoom})`
+                      : `calc(min(100cqw, 100cqh * ${page.width / page.height}) * ${zoom})`,
+                    maxWidth: "none",
+                    height: "auto",
+                  }}
+                />
+              </div>
             </section>
+            <div className="catalogue-zoom-footer">
+              <CataloguePagination selectedPage={page.page} inDialog />
+            </div>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

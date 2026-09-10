@@ -1,16 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { CataloguePageViewer } from "@/components/catalogue-page-viewer";
-import {
-  cataloguePages,
-  cataloguePageHref,
-  type CataloguePage,
-} from "@/lib/catalogue";
+import { CatalogueIndex } from "@/components/catalogue-index";
+import { CataloguePagination } from "@/components/catalogue-pagination";
+import { cataloguePageHref, type CataloguePage } from "@/lib/catalogue";
 
 export function CatalogueReader({ selected }: { selected: CataloguePage }) {
-  const previous = cataloguePages[selected.page - 2];
-  const next = cataloguePages[selected.page];
   return (
     <section
       id="lector"
@@ -19,88 +13,54 @@ export function CatalogueReader({ selected }: { selected: CataloguePage }) {
     >
       <div className="catalogue-reader-heading">
         <div>
-          <p className="eyebrow">Edición 2026 · 16 páginas</p>
-          <h2 id="reader-title">Todo el catálogo, página a página.</h2>
+          <p className="eyebrow">Encuentra tu próximo efecto</p>
+          <h2 id="reader-title">El catálogo, a tu ritmo.</h2>
         </div>
-        <p>Elige una sección, pasa de página o amplía para ver los detalles.</p>
+        <p>
+          Busca un artículo, elige una página y amplía para ver cada detalle.
+        </p>
       </div>
-      <div className="catalogue-reader-layout">
-        <details className="catalogue-index" open>
-          <summary>Índice del catálogo</summary>
-          <nav aria-label="Páginas del catálogo">
-            <ol>
-              {cataloguePages.map((page) => (
-                <li key={page.page}>
-                  <Link
-                    href={cataloguePageHref(page.page)}
-                    prefetch={false}
-                    aria-current={
-                      selected.page === page.page ? "page" : undefined
-                    }
-                  >
-                    <Image src={page.thumb} alt="" width={40} height={70} />
-                    <span>
-                      <small>Página {page.page}</small>
-                      {page.title}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        </details>
-        <div className="catalogue-current">
-          <nav
-            className="catalogue-pagination"
-            aria-label="Cambiar página del catálogo"
+      <nav
+        className="catalogue-shortcuts"
+        aria-label="Accesos rápidos del catálogo"
+      >
+        <span>Ir directo a</span>
+        {[
+          { label: "Fuegos artificiales", page: 14 },
+          { label: "Humo de color", page: 12 },
+          { label: "Fuego frío", page: 13 },
+          { label: "Tracas y petardos", page: 8 },
+        ].map((section) => (
+          <Link
+            key={section.page}
+            href={cataloguePageHref(section.page)}
+            prefetch={false}
           >
-            {previous ? (
-              <Button asChild variant="outline" size="compact">
-                <Link
-                  href={cataloguePageHref(previous.page)}
-                  prefetch={false}
-                  aria-label={`Página anterior, ${previous.page}`}
-                >
-                  <span aria-hidden="true">←</span> Anterior
-                </Link>
-              </Button>
-            ) : (
-              <Button variant="outline" size="compact" disabled>
-                Anterior
-              </Button>
-            )}
-            <p aria-live="polite">
-              Página <strong>{selected.page}</strong> de {cataloguePages.length}
-            </p>
-            {next ? (
-              <Button asChild size="compact">
-                <Link
-                  href={cataloguePageHref(next.page)}
-                  prefetch={false}
-                  aria-label={`Página siguiente, ${next.page}`}
-                >
-                  Siguiente <span aria-hidden="true">→</span>
-                </Link>
-              </Button>
-            ) : (
-              <Button size="compact" disabled>
-                Siguiente
-              </Button>
-            )}
-          </nav>
-          <h3 className="catalogue-current-title">{selected.title}</h3>
-          <CataloguePageViewer key={selected.page} page={selected} />
+            {section.label} <span aria-hidden="true">↗</span>
+          </Link>
+        ))}
+      </nav>
+      <div className="catalogue-reader-layout">
+        <CatalogueIndex selectedPage={selected.page} />
+        <div className="catalogue-current">
+          <div className="catalogue-current-toolbar">
+            <CataloguePagination selectedPage={selected.page} />
+          </div>
+          <div className="catalogue-page-stage">
+            <h3 className="catalogue-current-title">{selected.title}</h3>
+            <CataloguePageViewer page={selected} />
+          </div>
           <details className="catalogue-page-text">
             <summary>Leer el texto de esta página</summary>
             <p>{selected.description}</p>
             <pre>{selected.text}</pre>
           </details>
-          <p className="catalogue-print-note">
-            Documento del negocio. Consulta la vigencia de las condiciones y la
-            disponibilidad antes de acudir a tienda.
-          </p>
         </div>
       </div>
+      <p className="catalogue-print-note">
+        Catálogo original de Piroboom · Edición 2026. Consulta la vigencia de
+        las condiciones y la disponibilidad antes de acudir a tienda.
+      </p>
     </section>
   );
 }
