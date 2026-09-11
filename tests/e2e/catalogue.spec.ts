@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { AxeBuilder } from "@axe-core/playwright";
 
+import { waitForHydration } from "./hydration";
 import { publicationOrigin as origin } from "./origins";
 
 test("the 16-page catalogue is navigable without automatically downloading the PDF", async ({
@@ -145,7 +146,9 @@ test("catalogue layout keeps page controls usable on mobile, laptop and desktop 
   for (const width of [320, 390, 768, 1366, 1920]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(origin + "/catalogo-pdf/?pagina=12#lector");
-    await page.locator(".catalogue-current-title").evaluate((element) => {
+    const title = page.locator(".catalogue-current-title");
+    await waitForHydration(title);
+    await title.evaluate((element) => {
       element.textContent = "NombreLargoDeSeccion".repeat(12);
     });
     expect(

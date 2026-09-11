@@ -1,5 +1,6 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Request } from "@playwright/test";
 import { AxeBuilder } from "@axe-core/playwright";
+import { waitForHydration } from "./hydration";
 import { publicationOrigin } from "./origins";
 
 const paths = [
@@ -69,8 +70,10 @@ test("responsive layouts, 200 percent equivalent reflow and long unbroken conten
           .getByRole("textbox", { name: /Municipio o recinto/ })
           .fill("Recinto".repeat(25));
       } else {
+        const heading = page.locator("h1");
+        await waitForHydration(heading);
         // Deliberate QA mutation, not a production fixture or visual baseline.
-        await page.locator("h1").evaluate((el) => {
+        await heading.evaluate((el) => {
           el.textContent = "NombreIninterrumpido".repeat(10);
         });
       }
@@ -99,15 +102,35 @@ test("public pages have no external requests, optional trackers or cookies", asy
 }) => {
   const external: string[] = [];
   const errors: string[] = [];
+  const inFlight = new Set<Request>();
+  let lastNetworkEvent = Date.now();
   page.on("request", (req) => {
+    inFlight.add(req);
+    lastNetworkEvent = Date.now();
     if (!new URL(req.url()).hostname.match(/^(127\.0\.0\.1|localhost)$/))
       external.push(new URL(req.url()).origin);
   });
+  const settle = (req: Request) => {
+    inFlight.delete(req);
+    lastNetworkEvent = Date.now();
+  };
+  page.on("requestfinished", settle);
+  page.on("requestfailed", settle);
   page.on("pageerror", (error) => errors.push(error.message));
+  const networkQuiet = () =>
+    inFlight.size === 0 && Date.now() - lastNetworkEvent >= 500;
   for (const path of paths.slice(0, 6)) {
+    // This test measures all requests, including the router's prefetch of the
+    // header links. That prefetch starts after hydration, which WebKit on CI
+    // can reach after "networkidle" has already fired (it fires once), and
+    // leaving the page mid-prefetch cancels it: WebKit reports each cancelled
+    // fetch as a page error. Wait for the prefetch, then for a quiet network.
+    const prefetch = page.waitForRequest(
+      (req) => req.headers()["next-router-prefetch"] === "1",
+    );
     await page.goto(`${publicationOrigin}${path}`);
-    // This test measures all requests. Let prefetch finish before destroying its document.
-    await page.waitForLoadState("networkidle");
+    await prefetch;
+    await expect.poll(networkQuiet, { intervals: [100] }).toBe(true);
   }
   expect(external).toEqual([]);
   expect(errors).toEqual([]);
