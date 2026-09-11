@@ -48,6 +48,7 @@ export default async function ProductPage({ params }: Props) {
             src={product.image?.src}
             alt={product.image?.alt || product.name}
             ratio="1"
+            priority
           />
           <ProductVideo
             src={product.video?.src}

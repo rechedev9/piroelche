@@ -124,10 +124,18 @@ function FamilyCard({
               {isDemo
                 ? "referencias de demostración"
                 : "referencias publicadas"}
-              {detailed ? " →" : ""}
+              {detailed && (
+                <>
+                  {" "}
+                  <span aria-hidden="true">→</span>
+                </>
+              )}
             </>
           ) : (
-            `Ver en catálogo ${catalogue.edition} →`
+            <>
+              Ver en catálogo {catalogue.edition}{" "}
+              <span aria-hidden="true">→</span>
+            </>
           )}
         </span>
       </div>
@@ -180,7 +188,7 @@ export function PdfAction({ compact = false }: { compact?: boolean }) {
       <div className="pdf-action">
         <p className="muted">El catálogo PDF no está disponible ahora.</p>
         <Link className="text-link" href="/contacto/?motivo=producto">
-          Consultar el catálogo →
+          Consultar el catálogo <span aria-hidden="true">→</span>
         </Link>
       </div>
     );

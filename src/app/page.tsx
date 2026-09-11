@@ -122,7 +122,7 @@ export default function Home() {
                 cada referencia y dónde adquirirla.
               </p>
               <span className="text-link">
-                Explorar catálogo →
+                Explorar catálogo <span aria-hidden="true">→</span>
               </span>
             </div>
           </TrackedLink>
@@ -145,7 +145,7 @@ export default function Home() {
                 con tu lugar y tu fecha.
               </p>
               <span className="text-link">
-                Planificar mi evento →
+                Planificar mi evento <span aria-hidden="true">→</span>
               </span>
             </div>
           </TrackedLink>
@@ -157,7 +157,7 @@ export default function Home() {
             Familias de producto
           </h2>
           <Link className="text-link" href="/catalogo-pdf/">
-            Ver todo el catálogo →
+            Ver todo el catálogo <span aria-hidden="true">→</span>
           </Link>
         </div>
         <FamilyGrid />
@@ -176,7 +176,7 @@ export default function Home() {
           <div className="spread">
             <h2>Soluciones para eventos</h2>
             <Link className="text-link" href="/eventos/">
-              Ver opciones para tu evento →
+              Ver opciones para tu evento <span aria-hidden="true">→</span>
             </Link>
           </div>
           <div className="grid grid-3">
@@ -198,7 +198,7 @@ export default function Home() {
                   <h3>{solution.title}</h3>
                   <p>{solution.result}</p>
                   <span className="text-link">
-                    Ver opciones →
+                    Ver opciones <span aria-hidden="true">→</span>
                   </span>
                 </div>
               </Link>

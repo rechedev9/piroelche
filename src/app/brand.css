@@ -91,7 +91,7 @@
   @apply grid gap-1 min-w-0 text-[13px] leading-[1.5];
 }
 .brand-hero-store-copy a {
-  @apply text-white font-semibold underline-offset-4;
+  @apply inline-flex items-center min-h-11 -my-2.5 text-white font-semibold underline-offset-4;
   justify-self: start;
 }
 .brand-hero-store-copy a:hover {

@@ -2,6 +2,7 @@
 import type { ReactNode } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { getMadridDate } from "@/lib/business-time";
 import type { LeadField, LeadFieldErrors } from "@/lib/lead-contract";
 import type { Draft } from "@/lib/lead-draft";
 
@@ -103,6 +104,7 @@ export function LeadEventFields({
             onFocus={onFocus}
             type="date"
             name="date"
+            min={getMadridDate()}
             value={draft.date}
             disabled={sending || draft.dateUndecided}
             onChange={(event) => update({ date: event.target.value })}

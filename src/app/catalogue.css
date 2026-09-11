@@ -80,7 +80,6 @@
 }
 .catalogue-families {
   @apply mt-14;
-  scroll-margin-top: calc(var(--header-height) + 24px);
 }
 .catalogue-family-heading {
   @apply flex items-end justify-between gap-5 mb-6;
@@ -161,8 +160,9 @@
 .catalogue-search-field svg {
   @apply shrink-0 text-muted;
 }
+/* 16px keeps iOS Safari from auto-zooming the sticky index on focus. */
 .catalogue-search input {
-  @apply border-0 py-3 px-0 bg-transparent text-[13px] min-h-11 w-full;
+  @apply border-0 py-3 px-0 bg-transparent text-[16px] min-h-11 w-full;
 }
 .catalogue-search p {
   @apply text-[11px] text-muted mb-0 mt-2;

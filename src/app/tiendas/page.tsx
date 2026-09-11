@@ -225,7 +225,7 @@ export default function Shops() {
                 publicar. Consulta la tienda de Elche para planificar tu visita.
               </p>
               <Link className="text-link" href="/contacto/?motivo=visita">
-                Consultar una visita →
+                Consultar una visita <span aria-hidden="true">→</span>
               </Link>
             </div>
           )}
