@@ -6,6 +6,9 @@ import { publicationOrigin as origin } from "./origins";
 test("the 16-page catalogue is navigable without automatically downloading the PDF", async ({
   page,
 }) => {
+  // Each page is resized on first request per width and format, so a cold
+  // optimizer cache on CI needs more than the default budget across 16 pages.
+  test.setTimeout(90_000);
   const pdfRequests: string[] = [];
   page.on("request", (request) => {
     if (new URL(request.url()).pathname.endsWith(".pdf"))
