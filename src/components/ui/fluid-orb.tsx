@@ -29,6 +29,7 @@ export function FluidOrb({
   style,
   ...props
 }: FluidOrbProps) {
+  const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const controller = useRef<FluidOrbController>(null);
   const [reducedMotion, setReducedMotion] = useState(true);
@@ -36,8 +37,8 @@ export function FluidOrb({
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return undefined;
+    const stage = stageRef.current;
+    if (!stage) return undefined;
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const syncPreference = () => setReducedMotion(preference.matches);
     syncPreference();
@@ -49,7 +50,7 @@ export function FluidOrb({
       inViewport = entry.isIntersecting;
       syncVisibility();
     });
-    observer.observe(canvas);
+    observer.observe(stage);
     document.addEventListener("visibilitychange", syncVisibility);
     return () => {
       preference.removeEventListener("change", syncPreference);
@@ -76,6 +77,7 @@ export function FluidOrb({
 
   return (
     <div
+      ref={stageRef}
       data-slot="fluid-orb"
       data-ready={ready}
       aria-hidden="true"
