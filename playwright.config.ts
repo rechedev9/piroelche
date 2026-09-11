@@ -13,10 +13,10 @@ const reportDirectory = process.env.E2E_REPORT_DIR;
 export default defineConfig({
   testDir: "./tests/e2e",
   outputDir: reportDirectory ? `${reportDirectory}/artifacts` : "test-results",
+  // Lets CI shard by test rather than by file. One worker: the suite is
+  // CPU-bound and a second one on a 2-vCPU runner only adds timeouts.
   fullyParallel: true,
-  // CI runs Chromium alone on a 2-vCPU runner; locally the three browsers
-  // keep one test at a time.
-  workers: process.env.CI ? 2 : 1,
+  workers: 1,
   retries: 0,
   timeout: 45_000,
   expect: { timeout: 10_000 },

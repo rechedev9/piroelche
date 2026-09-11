@@ -13,21 +13,25 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
+env:
+  CI: "true"
+  NEXT_TELEMETRY_DISABLED: "1"
+  PIROBOOM_PUBLIC_SITE: "0"
+  PIROBOOM_DEMO: "0"
+  PIROBOOM_LOCAL_REVIEW: "0"
+
+# The browser tests are CPU-bound and a 2-vCPU runner gains nothing from a
+# second worker, so they are split across parallel jobs instead, next to a
+# separate job for the static checks. The whole run stays under five minutes.
 jobs:
-  verify:
-    name: Lint, types, unit, build and Chromium e2e
+  checks:
+    name: Lint, types and unit tests
     runs-on: ubuntu-24.04
     timeout-minutes: 10
-    defaults:
-      run:
-        shell: bash
-    env:
-      CI: "true"
-      NEXT_TELEMETRY_DISABLED: "1"
-      PIROBOOM_PUBLIC_SITE: "0"
-      PIROBOOM_DEMO: "0"
-      PIROBOOM_LOCAL_REVIEW: "0"
-
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -62,6 +66,36 @@ jobs:
       - name: Unit and integration tests
         run: pnpm test
 
+  e2e:
+    name: Build and Chromium e2e (${{ matrix.shard }}/2)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24.18.0"
+          package-manager-cache: false
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          version: "11.22.0"
+          run_install: false
+          cache: false
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Build public content for local review
         run: pnpm build
 
@@ -78,13 +112,13 @@ jobs:
           rm -f -- evidence/playwright-results.json
           # CI covers Chromium to stay within five minutes; Firefox and WebKit
           # still run locally with `pnpm test:e2e`.
-          pnpm test:e2e --project=chromium --forbid-only --retries=0
+          pnpm test:e2e --project=chromium --shard=${{ matrix.shard }}/2 --forbid-only --retries=0
 
       - name: Retain browser reports
         if: ${{ !cancelled() && (steps.e2e.outcome == 'success' || steps.e2e.outcome == 'failure') }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: playwright-${{ github.run_id }}-${{ github.run_attempt }}
+          name: playwright-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.shard }}
           retention-days: 7
           if-no-files-found: error
           include-hidden-files: false
