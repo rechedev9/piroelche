@@ -16,14 +16,14 @@ const joinList = (items: string[]) =>
 export function buildFaq(content: PublicContent): FaqItem[] {
   const { store, channels, families, campaigns, pdf } = content;
   const schedule = formatSchedule(store.schedule)
-    .map((row) => `${row.days}: ${row.hours.toLowerCase()}`)
+    .map((row) => `${row.days.toLowerCase()}: ${row.hours.toLowerCase()}`)
     .join("; ");
   const contactWays = [
     `llamando al ${store.phoneDisplay}`,
     ...(store.landline ? [`al fijo ${store.landline.phoneDisplay}`] : []),
     ...(channels.whatsapp.enabled ? ["por WhatsApp al mismo móvil"] : []),
     ...(channels.email ? [`por correo a ${channels.email}`] : []),
-    "con el formulario de esta página",
+    "con el formulario de contacto de la web",
   ];
   // Town names only: some kiosk addresses are transcribed literally from the
   // source with pending verification (see their provenance notes).
@@ -57,7 +57,7 @@ export function buildFaq(content: PublicContent): FaqItem[] {
     question:
       "¿Hacéis pirotecnia para bodas, revelaciones de sexo, cumpleaños y fiestas?",
     answer:
-      "Sí, atendemos consultas para bodas, revelaciones, cumpleaños y celebraciones mayores. No hace falta que sepas qué producto necesitas: con la ocasión, la fecha y el lugar valoramos la propuesta y te la enviamos con su alcance y condiciones. La solicitud no confirma reserva ni viabilidad.",
+      "Sí, atendemos consultas para bodas, revelaciones, cumpleaños y fiestas. No hace falta que sepas qué producto necesitas: con la ocasión, la fecha y el lugar podemos valorar la propuesta; las condiciones se concretan después contigo. La solicitud no confirma reserva ni viabilidad.",
   });
   if (kiosks.length)
     items.push({

@@ -47,7 +47,6 @@ export const metadata: Metadata = {
   ...(googleSiteVerification()
     ? { verification: { google: googleSiteVerification() } }
     : {}),
-  formatDetection: { telephone: true, email: true, address: true },
   icons: {
     icon: [
       {
@@ -101,9 +100,7 @@ export default function RootLayout({
             </a>
           )}
           {!isDemo && (
-            <JsonLd
-              data={siteGraphJsonLd({ store, channels, families, campaigns })}
-            />
+            <JsonLd data={siteGraphJsonLd({ store, channels, families })} />
           )}
         </div>
       </body>

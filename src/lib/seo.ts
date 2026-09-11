@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
-import type {
-  Campaign,
-  Channels,
-  Family,
-  Product,
-  Store,
-} from "./content-schema";
+import type { Channels, Family, Product, Store } from "./content-schema";
 
 export const SITE_NAME = "Piroboom";
 export const SITE_TITLE = "Piroboom · Pirotecnia en Elche";
@@ -136,12 +130,10 @@ export function siteGraphJsonLd({
   store,
   channels,
   families,
-  campaigns,
 }: {
   store: Store;
   channels: Channels;
   families: readonly Family[];
-  campaigns: readonly Campaign[];
 }) {
   const origin = siteUrl();
   const id = ids(origin);
@@ -157,12 +149,6 @@ export function siteGraphJsonLd({
   const social = sameAs(channels);
   const telephone = [store.phone, store.landline?.phone].filter(Boolean);
   const hours = openingHours(store);
-  const areaServed = [
-    store.postalAddress?.addressLocality ?? "Elche",
-    ...campaigns
-      .filter((point) => point.status === "published")
-      .map((point) => point.name),
-  ].filter((name, index, all) => all.indexOf(name) === index);
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -170,7 +156,6 @@ export function siteGraphJsonLd({
         "@type": "Organization",
         "@id": id.organization,
         name: SITE_NAME,
-        legalName: store.name,
         url: `${origin}/`,
         logo,
         image: { "@id": id.logo },
@@ -205,7 +190,6 @@ export function siteGraphJsonLd({
           : {}),
         hasMap: store.directionsUrl,
         ...(hours.length ? { openingHoursSpecification: hours } : {}),
-        areaServed: areaServed.map((name) => ({ "@type": "City", name })),
         currenciesAccepted: "EUR",
         parentOrganization: { "@id": id.organization },
         ...(social.length ? { sameAs: social } : {}),
@@ -242,10 +226,12 @@ export function faqPageJsonLd(items: readonly FaqItem[]) {
 const schemaAvailability = {
   "in-stock": "https://schema.org/InStock",
   "out-of-stock": "https://schema.org/OutOfStock",
-  unknown: "https://schema.org/LimitedAvailability",
 } as const;
 
-/** Only published data; a missing price yields no Offer instead of a fake one. */
+/**
+ * Only published data: a missing price yields no Offer instead of a fake one,
+ * and an unknown availability asserts nothing.
+ */
 export function productJsonLd(
   product: Product,
   family: Family,
@@ -269,7 +255,9 @@ export function productJsonLd(
             "@type": "Offer",
             price: product.price,
             priceCurrency: "EUR",
-            availability: schemaAvailability[product.availability],
+            ...(product.availability !== "unknown"
+              ? { availability: schemaAvailability[product.availability] }
+              : {}),
             url: `${origin}${pathname}`,
             seller: { "@id": id.store },
           },

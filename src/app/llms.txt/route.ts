@@ -23,7 +23,7 @@ export function GET() {
   const origin = siteUrl();
   const { store, channels, families, campaigns, pdf } = content;
   const schedule = formatSchedule(store.schedule).map(
-    (row) => `- ${row.days}: ${row.hours}`,
+    (row) => `- ${row.days}: ${row.hours.toLowerCase()}`,
   );
   // Town names only: some kiosk addresses are literal transcriptions pending
   // verification (see their provenance notes in content/site.json).
@@ -40,7 +40,7 @@ export function GET() {
     "",
     `> ${SITE_DESCRIPTION}`,
     "",
-    `${store.name} es una tienda física de pirotecnia en Elche (Alicante, España). Vende artículos de pirotecnia y atiende consultas para celebraciones (bodas, revelaciones de sexo, cumpleaños y fiestas). No vende online: las consultas se responden por teléfono o correo y la compra se hace en la tienda o en las casetas de temporada.`,
+    `${store.name} es una tienda física de pirotecnia en Elche (Alicante, España). Vende artículos de pirotecnia y atiende consultas para celebraciones (bodas, revelaciones de sexo, cumpleaños y fiestas). No vende online: las consultas se responden por teléfono o correo y la atención es en tienda.`,
     "",
     "## Tienda",
     "",

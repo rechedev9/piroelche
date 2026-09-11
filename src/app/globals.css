@@ -953,11 +953,11 @@ body > div {
   @apply text-[17px] mb-0 font-bold;
 }
 .faq-item summary::after {
-  content: "+";
+  content: "+" / "";
   @apply flex-none text-[24px] leading-none text-magenta font-bold;
 }
 .faq-item[open] summary::after {
-  content: "−";
+  content: "−" / "";
 }
 .faq-item p {
   @apply m-0 pb-5 text-[16px] leading-[1.6] text-muted max-w-160;
