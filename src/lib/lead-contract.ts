@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { getMadridDate as madridDate } from "./business-time";
+export { getMadridDate as madridDate } from "./business-time";
 
 export const LEAD_OCCASIONS = [
   "boda",
@@ -136,21 +138,6 @@ export type LeadErrorCode =
   | "timeout"
   | "rate_limited"
   | "idempotency_conflict";
-export type LeadApiResponse =
-  | {
-      ok: true;
-      status: "recorded";
-      id: string;
-      receivedAt: string;
-      replayed: boolean;
-      mode: Exclude<LeadMode, "disabled">;
-    }
-  | {
-      ok: false;
-      code: LeadErrorCode;
-      message: string;
-      fieldErrors?: LeadFieldErrors;
-    };
 
 const fieldNames = new Set<string>([
   "intention",
@@ -167,18 +154,6 @@ const fieldNames = new Set<string>([
 ]);
 function isLeadField(value: unknown): value is LeadField {
   return typeof value === "string" && fieldNames.has(value);
-}
-
-export function madridDate(now = new Date()): string {
-  const parts = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Madrid",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(now);
-  const part = (type: Intl.DateTimeFormatPartTypes) =>
-    parts.find((item) => item.type === type)!.value;
-  return `${part("year")}-${part("month")}-${part("day")}`;
 }
 
 export function validateLead(input: unknown, now = new Date()): LeadValidation {
@@ -231,3 +206,55 @@ export function validateLead(input: unknown, now = new Date()): LeadValidation {
     ? { success: false, fieldErrors }
     : { success: true, data };
 }
+
+const leadFieldSchema = z.enum([
+  "intention",
+  "name",
+  "replyTo",
+  "message",
+  "productRef",
+  "occasion",
+  "date",
+  "dateUndecided",
+  "location",
+  "budget",
+  "website",
+  "form",
+]);
+const responseSchema = z.discriminatedUnion("ok", [
+  z
+    .object({
+      ok: z.literal(true),
+      status: z.literal("recorded"),
+      id: z.string().regex(/^PB-[A-F0-9]{24}$/),
+      receivedAt: z.iso.datetime({ precision: 3 }),
+      replayed: z.boolean(),
+      mode: z.enum(["local-test", "remote"]),
+    })
+    .strict(),
+  z
+    .object({
+      ok: z.literal(false),
+      code: z.enum([
+        "invalid_request",
+        "validation_failed",
+        "forbidden",
+        "not_configured",
+        "unavailable",
+        "timeout",
+        "rate_limited",
+        "idempotency_conflict",
+      ]),
+      message: z.string().min(1).max(1000),
+      fieldErrors: z
+        .partialRecord(leadFieldSchema, z.string().max(500))
+        .optional(),
+    })
+    .strict(),
+]);
+export function parseLeadResponse(value: unknown): LeadApiResponse | undefined {
+  const parsed = responseSchema.safeParse(value);
+  return parsed.success ? parsed.data : undefined;
+}
+
+export type LeadApiResponse = z.infer<typeof responseSchema>;

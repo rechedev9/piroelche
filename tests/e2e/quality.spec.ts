@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { AxeBuilder } from "@axe-core/playwright";
+import { publicationOrigin } from "./origins";
 
 const paths = [
   "/",
@@ -17,7 +18,7 @@ test("WCAG automatic checks across all six sections, family, product and invalid
 }) => {
   const publicPaths = paths
     .filter((path) => !path.includes("bateria-25-disparos"))
-    .map((path) => "http://127.0.0.1:3001" + path);
+    .map((path) => publicationOrigin + path);
   for (const path of [...paths, ...publicPaths]) {
     await page.goto(path);
     await page.evaluate(async () => {
@@ -104,7 +105,7 @@ test("public pages have no external requests, optional trackers or cookies", asy
   });
   page.on("pageerror", (error) => errors.push(error.message));
   for (const path of paths.slice(0, 6)) {
-    await page.goto(`http://127.0.0.1:3001${path}`);
+    await page.goto(`${publicationOrigin}${path}`);
     // This test measures all requests. Let prefetch finish before destroying its document.
     await page.waitForLoadState("networkidle");
   }

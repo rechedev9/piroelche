@@ -1,7 +1,18 @@
 import { defineConfig, devices } from "@playwright/test";
+import {
+  demoOrigin,
+  demoPort,
+  publicationOrigin,
+  publicationPort,
+} from "./tests/e2e/origins";
+
+const reuseExistingServer =
+  process.env.E2E_REUSE_SERVERS === "1" && !process.env.CI;
+const reportDirectory = process.env.E2E_REPORT_DIR;
 
 export default defineConfig({
   testDir: "./tests/e2e",
+  outputDir: reportDirectory ? `${reportDirectory}/artifacts` : "test-results",
   fullyParallel: false,
   workers: 1,
   retries: 0,
@@ -9,11 +20,24 @@ export default defineConfig({
   expect: { timeout: 10_000 },
   reporter: [
     ["list"],
-    ["json", { outputFile: "evidence/playwright-results.json" }],
-    ["html", { open: "never" }],
+    [
+      "json",
+      {
+        outputFile: reportDirectory
+          ? `${reportDirectory}/results.json`
+          : "evidence/playwright-results.json",
+      },
+    ],
+    [
+      "html",
+      {
+        open: "never",
+        ...(reportDirectory ? { outputFolder: `${reportDirectory}/html` } : {}),
+      },
+    ],
   ],
   use: {
-    baseURL: "http://127.0.0.1:3000",
+    baseURL: demoOrigin,
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
@@ -37,20 +61,31 @@ export default defineConfig({
       use: {
         ...devices["Desktop Safari"],
         viewport: { width: 1440, height: 1000 },
+        ...(process.env.E2E_WEBKIT_EXECUTABLE
+          ? {
+              launchOptions: {
+                executablePath: process.env.E2E_WEBKIT_EXECUTABLE,
+              },
+            }
+          : {}),
       },
     },
   ],
   webServer: [
     {
       command: "pnpm demo",
-      url: "http://127.0.0.1:3000",
-      reuseExistingServer: !process.env.CI,
+      url: demoOrigin,
+      env: {
+        REVIEW_PORT: String(demoPort),
+        REVIEW_BUILD_DIR: ".next-e2e-demo",
+      },
+      reuseExistingServer,
       timeout: 120_000,
     },
     {
-      command: "pnpm start --port 3001",
-      url: "http://127.0.0.1:3001",
-      reuseExistingServer: !process.env.CI,
+      command: `pnpm start --port ${publicationPort}`,
+      url: publicationOrigin,
+      reuseExistingServer,
       timeout: 60_000,
     },
   ],

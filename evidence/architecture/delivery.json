@@ -1,0 +1,99 @@
+{
+  "baselineCommit": "589adcf",
+  "baseline": {
+    "measuredAt": "2026-09-10T17:59:25.766Z",
+    "origin": "http://127.0.0.1:3101",
+    "note": "Initial document and its script tags; fresh context, reduced motion. Gzip computed locally; excludes lazy chunks and does not measure user latency.",
+    "results": [
+      {
+        "path": "/",
+        "htmlBytes": 68535,
+        "htmlGzipBytes": 11710,
+        "javascriptBytes": 635405,
+        "javascriptGzipBytes": 200843
+      },
+      {
+        "path": "/catalogo-pdf/",
+        "htmlBytes": 92205,
+        "htmlGzipBytes": 14717,
+        "javascriptBytes": 1069034,
+        "javascriptGzipBytes": 305706
+      },
+      {
+        "path": "/contacto/",
+        "htmlBytes": 41497,
+        "htmlGzipBytes": 8325,
+        "javascriptBytes": 1019168,
+        "javascriptGzipBytes": 289178
+      },
+      {
+        "path": "/eventos/",
+        "htmlBytes": 63613,
+        "htmlGzipBytes": 11631,
+        "javascriptBytes": 1027407,
+        "javascriptGzipBytes": 292568
+      }
+    ]
+  },
+  "after": {
+    "measuredAt": "2026-09-10T18:12:29.360Z",
+    "origin": "http://127.0.0.1:3103",
+    "note": "Initial document and its script tags; fresh context, reduced motion. Gzip computed locally; excludes lazy chunks and does not measure user latency.",
+    "results": [
+      {
+        "path": "/",
+        "htmlBytes": 68535,
+        "htmlGzipBytes": 11713,
+        "javascriptBytes": 629338,
+        "javascriptGzipBytes": 198242
+      },
+      {
+        "path": "/catalogo-pdf/",
+        "htmlBytes": 103816,
+        "htmlGzipBytes": 17975,
+        "javascriptBytes": 669247,
+        "javascriptGzipBytes": 211456
+      },
+      {
+        "path": "/contacto/",
+        "htmlBytes": 41516,
+        "htmlGzipBytes": 8328,
+        "javascriptBytes": 1020525,
+        "javascriptGzipBytes": 289552
+      },
+      {
+        "path": "/eventos/",
+        "htmlBytes": 63632,
+        "htmlGzipBytes": 11633,
+        "javascriptBytes": 1022697,
+        "javascriptGzipBytes": 290413
+      }
+    ]
+  },
+  "comparison": [
+    {
+      "path": "/",
+      "javascriptGzipBytesSaved": 2601,
+      "javascriptReductionPercent": 1.3,
+      "htmlAndJavascriptGzipBytesSaved": 2598
+    },
+    {
+      "path": "/catalogo-pdf/",
+      "javascriptGzipBytesSaved": 94250,
+      "javascriptReductionPercent": 30.83,
+      "htmlAndJavascriptGzipBytesSaved": 90992
+    },
+    {
+      "path": "/contacto/",
+      "javascriptGzipBytesSaved": -374,
+      "javascriptReductionPercent": -0.13,
+      "htmlAndJavascriptGzipBytesSaved": -377
+    },
+    {
+      "path": "/eventos/",
+      "javascriptGzipBytesSaved": 2155,
+      "javascriptReductionPercent": 0.74,
+      "htmlAndJavascriptGzipBytesSaved": 2153
+    }
+  ]
+}

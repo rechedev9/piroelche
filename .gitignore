@@ -1,6 +1,7 @@
 node_modules/
 .next/
 .next-demo/
+.next-*/
 .vercel/
 .env*
 !.env.example

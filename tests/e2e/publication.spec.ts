@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { expect, test } from "@playwright/test";
 import { z } from "zod";
 
-const publicationOrigin = "http://127.0.0.1:3001";
+import { publicationOrigin } from "./origins";
 const familyPath = "/catalogo-pdf/fuegos-artificiales/";
 const fixturePath = familyPath + "bateria-25-disparos/";
 const publicRoutes = [

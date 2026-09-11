@@ -8,11 +8,12 @@ import {
 } from "react";
 import {
   clearDraft,
-  parseDraftSnapshot,
   readDraftSnapshot,
   serverDraftSnapshot,
   subscribeDraft,
-} from "@/lib/lead-draft";
+} from "@/lib/lead-draft-store";
+
+import { parseDraftSnapshot } from "@/lib/lead-draft";
 
 /**
  * Subscribes to the stored draft for this tab and drops it when it expires.
@@ -32,13 +33,12 @@ export function useLeadDraft(storageKey: string, onExpired: () => void) {
   useEffect(() => {
     if (!snapshot) return undefined;
     if (!saved) {
-      clearDraft(storageKey);
+      clearDraft(storageKey, snapshot);
       return undefined;
     }
     const expiry = setTimeout(
       () => {
-        clearDraft(storageKey);
-        expired.current();
+        if (clearDraft(storageKey, snapshot)) expired.current();
       },
       Math.max(0, saved.expires - Date.now()),
     );

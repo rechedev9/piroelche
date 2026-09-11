@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
+import type {
   createFireworksScene,
-  type FireworksAssets,
+  FireworksAssets,
 } from "@/lib/fireworks-scene";
 
 const sky = "/media/decorative/hero-fireworks-sky-v1.webp";
@@ -14,6 +14,7 @@ export function HeroFireworks() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const controller = useRef<ReturnType<typeof createFireworksScene>>(null);
   const assetsRef = useRef<FireworksAssets | null>(null);
+  const createScene = useRef<typeof createFireworksScene | null>(null);
   const [assetsReady, setAssetsReady] = useState(false);
   const [rendered, setRendered] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(true);
@@ -44,7 +45,7 @@ export function HeroFireworks() {
   }, []);
 
   useEffect(() => {
-    if (reducedMotion) return undefined;
+    if (reducedMotion || !visible || assetsReady) return undefined;
     let cancelled = false;
     const load = async () => {
       try {
@@ -52,9 +53,14 @@ export function HeroFireworks() {
         const atlasImage = new window.Image();
         skyImage.src = sky;
         atlasImage.src = atlas;
-        await Promise.all([skyImage.decode(), atlasImage.decode()]);
+        const [scene] = await Promise.all([
+          import("@/lib/fireworks-scene"),
+          skyImage.decode(),
+          atlasImage.decode(),
+        ]);
         if (!cancelled) {
           assetsRef.current = { sky: skyImage, atlas: atlasImage };
+          createScene.current = scene.createFireworksScene;
           setAssetsReady(true);
         }
       } catch {
@@ -65,14 +71,21 @@ export function HeroFireworks() {
     return () => {
       cancelled = true;
     };
-  }, [reducedMotion]);
+  }, [reducedMotion, visible, assetsReady]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const assets = assetsRef.current;
-    if (!canvas || !assetsReady || !assets || reducedMotion) return undefined;
+    if (
+      !canvas ||
+      !assetsReady ||
+      !assets ||
+      reducedMotion ||
+      !createScene.current
+    )
+      return undefined;
     try {
-      controller.current = createFireworksScene(canvas, assets);
+      controller.current = createScene.current(canvas, assets);
       setRendered(controller.current !== null);
     } catch {
       setRendered(false);

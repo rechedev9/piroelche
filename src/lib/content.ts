@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import source from "../../content/site.json";
@@ -27,7 +28,9 @@ export function isDemoEnabled(
   );
 }
 
-export function getContent(): PublicContent {
+// Share a single dated snapshot during a server render. A new request evaluates
+// publication dates and local fixtures again, including in long-lived processes.
+export const getContent = cache(function getContent(): PublicContent {
   const isDemo = isDemoEnabled();
   const today = getMadridDate();
   const result: PublicContent = {
@@ -57,7 +60,7 @@ export function getContent(): PublicContent {
     result.campaigns = merged.campaigns;
   }
   return result;
-}
+});
 
 export function getProductByRef(ref: string): Product | undefined {
   return getContent().products.find((product) => product.ref === ref);

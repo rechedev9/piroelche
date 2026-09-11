@@ -4,10 +4,12 @@ import { CatalogueIndex } from "@/components/catalogue-index";
 import { CataloguePagination } from "@/components/catalogue-pagination";
 import {
   catalogue,
+  catalogueIndex,
   cataloguePageHref,
   getFamilyCataloguePages,
   type CataloguePage,
 } from "@/lib/catalogue";
+import { toCataloguePageImage } from "@/lib/catalogue-model";
 
 export function CatalogueReader({ selected }: { selected: CataloguePage }) {
   return (
@@ -58,14 +60,21 @@ export function CatalogueReader({ selected }: { selected: CataloguePage }) {
           ))}
       </nav>
       <div className="catalogue-reader-layout">
-        <CatalogueIndex selectedPage={selected.page} />
+        <CatalogueIndex entries={catalogueIndex} selectedPage={selected.page} />
         <div className="catalogue-current">
           <div className="catalogue-current-toolbar">
-            <CataloguePagination selectedPage={selected.page} />
+            <CataloguePagination
+              selectedPage={selected.page}
+              pageCount={catalogue.pages.length}
+            />
           </div>
           <div className="catalogue-page-stage">
             <h3 className="catalogue-current-title">{selected.title}</h3>
-            <CataloguePageViewer page={selected} />
+            <CataloguePageViewer
+              page={toCataloguePageImage(selected)}
+              edition={catalogue.edition}
+              pageCount={catalogue.pages.length}
+            />
           </div>
           <details className="catalogue-page-text">
             <summary>Leer el texto de esta página</summary>

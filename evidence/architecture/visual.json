@@ -1,0 +1,49 @@
+{
+  "baselineCommit": "589adcf",
+  "browser": "Chromium",
+  "mode": "Reduced motion; production builds, fonts ready, initial viewport only",
+  "results": [
+    {
+      "name": "home",
+      "width": 390,
+      "height": 900,
+      "differingPixels": 0,
+      "totalPixels": 351000
+    },
+    {
+      "name": "catalogue",
+      "width": 390,
+      "height": 900,
+      "differingPixels": 0,
+      "totalPixels": 351000
+    },
+    {
+      "name": "contact",
+      "width": 390,
+      "height": 900,
+      "differingPixels": 0,
+      "totalPixels": 351000
+    },
+    {
+      "name": "home",
+      "width": 1440,
+      "height": 900,
+      "differingPixels": 0,
+      "totalPixels": 1296000
+    },
+    {
+      "name": "catalogue",
+      "width": 1440,
+      "height": 900,
+      "differingPixels": 0,
+      "totalPixels": 1296000
+    },
+    {
+      "name": "contact",
+      "width": 1440,
+      "height": 900,
+      "differingPixels": 0,
+      "totalPixels": 1296000
+    }
+  ]
+}

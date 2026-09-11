@@ -3,18 +3,20 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { cataloguePages, cataloguePageHref } from "@/lib/catalogue";
+import { cataloguePageHref } from "@/lib/catalogue-model";
 
 export function CataloguePagination({
   selectedPage,
+  pageCount,
   inDialog = false,
 }: {
   selectedPage: number;
+  pageCount: number;
   inDialog?: boolean;
 }) {
   const router = useRouter();
-  const previous = cataloguePages[selectedPage - 2];
-  const next = cataloguePages[selectedPage];
+  const previous = selectedPage > 1 ? selectedPage - 1 : undefined;
+  const next = selectedPage < pageCount ? selectedPage + 1 : undefined;
 
   return (
     <nav
@@ -26,10 +28,10 @@ export function CataloguePagination({
       {previous ? (
         <Button asChild variant="outline" size="compact">
           <Link
-            href={cataloguePageHref(previous.page)}
+            href={cataloguePageHref(previous)}
             prefetch={false}
             scroll={!inDialog}
-            aria-label={`Página anterior, ${previous.page}`}
+            aria-label={`Página anterior, ${previous}`}
           >
             <span aria-hidden="true">←</span> <span>Anterior</span>
           </Link>
@@ -62,16 +64,18 @@ export function CataloguePagination({
               })
             }
           >
-            {cataloguePages.map((page) => (
-              <option key={page.page} value={page.page}>
-                {page.page}
-              </option>
-            ))}
+            {Array.from({ length: pageCount }, (_, index) => index + 1).map(
+              (page) => (
+                <option key={page} value={page}>
+                  {page}
+                </option>
+              ),
+            )}
           </select>
         </label>
-        <span aria-hidden="true">/ {cataloguePages.length}</span>
+        <span aria-hidden="true">/ {pageCount}</span>
         <span className="screen-reader-only" aria-live="polite">
-          Página {selectedPage} de {cataloguePages.length}
+          Página {selectedPage} de {pageCount}
         </span>
         <noscript>
           <Button size="compact" type="submit">
@@ -82,10 +86,10 @@ export function CataloguePagination({
       {next ? (
         <Button asChild size="compact">
           <Link
-            href={cataloguePageHref(next.page)}
+            href={cataloguePageHref(next)}
             prefetch={false}
             scroll={!inDialog}
-            aria-label={`Página siguiente, ${next.page}`}
+            aria-label={`Página siguiente, ${next}`}
           >
             <span>Siguiente</span> <span aria-hidden="true">→</span>
           </Link>

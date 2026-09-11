@@ -7,6 +7,7 @@ async function main() {
   if (process.env.VERCEL || process.env.VERCEL_ENV)
     throw new Error("La revisión local no se puede iniciar en Vercel.");
   const port = Number(process.env.REVIEW_PORT || 3000);
+  const receiverPort = Number(process.env.REVIEW_RECEIVER_PORT || 4010);
   const token = randomBytes(32).toString("hex");
   const storageDirectory = join(
     process.env.LOCALAPPDATA || process.cwd(),
@@ -17,7 +18,7 @@ async function main() {
   const receiver = await startLocalReceiver({
     storageDirectory,
     token,
-    port: 4010,
+    port: receiverPort,
     clientLimit: 100,
     globalLimit: 500,
   });
@@ -39,14 +40,14 @@ async function main() {
       stdio: "inherit",
       env: {
         ...process.env,
-        NEXT_BUILD_DIR: ".next-demo",
+        NEXT_BUILD_DIR: process.env.REVIEW_BUILD_DIR || ".next-demo",
         NEXT_TELEMETRY_DISABLED: "1",
         PIROBOOM_DEMO: "1",
         PIROBOOM_LOCAL_REVIEW: "1",
         PIROBOOM_PUBLIC_SITE: "0",
         PIROBOOM_SITE_URL: `http://127.0.0.1:${port}`,
         LEADS_RECEIVER_MODE: "local-test",
-        LEADS_RECEIVER_URL: "http://127.0.0.1:4010/leads",
+        LEADS_RECEIVER_URL: `http://127.0.0.1:${receiverPort}/leads`,
         LEADS_RECEIVER_TOKEN: token,
         LEADS_ALLOWED_ORIGINS: `http://127.0.0.1:${port}`,
         LEADS_TRUST_PROXY: "0",

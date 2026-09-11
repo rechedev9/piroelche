@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { AxeBuilder } from "@axe-core/playwright";
 
-const origin = "http://127.0.0.1:3001";
+import { publicationOrigin as origin } from "./origins";
 
 test("the 16-page catalogue is navigable without automatically downloading the PDF", async ({
   page,

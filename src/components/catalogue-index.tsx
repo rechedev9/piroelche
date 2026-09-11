@@ -4,20 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
-import { cataloguePages, cataloguePageHref } from "@/lib/catalogue";
-
-function normalizeSearch(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLocaleLowerCase("es");
-}
+import {
+  cataloguePageHref,
+  catalogueSearchTerms,
+  searchCatalogue,
+  type CatalogueIndexEntry,
+} from "@/lib/catalogue-model";
 
 const subscribeToHydration = () => () => {};
 const clientSnapshot = () => true;
 const serverSnapshot = () => false;
 
-export function CatalogueIndex({ selectedPage }: { selectedPage: number }) {
+export function CatalogueIndex({
+  entries,
+  selectedPage,
+}: {
+  entries: readonly CatalogueIndexEntry[];
+  selectedPage: number;
+}) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(true);
   const enhanced = useSyncExternalStore(
@@ -27,13 +31,8 @@ export function CatalogueIndex({ selectedPage }: { selectedPage: number }) {
   );
   const navigation = useRef<HTMLElement>(null);
   const search = useRef<HTMLInputElement>(null);
-  const terms = normalizeSearch(query).trim().split(/\s+/).filter(Boolean);
-  const results = cataloguePages.filter((page) => {
-    const text = normalizeSearch(
-      `${page.page} ${page.title} ${page.description} ${page.text}`,
-    );
-    return terms.every((term) => text.includes(term));
-  });
+  const terms = catalogueSearchTerms(query);
+  const results = searchCatalogue(entries, terms);
 
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 761px)");
@@ -67,9 +66,7 @@ export function CatalogueIndex({ selectedPage }: { selectedPage: number }) {
     >
       <summary>
         <span>Índice del catálogo</span>
-        <span className="catalogue-index-count">
-          {cataloguePages.length} páginas
-        </span>
+        <span className="catalogue-index-count">{entries.length} páginas</span>
       </summary>
       {enhanced && (
         <div className="catalogue-search">

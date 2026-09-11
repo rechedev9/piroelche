@@ -5,6 +5,12 @@ import test from "node:test";
 import sharp from "sharp";
 import manifest from "../public/media/catalogo-2026/manifest.json";
 import siteRaw from "../content/site.json";
+import { catalogueIndex } from "../src/lib/catalogue";
+import {
+  catalogueSearchTerms,
+  searchCatalogue,
+  toCataloguePageImage,
+} from "../src/lib/catalogue-model";
 import { ContentSchema } from "../src/lib/content-schema";
 import {
   cataloguePages,
@@ -13,6 +19,50 @@ import {
 } from "../src/lib/catalogue";
 
 const site = ContentSchema.parse(siteRaw);
+
+void test("catalogue client data excludes publication metadata and searches the complete text with accent-insensitive terms", () => {
+  assert.deepEqual(
+    searchCatalogue(
+      catalogueIndex,
+      catalogueSearchTerms("  MiSiL   titán  "),
+    ).map((page) => page.page),
+    [5],
+  );
+  assert.deepEqual(
+    searchCatalogue(catalogueIndex, catalogueSearchTerms("fuego frío")).map(
+      (page) => page.page,
+    ),
+    [13],
+  );
+  assert.equal(
+    searchCatalogue(catalogueIndex, []).length,
+    cataloguePages.length,
+  );
+  assert.equal(searchCatalogue(catalogueIndex, ["no-such-article"]).length, 0);
+  for (const entry of catalogueIndex) {
+    assert.deepEqual(Object.keys(entry).toSorted(), [
+      "page",
+      "searchText",
+      "thumb",
+      "thumbHeight",
+      "thumbWidth",
+      "title",
+    ]);
+  }
+  for (const page of cataloguePages) {
+    assert.deepEqual(Object.keys(toCataloguePageImage(page)).toSorted(), [
+      "height",
+      "page",
+      "src",
+      "title",
+      "width",
+    ]);
+  }
+  assert.ok(
+    JSON.stringify(catalogueIndex).length <
+      JSON.stringify(manifest).length * 0.65,
+  );
+});
 
 void test("the complete web catalogue preserves all original pages and readable local derivatives", async () => {
   assert.equal(manifest.source.pageCount, 16);

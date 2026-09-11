@@ -1,0 +1,840 @@
+{
+  "verifiedAt": "2026-09-10T18:28:59.327896+00:00",
+  "baselineCommit": "589adcf",
+  "sourceFingerprint": {
+    "sha256": "e5ec3f44ba4b23e83adfc6981ea3aa7b0ebc36916d81694536c0d130cc122088",
+    "files": 105,
+    "method": "Sorted relative UTF-8 path + NUL + file bytes + NUL for all src, scripts, tests, content files; root package/lock/Next/Playwright/TypeScript/lint configs and catalogue manifest."
+  },
+  "node": "v26.5.0",
+  "productionBuildId": "NE12kV5HvmCfby_JvgAGt",
+  "checks": {
+    "lint": "passed",
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "unitAndIntegration": {
+      "passed": 68,
+      "failed": 0
+    },
+    "browser": {
+      "startTime": "2026-09-10T18:25:19.754Z",
+      "duration": 182669.627,
+      "expected": 114,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "format": "passed",
+    "gitDiffCheck": "passed"
+  },
+  "browserCommand": "E2E_WEBKIT_EXECUTABLE=\"$PWD/.local/webkit-runtime/run.sh\" E2E_DEMO_PORT=3100 E2E_PUBLIC_PORT=3103 E2E_REUSE_SERVERS=1 E2E_REPORT_DIR=.local/architecture-e2e-complete pnpm test:e2e",
+  "servers": "Current demo with actual loopback HTTP receiver on 4110 and current production build; isolated from the user dev server on 3000.",
+  "webkitRuntime": "Playwright WebKit 2359 WPE with Ubuntu ICU 74, libxml2 and flite extracted locally; software GStreamer sink. No system packages changed.",
+  "browserCases": [
+    {
+      "file": "catalogue.spec.ts",
+      "title": "the 16-page catalogue is navigable without automatically downloading the PDF",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue zoom is keyboard accessible and family pages lead to the matching section",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue page navigation and readable text work without JavaScript",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue layout keeps page controls usable on mobile, laptop and desktop with long titles",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue search finds article text without accents and recovers from empty results",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "mobile catalogue index collapses after selection and zoom navigation stays open",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "the 16-page catalogue is navigable without automatically downloading the PDF",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue zoom is keyboard accessible and family pages lead to the matching section",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue page navigation and readable text work without JavaScript",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue layout keeps page controls usable on mobile, laptop and desktop with long titles",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue search finds article text without accents and recovers from empty results",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "mobile catalogue index collapses after selection and zoom navigation stays open",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "the 16-page catalogue is navigable without automatically downloading the PDF",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue zoom is keyboard accessible and family pages lead to the matching section",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue page navigation and readable text work without JavaScript",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue layout keeps page controls usable on mobile, laptop and desktop with long titles",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "catalogue search finds article text without accents and recovers from empty results",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "catalogue.spec.ts",
+      "title": "mobile catalogue index collapses after selection and zoom navigation stays open",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "fireworks.spec.ts",
+      "title": "fireworks load on demand, pause without redrawing and stop outside the viewport",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "fireworks.spec.ts",
+      "title": "reduced motion and failed animation resources preserve the static illustration",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "fireworks.spec.ts",
+      "title": "fireworks load on demand, pause without redrawing and stop outside the viewport",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "fireworks.spec.ts",
+      "title": "reduced motion and failed animation resources preserve the static illustration",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "fireworks.spec.ts",
+      "title": "fireworks load on demand, pause without redrawing and stop outside the viewport",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "fireworks.spec.ts",
+      "title": "reduced motion and failed animation resources preserve the static illustration",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "form-lifecycle.spec.ts",
+      "title": "contact and event forms reload without hydration errors and retain their draft",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "form-lifecycle.spec.ts",
+      "title": "an expired draft is removed from both the visible form and session storage",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "form-lifecycle.spec.ts",
+      "title": "contact and event forms reload without hydration errors and retain their draft",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "form-lifecycle.spec.ts",
+      "title": "an expired draft is removed from both the visible form and session storage",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "form-lifecycle.spec.ts",
+      "title": "contact and event forms reload without hydration errors and retain their draft",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "form-lifecycle.spec.ts",
+      "title": "an expired draft is removed from both the visible form and session storage",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Inicio",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Sobre nosotros",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Eventos",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Tiendas",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Catálogo PDF",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Contacto",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Política de privacidad",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Cookies",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Aviso legal",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · las nueve páginas entregan contenido y alternativas sin JavaScript",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T02 · navegación completa en escritorio y menú móvil con Escape y foco",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T03–T05 · intenciones de Inicio, familias distintas, ficha y regreso",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T06,T18 · cambiar de motivo elimina referencia y datos del motivo anterior",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T07,T09 · evento con fecha por definir, sin nombre ni lugar y un solo correo",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T08,T20 · errores accesibles, foco y datos conservados antes de enviar",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T09–T11,T18 · doble clic, respuesta perdida, recarga y reintento recuperan el mismo registro real",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T08,T11 · el endpoint rechaza origen, formato, tamaño y referencias manipuladas",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T16,T20 · vídeo voluntario y degradación real al fallar el recurso",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Inicio",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Sobre nosotros",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Eventos",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Tiendas",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Catálogo PDF",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Contacto",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Política de privacidad",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Cookies",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Aviso legal",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · las nueve páginas entregan contenido y alternativas sin JavaScript",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T02 · navegación completa en escritorio y menú móvil con Escape y foco",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T03–T05 · intenciones de Inicio, familias distintas, ficha y regreso",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T06,T18 · cambiar de motivo elimina referencia y datos del motivo anterior",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T07,T09 · evento con fecha por definir, sin nombre ni lugar y un solo correo",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T08,T20 · errores accesibles, foco y datos conservados antes de enviar",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T09–T11,T18 · doble clic, respuesta perdida, recarga y reintento recuperan el mismo registro real",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T08,T11 · el endpoint rechaza origen, formato, tamaño y referencias manipuladas",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T16,T20 · vídeo voluntario y degradación real al fallar el recurso",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Inicio",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Sobre nosotros",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Eventos",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Tiendas",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Catálogo PDF",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Contacto",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Política de privacidad",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Cookies",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · acceso directo y recarga: Aviso legal",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T01 · las nueve páginas entregan contenido y alternativas sin JavaScript",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T02 · navegación completa en escritorio y menú móvil con Escape y foco",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T03–T05 · intenciones de Inicio, familias distintas, ficha y regreso",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T06,T18 · cambiar de motivo elimina referencia y datos del motivo anterior",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T07,T09 · evento con fecha por definir, sin nombre ni lugar y un solo correo",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T08,T20 · errores accesibles, foco y datos conservados antes de enviar",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T09–T11,T18 · doble clic, respuesta perdida, recarga y reintento recuperan el mismo registro real",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T08,T11 · el endpoint rechaza origen, formato, tamaño y referencias manipuladas",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "journeys.spec.ts",
+      "title": "T16,T20 · vídeo voluntario y degradación real al fallar el recurso",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": [
+        {
+          "type": "browser behaviour",
+          "description": "WebKit also requests video data with JavaScript disabled despite preload=none. Manual playback and decoded pixels remain required."
+        }
+      ]
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T01,T17 · rutas de publicación, metadatos y noindex sin material de demostración",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "las imágenes configuradas se muestran y decodifican desde el propio sitio",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T14,T17 · estados vacíos y parámetros públicos no activan fixtures",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T11 · proveedor ausente muestra alternativa y nunca confirma un envío",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T15 · PDF real identificado y enlaces de llamada y ruta utilizables",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T18,T19 · primera visita sin cookies, almacenamiento ni solicitudes a terceros",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T01,T17 · rutas de publicación, metadatos y noindex sin material de demostración",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "las imágenes configuradas se muestran y decodifican desde el propio sitio",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T14,T17 · estados vacíos y parámetros públicos no activan fixtures",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T11 · proveedor ausente muestra alternativa y nunca confirma un envío",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T15 · PDF real identificado y enlaces de llamada y ruta utilizables",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T18,T19 · primera visita sin cookies, almacenamiento ni solicitudes a terceros",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T01,T17 · rutas de publicación, metadatos y noindex sin material de demostración",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "las imágenes configuradas se muestran y decodifican desde el propio sitio",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T14,T17 · estados vacíos y parámetros públicos no activan fixtures",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T11 · proveedor ausente muestra alternativa y nunca confirma un envío",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T15 · PDF real identificado y enlaces de llamada y ruta utilizables",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "publication.spec.ts",
+      "title": "T18,T19 · primera visita sin cookies, almacenamiento ni solicitudes a terceros",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "WCAG automatic checks across all six sections, family, product and invalid form",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "responsive layouts, 200 percent equivalent reflow and long unbroken content",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "public pages have no external requests, optional trackers or cookies",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "keyboard mobile menu, Escape and reduced motion",
+      "browser": "chromium",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "WCAG automatic checks across all six sections, family, product and invalid form",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "responsive layouts, 200 percent equivalent reflow and long unbroken content",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "public pages have no external requests, optional trackers or cookies",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "keyboard mobile menu, Escape and reduced motion",
+      "browser": "firefox",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "WCAG automatic checks across all six sections, family, product and invalid form",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "responsive layouts, 200 percent equivalent reflow and long unbroken content",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "public pages have no external requests, optional trackers or cookies",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    },
+    {
+      "file": "quality.spec.ts",
+      "title": "keyboard mobile menu, Escape and reduced motion",
+      "browser": "webkit",
+      "status": "passed",
+      "annotations": []
+    }
+  ],
+  "visualEvidence": "visual.json",
+  "deliveryEvidence": "delivery.json"
+}

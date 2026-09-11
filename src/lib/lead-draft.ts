@@ -1,7 +1,6 @@
-// Draft persistence and response parsing for the lead form.
+// Validated draft snapshots. Browser storage lives in lead-draft-store.ts.
 // Pure module: no React, no side effects on import, so the schemas stay testable.
 import { z } from "zod";
-import type { LeadApiResponse } from "@/lib/lead-contract";
 
 const draftSchema = z
   .object({
@@ -41,7 +40,6 @@ export type Submission = z.infer<typeof submissionSchema>;
 export type Saved = z.infer<typeof savedSchema>;
 
 export const DRAFT_TTL = 30 * 60_000;
-const DRAFT_EVENT = "piroboom:lead-draft";
 export const EMPTY_DRAFT: Draft = {
   intention: "product",
   name: "",
@@ -66,13 +64,6 @@ export function parseSavedLeadDraft(
     ? parsed.data
     : undefined;
 }
-export function readDraftSnapshot(key: string): string {
-  try {
-    return sessionStorage.getItem(key) || "";
-  } catch {
-    return "";
-  }
-}
 export function parseDraftSnapshot(raw: string | null): Saved | undefined {
   if (!raw) return undefined;
   try {
@@ -80,109 +71,4 @@ export function parseDraftSnapshot(raw: string | null): Saved | undefined {
   } catch {
     return undefined;
   }
-}
-export function subscribeDraft(notify: () => void) {
-  window.addEventListener("storage", notify);
-  window.addEventListener(DRAFT_EVENT, notify);
-  return () => {
-    window.removeEventListener("storage", notify);
-    window.removeEventListener(DRAFT_EVENT, notify);
-  };
-}
-export function serverDraftSnapshot(): null {
-  return null;
-}
-export function clearDraft(key: string, expectedSnapshot?: string) {
-  try {
-    if (
-      expectedSnapshot !== undefined &&
-      sessionStorage.getItem(key) !== expectedSnapshot
-    )
-      return;
-    sessionStorage.removeItem(key);
-  } catch {
-    /* Storage may be unavailable; the current form still works. */
-  }
-  window.dispatchEvent(new Event(DRAFT_EVENT));
-}
-export function saveDraft(
-  key: string,
-  draft: Draft,
-  submission?: Submission,
-  productRef?: string,
-  occasionContext?: string,
-) {
-  try {
-    const snapshot = JSON.stringify({
-      draft,
-      submission,
-      productRef,
-      occasionContext,
-      expires: Date.now() + DRAFT_TTL,
-    } satisfies Saved);
-    sessionStorage.setItem(key, snapshot);
-    window.dispatchEvent(new Event(DRAFT_EVENT));
-    return snapshot;
-  } catch {
-    /* Storage is optional; the in-memory draft remains usable. */
-    return undefined;
-  }
-}
-export async function fingerprintPayload(value: string) {
-  const bytes = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(value),
-  );
-  return Array.from(new Uint8Array(bytes), (byte) =>
-    byte.toString(16).padStart(2, "0"),
-  ).join("");
-}
-const leadFieldSchema = z.enum([
-  "intention",
-  "name",
-  "replyTo",
-  "message",
-  "productRef",
-  "occasion",
-  "date",
-  "dateUndecided",
-  "location",
-  "budget",
-  "website",
-  "form",
-]);
-const responseSchema = z.discriminatedUnion("ok", [
-  z
-    .object({
-      ok: z.literal(true),
-      status: z.literal("recorded"),
-      id: z.string().regex(/^PB-[A-F0-9]{24}$/),
-      receivedAt: z.iso.datetime({ precision: 3 }),
-      replayed: z.boolean(),
-      mode: z.enum(["local-test", "remote"]),
-    })
-    .strict(),
-  z
-    .object({
-      ok: z.literal(false),
-      code: z.enum([
-        "invalid_request",
-        "validation_failed",
-        "forbidden",
-        "not_configured",
-        "unavailable",
-        "timeout",
-        "rate_limited",
-        "idempotency_conflict",
-      ]),
-      message: z.string().min(1).max(1000),
-      fieldErrors: z
-        .partialRecord(leadFieldSchema, z.string().max(500))
-        .optional(),
-    })
-    .strict(),
-]);
-export function parseLeadResponse(value: unknown): LeadApiResponse | undefined {
-  const parsed = responseSchema.safeParse(value);
-  return parsed.success ? parsed.data : undefined;
 }

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { parseLeadResponse, parseSavedLeadDraft } from "../src/lib/lead-draft";
+import { parseSavedLeadDraft } from "../src/lib/lead-draft";
+import { parseLeadResponse } from "../src/lib/lead-contract";
 
 const now = Date.parse("2026-09-09T12:00:00.000Z");
 const draft = {

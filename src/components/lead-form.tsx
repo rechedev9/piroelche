@@ -4,51 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { eventRequestHref } from "@/lib/navigation";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type FormEvent,
-  type ReactNode,
-} from "react";
-import {
-  validateLead,
-  type LeadApiResponse,
-  type LeadField,
-  type LeadFieldErrors,
-  type LeadIntention,
-  type LeadMode,
-} from "@/lib/lead-contract";
-import {
-  clearDraft,
-  fingerprintPayload,
-  parseLeadResponse,
-  readDraftSnapshot,
-  saveDraft,
-  EMPTY_DRAFT,
-  type Draft,
-  type Submission,
-} from "@/lib/lead-draft";
-import { useLeadDraft } from "@/hooks/use-lead-draft";
+import { useEffect, useRef, type ReactNode } from "react";
+import type { LeadField } from "@/lib/lead-contract";
+import { useLeadForm, type LeadFormOptions } from "@/hooks/use-lead-form";
 import {
   LeadEventFields,
   LeadFieldRow,
   leadControlProps,
 } from "@/components/lead-form-fields";
 import { LeadFormSuccess } from "@/components/lead-form-success";
-import { track } from "@/lib/analytics";
 
-type Props = {
-  variant: "contact" | "event";
-  initialIntention?: LeadIntention;
-  initialOccasion?: string;
-  product?: { ref: string; name: string };
+type Props = LeadFormOptions & {
   invalidReference?: boolean;
   occasions: { id: string; label: string }[];
-  availability: { enabled: boolean; mode: LeadMode };
   phone: string;
   phoneDisplay: string;
 };
@@ -81,121 +49,32 @@ export function LeadForm({
   phone,
   phoneDisplay,
 }: Props) {
-  const router = useRouter();
-  const storageKey = `piroboom.${variant}.draft.v1`;
-  const [editedDraft, setEditedDraft] = useState<Draft>();
-  const [productRemoved, setProductRemoved] = useState(false);
-  const submission = useRef<Submission | null | undefined>(undefined);
-  const { saved, ready } = useLeadDraft(
-    storageKey,
-    useCallback(() => {
-      setEditedDraft(undefined);
-      submission.current = null;
-    }, []),
-  );
-  const currentProduct = productRemoved ? undefined : product;
-  const restoredIntention =
-    variant === "event"
-      ? "event"
-      : initialIntention || saved?.draft.intention || "product";
-  const contextChanged = Boolean(
-    saved &&
-    (saved.draft.intention !== restoredIntention ||
-      (restoredIntention === "product" &&
-        saved.productRef !== currentProduct?.ref) ||
-      (restoredIntention === "event" &&
-        initialOccasion &&
-        initialOccasion !== saved.occasionContext)),
-  );
-  const restoredDraft =
-    saved && !contextChanged
-      ? saved.draft
-      : {
-          ...EMPTY_DRAFT,
-          name: saved?.draft.name || "",
-          replyTo: saved?.draft.replyTo || "",
-        };
-  const draft: Draft = editedDraft || {
-    ...restoredDraft,
-    intention: restoredIntention,
-    occasion:
-      restoredIntention === "event"
-        ? contextChanged || !saved
-          ? initialOccasion || ""
-          : restoredDraft.occasion
-        : "",
-  };
-  const selectedProduct =
-    draft.intention === "product" ? currentProduct : undefined;
-  const [errors, setErrors] = useState<LeadFieldErrors>({});
-  const [error, setError] = useState("");
-  const [sending, setSending] = useState(false);
-  const [receipt, setReceipt] =
-    useState<Extract<LeadApiResponse, { ok: true }>>();
-  const inFlight = useRef(false);
-  const started = useRef(false);
+  const {
+    draft,
+    selectedProduct,
+    errors,
+    error,
+    sending,
+    receipt,
+    ready,
+    markStarted,
+    update,
+    changeIntention,
+    removeProduct,
+    submit,
+    sendAnother,
+  } = useLeadForm({
+    variant,
+    initialIntention,
+    initialOccasion,
+    product,
+    availability,
+  });
   const summary = useRef<HTMLDivElement>(null);
   const prefix = variant === "event" ? "event" : "contact";
   useEffect(() => {
     if (error || Object.keys(errors).length) summary.current?.focus();
   }, [error, errors]);
-
-  function currentSubmission() {
-    return submission.current === undefined
-      ? contextChanged
-        ? undefined
-        : saved?.submission
-      : submission.current || undefined;
-  }
-  function markStarted() {
-    if (!started.current) {
-      started.current = true;
-      track({ name: "lead_start" });
-    }
-  }
-  function update(patch: Partial<Draft>) {
-    const next = { ...draft, ...patch };
-    setEditedDraft(next);
-    saveDraft(
-      storageKey,
-      next,
-      currentSubmission(),
-      selectedProduct?.ref,
-      draft.intention === "event" ? initialOccasion : undefined,
-    );
-  }
-  function changeIntention(intention: LeadIntention) {
-    const next = {
-      ...draft,
-      intention,
-      message: "",
-      occasion: "",
-      date: "",
-      dateUndecided: false,
-      location: "",
-      budget: "",
-      website: "",
-    };
-    setEditedDraft(next);
-    setProductRemoved(true);
-    saveDraft(storageKey, next);
-    submission.current = null;
-    setErrors({});
-    setError("");
-    router.replace(
-      `/contacto/?motivo=${{ product: "producto", event: "evento", visit: "visita" }[intention]}`,
-      { scroll: false },
-    );
-  }
-  function removeProduct() {
-    setEditedDraft(draft);
-    setProductRemoved(true);
-    submission.current = null;
-    saveDraft(storageKey, draft);
-    setErrors({});
-    setError("");
-    router.replace("/contacto/?motivo=producto", { scroll: false });
-  }
   function field(name: LeadField, label: ReactNode, control: ReactNode) {
     return (
       <LeadFieldRow
@@ -212,123 +91,6 @@ export function LeadForm({
     return { ...leadControlProps(prefix, errors, name), onFocus: markStarted };
   }
 
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (inFlight.current || !ready) return;
-    setError("");
-    setErrors({});
-    const common = {
-      replyTo: draft.replyTo,
-      message: draft.message,
-      website: draft.website,
-    };
-    const payload =
-      draft.intention === "event"
-        ? {
-            ...common,
-            intention: "event",
-            name: variant === "contact" ? draft.name : undefined,
-            occasion: draft.occasion,
-            date: draft.dateUndecided ? undefined : draft.date,
-            dateUndecided: draft.dateUndecided,
-            location: draft.location,
-            budget: draft.budget,
-          }
-        : draft.intention === "product"
-          ? {
-              ...common,
-              intention: "product",
-              name: draft.name,
-              productRef: selectedProduct?.ref,
-            }
-          : { ...common, intention: "visit", name: draft.name };
-    const validation = validateLead(payload);
-    if (!validation.success) {
-      setErrors(validation.fieldErrors);
-      return;
-    }
-    if (!availability.enabled) {
-      setError(
-        "El formulario no está disponible todavía. Puedes llamar a la tienda.",
-      );
-      return;
-    }
-    inFlight.current = true;
-    setSending(true);
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 12_000);
-    try {
-      const body = JSON.stringify(validation.data);
-      const beforeFingerprint = readDraftSnapshot(storageKey);
-      const hash = await fingerprintPayload(body);
-      if (readDraftSnapshot(storageKey) !== beforeFingerprint) return;
-      const previous = currentSubmission();
-      const nextSubmission =
-        previous?.fingerprint === hash
-          ? previous
-          : { key: crypto.randomUUID(), fingerprint: hash };
-      submission.current = nextSubmission;
-      const sentSnapshot = saveDraft(
-        storageKey,
-        draft,
-        nextSubmission,
-        selectedProduct?.ref,
-        draft.intention === "event" ? initialOccasion : undefined,
-      );
-      const response = await fetch("/api/leads/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Idempotency-Key": nextSubmission.key,
-        },
-        body,
-        signal: controller.signal,
-      });
-      const result = parseLeadResponse(await response.json());
-      if (
-        result?.ok &&
-        ((response.status === 201 && !result.replayed) ||
-          (response.status === 200 && result.replayed))
-      ) {
-        setReceipt(result);
-        track({ name: "lead_received" });
-        setEditedDraft(undefined);
-        submission.current = null;
-        if (sentSnapshot !== undefined) clearDraft(storageKey, sentSnapshot);
-      } else {
-        track({ name: "lead_error" });
-        if (result && !result.ok) {
-          setError(result.message);
-          if (result.fieldErrors) setErrors(result.fieldErrors);
-        } else
-          setError(
-            "No se ha podido confirmar el registro. Tu consulta se conserva; puedes reintentar o llamar.",
-          );
-      }
-    } catch {
-      track({ name: "lead_error" });
-      setError(
-        "No se ha podido confirmar el registro. Tu consulta se conserva. Reintenta este mismo envío para evitar duplicados o llama a la tienda.",
-      );
-    } finally {
-      clearTimeout(timeout);
-      inFlight.current = false;
-      setSending(false);
-    }
-  }
-  function sendAnother() {
-    setReceipt(undefined);
-    setEditedDraft({
-      ...EMPTY_DRAFT,
-      intention: variant === "event" ? "event" : "product",
-    });
-    setProductRemoved(true);
-    submission.current = null;
-    started.current = false;
-    if (variant === "contact") router.replace("/contacto/", { scroll: false });
-    else if (initialOccasion)
-      router.replace(eventRequestHref(), { scroll: false });
-  }
   if (receipt)
     return (
       <LeadFormSuccess
@@ -342,6 +104,9 @@ export function LeadForm({
     <>
       <form
         className="lead-form"
+        // The draft owns restoration; Firefox must not restore a button's old
+        // disabled state before hydration. Contact fields keep their own hints.
+        autoComplete="off"
         noValidate
         onSubmit={(event) => {
           void submit(event);

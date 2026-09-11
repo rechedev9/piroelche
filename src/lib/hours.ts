@@ -5,7 +5,8 @@ import type {
   TimeInterval,
 } from "./content-schema";
 
-export const BUSINESS_TIME_ZONE = "Europe/Madrid";
+import { getMadridParts } from "./business-time";
+export { BUSINESS_TIME_ZONE, getMadridDate } from "./business-time";
 
 export type HoursLocation = {
   schedule: Schedule;
@@ -23,32 +24,6 @@ export type LocationHoursStatus = {
   campaignStatus: "none" | "unconfirmed" | "upcoming" | "active" | "ended";
   exceptionReason?: string;
 };
-
-const localFormatter = new Intl.DateTimeFormat("en-GB", {
-  timeZone: BUSINESS_TIME_ZONE,
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-  hour: "2-digit",
-  minute: "2-digit",
-  hourCycle: "h23",
-});
-
-function madridParts(now: Date) {
-  if (!Number.isFinite(now.getTime()))
-    throw new RangeError("La fecha de consulta no es válida");
-  const parts = Object.fromEntries(
-    localFormatter.formatToParts(now).map((part) => [part.type, part.value]),
-  );
-  return {
-    date: `${parts.year}-${parts.month}-${parts.day}`,
-    time: `${parts.hour}:${parts.minute}`,
-  };
-}
-
-export function getMadridDate(now: Date = new Date()): string {
-  return madridParts(now).date;
-}
 
 export function formatIntervals(intervals: TimeInterval[]): string {
   return intervals.length
@@ -92,7 +67,7 @@ export function getLocationHours(
   location: HoursLocation,
   now: Date = new Date(),
 ): LocationHoursStatus {
-  const { date, time } = madridParts(now);
+  const { date, time } = getMadridParts(now);
   const weekday = new Date(`${date}T00:00:00Z`).getUTCDay();
   const exception = location.exceptions.find((item) => item.date === date);
   const weeklyIntervals =

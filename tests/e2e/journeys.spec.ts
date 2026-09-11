@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { expect, test, type APIResponse, type Page } from "@playwright/test";
 import { z } from "zod";
 
-const demoOrigin = "http://127.0.0.1:3000";
+import { demoOrigin } from "./origins";
 const familyPath = "/catalogo-pdf/fuegos-artificiales/";
 const productPath = familyPath + "bateria-25-disparos/";
 const testName = "Prueba navegador";
@@ -626,7 +626,8 @@ test("T16,T20 · vídeo voluntario y degradación real al fallar el recurso", as
   page,
   request,
   browserName,
-}) => {
+  browser,
+}, testInfo) => {
   const videoRequests: string[] = [];
   page.on("request", (resourceRequest) => {
     if (new URL(resourceRequest.url()).pathname === "/media-demo/video/")
@@ -645,8 +646,43 @@ test("T16,T20 · vídeo voluntario y degradación real al fallar el recurso", as
         element.controls,
     ),
   ).toBe(true);
-  expect(videoRequests).toHaveLength(0);
-  // preload is a browser hint; native WebKit may buffer data, but must remain paused.
+  if (browserName === "webkit" && videoRequests.length) {
+    // WebKit can fetch metadata despite preload="none". Prove the same behaviour
+    // on the server HTML with scripts disabled before accepting that exception.
+    const nativeContext = await browser.newContext({
+      javaScriptEnabled: false,
+    });
+    try {
+      const nativePage = await nativeContext.newPage();
+      const nativeRequests: string[] = [];
+      nativePage.on("request", (outgoing) => {
+        if (new URL(outgoing.url()).pathname === "/media-demo/video/")
+          nativeRequests.push(outgoing.url());
+      });
+      await nativePage.goto(demoOrigin + productPath);
+      await expect.poll(() => nativeRequests.length).toBeGreaterThan(0);
+      expect(
+        await nativePage
+          .locator("video")
+          .evaluate(
+            (element) =>
+              element instanceof HTMLVideoElement &&
+              element.paused &&
+              element.currentTime === 0,
+          ),
+      ).toBe(true);
+      testInfo.annotations.push({
+        type: "browser behaviour",
+        description:
+          "WebKit also requests video data with JavaScript disabled despite preload=none. Manual playback and decoded pixels remain required.",
+      });
+    } finally {
+      await nativeContext.close();
+    }
+  } else {
+    expect(videoRequests).toHaveLength(0);
+  }
+  // preload is a browser hint; every engine must remain paused until requested.
   expect(
     await video.evaluate((element: HTMLVideoElement) => element.currentTime),
   ).toBe(0);

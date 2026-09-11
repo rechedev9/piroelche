@@ -33,6 +33,7 @@ The code, tests and configuration are the source of truth:
 - [tests/](tests/): unit, integration and browser expectations.
 - [evidence/](evidence/): source manifests and historical verification artifacts.
 - [docs/licenses/](docs/licenses/): font and component licenses.
+- [docs/architecture.md](docs/architecture.md): module boundaries, data lifetime and regression checks.
 
 Content edits require rebuilding and restarting a production preview. Validate them with `pnpm validate:content`; keep example inventory in `fixtures/`.
 
@@ -49,6 +50,15 @@ pnpm exec playwright install chromium firefox webkit
 LOCALAPPDATA="${LOCALAPPDATA:-$PWD/.local}" pnpm test:e2e
 ```
 
-[Playwright](playwright.config.ts) starts or reuses the demo on **3000** and the public build on **3001**. When reusing servers, make sure they run the current code. Browser reports are written to `playwright-report/` and `evidence/playwright-results.json`.
+[Playwright](playwright.config.ts) starts fresh demo and public servers on **3000** and **3001**, using a separate `.next-e2e-demo` directory for the demo. Reusing servers requires `E2E_REUSE_SERVERS=1`; both must run the current code and the demo must have its receiver configured. Browser reports are written to `playwright-report/` and `evidence/playwright-results.json`.
+
+If a development server already occupies those ports, run an isolated check:
+
+```bash
+LOCALAPPDATA="$PWD/.local/e2e" E2E_DEMO_PORT=3100 E2E_PUBLIC_PORT=3102 \
+  REVIEW_RECEIVER_PORT=4110 E2E_REPORT_DIR=.local/e2e-report pnpm test:e2e
+```
+
+Measure the initial HTML and JavaScript of a running production build with `pnpm exec tsx scripts/measure-delivery.ts http://127.0.0.1:3001`. An optional second argument writes the JSON report to a file.
 
 [GitHub Actions](https://github.com/rechedev9/piroelche/actions/workflows/ci.yml) runs the checks on Ubuntu; its configuration is in [.github/workflows/ci.yml](.github/workflows/ci.yml).
