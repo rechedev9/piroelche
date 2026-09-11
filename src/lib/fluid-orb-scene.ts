@@ -1,5 +1,6 @@
-/* Fluid orb shader adapted from rare-ui (swamimalode07/rare-ui, MIT).
-   The WebGL setup lives outside React so the component stays a thin leaf. */
+/* Fluid orb shader adapted from rare-ui (swamimalode07/rare-ui, MIT; notice in
+   docs/licenses/rare-ui.txt). The WebGL setup lives outside React so the
+   component stays a thin leaf. */
 
 const VERTEX_SHADER = `
 attribute vec2 a_pos;
