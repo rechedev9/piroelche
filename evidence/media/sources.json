@@ -72,17 +72,20 @@
   "websitePhotos": [
     {
       "file": "public/media/site/caseta-temporada-2024-06.jpg",
-      "width": 680,
-      "height": 454,
+      "width": 1360,
+      "height": 908,
       "format": "jpeg",
-      "bytes": 108774,
-      "sha256": "a5caf7e93bb9c07999dc2d369e1dca336a9793d32e50f05e3306744e1abde549",
+      "bytes": 191172,
+      "sha256": "634d56f4bf43fa78da0698fa74b9898d96ffc629a15f879e38681436acefe2e2",
       "source": "https://pirotecniaelche.es/tiendas/",
       "assetUrl": "https://pirotecniaelche.es/wp-content/uploads/2024/06/fuegos-artificiales-elche.jpg",
       "checkedAt": "2026-09-11",
       "authorization": "The user asked to reuse the booth photo from the business's current website (Tiendas page), keeping a single image as a generic example for every booth.",
       "usedIn": ["Tiendas: Casetas de temporada"],
-      "edited": false
+      "edited": true,
+      "originalSha256": "a5caf7e93bb9c07999dc2d369e1dca336a9793d32e50f05e3306744e1abde549",
+      "originalSize": "680x454",
+      "editNote": "Upscaled 2x for sharpness: Real-ESRGAN x4plus (RealESRGAN_x4plus.pth, sha256 4fa0d389...) output downsampled to 2x with Lanczos, blended 75/25 with a Lanczos+unsharp-mask upscale of the original, exported as progressive JPEG q86. Framing and content unchanged."
     }
   ]
 }
