@@ -1,0 +1,38 @@
+name: piroelche
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+      args:
+        PIROBOOM_SITE_URL: ${PIROBOOM_SITE_URL:?set PIROBOOM_SITE_URL}
+        PIROBOOM_PUBLIC_SITE: ${PIROBOOM_PUBLIC_SITE:-0}
+    restart: unless-stopped
+    environment:
+      PIROBOOM_SITE_URL: ${PIROBOOM_SITE_URL:?set PIROBOOM_SITE_URL}
+      PIROBOOM_PUBLIC_SITE: ${PIROBOOM_PUBLIC_SITE:-0}
+      PIROBOOM_PROMO: ${PIROBOOM_PROMO:-0}
+      # Lead form stays off until a receiver exists; the site shows the phone
+      # alternative instead.
+      LEADS_RECEIVER_MODE: ${LEADS_RECEIVER_MODE:-disabled}
+      LEADS_RECEIVER_URL: ${LEADS_RECEIVER_URL:-}
+      LEADS_RECEIVER_TOKEN: ${LEADS_RECEIVER_TOKEN:-}
+      LEADS_ALLOWED_ORIGINS: ${LEADS_ALLOWED_ORIGINS:-}
+      # Caddy on the host rewrites X-Forwarded-For, so the proxy is trusted.
+      LEADS_TRUST_PROXY: "1"
+    ports:
+      # Loopback only; Caddy on the host terminates TLS and proxies here.
+      - 127.0.0.1:8093:3000
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+      - /app/.next/cache:size=128m,mode=0755,uid=1000,gid=1000
+    deploy:
+      resources:
+        limits:
+          memory: 512M
