@@ -15,9 +15,9 @@ concurrency:
 
 jobs:
   verify:
-    name: Lint, types, unit, build and three browsers
+    name: Lint, types, unit, build and Chromium e2e
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 10
     defaults:
       run:
         shell: bash
@@ -65,8 +65,8 @@ jobs:
       - name: Build public content for local review
         run: pnpm build
 
-      - name: Install Chromium, Firefox and WebKit
-        run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps --only-shell chromium
 
       - name: Browser tests with real local receiver
         id: e2e
@@ -76,7 +76,9 @@ jobs:
         run: |
           # Do not upload the previously committed local report as a CI result.
           rm -f -- evidence/playwright-results.json
-          pnpm test:e2e --forbid-only --retries=0
+          # CI covers Chromium to stay within five minutes; Firefox and WebKit
+          # still run locally with `pnpm test:e2e`.
+          pnpm test:e2e --project=chromium --forbid-only --retries=0
 
       - name: Retain browser reports
         if: ${{ !cancelled() && (steps.e2e.outcome == 'success' || steps.e2e.outcome == 'failure') }}

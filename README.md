@@ -62,4 +62,4 @@ LOCALAPPDATA="$PWD/.local/e2e" E2E_DEMO_PORT=3100 E2E_PUBLIC_PORT=3102 \
 
 Measure the initial HTML and JavaScript of a running production build with `pnpm exec tsx scripts/measure-delivery.ts http://127.0.0.1:3001`. An optional second argument writes the JSON report to a file.
 
-[GitHub Actions](https://github.com/rechedev9/piroelche/actions/workflows/ci.yml) runs the checks on Ubuntu; its configuration is in [.github/workflows/ci.yml](.github/workflows/ci.yml).
+[GitHub Actions](https://github.com/rechedev9/piroelche/actions/workflows/ci.yml) runs the checks on Ubuntu, with the browser tests in Chromium only; run Firefox and WebKit locally before changes that touch browser-specific behaviour. Its configuration is in [.github/workflows/ci.yml](.github/workflows/ci.yml).

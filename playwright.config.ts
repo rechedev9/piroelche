@@ -13,8 +13,10 @@ const reportDirectory = process.env.E2E_REPORT_DIR;
 export default defineConfig({
   testDir: "./tests/e2e",
   outputDir: reportDirectory ? `${reportDirectory}/artifacts` : "test-results",
-  fullyParallel: false,
-  workers: 1,
+  fullyParallel: true,
+  // CI runs Chromium alone on a 2-vCPU runner; locally the three browsers
+  // keep one test at a time.
+  workers: process.env.CI ? 2 : 1,
   retries: 0,
   timeout: 45_000,
   expect: { timeout: 10_000 },
