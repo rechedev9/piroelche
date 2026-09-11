@@ -7,7 +7,9 @@ import {
   type FluidOrbController,
 } from "@/lib/fluid-orb-scene";
 
-export type FluidOrbProps = React.ComponentProps<"div"> & {
+// The wrapper's ref is owned internally (visibility observer), so callers
+// cannot pass one: spreading it over `stageRef` would silently stop the orb.
+export type FluidOrbProps = Omit<React.ComponentProps<"div">, "ref"> & {
   /** Rendered size in CSS pixels. */
   size?: number;
   /** `#hex` or a `--token` from globals.css; defaults to the brand magenta. */
