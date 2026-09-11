@@ -14,10 +14,10 @@ export function Footer() {
           <Link href="/" aria-label="Piroboom, inicio">
             <Image
               src="/brand/logo-header.webp"
-              alt="Piroboom"
+              alt="Piroboom, pirotecnia en Elche"
               width={680}
-              height={247}
-              sizes="(max-width: 650px) 150px, 170px"
+              height={276}
+              sizes="(max-width: 650px) 160px, 200px"
             />
           </Link>
           <p>
