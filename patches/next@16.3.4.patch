@@ -1,0 +1,34 @@
+diff --git a/dist/server/image-optimizer.js b/dist/server/image-optimizer.js
+index 31b5c6e3e46f40a994f62c4d43df6a8bbf971869..c13b0413fa0e8207751e59a44f3945c0ab38fa26 100644
+--- a/dist/server/image-optimizer.js
++++ b/dist/server/image-optimizer.js
+@@ -1021,12 +1021,23 @@ async function fetchInternalImage(href, _req, _res, maximumResponseBody, handleR
+     try {
+         // Coerce HEAD to GET to avoid issues with the image optimizer
+         const method = !_req.method || _req.method === 'HEAD' ? 'GET' : _req.method;
+-        const mocked = (0, _mockrequest.createRequestResponseMocks)({
+-            url: href,
+-            method,
+-            socket: _req.socket,
+-            maximumResponseBody
+-        });
++        // Backport of the upstream fix in 16.4.0-canary: the mocked request keeps
++        // the requester's socket, but the mocked response must not reference it.
++        // `send` watches `res.socket` through `on-finished`, so a requester that
++        // disconnected mid-transfer tore down the file stream without ever ending
++        // the mocked response, and every later request for the same cache key
++        // stayed pending on that single fetch until the server restarted.
++        const mocked = {
++            req: new _mockrequest.MockedRequest({
++                url: href,
++                method,
++                headers: {},
++                socket: _req.socket
++            }),
++            res: new _mockrequest.MockedResponse({
++                maximumResponseBody
++            })
++        };
+         await handleRequest(mocked.req, mocked.res, (0, _url.parseReqUrl)(href));
+         await mocked.res.hasStreamed;
+         if (!mocked.res.statusCode) {
