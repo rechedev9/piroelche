@@ -1,12 +1,9 @@
-import sharp from "sharp";
 import { mkdir, copyFile } from "node:fs/promises";
-const source = "piroboom-handoff/inputs/diseno/assets/logo.png";
+// public/brand/logo.webp and logo-header.webp carry the new Piroboom mark,
+// which the handoff logo predates. They are committed as prepared assets, so
+// this script must not regenerate them from the handoff.
 await mkdir("public/brand", { recursive: true });
 await mkdir("docs/licenses", { recursive: true });
-await sharp(source)
-  .resize(552, 184)
-  .webp({ quality: 92 })
-  .toFile("public/brand/logo.webp");
 // The favicon uses the compact O/firework adaptation of the supplied logo.
 await import("./prepare-favicons.mjs");
 await copyFile(
