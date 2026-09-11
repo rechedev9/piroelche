@@ -9,6 +9,7 @@ import { Media } from "@/components/media";
 import { TrackedLink } from "@/components/tracked-link";
 import { CampaignPromo } from "@/components/campaign-promo";
 import { HeroImage } from "@/components/hero-image";
+import { FluidOrb } from "@/components/ui/fluid-orb";
 
 export const metadata = pageMetadata(
   "Pirotecnia para tus celebraciones en Elche",
@@ -35,8 +36,8 @@ export default function Home() {
             <p className="eyebrow brand-eyebrow">Tienda física · Elche</p>
             <h1>
               Pirotecnia para{" "}
-              <span className="brand-hero-accent">tus celebraciones</span>{" "}
-              en Elche.
+              <span className="brand-hero-accent">tus celebraciones</span> en
+              Elche.
             </h1>
             <p className="lead">
               Explora el catálogo y consulta las opciones para tu evento. Te
@@ -120,7 +121,9 @@ export default function Home() {
                 Fuegos artificiales, humo de color, fuego frío, tracas. Consulta
                 cada referencia y dónde adquirirla.
               </p>
-              <span className="text-link">Explorar catálogo →</span>
+              <span className="text-link">
+                Explorar catálogo →
+              </span>
             </div>
           </TrackedLink>
           <TrackedLink
@@ -141,7 +144,9 @@ export default function Home() {
                 Bodas, revelaciones, cumpleaños, fiestas. Valoramos qué encaja
                 con tu lugar y tu fecha.
               </p>
-              <span className="text-link">Planificar mi evento →</span>
+              <span className="text-link">
+                Planificar mi evento →
+              </span>
             </div>
           </TrackedLink>
         </div>
@@ -158,6 +163,15 @@ export default function Home() {
         <FamilyGrid />
       </section>
       <section className="dark events-band brand-events-band">
+        <div className="brand-events-orbs">
+          <FluidOrb className="brand-events-orb" size={520} color="--magenta" />
+          <FluidOrb
+            className="brand-events-orb"
+            size={320}
+            color="--yellow"
+            phase={9}
+          />
+        </div>
         <div className="container">
           <div className="spread">
             <h2>Soluciones para eventos</h2>
@@ -183,7 +197,9 @@ export default function Home() {
                   <span className="eyebrow">{solution.label}</span>
                   <h3>{solution.title}</h3>
                   <p>{solution.result}</p>
-                  <span className="text-link">Ver opciones →</span>
+                  <span className="text-link">
+                    Ver opciones →
+                  </span>
                 </div>
               </Link>
             ))}

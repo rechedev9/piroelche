@@ -201,7 +201,39 @@
   @apply text-on-dark-cool;
 }
 .brand-home .brand-events-band {
-  @apply border-0 border-t-4 border-solid border-magenta;
+  @apply relative border-0 border-t-4 border-solid border-magenta;
+  overflow: clip;
+}
+.brand-home .brand-events-band > .container {
+  @apply relative z-1;
+}
+/* Colour-smoke orbs: decorative, behind the content, faded so the
+   4.5:1 text contrast on the dark band is untouched. */
+.brand-events-orbs {
+  @apply absolute inset-0 z-0 pointer-events-none;
+}
+.brand-events-orb {
+  @apply absolute opacity-0 transition-opacity duration-700;
+  mask-image: radial-gradient(circle, #000 35%, transparent 70%);
+}
+.brand-events-orb[data-ready="true"] {
+  opacity: 0.38;
+}
+.brand-events-orb:first-child {
+  top: -250px;
+  right: -110px;
+}
+.brand-events-orb:last-child {
+  bottom: -150px;
+  left: -90px;
+}
+.brand-events-orb:last-child[data-ready="true"] {
+  opacity: 0.28;
+}
+@media (max-width: 760px) {
+  .brand-events-orb:last-child {
+    display: none;
+  }
 }
 .brand-home .brand-solution-teaser.solution-compact {
   @apply p-0 rounded-control overflow-hidden;
