@@ -200,6 +200,17 @@
   "store": {
     "name": "Piroboom Elche",
     "address": "Calle Gloria Fuertes, s/n, 03203 Elche, Alicante",
+    "postalAddress": {
+      "streetAddress": "Calle Gloria Fuertes, s/n",
+      "postalCode": "03203",
+      "addressLocality": "Elche",
+      "addressRegion": "Alicante",
+      "addressCountry": "ES"
+    },
+    "geo": {
+      "latitude": 38.2542595,
+      "longitude": -0.6910661
+    },
     "phone": "+34600261620",
     "phoneDisplay": "600 261 620",
     "landline": {
@@ -253,10 +264,12 @@
       "kind": "primary-source",
       "source": "https://pirotecniaelche.es/tiendas/",
       "checkedAt": "2026-09-09",
-      "note": "Dirección, teléfono, horario y enlace de ruta contrastados con la página Tiendas y su pie el 09/09/2026, fuente de verdad indicada por el usuario. Se conserva la dirección completa publicada en el pie. Es la declaración publicada por el negocio; no acredita vigencia física ni festivos.",
+      "note": "Dirección, teléfono, horario y enlace de ruta contrastados con la página Tiendas y su pie el 09/09/2026, fuente de verdad indicada por el usuario. Se conserva la dirección completa publicada en el pie. Es la declaración publicada por el negocio; no acredita vigencia física ni festivos. postalAddress descompone literalmente esa misma dirección. geo procede del destino al que resuelve directionsUrl (ficha de Google Maps del negocio, place 0xd63b787d95156ed, comprobado el 11/09/2026); solo se usa en los datos estructurados.",
       "verifiedFields": [
         "name",
         "address",
+        "postalAddress",
+        "geo",
         "phone",
         "schedule",
         "directionsUrl"
@@ -646,6 +659,20 @@
           "verifiedFields": ["src", "alt", "width", "height", "source"]
         }
       }
-    ]
+    ],
+    "campaignBooth": {
+      "src": "/media/site/caseta-temporada-2024-06.jpg",
+      "alt": "Caseta de pirotecnia de temporada con banderas y rótulos de fuegos artificiales junto a palmeras",
+      "width": 1360,
+      "height": 908,
+      "provenance": {
+        "kind": "primary-source",
+        "source": "https://pirotecniaelche.es/tiendas/",
+        "checkedAt": "2026-09-11",
+        "note": "Fotografía publicada por el negocio en la página Tiendas de su web actual, donde ilustra las cuatro casetas con la misma imagen. Se importa como ejemplo genérico de caseta; no documenta una ubicación ni una campaña concreta. El original de 680x454 se ha escalado a 1360x908 con Real-ESRGAN para ganar definición, sin alterar el encuadre ni el contenido. Hash en evidence/media/sources.json.",
+        "pending": [],
+        "verifiedFields": ["src", "alt", "width", "height", "source"]
+      }
+    }
   }
 }

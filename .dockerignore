@@ -1,0 +1,17 @@
+.git
+node_modules
+.next
+.next-*
+.local
+.vercel
+.env*
+!.env.example
+.playwright-mcp
+playwright-report
+test-results
+test-results-*
+playwright.config.ts
+evidence
+docs
+deploy/.env
+*.tsbuildinfo

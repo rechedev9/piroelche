@@ -5,24 +5,29 @@ import { Button } from "@/components/ui/button";
 import { CatalogueReader } from "@/components/catalogue-reader";
 import { FamilyGrid, PdfAction } from "@/components/site-content";
 import { catalogue, getCataloguePage } from "@/lib/catalogue";
+import { getContent } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata(
-  "Catálogo de pirotecnia",
-  "Fuegos artificiales, humo de color, fuego frío, tracas y otros artículos. Consulta familias y el catálogo PDF de Piroboom.",
+  "Catálogo de pirotecnia 2026, online y en PDF",
+  "Catálogo 2026 de Piroboom Elche: fuegos artificiales, humo de color, fuego frío, tracas y petardos. Léelo online página a página o descarga el PDF.",
   "/catalogo-pdf/",
 );
 export default async function Catalogue({
   searchParams,
 }: PageProps<"/catalogo-pdf">) {
   const selected = getCataloguePage((await searchParams).pagina);
+  const { isDemo } = getContent();
   const preview =
     catalogue.pages.find((page) => page.familyIds?.includes("humo")) ||
     catalogue.pages[11] ||
     catalogue.pages[catalogue.pages.length - 1];
   return (
     <div className="container page-section catalog-page">
-      <Breadcrumbs items={[{ label: "Catálogo" }]} />
+      <Breadcrumbs
+        items={[{ label: "Catálogo", href: "/catalogo-pdf/" }]}
+        structuredData={!isDemo}
+      />
       <section
         className="catalogue-hero dark"
         aria-labelledby="catalogue-title"

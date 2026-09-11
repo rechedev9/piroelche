@@ -8,8 +8,8 @@ import { TrackedLink } from "@/components/tracked-link";
 import { Button } from "@/components/ui/button";
 
 export const metadata = pageMetadata(
-  "Tiendas y horarios",
-  "Dirección, horario habitual, teléfono y ruta a Piroboom Elche. Consulta la vigencia de las casetas de temporada.",
+  "Tienda de pirotecnia en Elche: dirección y horario",
+  "Piroboom en Calle Gloria Fuertes, s/n, Elche: horario, teléfono y cómo llegar. Casetas de temporada en Elche, Alicante, Santa Pola y La Zenia.",
   "/tiendas/",
 );
 
@@ -33,6 +33,7 @@ function LocationIcon() {
 export default function Shops() {
   const { brand, store, campaigns, isDemo } = getContent();
   const welcomeImage = brand?.storeWelcome || store.image;
+  const boothImage = brand?.campaignBooth;
   const today = getLocationHours(store);
   return (
     <div className="brand-shops">
@@ -134,6 +135,20 @@ export default function Shops() {
             de campaña antes de acudir; la tienda principal de Elche es la
             alternativa fuera de campaña.
           </p>
+          {boothImage && (
+            <figure className="shops-campaign-photo">
+              <Media
+                src={boothImage.src}
+                alt={boothImage.alt}
+                fit={boothImage.fit}
+                ratio="5 / 2"
+              />
+              <figcaption>
+                Caseta de temporada de Piroboom. Imagen de ejemplo: cada punto
+                de venta tiene su propia caseta.
+              </figcaption>
+            </figure>
+          )}
           {campaigns.length ? (
             <div className="shops-campaign-grid">
               {campaigns.map((campaign) => {
@@ -225,7 +240,7 @@ export default function Shops() {
                 publicar. Consulta la tienda de Elche para planificar tu visita.
               </p>
               <Link className="text-link" href="/contacto/?motivo=visita">
-                Consultar una visita →
+                Consultar una visita <span aria-hidden="true">→</span>
               </Link>
             </div>
           )}

@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const family = getFamily((await params).family);
   return family
     ? pageMetadata(
-        family.name,
-        family.description,
+        `${family.name} en Elche`,
+        `${family.description} Consulta esta familia en el catálogo 2026 de Piroboom, tienda de pirotecnia en Elche.`,
         `/catalogo-pdf/${family.slug}/`,
       )
     : {
@@ -53,6 +53,7 @@ export default async function FamilyPage({ params }: Props) {
           src={family.image?.src}
           alt={family.image?.alt || family.name}
           fit={family.image?.fit}
+          priority
         />
       </section>
       {products.length ? (
@@ -94,7 +95,9 @@ export default async function FamilyPage({ params }: Props) {
                 />
                 <small>Página {page.page}</small>
                 <h3>{page.title}</h3>
-                <span className="text-link">Ver esta página →</span>
+                <span className="text-link">
+                  Ver esta página <span aria-hidden="true">→</span>
+                </span>
               </Link>
             ))}
           </div>
@@ -104,7 +107,7 @@ export default async function FamilyPage({ params }: Props) {
               disponibilidad.
             </p>
             <Link className="text-link" href="/contacto/?motivo=producto">
-              Pregúntanos por un artículo →
+              Pregúntanos por un artículo <span aria-hidden="true">→</span>
             </Link>
           </div>
         </>

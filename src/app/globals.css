@@ -84,8 +84,9 @@
   --on-dark-cool: #dedbe0;
   --on-dark-cool-dim: #d8d5dd;
   --line-on-dark: #2a2a30;
-  /* Form states. */
-  --border-input: #cfcbc2;
+  /* Form states. Input borders are the only boundary of the control, so they
+     must reach 3:1 against white (WCAG 1.4.11): #8f8a80 is 3.4:1. */
+  --border-input: #8f8a80;
   --danger: #b3261e;
   --success: #1b5e20;
   --header-height: 67px;
@@ -97,6 +98,8 @@
 * {
   @apply box-border;
 }
+/* Single source of anchor offset for the sticky header. Targets must not add
+   their own scroll-margin-top: the two values are cumulative. */
 html {
   scroll-padding-top: calc(var(--header-height) + 20px);
 }
@@ -198,7 +201,7 @@ body > div {
   @apply min-w-0;
 }
 .site-shell {
-  @apply min-h-screen flex flex-col;
+  @apply min-h-dvh flex flex-col;
 }
 .container {
   @apply w-full max-w-300 px-5 mx-auto;
@@ -369,7 +372,9 @@ body > div {
 .skip-link {
   @apply fixed left-4 -top-25 z-100 bg-yellow text-ink p-3 rounded-[8px] font-extrabold;
 }
-.skip-link:focus {
+/* :focus-visible so programmatic focus after a pointer interaction (e.g. the
+   promo dialog returning focus to the top) does not flash the link. */
+.skip-link:focus-visible {
   @apply top-3;
 }
 .review-banner {
@@ -383,11 +388,13 @@ body > div {
 .contact-bar-inner {
   @apply flex flex-wrap items-center gap-x-5 gap-y-1.5 py-2;
 }
+/* 44px targets with 8px between them: the bar collapses to icon-only links
+   on narrow screens, where adjacent taps are easy to miss. */
 .contact-bar-list {
-  @apply flex flex-wrap items-center gap-x-1 gap-y-1 m-0 p-0 list-none ml-auto;
+  @apply flex flex-wrap items-center gap-x-2 gap-y-2 m-0 p-0 list-none ml-auto;
 }
 .contact-bar-link {
-  @apply inline-flex items-center gap-1.5 py-1.5 px-2.5 rounded-[999px] text-[14px] font-extrabold text-night no-underline min-h-9;
+  @apply inline-flex items-center gap-1.5 py-1.5 px-2.5 rounded-[999px] text-[14px] font-extrabold text-night no-underline min-h-11;
 }
 .contact-bar-link:hover,
 .contact-bar-link:focus-visible {
@@ -703,9 +710,6 @@ body > div {
 .event-form-wrap ul {
   @apply pl-4.5 text-[15px] leading-[1.7] text-mid;
 }
-#solicitud {
-  scroll-margin-top: calc(var(--header-height) + 20px);
-}
 .store-card {
   @apply rounded-panel gap-0 overflow-hidden;
 }
@@ -808,7 +812,7 @@ body > div {
   @apply relative;
 }
 .video-badge {
-  @apply absolute top-2.5 right-2.5 bg-night text-white text-[11px] font-extrabold rounded-[5px] py-1 px-2;
+  @apply absolute top-2.5 right-2.5 bg-night text-white text-[12px] font-extrabold rounded-[5px] py-1 px-2;
 }
 .product-grid {
   grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
@@ -930,6 +934,37 @@ body > div {
 }
 .form-card {
   @apply p-7.5 rounded-panel;
+}
+.faq {
+  @apply pb-18 grid gap-6;
+}
+.faq-heading h2 {
+  @apply mb-0;
+}
+.faq-list {
+  @apply grid gap-3 max-w-200;
+}
+.faq-item {
+  @apply bg-white border border-solid border-line rounded-media px-5.5;
+}
+.faq-item summary {
+  @apply flex items-center justify-between gap-4 cursor-pointer list-none py-4.5 min-h-12;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary h3 {
+  @apply text-[17px] mb-0 font-bold;
+}
+.faq-item summary::after {
+  content: "+" / "";
+  @apply flex-none text-[24px] leading-none text-magenta font-bold;
+}
+.faq-item[open] summary::after {
+  content: "−" / "";
+}
+.faq-item p {
+  @apply m-0 pb-5 text-[16px] leading-[1.6] text-muted max-w-160;
 }
 .lead-form {
   @apply grid gap-4 min-w-0;
@@ -1093,7 +1128,7 @@ body > div {
   @apply underline;
 }
 .not-found {
-  @apply min-h-[55vh] flex flex-col justify-center;
+  @apply min-h-[55dvh] flex flex-col justify-center;
 }
 .whatsapp {
   @apply fixed right-5 bottom-5 z-15 inline-flex items-center gap-2 bg-[#25d366] text-night rounded-[999px] py-3.5 px-5 font-extrabold min-h-12 no-underline;
@@ -1135,7 +1170,7 @@ body > div {
     @apply sr-only;
   }
   .menu-toggle {
-    @apply flex gap-2 items-center ml-auto bg-none bg-transparent border border-solid border-[#5c5c66] rounded-[8px] text-white py-2 px-3 font-bold min-h-11;
+    @apply flex gap-2 items-center ml-auto bg-none bg-transparent border border-solid border-on-dark-muted/60 rounded-[8px] text-white py-2 px-3 font-bold min-h-11;
   }
   .header-event {
     @apply hidden;
@@ -1195,6 +1230,14 @@ body > div {
   }
   .product-detail {
     @apply gap-6;
+  }
+}
+/* Between the two-column desktop layout and the phone layout the lead form
+   would shrink below ~330px; stack copy and form before that happens. */
+@media (max-width: 800px) {
+  .contact-page.grid-2,
+  .event-form-wrap.grid-2 {
+    @apply grid-cols-[1fr];
   }
 }
 @media (max-width: 650px) {

@@ -53,10 +53,7 @@
       "assetUrl": "https://lh3.googleusercontent.com/gps-cs/AH1DqX8d9-6OcokcsGgfr0pu8VQF0uVHsTz6z1DYwxGEgSleOZ7TzLD_wixdFhiQsuJGypnchFUZYkMLIZbWvHWSn88rBMiPGir8hIWcLR2P8eBxkFPit3qf8-PNmvmtDm2RFNdeupsqjqNeSWiB=s3072-v1",
       "googlePhotoLabel": "nov 2025",
       "googleImageDateLabel": "oct 2025",
-      "usedIn": [
-        "Humo de color",
-        "Eventos: Celebraciones mayores"
-      ],
+      "usedIn": ["Humo de color", "Eventos: Celebraciones mayores"],
       "edited": false
     }
   ],
@@ -71,5 +68,24 @@
     "prompt": "Use case: stylized-concept.\nAsset type: original decorative background image for the homepage hero of Piroboom, a fireworks shop website. This is an atmospheric design asset, not a photograph of an actual event or a claim about the business.\nPrimary request: a very discreet, non-invasive suggestion of fireworks in a dark sky, elegant and restrained, leaving the page text and buttons visually dominant.\nComposition: wide landscape 16:9, ideally 2560x1440. The website has its headline on the left: keep the left 55 percent nearly empty and very dark charcoal #0d0d10, with a smooth continuous dark background throughout. On the right and toward the far upper-right edge, two or three softly visible, delicate firework bursts, fine curved light trails, some partially outside the image. Sparse small sparks; lots of breathing room. Do not create a central bright focal point.\nStyle: photographic light texture with refined long-exposure firework trails, a subtly abstract decorative composition. Muted warm pale gold and very restrained magenta accents, compatible with the website accents #ffe500 and #ee1c8c but substantially dimmer and desaturated in this background. Nearly black shadows, gentle glow, very low visual density, minimal haze.\nConstraints: no text, no logos, no watermark, no people, no city, no buildings, no products, no horizon, no smoke clouds, no loud explosion, no high-contrast white highlights, no fireworks covering the negative space. Avoid a busy celebratory poster or stock-photo look. The image must feel quiet and subtle enough behind readable white web typography.",
     "role": "Decorative background; not an actual business event",
     "edited": false
-  }
+  },
+  "websitePhotos": [
+    {
+      "file": "public/media/site/caseta-temporada-2024-06.jpg",
+      "width": 1360,
+      "height": 908,
+      "format": "jpeg",
+      "bytes": 191172,
+      "sha256": "634d56f4bf43fa78da0698fa74b9898d96ffc629a15f879e38681436acefe2e2",
+      "source": "https://pirotecniaelche.es/tiendas/",
+      "assetUrl": "https://pirotecniaelche.es/wp-content/uploads/2024/06/fuegos-artificiales-elche.jpg",
+      "checkedAt": "2026-09-11",
+      "authorization": "The user asked to reuse the booth photo from the business's current website (Tiendas page), keeping a single image as a generic example for every booth.",
+      "usedIn": ["Tiendas: Casetas de temporada"],
+      "edited": true,
+      "originalSha256": "a5caf7e93bb9c07999dc2d369e1dca336a9793d32e50f05e3306744e1abde549",
+      "originalSize": "680x454",
+      "editNote": "Upscaled 2x for sharpness: Real-ESRGAN x4plus (RealESRGAN_x4plus.pth, sha256 4fa0d389...) output downsampled to 2x with Lanczos, blended 75/25 with a Lanczos+unsharp-mask upscale of the original, exported as progressive JPEG q86. Framing and content unchanged."
+    }
+  ]
 }

@@ -146,7 +146,7 @@ test("T14,T17 · estados vacíos y parámetros públicos no activan fixtures", a
   await expect(page.locator(".product-card")).toHaveCount(0);
   await expect(
     page.getByRole("link", {
-      name: "Pregúntanos por un artículo →",
+      name: "Pregúntanos por un artículo",
       exact: true,
     }),
   ).toHaveAttribute("href", "/contacto/?motivo=producto");

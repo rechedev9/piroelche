@@ -86,6 +86,17 @@ export function useLeadForm({
   function update(patch: Partial<Draft>) {
     const next = { ...draft, ...patch };
     setEditedDraft(next);
+    // Drop stale inline errors for the fields being edited so a corrected
+    // control stops reading as invalid before the next submit.
+    const touched = new Set<string>(Object.keys(patch));
+    if (touched.has("dateUndecided")) touched.add("date");
+    setErrors((current) => {
+      const stale = Object.keys(current).filter((field) => touched.has(field));
+      if (!stale.length) return current;
+      return Object.fromEntries(
+        Object.entries(current).filter(([field]) => !touched.has(field)),
+      );
+    });
     saveDraft(
       storageKey,
       next,

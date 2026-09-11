@@ -2,6 +2,7 @@
 import type { ReactNode } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { getMadridDate } from "@/lib/business-time";
 import type { LeadField, LeadFieldErrors } from "@/lib/lead-contract";
 import type { Draft } from "@/lib/lead-draft";
 
@@ -10,10 +11,14 @@ export function leadControlProps(
   prefix: string,
   errors: LeadFieldErrors,
   name: LeadField,
+  required = false,
 ) {
   const id = `${prefix}-${name}`;
   return {
     id,
+    // Optional fields say "(opcional)" in their label; required ones are
+    // announced through aria-required rather than a visual asterisk.
+    "aria-required": required || undefined,
     "aria-invalid": Boolean(errors[name]),
     "aria-describedby": errors[name] ? `${id}-error` : undefined,
   };
@@ -76,7 +81,7 @@ export function LeadEventFields({
         error={errors.occasion}
       >
         <select
-          {...leadControlProps(prefix, errors, "occasion")}
+          {...leadControlProps(prefix, errors, "occasion", true)}
           onFocus={onFocus}
           name="occasion"
           value={draft.occasion}
@@ -99,10 +104,11 @@ export function LeadEventFields({
           error={errors.date}
         >
           <Input
-            {...leadControlProps(prefix, errors, "date")}
+            {...leadControlProps(prefix, errors, "date", !draft.dateUndecided)}
             onFocus={onFocus}
             type="date"
             name="date"
+            min={getMadridDate()}
             value={draft.date}
             disabled={sending || draft.dateUndecided}
             onChange={(event) => update({ date: event.target.value })}

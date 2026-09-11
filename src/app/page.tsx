@@ -9,10 +9,13 @@ import { Media } from "@/components/media";
 import { TrackedLink } from "@/components/tracked-link";
 import { CampaignPromo } from "@/components/campaign-promo";
 import { HeroImage } from "@/components/hero-image";
+import { FluidOrb } from "@/components/ui/fluid-orb";
 
+// The root segment does not receive the layout title template, so the home
+// title carries the brand itself.
 export const metadata = pageMetadata(
-  "Pirotecnia para tus celebraciones en Elche",
-  "Explora las familias de pirotecnia, consulta opciones para tu evento y encuentra la tienda Piroboom en Elche.",
+  "Piroboom · Tienda de pirotecnia en Elche, Alicante",
+  "Piroboom, tienda de pirotecnia en Elche: fuegos artificiales, humo de color, fuego frío y tracas. Catálogo 2026, consultas para bodas y fiestas, y horario de la tienda.",
   "/",
 );
 export default function Home() {
@@ -35,8 +38,8 @@ export default function Home() {
             <p className="eyebrow brand-eyebrow">Tienda física · Elche</p>
             <h1>
               Pirotecnia para{" "}
-              <span className="brand-hero-accent">tus celebraciones</span>{" "}
-              en Elche.
+              <span className="brand-hero-accent">tus celebraciones</span> en
+              Elche.
             </h1>
             <p className="lead">
               Explora el catálogo y consulta las opciones para tu evento. Te
@@ -120,7 +123,9 @@ export default function Home() {
                 Fuegos artificiales, humo de color, fuego frío, tracas. Consulta
                 cada referencia y dónde adquirirla.
               </p>
-              <span className="text-link">Explorar catálogo →</span>
+              <span className="text-link">
+                Explorar catálogo <span aria-hidden="true">→</span>
+              </span>
             </div>
           </TrackedLink>
           <TrackedLink
@@ -141,7 +146,9 @@ export default function Home() {
                 Bodas, revelaciones, cumpleaños, fiestas. Valoramos qué encaja
                 con tu lugar y tu fecha.
               </p>
-              <span className="text-link">Planificar mi evento →</span>
+              <span className="text-link">
+                Planificar mi evento <span aria-hidden="true">→</span>
+              </span>
             </div>
           </TrackedLink>
         </div>
@@ -152,17 +159,26 @@ export default function Home() {
             Familias de producto
           </h2>
           <Link className="text-link" href="/catalogo-pdf/">
-            Ver todo el catálogo →
+            Ver todo el catálogo <span aria-hidden="true">→</span>
           </Link>
         </div>
         <FamilyGrid />
       </section>
       <section className="dark events-band brand-events-band">
+        <div className="brand-events-orbs">
+          <FluidOrb className="brand-events-orb" size={520} color="--magenta" />
+          <FluidOrb
+            className="brand-events-orb"
+            size={320}
+            color="--yellow"
+            phase={9}
+          />
+        </div>
         <div className="container">
           <div className="spread">
             <h2>Soluciones para eventos</h2>
             <Link className="text-link" href="/eventos/">
-              Ver opciones para tu evento →
+              Ver opciones para tu evento <span aria-hidden="true">→</span>
             </Link>
           </div>
           <div className="grid grid-3">
@@ -177,13 +193,16 @@ export default function Home() {
                   alt={solution.image?.alt || solution.label}
                   ratio="4 / 3"
                   fit={solution.image?.fit}
+                  sizes="(max-width: 650px) 90vw, (max-width: 1059px) 45vw, 380px"
                   dark
                 />
                 <div className="brand-teaser-copy">
                   <span className="eyebrow">{solution.label}</span>
                   <h3>{solution.title}</h3>
                   <p>{solution.result}</p>
-                  <span className="text-link">Ver opciones →</span>
+                  <span className="text-link">
+                    Ver opciones <span aria-hidden="true">→</span>
+                  </span>
                 </div>
               </Link>
             ))}

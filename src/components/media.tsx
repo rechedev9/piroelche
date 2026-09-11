@@ -16,6 +16,7 @@ export function Media({
   className = "",
   fit,
   priority = false,
+  sizes = "(max-width: 650px) 90vw, (max-width: 1059px) 45vw, 560px",
 }: {
   src?: string | null;
   alt: string;
@@ -24,6 +25,9 @@ export function Media({
   className?: string;
   fit?: "cover" | "contain";
   priority?: boolean;
+  /** Rendered width hints; the default fits two-column layouts. Card grids
+   *  with three or four columns should pass a narrower desktop width. */
+  sizes?: string;
 }) {
   const [failed, setFailed] = useState(false);
   const style: MediaStyle = { "--media-ratio": ratio };
@@ -38,7 +42,7 @@ export function Media({
           alt={alt}
           fill
           style={fit ? { objectFit: fit } : undefined}
-          sizes="(max-width: 650px) 90vw, (max-width: 1059px) 45vw, 560px"
+          sizes={sizes}
           // Next 16 renamed the LCP hint: `priority` is deprecated in favour of
           // `preload`, which also loads the image eagerly.
           preload={priority}

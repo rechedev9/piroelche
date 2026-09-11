@@ -37,7 +37,10 @@
     transparent 60%
   );
 }
-.brand-home .brand-hero {
+/* The fireworks stage bleeds past the figure on purpose; clip it at the hero so
+   it never widens the page (the events hero reuses the same HeroImage). */
+.brand-home .brand-hero,
+.events-hero.brand-events-hero {
   overflow: clip;
 }
 .brand-home .hero-inner {
@@ -91,7 +94,7 @@
   @apply grid gap-1 min-w-0 text-[13px] leading-[1.5];
 }
 .brand-hero-store-copy a {
-  @apply text-white font-semibold underline-offset-4;
+  @apply inline-flex items-center min-h-11 -my-2.5 text-white font-semibold underline-offset-4;
   justify-self: start;
 }
 .brand-hero-store-copy a:hover {
@@ -136,7 +139,7 @@
   height: 100%;
 }
 .brand-fireworks-toggle {
-  @apply absolute bottom-4 right-0 z-2 inline-flex items-center justify-center gap-2 min-h-11 px-3 rounded-full text-white text-[11px] font-semibold cursor-pointer;
+  @apply absolute bottom-4 right-0 z-2 inline-flex items-center justify-center gap-2 min-h-11 px-3 rounded-full text-white text-[12px] font-semibold cursor-pointer;
   background: transparent;
   border: 0;
 }
@@ -150,11 +153,14 @@
     display: none;
   }
 }
+/* Soft halo keeps the caption legible if the hero photo is ever swapped for
+   a brighter one; the mask on the figure rules out a gradient overlay. */
 .brand-photo-caption {
   @apply absolute bottom-6 left-0 right-26 z-1 text-white text-[18px] font-semibold leading-[1.4];
+  text-shadow: 0 1px 14px color-mix(in srgb, var(--night) 85%, transparent);
 }
 .brand-photo-caption > span {
-  @apply block text-[10px] uppercase tracking-[0.14em] font-semibold mb-1.5 text-on-dark-muted;
+  @apply block text-[12px] uppercase tracking-[0.14em] font-semibold mb-1.5 text-on-dark-muted;
 }
 .brand-home .brand-journeys {
   @apply gap-6;
@@ -201,7 +207,39 @@
   @apply text-on-dark-cool;
 }
 .brand-home .brand-events-band {
-  @apply border-0 border-t-4 border-solid border-magenta;
+  @apply relative border-0 border-t-4 border-solid border-magenta;
+  overflow: clip;
+}
+.brand-home .brand-events-band > .container {
+  @apply relative z-1;
+}
+/* Colour-smoke orbs: decorative, behind the content, faded so the
+   4.5:1 text contrast on the dark band is untouched. */
+.brand-events-orbs {
+  @apply absolute inset-0 z-0 pointer-events-none;
+}
+.brand-events-orb {
+  @apply absolute opacity-0 transition-opacity duration-700;
+  mask-image: radial-gradient(circle, #000 35%, transparent 70%);
+}
+.brand-events-orb[data-ready="true"] {
+  opacity: 0.38;
+}
+.brand-events-orb:first-child {
+  top: -250px;
+  right: -110px;
+}
+.brand-events-orb:last-child {
+  bottom: -150px;
+  left: -90px;
+}
+.brand-events-orb:last-child[data-ready="true"] {
+  opacity: 0.28;
+}
+@media (max-width: 760px) {
+  .brand-events-orb:last-child {
+    display: none;
+  }
 }
 .brand-home .brand-solution-teaser.solution-compact {
   @apply p-0 rounded-control overflow-hidden;
@@ -469,13 +507,13 @@
   @apply absolute left-8 right-8 bottom-8 z-1 text-white font-title text-[36px] leading-[1.1];
 }
 .shops-store-photo figcaption > span {
-  @apply block font-sans font-semibold text-[11px] tracking-[0.14em] uppercase text-on-dark-strong mb-2.5;
+  @apply block font-sans font-semibold text-[12px] tracking-[0.14em] uppercase text-on-dark-strong mb-2.5;
 }
 .shops-store-info {
   @apply p-9 min-w-0;
 }
 .shops-store-info > .badge {
-  @apply bg-soft text-mid text-[10px] tracking-[0.1em] rounded-[5px];
+  @apply bg-soft text-mid text-[12px] tracking-[0.1em] rounded-[5px];
 }
 .shops-store-info h2 {
   @apply text-[40px] font-normal mt-3 mb-3;
@@ -536,7 +574,19 @@
   @apply text-[15px] leading-[1.7] mt-4 mb-7 max-w-200;
 }
 .shops-campaigns > .spread > .badge {
-  @apply bg-transparent border border-solid border-line text-muted text-[10px];
+  @apply bg-transparent border border-solid border-line text-muted text-[12px];
+}
+.shops-campaign-photo {
+  @apply m-0 mb-6;
+}
+.shops-campaign-photo .media {
+  @apply rounded-media;
+}
+.shops-campaign-photo .media img {
+  object-position: 50% 70%;
+}
+.shops-campaign-photo figcaption {
+  @apply text-[14px] text-muted mt-2.5;
 }
 .shops-campaign-grid {
   @apply grid grid-cols-2 gap-5;
@@ -560,7 +610,7 @@
   @apply text-[14px];
 }
 .shops-campaigns .campaign-card > .badge {
-  @apply text-[11px] tracking-normal normal-case font-semibold rounded-[5px];
+  @apply text-[12px] tracking-normal normal-case font-semibold rounded-[5px];
 }
 .shops-campaigns .campaign-card dl {
   @apply grid grid-cols-2 gap-5 w-full my-5 pt-5 border-0 border-t border-solid border-line;
@@ -904,6 +954,9 @@
   }
   .shops-campaigns > .muted {
     @apply mt-3 mb-5;
+  }
+  .shops-campaign-photo .media {
+    aspect-ratio: 3 / 2;
   }
   .shops-campaign-grid {
     @apply grid-cols-1 gap-4;

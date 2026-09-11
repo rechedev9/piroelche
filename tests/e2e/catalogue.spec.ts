@@ -19,9 +19,11 @@ test("the 16-page catalogue is navigable without automatically downloading the P
   ).toHaveCount(16);
   for (let number = 1; number <= 16; number++) {
     const image = page.locator(".catalogue-sheet");
+    // The reader goes through the image optimizer, so match the source file
+    // inside the encoded URL rather than a literal path.
     await expect(image).toHaveAttribute(
       "src",
-      `/media/catalogo-2026/page-${String(number).padStart(2, "0")}.webp`,
+      new RegExp(`page-${String(number).padStart(2, "0")}\\.webp`),
     );
     await image.scrollIntoViewIfNeeded();
     await expect
@@ -114,7 +116,7 @@ test("catalogue page navigation and readable text work without JavaScript", asyn
     await expect(page).toHaveURL(/pagina=9#lector$/);
     await expect(page.locator(".catalogue-sheet")).toHaveAttribute(
       "src",
-      "/media/catalogo-2026/page-09.webp",
+      /page-09\.webp/,
     );
     await page
       .getByText("Leer el texto de esta página", { exact: true })
@@ -127,7 +129,7 @@ test("catalogue page navigation and readable text work without JavaScript", asyn
     await expect(page).toHaveURL(/pagina=12#lector$/);
     await expect(page.locator(".catalogue-sheet")).toHaveAttribute(
       "src",
-      "/media/catalogo-2026/page-12.webp",
+      /page-12\.webp/,
     );
   } finally {
     await context.close();
