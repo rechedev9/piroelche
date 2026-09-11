@@ -26,8 +26,21 @@ export function googleSiteVerification() {
   return process.env.PIROBOOM_GOOGLE_SITE_VERIFICATION?.trim() || undefined;
 }
 /**
- * Per-page metadata. Open Graph and Twitter images come from the root
- * `opengraph-image` file convention, which Next applies to every route.
+ * Shared Open Graph card, rendered by `pnpm brand:og` to
+ * `src/app/opengraph-image.png` and served by Next at `/opengraph-image.png`.
+ */
+const OG_IMAGE = {
+  url: "/opengraph-image.png",
+  width: 1200,
+  height: 630,
+  type: "image/png",
+  alt: "Piroboom, pirotecnia en Elche: fuegos artificiales, humo de color, fuego frío y tracas",
+};
+/**
+ * Per-page metadata. The card is listed explicitly: a segment that exports its
+ * own `openGraph` replaces the parent's wholesale, so the root file-based
+ * `opengraph-image` would otherwise only reach the home page. Twitter inherits
+ * the Open Graph images.
  */
 export function pageMetadata(
   title: string,
@@ -45,6 +58,7 @@ export function pageMetadata(
       title,
       description,
       url: pathname,
+      images: [OG_IMAGE],
     },
     twitter: { card: "summary_large_image", title, description },
     robots: { index: publicIndexing(), follow: publicIndexing() },
@@ -248,7 +262,6 @@ export function productJsonLd(
     category: family.name,
     url: `${origin}${pathname}`,
     ...(product.image ? { image: `${origin}${product.image.src}` } : {}),
-    brand: { "@id": id.organization },
     ...(product.price != null
       ? {
           offers: {
