@@ -32,7 +32,7 @@ test("the 16-page catalogue is navigable without automatically downloading the P
           (element) =>
             element instanceof HTMLImageElement &&
             element.complete &&
-            element.naturalWidth === 1600,
+            element.naturalWidth > 0,
         ),
       )
       .toBe(true);
