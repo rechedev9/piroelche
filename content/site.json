@@ -659,6 +659,20 @@
           "verifiedFields": ["src", "alt", "width", "height", "source"]
         }
       }
-    ]
+    ],
+    "campaignBooth": {
+      "src": "/media/site/caseta-temporada-2024-06.jpg",
+      "alt": "Caseta de pirotecnia de temporada con banderas y rótulos de fuegos artificiales junto a palmeras",
+      "width": 680,
+      "height": 454,
+      "provenance": {
+        "kind": "primary-source",
+        "source": "https://pirotecniaelche.es/tiendas/",
+        "checkedAt": "2026-09-11",
+        "note": "Fotografía publicada por el negocio en la página Tiendas de su web actual, donde ilustra las cuatro casetas con la misma imagen. Se importa sin edición como ejemplo genérico de caseta; no documenta una ubicación ni una campaña concreta. Hash en evidence/media/sources.json.",
+        "pending": [],
+        "verifiedFields": ["src", "alt", "width", "height", "source"]
+      }
+    }
   }
 }

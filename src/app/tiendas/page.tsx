@@ -33,6 +33,7 @@ function LocationIcon() {
 export default function Shops() {
   const { brand, store, campaigns, isDemo } = getContent();
   const welcomeImage = brand?.storeWelcome || store.image;
+  const boothImage = brand?.campaignBooth;
   const today = getLocationHours(store);
   return (
     <div className="brand-shops">
@@ -134,6 +135,20 @@ export default function Shops() {
             de campaña antes de acudir; la tienda principal de Elche es la
             alternativa fuera de campaña.
           </p>
+          {boothImage && (
+            <figure className="shops-campaign-photo">
+              <Media
+                src={boothImage.src}
+                alt={boothImage.alt}
+                fit={boothImage.fit}
+                ratio="5 / 2"
+              />
+              <figcaption>
+                Caseta de temporada de Piroboom. Imagen de ejemplo: cada punto
+                de venta tiene su propia caseta.
+              </figcaption>
+            </figure>
+          )}
           {campaigns.length ? (
             <div className="shops-campaign-grid">
               {campaigns.map((campaign) => {

@@ -538,6 +538,7 @@ export const ContentSchema = z
         eventHero: PublishedImageSchema,
         storeWelcome: PublishedImageSchema,
         storeDetail: PublishedImageSchema,
+        campaignBooth: PublishedImageSchema.optional(),
         gallery: z.array(PublishedImageSchema),
       })
       .strict()
