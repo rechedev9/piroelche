@@ -23,8 +23,11 @@ catalogue PDF (`next.config.ts`).
 
 ## Shared Open Graph image
 
-`src/app/opengraph-image.png` (1200x630) is a static metadata file, applied by
-Next to every route. Regenerate it with `pnpm brand:og`
+`src/app/opengraph-image.png` (1200x630) is a static metadata file served at
+`/opengraph-image.png`. `pageMetadata` lists it explicitly in `openGraph.images`
+(with its alt text), because a page that exports its own `openGraph` replaces
+the parent's wholesale and would otherwise lose the card; Twitter inherits it.
+Regenerate it with `pnpm brand:og`
 (`scripts/prepare-og-image.tsx`, satori via `next/og`) after changing the logo,
 the store address or its copy. A static file avoids runtime font loading and
 the trailing-slash redirect that `trailingSlash: true` adds to generated image
