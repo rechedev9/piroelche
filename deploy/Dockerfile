@@ -4,6 +4,8 @@ FROM node:24-alpine AS builder
 WORKDIR /build
 RUN corepack enable
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+# pnpm applies the dependency patches listed in pnpm-workspace.yaml on install.
+COPY patches ./patches
 RUN pnpm install --frozen-lockfile
 COPY . .
 
