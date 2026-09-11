@@ -157,7 +157,7 @@ export function siteGraphJsonLd({
     url: `${origin}/brand/logo.webp`,
     contentUrl: `${origin}/brand/logo.webp`,
     width: 552,
-    height: 184,
+    height: 224,
     caption: SITE_NAME,
   };
   const social = sameAs(channels);
