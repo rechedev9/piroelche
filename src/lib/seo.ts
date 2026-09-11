@@ -35,14 +35,14 @@ export function pageMetadata(
       images: [
         {
           url: `${siteUrl()}/brand/logo.webp`,
-          width: 552,
-          height: 184,
+          width: 1200,
+          height: 630,
           alt: "Piroboom · Pirotecnia · Elche",
         },
       ],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
       images: [`${siteUrl()}/brand/logo.webp`],
