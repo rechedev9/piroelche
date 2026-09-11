@@ -812,7 +812,7 @@ body > div {
   @apply relative;
 }
 .video-badge {
-  @apply absolute top-2.5 right-2.5 bg-night text-white text-[11px] font-extrabold rounded-[5px] py-1 px-2;
+  @apply absolute top-2.5 right-2.5 bg-night text-white text-[12px] font-extrabold rounded-[5px] py-1 px-2;
 }
 .product-grid {
   grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
@@ -1199,6 +1199,14 @@ body > div {
   }
   .product-detail {
     @apply gap-6;
+  }
+}
+/* Between the two-column desktop layout and the phone layout the lead form
+   would shrink below ~330px; stack copy and form before that happens. */
+@media (max-width: 800px) {
+  .contact-page.grid-2,
+  .event-form-wrap.grid-2 {
+    @apply grid-cols-[1fr];
   }
 }
 @media (max-width: 650px) {

@@ -37,13 +37,16 @@ export function CataloguePageViewer({
           setOpen(true);
         }}
       >
+        {/* The reader shows the sheet at ~370px wide (max-height 640px), so let
+            the optimizer serve a responsive size; only the zoom dialog below
+            needs the full 1600px source. */}
         <Image
           className="catalogue-sheet"
           src={page.src}
           alt={label}
           width={page.width}
           height={page.height}
-          unoptimized
+          sizes="(max-width: 650px) 85vw, 400px"
         />
         <span className="catalogue-enlarge">
           Ampliar página <span aria-hidden="true">↗</span>

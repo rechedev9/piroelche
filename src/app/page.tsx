@@ -191,6 +191,7 @@ export default function Home() {
                   alt={solution.image?.alt || solution.label}
                   ratio="4 / 3"
                   fit={solution.image?.fit}
+                  sizes="(max-width: 650px) 90vw, (max-width: 1059px) 45vw, 380px"
                   dark
                 />
                 <div className="brand-teaser-copy">

@@ -113,6 +113,7 @@ function FamilyCard({
         src={family.image?.src}
         alt={family.image?.alt || family.name}
         fit={family.image?.fit}
+        sizes="(max-width: 650px) 90vw, (max-width: 1059px) 45vw, 280px"
       />
       <div className="card-body">
         {detailed ? <h2>{family.name}</h2> : <h3>{family.name}</h3>}
@@ -158,6 +159,7 @@ export function ProductCard({
         src={product.image?.src}
         alt={product.image?.alt || product.name}
         ratio="1"
+        sizes="(max-width: 650px) 90vw, (max-width: 1059px) 45vw, 300px"
       />
       {product.video && <span className="video-badge">VÍDEO</span>}
       <div className="card-body">

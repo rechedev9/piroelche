@@ -11,10 +11,14 @@ export function leadControlProps(
   prefix: string,
   errors: LeadFieldErrors,
   name: LeadField,
+  required = false,
 ) {
   const id = `${prefix}-${name}`;
   return {
     id,
+    // Optional fields say "(opcional)" in their label; required ones are
+    // announced through aria-required rather than a visual asterisk.
+    "aria-required": required || undefined,
     "aria-invalid": Boolean(errors[name]),
     "aria-describedby": errors[name] ? `${id}-error` : undefined,
   };
@@ -77,7 +81,7 @@ export function LeadEventFields({
         error={errors.occasion}
       >
         <select
-          {...leadControlProps(prefix, errors, "occasion")}
+          {...leadControlProps(prefix, errors, "occasion", true)}
           onFocus={onFocus}
           name="occasion"
           value={draft.occasion}
@@ -100,7 +104,7 @@ export function LeadEventFields({
           error={errors.date}
         >
           <Input
-            {...leadControlProps(prefix, errors, "date")}
+            {...leadControlProps(prefix, errors, "date", !draft.dateUndecided)}
             onFocus={onFocus}
             type="date"
             name="date"

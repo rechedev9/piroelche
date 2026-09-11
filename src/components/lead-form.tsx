@@ -87,8 +87,11 @@ export function LeadForm({
       </LeadFieldRow>
     );
   }
-  function accessible(name: LeadField) {
-    return { ...leadControlProps(prefix, errors, name), onFocus: markStarted };
+  function accessible(name: LeadField, required = false) {
+    return {
+      ...leadControlProps(prefix, errors, name, required),
+      onFocus: markStarted,
+    };
   }
 
   if (receipt)
@@ -197,7 +200,7 @@ export function LeadForm({
             "name",
             draft.intention === "event" ? "Tu nombre (opcional)" : "Tu nombre",
             <Input
-              {...accessible("name")}
+              {...accessible("name", draft.intention !== "event")}
               name="name"
               autoComplete="name"
               maxLength={100}
@@ -210,7 +213,7 @@ export function LeadForm({
           "replyTo",
           "Cómo te respondemos",
           <Input
-            {...accessible("replyTo")}
+            {...accessible("replyTo", true)}
             name="replyTo"
             type="text"
             inputMode="text"
@@ -248,7 +251,11 @@ export function LeadForm({
                   : "Qué producto buscas"
                 : "Tu consulta",
             <Textarea
-              {...accessible("message")}
+              {...accessible(
+                "message",
+                draft.intention === "visit" ||
+                  (draft.intention === "product" && !selectedProduct),
+              )}
               name="message"
               rows={4}
               maxLength={4000}

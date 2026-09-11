@@ -26,7 +26,7 @@
   @apply text-on-dark-cool max-w-125 text-[16px] mb-6;
 }
 .catalogue-hero .eyebrow {
-  @apply flex items-center gap-3 text-on-dark-muted text-[11px] flex-wrap;
+  @apply flex items-center gap-3 text-on-dark-muted text-[12px] flex-wrap;
 }
 .catalogue-edition {
   @apply text-yellow border border-solid border-yellow/40 rounded-full py-1.5 px-3;
@@ -76,7 +76,7 @@
   @apply text-inherit;
 }
 .catalogue-hero .pdf-action small {
-  @apply absolute left-0 top-full mt-1 text-on-dark-muted text-[11px];
+  @apply absolute left-0 top-full mt-1 text-on-dark-muted text-[12px];
 }
 .catalogue-families {
   @apply mt-14;
@@ -165,7 +165,7 @@
   @apply border-0 py-3 px-0 bg-transparent text-[16px] min-h-11 w-full;
 }
 .catalogue-search p {
-  @apply text-[11px] text-muted mb-0 mt-2;
+  @apply text-[12px] text-muted mb-0 mt-2;
 }
 .catalogue-search-empty {
   @apply px-4 pb-4 text-[13px] text-muted;
@@ -181,7 +181,7 @@
   @apply list-none m-0 pt-0 px-2 pb-2;
 }
 .catalogue-index a {
-  @apply flex items-center gap-3 p-2 rounded-[8px] text-ink no-underline font-extrabold text-[11px] leading-[1.4] mb-1;
+  @apply flex items-center gap-3 p-2 rounded-[8px] text-ink no-underline font-extrabold text-[12px] leading-[1.4] mb-1;
 }
 .catalogue-index a:hover {
   @apply bg-soft;
@@ -193,7 +193,7 @@
   @apply flex-[0_0_32px] object-contain rounded-[2px];
 }
 .catalogue-index small {
-  @apply block mb-1 text-[10px] font-semibold text-muted;
+  @apply block mb-1 text-[12px] font-semibold text-muted;
 }
 .catalogue-index-arrow {
   @apply ml-auto opacity-0 text-[16px];
@@ -398,7 +398,7 @@
     @apply contents;
   }
   .catalogue-hero .eyebrow {
-    @apply col-span-2 text-[10px] gap-2 mb-1;
+    @apply col-span-2 text-[12px] gap-2 mb-1;
   }
   .catalogue-hero h1 {
     @apply text-[clamp(32px,8vw,46px)] m-0 self-center;
@@ -434,7 +434,7 @@
     @apply static m-0;
   }
   .catalogue-hero-note {
-    @apply col-span-2 text-[11px] text-center mt-0;
+    @apply col-span-2 text-[12px] text-center mt-0;
   }
   .catalogue-reader-heading {
     @apply block;
@@ -473,7 +473,7 @@
     @apply p-3;
   }
   .catalogue-current-title {
-    @apply text-[11px] mb-3;
+    @apply text-[12px] mb-3;
   }
   .catalogue-sheet {
     @apply max-h-none w-full;
