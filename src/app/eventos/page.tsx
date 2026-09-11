@@ -9,8 +9,8 @@ import { Media, ProductVideo } from "@/components/media";
 import { HeroImage } from "@/components/hero-image";
 
 export const metadata = pageMetadata(
-  "Eventos y celebraciones",
-  "Consulta opciones para bodas, revelaciones, cumpleaños y fiestas. Solicita una valoración según la ocasión, fecha y lugar.",
+  "Pirotecnia para bodas, revelaciones y fiestas",
+  "Fuegos artificiales, humo de color y fuego frío para bodas, revelaciones de sexo, cumpleaños y fiestas en Elche y Alicante. Pide una valoración según ocasión, fecha y lugar.",
   "/eventos/",
 );
 const steps = [

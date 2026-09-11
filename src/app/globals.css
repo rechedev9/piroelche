@@ -935,6 +935,37 @@ body > div {
 .form-card {
   @apply p-7.5 rounded-panel;
 }
+.faq {
+  @apply pb-18 grid gap-6;
+}
+.faq-heading h2 {
+  @apply mb-0;
+}
+.faq-list {
+  @apply grid gap-3 max-w-200;
+}
+.faq-item {
+  @apply bg-white border border-solid border-line rounded-media px-5.5;
+}
+.faq-item summary {
+  @apply flex items-center justify-between gap-4 cursor-pointer list-none py-4.5 min-h-12;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary h3 {
+  @apply text-[17px] mb-0 font-bold;
+}
+.faq-item summary::after {
+  content: "+" / "";
+  @apply flex-none text-[24px] leading-none text-magenta font-bold;
+}
+.faq-item[open] summary::after {
+  content: "−" / "";
+}
+.faq-item p {
+  @apply m-0 pb-5 text-[16px] leading-[1.6] text-muted max-w-160;
+}
 .lead-form {
   @apply grid gap-4 min-w-0;
 }

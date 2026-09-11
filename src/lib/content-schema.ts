@@ -349,10 +349,28 @@ const hoursFields = {
   confirmedUntil: DateOnlySchema.optional(),
   exceptionsConfirmedUntil: DateOnlySchema.optional(),
 };
+/** Structured address for schema.org; the display string stays in `address`. */
+export const PostalAddressSchema = z
+  .object({
+    streetAddress: text,
+    postalCode: z.string().regex(/^\d{5}$/),
+    addressLocality: text,
+    addressRegion: text,
+    addressCountry: z.string().regex(/^[A-Z]{2}$/),
+  })
+  .strict();
+export const GeoSchema = z
+  .object({
+    latitude: z.number().min(-90).max(90),
+    longitude: z.number().min(-180).max(180),
+  })
+  .strict();
 export const StoreSchema = z
   .object({
     name: text,
     address: text,
+    postalAddress: PostalAddressSchema.optional(),
+    geo: GeoSchema.optional(),
     phone: z.string().regex(/^\+[1-9]\d{7,14}$/),
     phoneDisplay: text,
     landline: z
@@ -501,7 +519,10 @@ export const ChannelsSchema = z
           .strict()
           .nullable(),
         instagram: z
-          .object({ handle: z.string().regex(/^[a-z0-9._]+$/i), url: WebUrlSchema })
+          .object({
+            handle: z.string().regex(/^[a-z0-9._]+$/i),
+            url: WebUrlSchema,
+          })
           .strict()
           .nullable(),
       })
@@ -517,6 +538,7 @@ export const ContentSchema = z
         eventHero: PublishedImageSchema,
         storeWelcome: PublishedImageSchema,
         storeDetail: PublishedImageSchema,
+        campaignBooth: PublishedImageSchema.optional(),
         gallery: z.array(PublishedImageSchema),
       })
       .strict()
@@ -638,6 +660,7 @@ export type HoursException = z.infer<typeof HoursExceptionSchema>;
 export type CampaignPeriod = z.infer<typeof CampaignPeriodSchema>;
 export type Store = z.infer<typeof StoreSchema>;
 export type Campaign = z.infer<typeof CampaignSchema>;
+export type Channels = z.infer<typeof ChannelsSchema>;
 export type LegalPage = z.infer<typeof LegalPageSchema>;
 export type SiteContent = z.infer<typeof ContentSchema>;
 export type PublicContent = SiteContent & { isDemo: boolean };

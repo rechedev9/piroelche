@@ -576,6 +576,18 @@
 .shops-campaigns > .spread > .badge {
   @apply bg-transparent border border-solid border-line text-muted text-[12px];
 }
+.shops-campaign-photo {
+  @apply m-0 mb-6;
+}
+.shops-campaign-photo .media {
+  @apply rounded-media;
+}
+.shops-campaign-photo .media img {
+  object-position: 50% 70%;
+}
+.shops-campaign-photo figcaption {
+  @apply text-[14px] text-muted mt-2.5;
+}
 .shops-campaign-grid {
   @apply grid grid-cols-2 gap-5;
 }
@@ -942,6 +954,9 @@
   }
   .shops-campaigns > .muted {
     @apply mt-3 mb-5;
+  }
+  .shops-campaign-photo .media {
+    aspect-ratio: 3 / 2;
   }
   .shops-campaign-grid {
     @apply grid-cols-1 gap-4;
