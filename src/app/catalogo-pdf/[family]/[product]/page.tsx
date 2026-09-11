@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getContent, getFamily, getProduct } from "@/lib/content";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, productJsonLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { JsonLd } from "@/components/json-ld";
 import { Media, ProductVideo } from "@/components/media";
 import { ViewEvent } from "@/components/tracked-link";
 
@@ -29,8 +30,10 @@ export default async function ProductPage({ params }: Props) {
   const product = getProduct(route.family, route.product);
   if (!family || !product) notFound();
   const { isDemo } = getContent();
+  const pathname = `/catalogo-pdf/${family.slug}/${product.slug}/`;
   return (
     <div className="container page-section catalog-page">
+      {!isDemo && <JsonLd data={productJsonLd(product, family, pathname)} />}
       <Breadcrumbs
         items={[
           { label: "Catálogo", href: "/catalogo-pdf/" },

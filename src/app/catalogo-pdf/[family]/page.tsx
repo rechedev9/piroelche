@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const family = getFamily((await params).family);
   return family
     ? pageMetadata(
-        family.name,
-        family.description,
+        `${family.name} en Elche`,
+        `${family.description} Consulta esta familia en el catálogo 2026 de Piroboom, tienda de pirotecnia en Elche.`,
         `/catalogo-pdf/${family.slug}/`,
       )
     : {

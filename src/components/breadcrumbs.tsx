@@ -1,9 +1,6 @@
 import Link from "next/link";
-import {
-  breadcrumbListJsonLd,
-  serializeJsonLd,
-  type BreadcrumbItem,
-} from "@/lib/seo";
+import { breadcrumbListJsonLd, type BreadcrumbItem } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 export function Breadcrumbs({
   items,
@@ -28,14 +25,7 @@ export function Breadcrumbs({
           ))}
         </ol>
       </nav>
-      {structuredData && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(breadcrumbListJsonLd(items)),
-          }}
-        />
-      )}
+      {structuredData && <JsonLd data={breadcrumbListJsonLd(items)} />}
     </>
   );
 }

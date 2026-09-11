@@ -5,8 +5,8 @@ import { getContent } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata(
-  "Sobre nosotros",
-  "Conoce Piroboom, su tienda física en Elche y la atención para elegir artículos y consultar celebraciones.",
+  "Sobre nosotros: tienda de pirotecnia en Elche",
+  "Conoce Piroboom, tienda física de pirotecnia en Elche (Alicante), y cómo te ayudamos a elegir artículos y a preparar tu celebración.",
   "/sobre-nosotros/",
 );
 export default function About() {

@@ -10,9 +10,11 @@ import { TrackedLink } from "@/components/tracked-link";
 import { CampaignPromo } from "@/components/campaign-promo";
 import { HeroImage } from "@/components/hero-image";
 
+// The root segment does not receive the layout title template, so the home
+// title carries the brand itself.
 export const metadata = pageMetadata(
-  "Pirotecnia para tus celebraciones en Elche",
-  "Explora las familias de pirotecnia, consulta opciones para tu evento y encuentra la tienda Piroboom en Elche.",
+  "Piroboom · Tienda de pirotecnia en Elche, Alicante",
+  "Piroboom, tienda de pirotecnia en Elche: fuegos artificiales, humo de color, fuego frío y tracas. Catálogo 2026, consultas para bodas y fiestas, y horario de la tienda.",
   "/",
 );
 export default function Home() {

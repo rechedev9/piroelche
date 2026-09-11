@@ -8,8 +8,8 @@ import { TrackedLink } from "@/components/tracked-link";
 import { Button } from "@/components/ui/button";
 
 export const metadata = pageMetadata(
-  "Tiendas y horarios",
-  "Dirección, horario habitual, teléfono y ruta a Piroboom Elche. Consulta la vigencia de las casetas de temporada.",
+  "Tienda de pirotecnia en Elche: dirección y horario",
+  "Piroboom en Calle Gloria Fuertes, s/n, Elche: horario, teléfono y cómo llegar. Casetas de temporada en Elche, Alicante, Santa Pola y La Zenia.",
   "/tiendas/",
 );
 

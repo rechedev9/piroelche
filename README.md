@@ -34,6 +34,7 @@ The code, tests and configuration are the source of truth:
 - [evidence/](evidence/): source manifests and historical verification artifacts.
 - [docs/licenses/](docs/licenses/): font and component licenses.
 - [docs/architecture.md](docs/architecture.md): module boundaries, data lifetime and regression checks.
+- [docs/seo.md](docs/seo.md): indexing gate, metadata, structured data and AI-crawler files.
 
 Content edits require rebuilding and restarting a production preview. Validate them with `pnpm validate:content`; keep example inventory in `fixtures/`.
 

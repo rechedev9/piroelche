@@ -4,10 +4,14 @@ import { getContent } from "@/lib/content";
 import { ContactBar, ContactIcon } from "@/components/contact-bar";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { JsonLd } from "@/components/json-ld";
 import {
-  localBusinessJsonLd,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  googleSiteVerification,
   publicIndexing,
-  serializeJsonLd,
+  siteGraphJsonLd,
   siteUrl,
 } from "@/lib/seo";
 import "./globals.css";
@@ -36,13 +40,14 @@ const lilita = localFont({
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
-  title: {
-    default: "Piroboom · Pirotecnia en Elche",
-    template: "%s | Piroboom",
-  },
-  description:
-    "Catálogo de pirotecnia, consultas para celebraciones y tienda en Elche.",
+  applicationName: SITE_NAME,
+  title: { default: SITE_TITLE, template: `%s | ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
   robots: { index: publicIndexing(), follow: publicIndexing() },
+  ...(googleSiteVerification()
+    ? { verification: { google: googleSiteVerification() } }
+    : {}),
+  formatDetection: { telephone: true, email: true, address: true },
   icons: {
     icon: [
       {
@@ -59,7 +64,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const { isDemo, store, channels, campaigns } = getContent();
+  const { isDemo, store, channels, campaigns, families } = getContent();
   return (
     <html lang="es" className={`${manrope.variable} ${lilita.variable}`}>
       <body>
@@ -96,11 +101,8 @@ export default function RootLayout({
             </a>
           )}
           {!isDemo && (
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: serializeJsonLd(localBusinessJsonLd(store)),
-              }}
+            <JsonLd
+              data={siteGraphJsonLd({ store, channels, families, campaigns })}
             />
           )}
         </div>

@@ -3,7 +3,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 
 const source = "assets/brand/favicon-source-v2.png";
 await mkdir("public/brand", { recursive: true });
-const sizes = [16, 32, 48, 180];
+// 192/512 feed the web manifest (`src/app/manifest.ts`).
+const sizes = [16, 32, 48, 180, 192, 512];
 const images = [];
 for (const size of sizes) {
   const png = await sharp(source)
@@ -11,11 +12,14 @@ for (const size of sizes) {
     .ensureAlpha()
     .png()
     .toBuffer();
-  await writeFile(
-    `public/brand/${size === 180 ? "apple-icon-v2" : `favicon-v2-${size}`}.png`,
-    png,
-  );
-  if (size !== 180) images.push({ size, png });
+  const name =
+    size === 180
+      ? "apple-icon-v2"
+      : size >= 192
+        ? `icon-v2-${size}`
+        : `favicon-v2-${size}`;
+  await writeFile(`public/brand/${name}.png`, png);
+  if (size <= 48) images.push({ size, png });
 }
 
 // ICO supports PNG entries. Include native tab sizes and a 48px fallback.
@@ -36,4 +40,6 @@ for (const [index, { size, png }] of images.entries()) {
 const ico = Buffer.concat([header, ...images.map(({ png }) => png)]);
 await writeFile("public/brand/favicon-v2.ico", ico);
 await writeFile("public/favicon.ico", ico);
-console.log("Favicons preparados: PNG 16/32/48, ICO y Apple 180.");
+console.log(
+  "Favicons preparados: PNG 16/32/48, ICO, Apple 180 y manifest 192/512.",
+);
