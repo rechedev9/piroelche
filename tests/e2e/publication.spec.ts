@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import { z } from "zod";
 
 import { publicationOrigin } from "./origins";
@@ -16,6 +16,8 @@ const publicRoutes = [
   "/politica-de-cookies/",
   "/aviso-legal/",
 ];
+const shareCardAlt =
+  "Piroboom, pirotecnia en Elche: fuegos artificiales, humo de color, fuego frío y tracas";
 const disabledResponseSchema = z
   .object({
     ok: z.literal(false),
@@ -23,6 +25,27 @@ const disabledResponseSchema = z
     message: z.string().min(1),
   })
   .strict();
+
+async function expectSharedShareCard(page: Page) {
+  for (const selector of [
+    'meta[property="og:image"]',
+    'meta[name="twitter:image"]',
+  ]) {
+    const content = await page.locator(selector).getAttribute("content");
+    expect(content).toBeTruthy();
+    const imageUrl = new URL(content!);
+    expect(imageUrl.origin).toBe("https://pirotecniaelche.es");
+    expect(imageUrl.pathname).toBe("/opengraph-image.png");
+  }
+  await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute(
+    "content",
+    shareCardAlt,
+  );
+  await expect(page.locator('meta[name="twitter:image:alt"]')).toHaveAttribute(
+    "content",
+    shareCardAlt,
+  );
+}
 
 test("T01,T17 · rutas de publicación, metadatos y noindex sin material de demostración", async ({
   page,
@@ -49,6 +72,7 @@ test("T01,T17 · rutas de publicación, metadatos y noindex sin material de demo
       "content",
       "https://pirotecniaelche.es" + path,
     );
+    await expectSharedShareCard(page);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
       "content",
       /noindex/,
