@@ -40,6 +40,13 @@ Content edits require rebuilding and restarting a production preview. Validate t
 
 The catalogue importer is prepared for a private Google Drive folder. It downloads and validates `catalogo.pdf`, then generates its cover, page images, searchable text and navigation together. Setup and the editor's instructions are in [docs/catalogue-sync.md](docs/catalogue-sync.md). Synchronization remains disabled until Drive and hosting are configured; the daily scheduled task is deferred and is not included.
 
+## Deployment
+
+Production will run on Keko's VPS. Keko will supply the server access and domain
+configuration. Follow [deploy/README.md](deploy/README.md) for the Docker setup,
+verification and rollback procedure. The previous personal-VPS installation has
+been removed. Pushing to GitHub does not deploy to Keko's VPS.
+
 ## Checks
 
 ```bash

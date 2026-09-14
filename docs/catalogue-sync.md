@@ -4,6 +4,20 @@ Flujo previsto: Canva → exportar PDF → sustituir `catalogo.pdf` en Google Dr
 
 El importador está preparado en el repositorio y permanece desactivado. La conexión real necesita la carpeta, una cuenta de servicio y el hosting. La tarea diaria queda aplazada por decisión del propietario: no se incluye ningún workflow de sincronización ni se ha instalado un cron en esta máquina.
 
+## Uso en tiendas físicas: Canva y QR
+
+Contexto facilitado por el propietario el 14 de septiembre de 2026:
+
+- La responsable edita los precios en el diseño de Canva cuyo enlace de edición comparte el propietario por un canal privado.
+- La persona que gestiona la web genera el QR que se coloca sobre las mesas de las tiendas físicas. Los clientes lo escanean con el móvil para abrir el catálogo.
+
+Requisitos para la web derivados de este uso:
+
+- Mantener Canva como herramienta de edición de precios. El flujo de exportación e importación descrito aquí es la propuesta de actualización de la nueva web, no una sincronización ya activa.
+- Usar una URL pública estable para el QR, independiente del año y de la versión del PDF, para que las actualizaciones de precios no obliguen a reimprimirlo. El enlace de edición de Canva no es el destino público del QR.
+- Priorizar la consulta desde móvil: acceso directo al catálogo, precios legibles mediante el zoom y navegación entre páginas.
+- Antes de sustituir la web, comprobar a qué URL apuntan los QR ya impresos y conservar ese destino o su redirección al catálogo actualizado. El mensaje recibido no identifica esa URL; no se ha comprobado el contenido del diseño de Canva ni el destino actual del QR.
+
 ## Instrucciones para quien edita el catálogo
 
 1. Editar el diseño original en Canva. Corregir el dominio de la portada a `pirotecniaelche.es` antes de la primera actualización.
