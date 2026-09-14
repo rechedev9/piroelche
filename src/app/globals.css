@@ -344,7 +344,7 @@ body > div {
   @apply flex flex-none;
 }
 .brand img {
-  @apply block w-42.5 h-auto object-contain;
+  @apply block w-50 h-auto object-contain;
 }
 .main-nav {
   @apply flex gap-0.5 ml-auto items-center;
@@ -1084,7 +1084,7 @@ body > div {
     minmax(0, 0.85fr);
 }
 .footer-brand img {
-  @apply block w-42.5 h-auto mb-5;
+  @apply block w-50 h-auto mb-5;
 }
 .footer-grid h2 {
   @apply text-white font-sans font-extrabold text-[13px] uppercase tracking-[0.1em] m-0 mb-3.5;
@@ -1242,7 +1242,7 @@ body > div {
 }
 @media (max-width: 650px) {
   .site-header .brand img {
-    @apply w-37.5;
+    @apply w-40;
   }
   .page-section {
     @apply pt-9 pb-12;
@@ -1369,7 +1369,7 @@ body > div {
     @apply grid-cols-[1fr] gap-y-8 gap-x-5;
   }
   .footer-brand img {
-    @apply w-37.5;
+    @apply w-40;
   }
   .process {
     @apply grid-cols-[1fr];

@@ -12,8 +12,10 @@ import { SITE_NAME } from "../src/lib/seo";
  */
 async function main() {
   const { store } = getContent();
-  const [logo, lilita, manrope] = await Promise.all([
-    sharp("public/brand/logo.webp").png().toBuffer(),
+  const [{ data: logo, info }, lilita, manrope] = await Promise.all([
+    sharp("public/brand/logo-header.webp")
+      .png()
+      .toBuffer({ resolveWithObject: true }),
     readFile(
       "node_modules/@fontsource/lilita-one/files/lilita-one-latin-400-normal.woff",
     ),
@@ -23,6 +25,9 @@ async function main() {
   ]);
   const size = { width: 1200, height: 630 };
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
+  // Keep the logo's own aspect ratio so a new mark is never squashed.
+  const logoWidth = 640;
+  const logoHeight = Math.round((logoWidth * info.height) / info.width);
 
   const image = new ImageResponse(
     <div
@@ -41,7 +46,7 @@ async function main() {
     >
       {/* Satori renders plain <img>; next/image does not apply here. */}
       {/* oxlint-disable-next-line next/no-img-element */}
-      <img src={logoSrc} width={690} height={230} alt="" />
+      <img src={logoSrc} width={logoWidth} height={logoHeight} alt="" />
       <div
         style={{
           marginTop: 28,
