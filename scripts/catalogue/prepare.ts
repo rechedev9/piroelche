@@ -45,9 +45,11 @@ export async function prepareCatalogue(
     stopAtErrors: true,
     useSystemFonts: false,
     useWorkerFetch: false,
-    cMapUrl: path.join(pdfRoot, "cmaps") + path.sep,
-    standardFontDataUrl: path.join(pdfRoot, "standard_fonts") + path.sep,
-    wasmUrl: path.join(pdfRoot, "wasm") + path.sep,
+    // PDF.js requires its resource roots to end in a URL slash. Windows accepts
+    // this mixed-separator filesystem path when its Node factory reads the file.
+    cMapUrl: path.join(pdfRoot, "cmaps") + "/",
+    standardFontDataUrl: path.join(pdfRoot, "standard_fonts") + "/",
+    wasmUrl: path.join(pdfRoot, "wasm") + "/",
   });
   try {
     const pdf = await task.promise;
