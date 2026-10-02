@@ -3,15 +3,14 @@
 name: CI infra
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/**"
-      - "scripts/ci-infra.sh"
   push:
     branches: [main]
     paths:
       - ".github/workflows/**"
       - "scripts/ci-infra.sh"
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: read
